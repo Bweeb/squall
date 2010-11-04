@@ -10,6 +10,7 @@ begin
     gem.email = "jmazzi@site5.com"
     gem.homepage = "http://github.com/site5/squall"
     gem.authors = ["Justin Mazzi"]
+    gem.add_dependency 'rest-client'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
