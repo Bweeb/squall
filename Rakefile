@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/site5/squall"
     gem.authors = ["Justin Mazzi"]
     gem.add_dependency 'rest-client'
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency 'json'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
