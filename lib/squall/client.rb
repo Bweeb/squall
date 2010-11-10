@@ -15,7 +15,7 @@ module Squall
     end
 
     def put(uri, params = {})
-      parse(RestClient.put("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options))
+      RestClient.put("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options)
     end
 
     def delete(uri)
@@ -55,9 +55,7 @@ module Squall
     end
 
     def valid_options!(accepted, actual)
-      accepted = required.keys
-      actual = actual.keys
-      unknown_keys = actual - accepted
+      unknown_keys = actual.keys - accepted
       raise(ArgumentError, "Unknown key(s): #{unknown_keys.join(", ")}") unless unknown_keys.empty?
     end
   end

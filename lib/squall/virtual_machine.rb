@@ -14,7 +14,7 @@ module Squall
     end
 
     def edit(id, params = {})
-      valid = { :primary_network_id, 
+      valid = [ :primary_network_id, 
                 :cpus, 
                 :label, 
                 :cpu_shares, 
@@ -27,8 +27,9 @@ module Squall
                 :rate_limit, 
                 :primary_disk_size,
                 :hostname,
-                :initial_root_password }
+                :initial_root_password ]
       valid_options!(valid, params)
+      
       put("#{URI_PREFIX}/#{id}", params)
     end
 
