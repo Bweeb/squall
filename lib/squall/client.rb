@@ -5,7 +5,7 @@ module Squall
 
     def initialize
       @default_options = {:accept => :json, :content_type => 'application/json'}
-      RestClient.log = STDERR
+      # RestClient.log = STDERR
     end
 
     def get(uri)
