@@ -3,7 +3,7 @@ require 'json'
 require 'rest_client'
 require 'open-uri'
 
-[:client, :virtual_machine].each do |f|
+[:client, :virtual_machine, :hypervisor].each do |f|
   require File.join(File.dirname(__FILE__), 'squall', f.to_s)
 end
 
