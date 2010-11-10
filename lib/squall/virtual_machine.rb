@@ -15,11 +15,7 @@ module Squall
 
     def show(id)
       begin
-        if get("#{URI_PREFIX}/#{id}")
-          @response['virtual_machine']
-        else
-          false
-        end
+        get("#{URI_PREFIX}/#{id}") ? @response['virtual_machine'] : false
       rescue RestClient::ResourceNotFound
         false
       end
