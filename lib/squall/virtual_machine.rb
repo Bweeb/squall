@@ -41,11 +41,14 @@ module Squall
       required = { :memory, :cpus, :label, :template_id, :hypervisor_id, :initial_root_password }
       required_options!(required, params)
       post(URI_PREFIX, { :virtual_machine => params })
-      @response.code == 201
     end
 
     def destroy(id)
       delete("#{URI_PREFIX}/#{id}")
+    end
+
+    def reboot(id)
+      post("#{URI_PREFIX}/#{id}/reboot")
     end
   end
 end
