@@ -40,11 +40,6 @@ module Squall
       "#{protocol}://#{Squall.api_user}:#{Squall.api_password}@#{uri.host}#{uri.path}"
     end
 
-    def parse(result, code = 200)
-      @message = (result.strip.empty? ? result : JSON.parse(result))
-      @successful = (code == result.code)
-    end
-
     def required_options!(required, actual)
       required = required.keys
       actual = actual.keys
@@ -53,16 +48,18 @@ module Squall
     end
 
     def handle_response(_response, _request, _result)
-      @request  = _request
-      @result   = _result
-      @response = _response
-      parse(_response)
+      @request    = _request
+      @result     = _result
+      @response   = _response
+      @successful = (200 == _response.code)
+
       case _response.code
       when 404
         @message = "404 Not Found" 
       when 422
         @message = "Request Failed: #{@response}"
       else
+        @message = (_response.strip.empty? ? _response : JSON.parse(_response))
         _response.return!
       end
       @successful
