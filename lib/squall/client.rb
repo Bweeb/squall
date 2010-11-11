@@ -1,7 +1,7 @@
 module Squall
   class Client
 
-    attr_reader :successful, :request, :response, :result
+    attr_reader :successful, :request, :response, :result, :message
 
     def initialize
       @default_options = {:accept => :json, :content_type => 'application/json'}
@@ -10,25 +10,25 @@ module Squall
 
     def get(uri)
       RestClient.get("#{uri_with_auth}/#{uri}.json", @default_options) { |_response, _request, _result|
-        setup_attributes _response, _request, _result
+        handle_response _response, _request, _result
       }
     end
 
     def post(uri, params = {})
       RestClient.post("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options) { |_response, _request, _result| 
-        setup_attributes _response, _request, _result
+        handle_response _response, _request, _result
       }
     end
 
     def put(uri, params = {})
       RestClient.put("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options) { |_response, _request, _result| 
-        setup_attributes _response, _request, _result
+        handle_response _response, _request, _result
       }
     end
 
     def delete(uri)
       RestClient.delete("#{uri_with_auth}/#{uri}.json", @default_options) { |_response, _request, _result|
-        setup_attributes _response, _request, _result
+        handle_response _response, _request, _result
       }
     end
 
@@ -41,7 +41,7 @@ module Squall
     end
 
     def parse(result, code = 200)
-      @response = (result.strip.empty? ? result : JSON.parse(result))
+      @message = (result.strip.empty? ? result : JSON.parse(result))
       @successful = (code == result.code)
     end
 
@@ -52,10 +52,20 @@ module Squall
       raise(ArgumentError, "Missing key(s): #{missing_keys.join(", ")}") unless missing_keys.empty?
     end
 
-    def setup_attributes(_response, _request, _result)
+    def handle_response(_response, _request, _result)
       @request  = _request
       @result   = _result
-      @response = parse(_response)
+      @response = _response
+      parse(_response)
+      case _response.code
+      when 404
+        @message = "404 Not Found" 
+      when 422
+        @message = "Request Failed: #{@response}"
+      else
+        _response.return!
+      end
+      @successful
     end
 
     def valid_options!(accepted, actual)

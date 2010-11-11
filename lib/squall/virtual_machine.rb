@@ -6,7 +6,7 @@ module Squall
     def list
       servers = []
       if get(URI_PREFIX)
-        @response.each { |res| servers.push(res['virtual_machine']) }
+        @message.each { |res| servers.push(res['virtual_machine']) }
         servers
       else
         false
@@ -14,11 +14,7 @@ module Squall
     end
 
     def show(id)
-      begin
-        get("#{URI_PREFIX}/#{id}") ? @response['virtual_machine'] : false
-      rescue RestClient::ResourceNotFound
-        false
-      end
+      get("#{URI_PREFIX}/#{id}") ? @message['virtual_machine'] : false
     end
 
     def edit(id, params = {})
@@ -38,25 +34,18 @@ module Squall
                 :initial_root_password ]
       valid_options!(valid, params)
      
-      begin 
-        put("#{URI_PREFIX}/#{id}", { :virtual_machine => params }) 
-      rescue RestClient::ResourceNotFound
-        false
-      end
+      put("#{URI_PREFIX}/#{id}", { :virtual_machine => params }) 
     end
 
     def create(params = {})
       required = { :memory, :cpus, :label, :template_id, :hypervisor_id, :initial_root_password }
       required_options!(required, params)
-      parse(post(URI_PREFIX, { :virtual_machine => params }), 201)
+      post(URI_PREFIX, { :virtual_machine => params })
+      @response.code == 201
     end
 
     def destroy(id)
-      begin
-        delete("#{URI_PREFIX}/#{id}")
-      rescue RestClient::ResourceNotFound
-        false
-      end
+      delete("#{URI_PREFIX}/#{id}")
     end
   end
 end
