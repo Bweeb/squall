@@ -1,7 +1,7 @@
 module Squall
   class Client
 
-    attr_reader :successful, :response
+    attr_reader :successful, :request, :response, :result
 
     def initialize
       @default_options = {:accept => :json, :content_type => 'application/json'}
@@ -9,19 +9,27 @@ module Squall
     end
 
     def get(uri)
-      parse RestClient.get("#{uri_with_auth}/#{uri}.json", @default_options)
+      RestClient.get("#{uri_with_auth}/#{uri}.json", @default_options) { |_response, _request, _result|
+        setup_attributes _response, _request, _result
+      }
     end
 
     def post(uri, params = {})
-      RestClient.post("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options)
+      RestClient.post("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options) { |_response, _request, _result| 
+        setup_attributes _response, _request, _result
+      }
     end
 
     def put(uri, params = {})
-      parse RestClient.put("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options)
+      RestClient.put("#{uri_with_auth}/#{uri}.json", params.to_json, @default_options) { |_response, _request, _result| 
+        setup_attributes _response, _request, _result
+      }
     end
 
     def delete(uri)
-      parse RestClient.delete("#{uri_with_auth}/#{uri}.json", @default_options)
+      RestClient.delete("#{uri_with_auth}/#{uri}.json", @default_options) { |_response, _request, _result|
+        setup_attributes _response, _request, _result
+      }
     end
 
     private
@@ -42,6 +50,12 @@ module Squall
       actual = actual.keys
       missing_keys = required - [actual].flatten 
       raise(ArgumentError, "Missing key(s): #{missing_keys.join(", ")}") unless missing_keys.empty?
+    end
+
+    def setup_attributes(_response, _request, _result)
+      @request  = _request
+      @result   = _result
+      @response = parse(_response)
     end
 
     def valid_options!(accepted, actual)
