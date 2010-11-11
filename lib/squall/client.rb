@@ -34,17 +34,22 @@ module Squall
 
     private
 
-    def uri_with_auth
-      uri = Squall.api_endpoint
-      protocol = uri.port == 443 ? 'https' : 'http'
-      "#{protocol}://#{Squall.api_user}:#{Squall.api_password}@#{uri.host}#{uri.path}"
-    end
-
     def required_options!(required, actual)
       required = required.keys
       actual = actual.keys
       missing_keys = required - [actual].flatten 
       raise(ArgumentError, "Missing key(s): #{missing_keys.join(", ")}") unless missing_keys.empty?
+    end
+
+    def valid_options!(accepted, actual)
+      unknown_keys = actual.keys - accepted
+      raise(ArgumentError, "Unknown key(s): #{unknown_keys.join(", ")}") unless unknown_keys.empty?
+    end
+
+    def uri_with_auth
+      uri = Squall.api_endpoint
+      protocol = uri.port == 443 ? 'https' : 'http'
+      "#{protocol}://#{Squall.api_user}:#{Squall.api_password}@#{uri.host}#{uri.path}"
     end
 
     def handle_response(_response, _request, _result)
@@ -63,11 +68,6 @@ module Squall
         _response.return!
       end
       @successful
-    end
-
-    def valid_options!(accepted, actual)
-      unknown_keys = actual.keys - accepted
-      raise(ArgumentError, "Unknown key(s): #{unknown_keys.join(", ")}") unless unknown_keys.empty?
     end
   end
 end
