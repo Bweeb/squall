@@ -52,6 +52,7 @@ module Squall
     end
 
     def search(pattern, *fields)
+      fields = [:label] if fields.nil?
       list.select do |vm| 
         fields.detect { |field| vm[field.to_s].match(/#{pattern}/) }
       end
