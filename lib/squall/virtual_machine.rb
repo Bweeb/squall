@@ -50,5 +50,11 @@ module Squall
     def reboot(id)
       post("#{URI_PREFIX}/#{id}/reboot")
     end
+
+    def search(pattern, *fields)
+      list.select do |vm| 
+        fields.detect { |field| vm[field.to_s].match(/#{pattern}/) }
+      end
+    end
   end
 end
