@@ -56,11 +56,13 @@ module Squall
       @request    = _request
       @result     = _result
       @response   = _response
-      @successful = (200 == _response.code)
+      @successful = (200..207).include?(_response.code)
 
       case _response.code
       when 404
         @message = "404 Not Found" 
+      when 403
+        @message = "Action is not permitted for that account"
       when 422
         @message = "Request Failed: #{@response}"
       else
