@@ -9,6 +9,13 @@ end
 
 module Squall
  class << self
+
+    # Sepcifies the login and url for making requests
+    #
+    # example:
+    #
+    #   Squall.config(api_user, api_password, api_url)
+    #
     attr_accessor :api_endpoint, :api_user, :api_password
     def config(api_user, api_password, api_url)
       @api_user     = api_user
