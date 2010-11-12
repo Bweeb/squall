@@ -31,10 +31,15 @@ module Squall
                 :rate_limit, 
                 :primary_disk_size,
                 :hostname,
-                :initial_root_password ]
+                :initial_root_password,
+                :reboot ]
+
       valid_options!(valid, params)
-     
-      put("#{URI_PREFIX}/#{id}", { :virtual_machine => params }) 
+    
+      reboot_after   = params.delete(:reboot)
+      update_request = put("#{URI_PREFIX}/#{id}", { :virtual_machine => params }) 
+      reboot(id) if reboot_after
+      update_request
     end
 
     def create(params = {})
