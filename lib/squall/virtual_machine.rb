@@ -4,12 +4,10 @@ module Squall
     URI_PREFIX = 'virtual_machines'
 
     def list
-      servers = []
       if get(URI_PREFIX)
         @message.each { |res| servers.push(res['virtual_machine']) }
-        servers
       else
-        false
+        []
       end
     end
 
