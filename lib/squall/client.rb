@@ -5,7 +5,7 @@ module Squall
 
     def initialize
       @default_options = {:accept => :json, :content_type => 'application/json'}
-      # RestClient.log = STDERR
+      @debug = false
     end
 
     def get(uri)
@@ -30,6 +30,16 @@ module Squall
       RestClient.delete("#{uri_with_auth}/#{uri}.json", @default_options) { |_response, _request, _result|
         handle_response _response, _request, _result
       }
+    end
+
+    def toggle_debug
+      if @debug
+        @debug = false
+        RestClient.log = nil
+      else
+        @debug = true
+        RestClient.log = STDERR
+      end
     end
 
     private
