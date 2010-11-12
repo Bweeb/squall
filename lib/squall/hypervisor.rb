@@ -3,11 +3,11 @@ module Squall
 
     URI_PREFIX = 'settings/hypervisors'
 
-    def settings
+    def list
       if get(URI_PREFIX)
         @message.collect { |res| res['hypervisor'] }
       else
-        false
+        []
       end
     end
 
@@ -20,6 +20,10 @@ module Squall
       required_options!(required, params)
       post(URI_PREFIX, { :hypervisor => params })
       @response.code == 201
+    end
+
+    def destroy(id)
+      delete("#{URI_PREFIX}/#{id}")
     end
 
   end
