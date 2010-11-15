@@ -5,7 +5,7 @@ module Squall
 
     def list
       if get(URI_PREFIX)
-        @message.each { |res| servers.push(res['virtual_machine']) }
+        @message.collect { |res| res['virtual_machine'] }
       else
         []
       end
