@@ -8,6 +8,16 @@ module Squall
       @debug = false
     end
 
+    def toggle_debug
+      if @debug
+        @debug = false
+        RestClient.log = nil
+      else
+        @debug = true
+        RestClient.log = STDERR
+      end
+    end
+
     def get(uri)
       RestClient.get("#{uri_with_auth}/#{uri}.json", @default_options) { |_response, _request, _result|
         handle_response _response, _request, _result
@@ -32,20 +42,10 @@ module Squall
       }
     end
 
-    def toggle_debug
-      if @debug
-        @debug = false
-        RestClient.log = nil
-      else
-        @debug = true
-        RestClient.log = STDERR
-      end
-    end
-
     private
 
     def required_options!(required, actual)
-      required = required.keys
+      required = required
       actual = actual.keys
       missing_keys = required - [actual].flatten 
       raise(ArgumentError, "Missing key(s): #{missing_keys.join(", ")}") unless missing_keys.empty?
