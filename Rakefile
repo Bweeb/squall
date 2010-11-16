@@ -12,7 +12,8 @@ begin
     gem.authors = ["Justin Mazzi"]
     gem.add_dependency 'rest-client'
     gem.add_dependency 'json'
-    gem.add_development_dependencry 'fakeweb'
+    gem.add_development_dependency 'fakeweb'
+    gem.add_development_dependency 'redgreen'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
