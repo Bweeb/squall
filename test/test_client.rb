@@ -12,6 +12,7 @@ class TestClient < Test::Unit::TestCase
     default_options = {:accept => :json, :content_type => 'application/json'}
     assert_equal default_options, @client.instance_variable_get('@default_options')
     assert_equal false, @client.instance_variable_get('@debug')
+    assert_nil  defined?(Squall::Client::URI_PREFIX)
   end
 
   def test_debug
