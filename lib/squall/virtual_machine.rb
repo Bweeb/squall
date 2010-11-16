@@ -41,7 +41,7 @@ module Squall
     end
 
     def create(params = {})
-      required = { :memory, :cpus, :label, :template_id, :hypervisor_id, :initial_root_password }
+      required = [ :memory, :cpus, :label, :template_id, :hypervisor_id, :initial_root_password ]
       required_options!(required, params)
       post(URI_PREFIX, { :virtual_machine => params })
     end
