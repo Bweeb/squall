@@ -52,7 +52,7 @@ module Squall
       fields = [:label] if fields.empty?
       valid_options!(VALID_PARAMS, fields)
       list.select do |vm| 
-        fields.detect { |field| vm.has_key?(field.to_s) && vm[field.to_s].to_s.match(/#{pattern.to_s}/) }
+        fields.detect { |field| vm.has_key?(field.to_s) && vm[field.to_s].to_s.match(/#{pattern}/) }
       end
     end
   end
