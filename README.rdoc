@@ -1,6 +1,6 @@
 = squall
 
-Description goes here.
+A Ruby library for working with the OnApp REST API
 
 == Note on Patches/Pull Requests
  
