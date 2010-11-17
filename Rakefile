@@ -8,7 +8,7 @@ begin
     gem.summary = %Q{A Ruby library for working with the OnApp REST API}
     gem.description = %Q{A Ruby library for working with the OnApp REST API}
     gem.email = "jmazzi@site5.com"
-    gem.homepage = "http://github.com/site5/squall"
+    gem.homepage = "http://www.site5.com"
     gem.authors = ["Justin Mazzi"]
     gem.add_dependency 'rest-client'
     gem.add_dependency 'json'
