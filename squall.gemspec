@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{squall}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Justin Mazzi"]
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "lib/squall/virtual_machine.rb",
     "squall.gemspec",
     "test/fixtures/virtual_machines.json",
+    "test/fixtures/virtual_machines_1.json",
     "test/helper.rb",
     "test/test_client.rb",
     "test/test_squall.rb",
