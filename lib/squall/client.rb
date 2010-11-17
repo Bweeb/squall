@@ -52,7 +52,8 @@ module Squall
     end
 
     def valid_options!(accepted, actual)
-      unknown_keys = actual.keys - accepted
+      actual = actual.keys if actual.is_a?(Hash)
+      unknown_keys = actual - accepted
       raise(ArgumentError, "Unknown key(s): #{unknown_keys.join(", ")}") unless unknown_keys.empty?
     end
 
