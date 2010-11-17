@@ -1,7 +1,7 @@
 module Squall
   class Client
 
-    attr_reader :successful, :request, :response, :result, :message
+    attr_reader :successful, :request, :response, :result, :message, :raw_response
 
     def initialize
       @default_options = {:accept => :json, :content_type => 'application/json'}
@@ -63,9 +63,10 @@ module Squall
     end
 
     def handle_response(_response, _request, _result)
-      @request    = _request
-      @result     = _result
-      @response   = _response
+      @request      = _request
+      @result       = _result
+      @response     = _response
+      @raw_response = _response
       @successful = (200..207).include?(_response.code)
 
       case _response.code
