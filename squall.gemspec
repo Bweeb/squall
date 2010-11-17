@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "lib/squall/client.rb",
     "lib/squall/hypervisor.rb",
     "lib/squall/virtual_machine.rb",
+    "squall.gemspec",
     "test/fixtures/virtual_machines.json",
     "test/helper.rb",
     "test/test_client.rb",
