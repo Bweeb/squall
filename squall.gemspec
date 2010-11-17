@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{squall}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Justin Mazzi"]
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "test/test_squall.rb",
     "test/test_virtual_machine.rb"
   ]
-  s.homepage = %q{http://github.com/site5/squall}
+  s.homepage = %q{http://www.site5.com}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{A Ruby library for working with the OnApp REST API}
