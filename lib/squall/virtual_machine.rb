@@ -1,7 +1,21 @@
 module Squall
   class VirtualMachine < Client
 
-    URI_PREFIX = 'virtual_machines'
+    URI_PREFIX   = 'virtual_machines'
+    VALID_PARAMS = [:primary_network_id, 
+                    :cpus, 
+                    :label, 
+                    :cpu_shares, 
+                    :template_id, 
+                    :swap_disk_size,
+                    :memory, 
+                    :required_virtual_machine_build, 
+                    :hypervisor_id, 
+                    :required_ip_address_assignment,
+                    :rate_limit, 
+                    :primary_disk_size,
+                    :hostname,
+                    :initial_root_password ]
 
     def list
       if get(URI_PREFIX)
@@ -16,23 +30,7 @@ module Squall
     end
 
     def edit(id, params = {})
-      valid = [ :primary_network_id, 
-                :cpus, 
-                :label, 
-                :cpu_shares, 
-                :template_id, 
-                :swap_disk_size,
-                :memory, 
-                :required_virtual_machine_build, 
-                :hypervisor_id, 
-                :required_ip_address_assignment,
-                :rate_limit, 
-                :primary_disk_size,
-                :hostname,
-                :initial_root_password ]
-
-      valid_options!(valid, params)
-    
+      valid_options!(VALID_PARAMS, params)
       put("#{URI_PREFIX}/#{id}", { :virtual_machine => params }) 
     end
 
@@ -51,9 +49,10 @@ module Squall
     end
 
     def search(pattern, *fields)
-      fields = [:label] if fields.nil?
+      fields = [:label] if fields.empty?
+      valid_options!(VALID_PARAMS, fields)
       list.select do |vm| 
-        fields.detect { |field| vm[field.to_s].match(/#{pattern}/) }
+        fields.detect { |field| vm.has_key?(field.to_s) && vm[field.to_s].match(/#{pattern}/) }
       end
     end
   end
