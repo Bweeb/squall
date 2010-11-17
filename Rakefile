@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "squall"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{A client for the OnApp REST API}
+    gem.summary = %Q{A Ruby library for working with the OnApp REST API}
+    gem.description = %Q{A Ruby library for working with the OnApp REST API}
     gem.email = "jmazzi@site5.com"
     gem.homepage = "http://github.com/site5/squall"
     gem.authors = ["Justin Mazzi"]
