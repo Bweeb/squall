@@ -20,9 +20,9 @@ class Test::Unit::TestCase
       "http://#{Squall.api_user}:#{Squall.api_password}@#{Squall.api_endpoint.host}#{Squall.api_endpoint.path}"
   end
 
-  def stub_json_request(meth, uri, content = nil)
-    content = File.read(File.join(File.dirname(__FILE__), "fixtures/#{uri}.json")) if content.nil?
-    fake_response = Net::HTTPOK.new('1.1', '200', 'OK') 
+  def stub_json_request(meth, uri, content = nil, code = 200)
+    content = File.read(File.join(File.dirname(__FILE__), "fixtures/#{uri.gsub('/', '_')}.json")) if content.nil?
+    fake_response = Net::HTTPOK.new('1.1', code, 'OK') 
     fake_response['Content-Type'] = 'application/json' 
     fake_response.instance_variable_set('@body', content)
     FakeWeb.register_uri(meth, "#{uri_with_login}/#{uri}.json", :content_type => 'application/json', :response => fake_response)
