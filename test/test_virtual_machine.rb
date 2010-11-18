@@ -80,6 +80,18 @@ class TestVirtualMachine < Test::Unit::TestCase
     assert_equal true, reboot
   end
 
+  def test_boot
+    stub_json_request(:post, 'virtual_machines/1/startup', '')
+    boot = @virtual.boot(1)
+    assert_equal true, boot
+  end
+
+  def test_shutdown
+    stub_json_request(:post, 'virtual_machines/1/stop', '')
+    shutdown = @virtual.shutdown(1)
+    assert_equal true, shutdown
+  end
+
   def test_search
     stub_json_request(:get, 'virtual_machines')
     search = @virtual.search('label2')

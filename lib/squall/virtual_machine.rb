@@ -48,6 +48,14 @@ module Squall
       post("#{URI_PREFIX}/#{id}/reboot")
     end
 
+    def shutdown(id)
+      post("#{URI_PREFIX}/#{id}/stop")
+    end
+
+    def boot(id)
+      post("#{URI_PREFIX}/#{id}/startup")
+    end
+
     def search(pattern, *fields)
       fields = [:label] if fields.empty?
       valid_options!(VALID_PARAMS, fields)
