@@ -7,8 +7,9 @@ describe Squall::User do
 	end
 
 	describe "#create" do
+		# use_vcr_cassette "user/create"
 		it "requires login" do
-			# requires_attr(:login) { @user.create }
+			requires_attr(:login) { @user.create }
 		end 
 	end
 end

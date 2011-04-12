@@ -5,6 +5,7 @@ module Squall
 		end
 		
 		def create(options = {})
+			params.required(:login).validate!
 						# {user:{login:'theone', email:'theone@onapp.com',
 # password_confirmation:'H7YgiU6B', first_name:'Joe', last_name:'Doe',
 # password:'H7YgiU6B', group_id:10 }}
