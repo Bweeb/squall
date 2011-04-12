@@ -9,5 +9,9 @@ module Squall
 			self.class.headers 'Content-Type' => 'application/json'
 			# debug_output
 		end
+
+		def params
+			Params.new
+		end
 	end
 end

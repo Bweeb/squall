@@ -26,4 +26,11 @@ describe Squall::Base do
 			base.class.default_options[:headers].should include('Content-Type' => 'application/json')
 		end
 	end
+
+	describe "#params" do
+		it "returns Params.new" do
+			base = Squall::Base.new
+			base.params.should be_a(Params)
+		end
+	end
 end
