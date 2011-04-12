@@ -13,7 +13,7 @@ module Squall
   attr_accessor :configuration
   self.configuration ||= Squall::Config.new
 
-	def config
+  def config
     yield self.configuration if block_given?
     self.configuration.config
   end
