@@ -1,26 +1,24 @@
-require 'rubygems'
-require 'json'
-require 'rest_client'
-require 'open-uri'
+require 'httparty'
+require 'squall/version'
 
-[:client, :virtual_machine, :hypervisor].each do |f|
-  require File.join(File.dirname(__FILE__), 'squall', f.to_s)
-end
+autoload :Params,  'params'
 
 module Squall
- class << self
+	autoload :Config,  'squall/config'
+	autoload :Base,    'squall/base'
+	autoload :User,    'squall/user'
 
-    # Sepcifies the login and url for making requests
-    #
-    # example:
-    #
-    #   Squall.config(api_user, api_password, api_url)
-    #
-    attr_accessor :api_endpoint, :api_user, :api_password
-    def config(api_user, api_password, api_url)
-      @api_user     = api_user
-      @api_password = api_password
-      @api_endpoint = URI.parse(api_url)
-    end
+
+  extend self
+  attr_accessor :configuration
+  self.configuration ||= Squall::Config.new
+
+	def config
+    yield self.configuration if block_given?
+    self.configuration.config
+  end
+
+  def reset_config
+    self.configuration = Squall::Config.new
   end
 end

@@ -1,55 +1,25 @@
-require 'rubygems'
-require 'rake'
-
+require 'bundler'
 begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "squall"
-    gem.summary = %Q{A Ruby library for working with the OnApp REST API}
-    gem.description = %Q{A Ruby library for working with the OnApp REST API}
-    gem.email = "jmazzi@site5.com"
-    gem.homepage = "http://www.site5.com"
-    gem.authors = ["Justin Mazzi"]
-    gem.add_dependency 'rest-client'
-    gem.add_dependency 'json'
-    gem.add_development_dependency 'fakeweb'
-    gem.add_development_dependency 'redgreen'
-  end
-  Jeweler::GemcutterTasks.new
+  require 'rspec/core/rake_task'
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
-
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+  puts "Please install rspec (bundle install)"
+  exit
 end
 
 begin
-  require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
-    test.libs << 'test'
-    test.pattern = 'test/**/test_*.rb'
-    test.verbose = true
+  require 'metric_fu'
+  MetricFu::Configuration.run do |config|
+    config.rcov[:rcov_opts] << "-Ispec"
   end
 rescue LoadError
-  task :rcov do
-    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
-  end
 end
 
-task :test => :check_dependencies
+RSpec::Core::RakeTask.new :spec
+Bundler::GemHelper.install_tasks
 
-task :default => :test
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "squall #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+desc  "Run all specs with rcov"
+RSpec::Core::RakeTask.new(:rcov) do |t|
+  t.rcov = true
+  t.rcov_opts = %w{--exclude osx\/objc,gems\/,spec\/,features\/}
 end
