@@ -4,9 +4,9 @@ require 'squall/version'
 autoload :Params,  'params'
 
 module Squall
-	autoload :Config,  'squall/config'
-	autoload :Base,    'squall/base'
-	autoload :User,    'squall/user'
+  autoload :Config,  'squall/config'
+  autoload :Base,    'squall/base'
+  autoload :User,    'squall/user'
 
 
   extend self

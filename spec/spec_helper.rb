@@ -12,8 +12,8 @@ end
 RSpec.configure do |c|
   c.extend VCR::RSpec::Macros
   c.after(:each) do
-		Squall.reset_config
-	end
+    Squall.reset_config
+  end
 end
 
 def default_config
@@ -28,11 +28,11 @@ def default_config
     user = 'user'
     pass = 'pass'
   end
-	Squall.config do |c|
-		c.base_uri uri
-		c.username user
-		c.password pass
-	end
+  Squall.config do |c|
+    c.base_uri uri
+    c.username user
+    c.password pass
+  end
 end
 
 def requires_attr(attr, &block)

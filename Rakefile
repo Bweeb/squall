@@ -22,7 +22,7 @@ desc "Sanitize sensitive info from cassettes"
 task :sanitize_cassettes do
   yaml = File.join(ENV['HOME'], '.squall.yml')
   if File.exists?(yaml)
-  	config = YAML::load_file(yaml)
+    config = YAML::load_file(yaml)
     uri  = URI.parse(config['base_uri']).host
     user = config['username']
     pass = config['password']
