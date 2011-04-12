@@ -5,8 +5,8 @@ class Params
 		@valid = {}
 	end
 
-	def required(options)
-		@valid = options.map { |o| o.to_sym}
+	def required(*options)
+		@valid = options.flatten.map { |o| o.to_sym}
 		self
 	end
 	
@@ -14,6 +14,6 @@ class Params
 		options = options.first.keys if options.first.respond_to?(:keys)
 		options.map! { |o| o.to_sym }
 		delta = (@valid - options)
-		raise ArgumentError, "Missing one or more required params: #{delta.join(',')}" if delta.any?
+		raise ArgumentError, "Missing required params: #{delta.join(',')}" if delta.any?
 	end
 end
