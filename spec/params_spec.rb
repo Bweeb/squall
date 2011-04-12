@@ -22,6 +22,18 @@ describe Params do
 		it "returns self" do
 			@params.required([:one, :two]).should be_a(Params)
 		end
+
+		it "resets @valid" do
+			params = [:one, :two]
+			@params.required params
+			@params.valid.size.should == 2
+			@params.valid.should include(:one, :two)
+
+			params = [:three, :four]
+			@params.required params
+			@params.valid.size.should == 2
+			@params.valid.should include(:three, :four)
+		end
 	end
 
 	describe "#validate!" do

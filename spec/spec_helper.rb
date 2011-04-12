@@ -22,7 +22,7 @@ def default_config
     config = YAML::load_file(yaml)
     uri  = config['base_uri']
     user = config['username']
-    pass = config['passwords']
+    pass = config['password']
   else
     uri  = 'http://www.example.com'
     user = 'user'
