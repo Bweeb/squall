@@ -1,5 +1,6 @@
 module Squall
 	class Base
+		attr_reader :params
 		include HTTParty
 
 		def initialize
@@ -11,7 +12,7 @@ module Squall
 		end
 
 		def params
-			Params.new
+			@params ||= Params.new
 		end
 	end
 end
