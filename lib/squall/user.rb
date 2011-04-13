@@ -4,7 +4,7 @@ module Squall
       response = request(:get, '/users.json')
       response.collect { |user| user['user']}
     end
-    
+
     def create(options = {})
       params.required(:login, :email, :password).validate!(options)
       request(:post, '/users.json', default_options(options))
@@ -18,6 +18,17 @@ module Squall
     def generate_api_key(id)
       request(:post, "/users/#{id}/make_new_api_key.json")
     end
+
+    def suspend(id)
+      req = request(:get, "/users/#{id}/suspend.json")
+      req.first[1]
+    end
+
+    def activate(id)
+      req = request(:get, "/users/#{id}/activate_user.json")
+      req.first[1]
+    end
+    alias_method :unsuspend, :activate
 
     def default_options(*options)
       options.empty? ? {} : {:query => {:user => options.first}}

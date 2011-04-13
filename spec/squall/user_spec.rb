@@ -103,4 +103,32 @@ describe Squall::User do
       end
     end
   end
+
+  describe "#suspend" do
+    use_vcr_cassette "user/suspend"
+    it "requires an id" do
+      expect { @user.suspend }.to raise_error(ArgumentError)
+    end
+
+    it "suspends a user" do
+      user = @user.suspend(2)
+      user['status'].should == "suspended"
+    end
+  end
+
+  describe "#activate" do
+    use_vcr_cassette "user/activate"
+    it "requires an id" do
+      expect { @user.activate }.to raise_error(ArgumentError)
+    end
+
+    it "activates a user" do
+      user = @user.activate(2)
+      user['status'].should == "active"
+    end
+
+    it "has a unsuspend alias" do
+      @user.should respond_to(:unsuspend)
+    end
+  end
 end
