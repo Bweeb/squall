@@ -16,25 +16,25 @@
     headers: 
       x-ua-compatible: 
       - IE=Edge,chrome=1
+      etag: 
+      - "\"050e82b7c087f67fcfcaa715d0ba87d5\""
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"asdfsdafasdfsdafsd\""
       content-type: 
       - application/json; charset=utf-8
-      date: 
-      - Tue, 12 Apr 2011 17:42:16 GMT
+      x-runtime: 
+      - "0.400365"
       server: 
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.136714"
+      date: 
+      - Wed, 13 Apr 2011 15:27:06 GMT
       set-cookie: 
       - _onapp_session=WHAT; path=/; HttpOnly
-      cache-control: 
-      - max-age=0, private, must-revalidate
       status: 
       - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
       transfer-encoding: 
       - chunked
-    body: "[{\"user\":{\"disk_space_available\":54,\"used_cpus\":0,\"created_at\":\"2010-08-17T19:25:05+03:00\",\"activated_at\":\"2010-08-17T19:25:05+03:00\",\"used_cpu_shares\":0,\"roles\":[{\"role\":{\"label\":\"User\",\"created_at\":\"2010-05-26T16:34:58+03:00\",\"updated_at\":\"2010-08-20T17:35:45+03:00\",\"id\":2,\"identifier\":\"user\"}},{\"role\":{\"label\":\"lvtestrole\",\"created_at\": \"2010-07-19T13:57:59+03:00\",\"updated_at\":\"2010-07-20T12:04:04+03:00\",\"id\":11,\"identifier\":\"r2lmvvus6fo3as\"}}],\"remember_token_expires_at\":null,\"used_ip_addresses\":[],\"updated_at\":\"2010-08-19T12:31:39+03:00\",\"deleted_at\":null,\"used_memory\":0,\"activation_code\":null,\"id\":164,\"group_id\":1,\"memory_available\":512,\"remember_token\":null,\"last_name\":\"Last\",\"time_zone\":null,\"used_disk_size\":0,\"total_amount\":\"423472.0\",\"payment_amount\":\"0.0\",\"login\":\"test005_4@test.com\",\"outstanding_amount\":\"423472.0\",\"first_name\":\"First\",\"email\":\"apidoc@onapp.com\"}},{\"user\":{\"disk_space_available\":32,\"used_cpus\":0,\"created_at\":\"2010-09-17T19:25:05+03:00\",\"activated_at\":\"2010-08-17T19:25:05+03:00\",\"used_cpu_shares\":0,\"roles\":[{\"role\":{\"label\":\"User\",\"created_at\":\"2010-05-26T16:34:58+03:00\",\"updated_at\":\"2010-08-20T17:35:45+03:00\",\"id\":2,\"identifier\":\"user\"}},{\"role\":{\"label\":\"lvtestrole\",\"created_at\": \"2010-07-19T13:57:59+03:00\",\"updated_at\":\"2010-07-20T12:04:04+03:00\",\"id\":11,\"identifier\":\"dsf23fsadf\"}}],\"remember_token_expires_at\":null,\"used_ip_addresses\":[],\"updated_at\":\"2010-08-19T12:31:39+03:00\",\"deleted_at\":null,\"used_memory\":0,\"activation_code\":null,\"id\":164,\"group_id\":1,\"memory_available\":512,\"remember_token\":null,\"last_name\":\"Last\",\"time_zone\":null,\"used_disk_size\":0,\"total_amount\":\"423472.0\",\"payment_amount\":\"0.0\",\"login\":\"asdf234@asdf.com\",\"outstanding_amount\":\"423472.0\",\"first_name\":\"First\",\"email\":\"2332sdf@sdfdsf.com\"}}]"
+    body: "[{\"user\":{\"activated_at\":\"2011-04-13T14:37:45Z\",\"created_at\":\"2011-04-13T14:37:45Z\",\"total_amount\":0.0,\"remember_token_expires_at\":null,\"suspend_at\":null,\"memory_available\":null,\"used_ip_addresses\":[],\"deleted_at\":null,\"updated_at\":\"2011-04-13T15:07:38Z\",\"used_disk_size\":0,\"used_cpus\":0,\"used_cpu_shares\":0,\"activation_code\":null,\"billing_plan_id\":1,\"group_id\":null,\"id\":1,\"used_memory\":0,\"payment_amount\":\"0.0\",\"last_name\":\"Smith\",\"remember_token\":null,\"disk_space_available\":null,\"time_zone\":\"\",\"login\":\"user\",\"status\":\"active\",\"roles\":[{\"role\":{\"label\":\"Administrator\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":1,\"identifier\":\"user\"}}],\"outstanding_amount\":0.0,\"email\":\"user@example.com\",\"first_name\":\"John\"}},{\"user\":{\"activated_at\":\"2011-04-13T15:13:35Z\",\"created_at\":\"2011-04-13T15:13:35Z\",\"total_amount\":0.0,\"remember_token_expires_at\":null,\"suspend_at\":null,\"memory_available\":null,\"used_ip_addresses\":[],\"deleted_at\":null,\"updated_at\":\"2011-04-13T15:13:35Z\",\"used_disk_size\":0,\"used_cpus\":0,\"used_cpu_shares\":0,\"activation_code\":null,\"billing_plan_id\":1,\"group_id\":null,\"id\":2,\"used_memory\":0,\"payment_amount\":\"0.0\",\"last_name\":\"last\",\"remember_token\":null,\"disk_space_available\":null,\"time_zone\":null,\"login\":\"testing\",\"status\":\"active\",\"roles\":[{\"role\":{\"label\":\"User\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":2,\"identifier\":\"user\"}}],\"outstanding_amount\":0.0,\"email\":\"test@example.com\",\"first_name\":\"first\"}}]"
     http_version: "1.1"

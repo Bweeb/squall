@@ -9,5 +9,11 @@ module Squall
       params.required(:login, :email, :password).validate!(options)
       self.class.post('/users.json', options)
     end
+
+    def show(id)
+      response = self.class.get("/users/#{id}.json")
+      raise NotFound if response.code == 404
+      response.first[1]
+    end
   end
 end

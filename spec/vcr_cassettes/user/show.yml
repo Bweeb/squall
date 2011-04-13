@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/users/1.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"e070c525dba5f3f3833a25156e988def\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.030011"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Wed, 13 Apr 2011 15:44:38 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "{\"user\":{\"activated_at\":\"2011-04-13T14:37:45Z\",\"created_at\":\"2011-04-13T14:37:45Z\",\"total_amount\":0.0,\"remember_token_expires_at\":null,\"suspend_at\":null,\"memory_available\":null,\"used_ip_addresses\":[],\"deleted_at\":null,\"updated_at\":\"2011-04-13T15:07:38Z\",\"used_disk_size\":0,\"used_cpus\":0,\"used_cpu_shares\":0,\"activation_code\":null,\"billing_plan_id\":1,\"group_id\":null,\"id\":1,\"used_memory\":0,\"payment_amount\":\"0.0\",\"last_name\":\"Smith\",\"remember_token\":null,\"disk_space_available\":null,\"time_zone\":\"\",\"login\":\"user\",\"status\":\"active\",\"roles\":[{\"role\":{\"label\":\"Administrator\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":1,\"identifier\":\"user\"}}],\"outstanding_amount\":0.0,\"email\":\"user@example.com\",\"first_name\":\"John\"}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/users/5.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Wed, 13 Apr 2011 15:49:35 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.029841"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "404"
+      transfer-encoding: 
+      - chunked
+    body: "{\"error\":\"Resource not found\"}"
+    http_version: "1.1"
