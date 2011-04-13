@@ -5,6 +5,7 @@ autoload :Params,  'params'
 
 module Squall
   class NotFound < StandardError;end
+  class RequestError < StandardError;end
   autoload :Config,  'squall/config'
   autoload :Base,    'squall/base'
   autoload :User,    'squall/user'

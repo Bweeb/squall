@@ -32,12 +32,6 @@ describe Squall::User do
       pending
       @user.create(@valid)
     end
-
-    # it "requires a group_id" do
-    #   requires_attr(:password) { 
-    #     @user.create(:login => @valid[:login], :email => @valid[:email], :password => @valid['password']) 
-    #   }
-    # end
   end
 
   describe "#list" do

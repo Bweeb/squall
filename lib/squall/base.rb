@@ -14,5 +14,18 @@ module Squall
     def params
       @params ||= Params.new
     end
+
+    def request(request_method, path, options = {})
+      @result  = self.class.send(request_method, path, options)
+      @success = (200..207).include?(@result.code)
+      case @result.code
+      when (200..207)
+        @result
+      when 404
+        raise NotFound, @request
+      else
+        raise RequestError, @request
+      end
+    end
   end
 end
