@@ -74,4 +74,33 @@ describe Squall::User do
       user['login'].should == 'user'
     end
   end
+
+  describe "#default_options" do
+    it "sets the default options" do
+      @user.default_options.should == {}
+    end
+
+    it "merges the query in" do
+      expected = {
+        :query => { 
+          :user => {:one => 1, :two => 2}
+        }
+      }
+      @user.default_options(:one => 1, :two => 2).should include(expected)
+    end
+  end
+
+  describe "#generate_api_key" do
+    use_vcr_cassette "user/generate_api_key"
+    it "requires an id" do
+      expect { @user.generate_api_key }.to raise_error(ArgumentError)
+    end
+
+    it "generates a new key" do
+      pending "Broken in OnApp" do
+        user = @user.generate_api_key(1)
+        user['api_key'].should == '7d97e98f8af710c7e7fe703abc8f639e0ee507c4'
+      end
+    end
+  end
 end
