@@ -36,9 +36,13 @@ describe Squall::User do
       @user.errors['email'].should include("has already been taken")
     end
 
-    # it "creates a user" do
-    #   @user.create(@valid)
-    # end
+    it "creates a user" do
+      user = @user.create(@valid)
+      user['email'].should      == @valid['email']
+      user['first_name'].should == @valid['first_name']
+      user['last_name'].should  == @valid['last_name']
+      user['group_id'].should   == @valid['group_id']
+    end
   end
 
   describe "#list" do
