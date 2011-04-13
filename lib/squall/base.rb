@@ -15,6 +15,15 @@ module Squall
       @params ||= Params.new
     end
 
+    def errors
+      err = {}
+      @result.each do |k,v|
+        err[k] ||= []
+        err[k].push v.first
+      end
+      err
+    end
+
     def request(request_method, path, options = {})
       @result  = self.class.send(request_method, path, options)
       @success = (200..207).include?(@result.code)
@@ -22,9 +31,11 @@ module Squall
       when (200..207)
         @result
       when 404
-        raise NotFound, @request
+        raise NotFound, @result
+      when 422
+        raise RequestError, @result
       else
-        raise RequestError, @request
+        raise ServerError, @result
       end
     end
   end

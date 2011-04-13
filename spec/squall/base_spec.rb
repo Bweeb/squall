@@ -34,10 +34,16 @@ describe Squall::Base do
       expect { base.request(:get, '/404') }.to raise_error(Squall::NotFound)
     end
 
-    it "raises RequestError on errors" do
+    it "raises ServerError on errors" do
       mock_request(:get, '/500', :status => [500, "Internal Server Error"])
       base = Squall::Base.new
-      expect { base.request(:get, '/500') }.to raise_error(Squall::RequestError)
+      expect { base.request(:get, '/500') }.to raise_error(Squall::ServerError)
+    end
+
+    it "raises RequestError on errors" do
+      mock_request(:get, '/422', :status => [422, "Internal Server Error"])
+      base = Squall::Base.new
+      expect { base.request(:get, '/422') }.to raise_error(Squall::RequestError)
     end
   end
 

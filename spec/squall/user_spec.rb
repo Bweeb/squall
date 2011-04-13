@@ -28,10 +28,17 @@ describe Squall::User do
       }
     end
 
-    it "creates a user" do
-      pending
-      @user.create(@valid)
+    it "raises error on duplicate account" do
+      expect { 
+        @user.create(@valid.merge(:login => 'usertaken', :email => 'metaken@example.com'))
+      }.to raise_error(Squall::RequestError)
+      @user.errors['login'].should include("has already been taken")
+      @user.errors['email'].should include("has already been taken")
     end
+
+    # it "creates a user" do
+    #   @user.create(@valid)
+    # end
   end
 
   describe "#list" do
