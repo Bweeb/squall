@@ -131,4 +131,20 @@ describe Squall::User do
       @user.should respond_to(:unsuspend)
     end
   end
+
+  describe "#delete" do
+    use_vcr_cassette "user/delete"
+    it "requires an id" do
+      expect { @user.delete }.to raise_error(ArgumentError)
+    end
+
+    it "deltes a user" do
+      delete = @user.delete(6)
+      delete.should be_true
+    end
+
+    it "returns NotFound for missing user" do
+      expect { @user.delete(22222) }.to raise_error(Squall::NotFound)
+    end
+  end
 end

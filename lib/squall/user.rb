@@ -30,6 +30,11 @@ module Squall
     end
     alias_method :unsuspend, :activate
 
+    def delete(id)
+      req = request(:delete, "/users/#{id}.json")
+      req.code == 200
+    end
+
     def default_options(*options)
       options.empty? ? {} : {:query => {:user => options.first}}
     end
