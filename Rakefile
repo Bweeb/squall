@@ -36,7 +36,7 @@ task :sanitize_cassettes do
           puts "Sanitizing #{file}"
           old.gsub!(user, 'user')
           old.gsub!(pass, 'pass')
-          old.gsub!("https://#{uri}:443", 'http://www.example.com:80')
+          old.gsub!(uri, 'www.example.com')
           old.gsub!(/_onapp_session=(.*?);/, "_onapp_session=WHAT;")
           old.gsub!(/- Basic .*/, "- Basic WHAT")
           File.open(file, 'w') do |f| 
