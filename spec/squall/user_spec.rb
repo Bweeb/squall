@@ -9,8 +9,7 @@ describe Squall::User do
             "disk_space_available", "time_zone", "outstanding_amount", "login", "roles", "email", "first_name"]
     @user = Squall::User.new
     @valid = {:login => 'user', :email => 'me@example.com', :password => 'CD2480A3413F', 
-              :password_confirmation => 'CD2480A3413F', :first_name => 'John', :last_name => 'Doe',
-              :group_id => 10 }
+              :first_name => 'John', :last_name => 'Doe', :group_id => 10 }
   end
 
   describe "#create" do
@@ -28,6 +27,17 @@ describe Squall::User do
         @user.create(:login => @valid[:login], :email => @valid[:email]) 
       }
     end
+
+    it "creates a user" do
+      pending
+      @user.create(@valid)
+    end
+
+    # it "requires a group_id" do
+    #   requires_attr(:password) { 
+    #     @user.create(:login => @valid[:login], :email => @valid[:email], :password => @valid['password']) 
+    #   }
+    # end
   end
 
   describe "#list" do

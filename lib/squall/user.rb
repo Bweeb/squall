@@ -7,7 +7,7 @@ module Squall
     
     def create(options = {})
       params.required(:login, :email, :password).validate!(options)
-      self.class.post('/users.json', options)
+      self.class.post('/users.json', {:query => {:user => options}})
     end
 
     def show(id)
