@@ -39,6 +39,11 @@ module Squall
       req = request(:get, "/users/#{id}/vm_stats.json")
     end
 
+    def virtual_machines(id)
+      req = request(:get, "/users/#{id}/virtual_machines.json")
+      req.collect { |vm| vm['virtual_machine']}
+    end
+
     def default_options(*options)
       options.empty? ? {} : {:query => {:user => options.first}}
     end
