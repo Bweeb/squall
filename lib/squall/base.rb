@@ -1,6 +1,6 @@
 module Squall
   class Base
-    attr_reader :params
+    attr_reader :params, :success
     include HTTParty
 
     def initialize

@@ -28,22 +28,34 @@ describe Squall::Base do
   end
 
   describe "#request" do
+    it "200-207 returns success" do
+      (200..207).each do |i|
+        mock_request(:get, "/#{i}", :status => [i, "OK"])
+        base = Squall::Base.new
+        base.request(:get, "/#{i}")
+        base.success.should be_true
+      end
+    end
+
     it "raises NotFound for 404s" do
       mock_request(:get, '/404', :status => [404, "NotFound"])
       base = Squall::Base.new
       expect { base.request(:get, '/404') }.to raise_error(Squall::NotFound)
+      base.success.should be_false
     end
 
     it "raises ServerError on errors" do
       mock_request(:get, '/500', :status => [500, "Internal Server Error"])
       base = Squall::Base.new
       expect { base.request(:get, '/500') }.to raise_error(Squall::ServerError)
+      base.success.should be_false
     end
 
     it "raises RequestError on errors" do
       mock_request(:get, '/422', :status => [422, "Internal Server Error"])
       base = Squall::Base.new
       expect { base.request(:get, '/422') }.to raise_error(Squall::RequestError)
+      base.success.should be_false
     end
   end
 
