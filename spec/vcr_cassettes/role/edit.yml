@@ -1,0 +1,139 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :put
+    uri: http://user:pass@www.example.com:80/roles/5.json?
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Thu, 14 Apr 2011 18:59:36 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.021298"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "404"
+      transfer-encoding: 
+      - chunked
+    body: "{\"error\":\"Resource not found\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/roles/3.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"5c677ed1b8019c0e54089a5ec6c1eb0c\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.007870"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Thu, 14 Apr 2011 18:59:36 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "{\"role\":{\"label\":\"Other\",\"created_at\":\"2011-04-14T18:52:37Z\",\"updated_at\":\"2011-04-14T18:52:37Z\",\"id\":3,\"permissions\":[],\"identifier\":\"5ix73iwvoh7anf\"}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :put
+    uri: http://user:pass@www.example.com:80/roles/3.json?role[label]=New
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      etag: 
+      - "\"99914b932bd37a50b983c5e7c90ae93b\""
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Thu, 14 Apr 2011 19:06:11 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.020769"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      status: 
+      - "200"
+      transfer-encoding: 
+      - chunked
+    body: "{}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/roles/3.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 302
+      message: Found
+    headers: 
+      location: 
+      - http://www.iana.org/domains/example/
+      server: 
+      - BigIP
+      content-length: 
+      - "0"
+    body: 
+    http_version: "1.0"
