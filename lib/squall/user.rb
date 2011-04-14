@@ -35,6 +35,10 @@ module Squall
       req.code == 200
     end
 
+    def stats(id)
+      req = request(:get, "/users/#{id}/vm_stats.json")
+    end
+
     def default_options(*options)
       options.empty? ? {} : {:query => {:user => options.first}}
     end

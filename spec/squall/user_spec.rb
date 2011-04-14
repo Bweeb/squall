@@ -147,4 +147,16 @@ describe Squall::User do
       expect { @user.delete(22222) }.to raise_error(Squall::NotFound)
     end
   end
+
+  describe "#stats" do
+    use_vcr_cassette "user/stats"
+    it "requires an id" do
+      expect { @user.stats }.to raise_error(ArgumentError)
+    end
+
+    it "returns stats" do
+      pending "Need an example response"
+      stats = @user.stats(1)
+    end
+  end
 end
