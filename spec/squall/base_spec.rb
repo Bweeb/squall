@@ -52,10 +52,26 @@ describe Squall::Base do
     end
 
     it "raises RequestError on errors" do
-      mock_request(:get, '/422', :status => [422, "Internal Server Error"])
+      mock_request(:get, '/422', :status => [422, "Unprocessable"])
       base = Squall::Base.new
       expect { base.request(:get, '/422') }.to raise_error(Squall::RequestError)
       base.success.should be_false
+    end
+  end
+
+  describe "#errors" do
+    it "is empty on success" do
+      mock_request(:get, '/200_errors', :status => [200, "OK"], :body => '"{\"something\":[\"OK\"]}"')
+      base = Squall::Base.new
+      base.request(:get, '/200_errors')
+      base.errors.should be_empty
+    end
+
+    it "returns an error hash" do
+      mock_request(:get, '/500_errors', :status => [500, "Internal Server Error"], :body => '"{\"something\":[\"Errors\"]}"')
+      base = Squall::Base.new
+      expect { base.request(:get, '/500_errors') }.to raise_error(Squall::ServerError)
+      base.errors.should_not be_empty
     end
   end
 
