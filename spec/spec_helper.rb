@@ -43,5 +43,5 @@ def mock_request(meth, path, options = {})
   config = Squall.config
   uri    = URI.parse(Squall.config[:base_uri])
   url    = "#{uri.scheme}://#{config[:username]}:#{config[:password]}@#{uri.host}:#{uri.port}#{path}"
-  FakeWeb.register_uri(meth, url, options)
+  FakeWeb.register_uri(meth, url, {:content_type => 'application/json'}.merge(options))
 end

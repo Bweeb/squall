@@ -68,7 +68,7 @@ describe Squall::Base do
     end
 
     it "returns an error hash" do
-      mock_request(:get, '/500_errors', :status => [500, "Internal Server Error"], :body => '"{\"something\":[\"Errors\"]}"')
+      mock_request(:get, '/500_errors', :status => [500, "Internal Server Error"], :body => '"{\"something\":[\"errors\"]}"')
       base = Squall::Base.new
       expect { base.request(:get, '/500_errors') }.to raise_error(Squall::ServerError)
       base.errors.should_not be_empty
