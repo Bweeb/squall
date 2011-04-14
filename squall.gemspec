@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "squall"
 
   s.add_runtime_dependency 'httparty', '~> 0.7.4'
+  s.add_runtime_dependency('jruby-openssl', '~> 0.7.3') if RUBY_PLATFORM == 'java'
 
   s.add_development_dependency 'rspec', '~> 2.5'
   s.add_development_dependency 'fakeweb', '~> 1.3'
