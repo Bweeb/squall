@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/roles/5.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Thu, 14 Apr 2011 18:37:20 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.009226"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "404"
+      transfer-encoding: 
+      - chunked
+    body: "{\"error\":\"Resource not found\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/roles/1.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"5a32725d765a9442c19ce21925c3c5db\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.029689"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Thu, 14 Apr 2011 18:37:20 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "{\"role\":{\"label\":\"Administrator\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":1,\"permissions\":[{\"permission\":{\"label\":\"Any action on virtual machines\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":1,\"identifier\":\"virtual_machines\"}},{\"permission\":{\"label\":\"Any action on users\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":11,\"identifier\":\"users\"}},{\"permission\":{\"label\":\"Any action on hypervisors\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":19,\"identifier\":\"hypervisors\"}},{\"permission\":{\"label\":\"Any action on disks\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":24,\"identifier\":\"disks\"}},{\"permission\":{\"label\":\"Any action on templates\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":32,\"identifier\":\"templates\"}},{\"permission\":{\"label\":\"Any action on backups\",\"created_at\":\"2011-04-13T14:37:38Z\",\"updated_at\":\"2011-04-13T14:37:38Z\",\"id\":44,\"identifier\":\"backups\"}},{\"permission\":{\"label\":\"Any action on data_stores\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":55,\"identifier\":\"data_stores\"}},{\"permission\":{\"label\":\"Any action on permissions\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":60,\"identifier\":\"permissions\"}},{\"permission\":{\"label\":\"Any action on networks\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":65,\"identifier\":\"networks\"}},{\"permission\":{\"label\":\"Any action on ip addresses\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":70,\"identifier\":\"ip_addresses\"}},{\"permission\":{\"label\":\"Any action on nameservers\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":75,\"identifier\":\"nameservers\"}},{\"permission\":{\"label\":\"Any action on transactions\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":82,\"identifier\":\"transactions\"}},{\"permission\":{\"label\":\"Any action on resource limit\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":85,\"identifier\":\"resource_limits\"}},{\"permission\":{\"label\":\"Create a new resource limit\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":87,\"identifier\":\"resource_limits.create\"}},{\"permission\":{\"label\":\"Destroy any resource limit\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":89,\"identifier\":\"resource_limits.delete\"}},{\"permission\":{\"label\":\"See all resource limits\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":86,\"identifier\":\"resource_limits.read\"}},{\"permission\":{\"label\":\"Update any resource limit\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":88,\"identifier\":\"resource_limits.update\"}},{\"permission\":{\"label\":\"Unlock any virtual machine\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":90,\"identifier\":\"virtual_machines.unlock\"}},{\"permission\":{\"label\":\"Any action on Roles\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":91,\"identifier\":\"roles\"}},{\"permission\":{\"label\":\"Any action on groups\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":96,\"identifier\":\"groups\"}},{\"permission\":{\"label\":\"Any action on payments\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":101,\"identifier\":\"payments\"}},{\"permission\":{\"label\":\"Any action on Settings\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":107,\"identifier\":\"settings\"}},{\"permission\":{\"label\":\"See Alerts\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":110,\"identifier\":\"dashboard.alerts\"}},{\"permission\":{\"label\":\"Any action Sysuser Tools\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":111,\"identifier\":\"sysuser_tools.read\"}},{\"permission\":{\"label\":\"Send Support requests\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":113,\"identifier\":\"help.read\"}},{\"permission\":{\"label\":\"Full access to Statistics\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":116,\"identifier\":\"vm_stats\"}},{\"permission\":{\"label\":\"See All Statistics\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":117,\"identifier\":\"io_stats\"}},{\"permission\":{\"label\":\"See Global Statistic\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":123,\"identifier\":\"dashboard.global_stats\"}},{\"permission\":{\"label\":\"All actions on Dashboard\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":124,\"identifier\":\"dashboard\"}},{\"permission\":{\"label\":\"All actions on Sysuser Tools\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":125,\"identifier\":\"sysuser_tools\"}},{\"permission\":{\"label\":\"All actions on Help\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":126,\"identifier\":\"help\"}},{\"permission\":{\"label\":\"Any action on schedules\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":127,\"identifier\":\"schedules\"}},{\"permission\":{\"label\":\"Delete all transactions from log\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":135,\"identifier\":\"transactions.delete\"}},{\"permission\":{\"label\":\"Any action on schedule logs\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":137,\"identifier\":\"schedule_logs\"}},{\"permission\":{\"label\":\"Migrate any virtual machine\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":143,\"identifier\":\"virtual_machines.migrate\"}},{\"permission\":{\"label\":\"Reboot any hypervisor\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":145,\"identifier\":\"hypervisors.reboot\"}},{\"permission\":{\"label\":\"All actions on virtual machine's IP addresses\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":146,\"identifier\":\"ip_address_joins\"}},{\"permission\":{\"label\":\"Reset root password to any virtual machine\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":153,\"identifier\":\"virtual_machines.reset_root_password\"}},{\"permission\":{\"label\":\"Unlock any disk\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":155,\"identifier\":\"disks.unlock\"}},{\"permission\":{\"label\":\"Any action on log items\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":156,\"identifier\":\"log_items\"}},{\"permission\":{\"label\":\"Autobackup for any disk\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":163,\"identifier\":\"disks.autobackup\"}},{\"permission\":{\"label\":\"All actions on datastores on Hypervisor\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":165,\"identifier\":\"data_store_joins\"}},{\"permission\":{\"label\":\"Any action on autobackup templates\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":169,\"identifier\":\"autobackup_templates\"}},{\"permission\":{\"label\":\"Update any autobackup template\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":170,\"identifier\":\"autobackup_templates.update\"}},{\"permission\":{\"label\":\"See all autobackup templates\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":171,\"identifier\":\"autobackup_templates.read\"}},{\"permission\":{\"label\":\"Change an owner of any virtual machine\",\"created_at\":\"2011-04-13T14:37:40Z\",\"updated_at\":\"2011-04-13T14:37:40Z\",\"id\":172,\"identifier\":\"virtual_machines.change_owner\"}},{\"permission\":{\"label\":\"Any action on data store zones\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":173,\"identifier\":\"data_store_zones\"}},{\"permission\":{\"label\":\"Any action on network zones\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":179,\"identifier\":\"network_zones\"}},{\"permission\":{\"label\":\"Any action on billing plans\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":185,\"identifier\":\"billing_plans\"}},{\"permission\":{\"label\":\"Any action on resources\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":191,\"identifier\":\"base_resources\"}},{\"permission\":{\"label\":\"User can Login AS any user.\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":197,\"identifier\":\"users.login_as\"}},{\"permission\":{\"label\":\"Any action on isos\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":198,\"identifier\":\"isos\"}},{\"permission\":{\"label\":\"Any action on hypervisor zones\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":211,\"identifier\":\"hypervisor_zones\"}},{\"permission\":{\"label\":\"Any action on mounting ISO\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":217,\"identifier\":\"iso_joins\"}},{\"permission\":{\"label\":\"Change Suspended status for Virtual Machine\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":224,\"identifier\":\"virtual_machines.suspend\"}},{\"permission\":{\"label\":\"Show Hypervisor Zones on VirtualMachine creation\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":225,\"identifier\":\"hypervisor_zones.read_vm_creation\"}},{\"permission\":{\"label\":\"Show Hypervisors on VirtualMachine creation.\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":226,\"identifier\":\"hypervisors.read_vm_creation\"}},{\"permission\":{\"label\":\"See All Statistics\",\"created_at\":\"2011-04-13T14:37:39Z\",\"updated_at\":\"2011-04-13T14:37:39Z\",\"id\":117,\"identifier\":\"io_stats\"}},{\"permission\":{\"label\":\"See all IO Statistics\",\"created_at\":\"2011-04-13T14:37:41Z\",\"updated_at\":\"2011-04-13T14:37:41Z\",\"id\":227,\"identifier\":\"io_stats.read\"}},{\"permission\":{\"label\":\"See All Statistics\",\"created_at\":\"2011-04-13T14:37:45Z\",\"updated_at\":\"2011-04-13T14:37:45Z\",\"id\":231,\"identifier\":\"vm_stats.read\"}},{\"permission\":{\"label\":\"See License Details\",\"created_at\":\"2011-04-13T14:37:45Z\",\"updated_at\":\"2011-04-13T14:37:45Z\",\"id\":232,\"identifier\":\"dashboard.licensing\"}}],\"identifier\":\"user\"}}"
+    http_version: "1.1"

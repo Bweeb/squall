@@ -10,7 +10,7 @@ module Squall
   autoload :Config,  'squall/config'
   autoload :Base,    'squall/base'
   autoload :User,    'squall/user'
-
+  autoload :Role,    'squall/role'
 
   extend self
   attr_accessor :configuration
