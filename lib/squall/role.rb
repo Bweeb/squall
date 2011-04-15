@@ -15,6 +15,10 @@ module Squall
       response = request(:put, "/roles/#{id}.json", default_options(options))
     end
 
+    def delete(id)
+      request(:delete, "/roles/#{id}.json")
+    end
+
     def default_options(*options)
       options.empty? ? {} : {:query => {:role => options.first}}
     end

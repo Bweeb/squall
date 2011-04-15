@@ -58,4 +58,20 @@ describe Squall::Role do
       end
     end
   end
+
+  describe "#delete" do
+    use_vcr_cassette "role/delete"
+    it "requires an id" do
+      expect { @role.delete }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid user" do
+      expect { @role.delete(5) }.to raise_error(Squall::NotFound)
+    end
+
+    it "returns a role" do
+      role = @role.delete(3)
+      @role.success.should be_true
+    end
+  end
 end
