@@ -7,10 +7,12 @@ module Squall
   class NotFound < StandardError;end
   class RequestError < StandardError;end
   class ServerError < StandardError;end
-  autoload :Config,  'squall/config'
-  autoload :Base,    'squall/base'
-  autoload :User,    'squall/user'
-  autoload :Role,    'squall/role'
+
+  autoload :Hypervisor, 'squall/hypervisor'
+  autoload :Config,     'squall/config'
+  autoload :Base,       'squall/base'
+  autoload :User,       'squall/user'
+  autoload :Role,       'squall/role'
 
   extend self
   attr_accessor :configuration
