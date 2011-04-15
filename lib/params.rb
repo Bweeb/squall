@@ -27,7 +27,7 @@ class Params
 
   def validate_required!(*options)
     options = options.first.keys if options.first.respond_to?(:keys)
-    options.map! { |o| o.to_sym }
+    options.map! { |o| o.respond_to?(:to_sym) ? o.to_sym : o }
     delta = (@valid - options)
     raise ArgumentError, "Missing required params: #{delta.join(',')}" if delta.any?
     true
@@ -35,7 +35,7 @@ class Params
 
   def validate_optionals!(*options)
     options = options.first.keys if options.first.respond_to?(:keys)
-    options.map! { |o| o.to_sym }
+    options.map! { |o| o.respond_to?(:to_sym) ? o.to_sym : o }
     options.each do |key|
       raise ArgumentError, "Unknown params: #{key}" unless @optional.include?(key)
     end
