@@ -75,21 +75,6 @@ describe Squall::User do
     end
   end
 
-  describe "#default_options" do
-    it "sets the default options" do
-      @user.default_options.should == {}
-    end
-
-    it "merges the query in" do
-      expected = {
-        :query => { 
-          :user => {:one => 1, :two => 2}
-        }
-      }
-      @user.default_options(:one => 1, :two => 2).should include(expected)
-    end
-  end
-
   describe "#generate_api_key" do
     use_vcr_cassette "user/generate_api_key"
     it "requires an id" do

@@ -15,6 +15,10 @@ module Squall
       @params ||= Params.new
     end
 
+    def default_params(*options)
+      options.empty? ? {} : {:query => { key_for_class => options.first}}
+    end
+
     def errors
       return [] if @success
       err = {}
@@ -38,6 +42,16 @@ module Squall
       else
         raise ServerError, @result
       end
+    end
+
+    def key_for_class
+      word = self.class.name.split("::").last.to_s.dup
+      word.gsub!(/::/, '/')
+      word.gsub!(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+      word.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
+      word.tr!("-", "_")
+      word.downcase!
+      word.to_sym
     end
   end
 end

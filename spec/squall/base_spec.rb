@@ -1,5 +1,12 @@
 require 'spec_helper'
 
+class CamelTest < Squall::Base;end;
+class Nocamel < Squall::Base;end;
+module Subclass
+  class Test < Squall::Base;end;
+  class CamelTest < Squall::Base;end;
+end
+
 describe Squall::Base do
   before(:each) do
     default_config
@@ -80,5 +87,55 @@ describe Squall::Base do
       base = Squall::Base.new
       base.params.should be_a(Params)
     end
+  end
+
+  describe "#default_params" do
+    it "sets the default options" do
+      base = Squall::Base.new
+      base.default_params.should == {}
+    end
+
+    it "merges the query in" do
+      base = Squall::Base.new
+      expected = {
+        :query => { 
+          :base => {:one => 1, :two => 2}
+        }
+      }
+      base.default_params(:one => 1, :two => 2).should include(expected)
+    end
+
+    it "uses the subclass name as the key" do
+      base_test = CamelTest.new
+      base_test.default_params.should == {}
+      expected = {
+        :query => { 
+          :camel_test => {:one => 1, :two => 2}
+        }
+      }
+      base_test.default_params(:one => 1, :two => 2).should include(expected)
+    end
+  end
+
+  describe "#key_for_class" do
+    it "converts CamelTest to :camel_test" do
+      camel_test = CamelTest.new
+      camel_test.key_for_class.should == :camel_test
+    end
+
+    it "converts Nocamel to :nocamel" do
+      nocamel = Nocamel.new
+      nocamel.key_for_class.should == :nocamel
+    end
+
+    it "converts Subclass::Test to :test" do
+      sub_class = Subclass::Test.new
+      sub_class.key_for_class.should == :test
+    end 
+
+    it "converts Subclass::CamelTest to :camel_test" do
+      camel_test = Subclass::CamelTest.new
+      camel_test.key_for_class.should == :camel_test
+    end 
   end
 end

@@ -7,7 +7,7 @@ module Squall
 
     def create(options = {})
       params.required(:login, :email, :password).validate!(options)
-      request(:post, '/users.json', default_options(options))
+      request(:post, '/users.json', default_params(options))
     end
 
     def show(id)
@@ -32,7 +32,7 @@ module Squall
 
     def delete(id)
       req = request(:delete, "/users/#{id}.json")
-      req.code == 200
+      success
     end
 
     def stats(id)
@@ -42,10 +42,6 @@ module Squall
     def virtual_machines(id)
       req = request(:get, "/users/#{id}/virtual_machines.json")
       req.collect { |vm| vm['virtual_machine']}
-    end
-
-    def default_options(*options)
-      options.empty? ? {} : {:query => {:user => options.first}}
     end
   end
 end
