@@ -168,4 +168,25 @@ describe Squall::User do
       virtual_machines.first.should include(*keys)
     end
   end
+
+  describe "#update_role" do
+    use_vcr_cassette "user/update_role"
+    it "requires an id" do
+      expect { @user.update_role }.to raise_error(ArgumentError) 
+    end
+
+    it "404s on not found" do
+      expect { @user.update_role(500, nil) }.to raise_error(Squall::NotFound)
+    end
+
+    it "updates one role for a user" do
+      @user.update_role(7, 4)
+      @user.success.should be_true
+    end
+
+    it "updates two roles for a user" do
+      @user.update_role(7, 4, 2)
+      @user.success.should be_true
+    end
+  end
 end

@@ -43,5 +43,9 @@ module Squall
       req = request(:get, "/users/#{id}/virtual_machines.json")
       req.collect { |vm| vm['virtual_machine']}
     end
+
+    def update_role(id, *roles)
+      request(:put, "/users/#{id}.json", default_params(:role_ids => roles))
+    end
   end
 end
