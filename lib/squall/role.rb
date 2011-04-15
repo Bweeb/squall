@@ -18,5 +18,10 @@ module Squall
     def delete(id)
       request(:delete, "/roles/#{id}.json")
     end
+
+    def permissions
+      response = request(:get, '/permissions.json')
+      response.collect { |perm| perm['permission'] }
+    end
   end
 end
