@@ -15,5 +15,10 @@ module Squall
       req = request(:post, '/settings/hypervisors.json', default_params(options))
       req.first[1]
     end
+
+    def update(id, options ={})
+      params.accepts(:label, :ip_address).validate!(options) 
+      request(:put, "/settings/hypervisors/#{id}.json", default_params(options))
+    end
   end
 end

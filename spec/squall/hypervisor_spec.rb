@@ -67,11 +67,33 @@ describe Squall::Hypervisor do
     it "creates a hypervisor" do
       create = @hv.create(:label => 'Brand new', :ip_address => '126.126.126.126', :hypervisor_type => 'xen')
       @hv.success.should be_true
-      
+
       create['label'].should == 'Brand new'
       create['ip_address'].should == '126.126.126.126'
       create['hypervisor_type'].should == 'xen'
     end
+  end
 
+  describe "#update" do
+    use_vcr_cassette 'hypervisor/update'
+    it "requires an id" do
+      expect { @hv.update }.to raise_error(ArgumentError)
+      @hv.success.should be_false
+    end
+
+    it "raises an error with unknown param " do
+      expect { @hv.update(3, :blah => 1)}.to raise_error(ArgumentError)
+      @hv.success.should be_false
+    end
+
+    it "updates the label" do
+      update = @hv.update(3, :label => 'Old Gregg')
+      @hv.success.should be_true
+    end
+
+    it "updates the ip_address" do
+      update = @hv.update(3, :ip_address => '120.120.120.120')
+      @hv.success.should be_true
+    end
   end
 end
