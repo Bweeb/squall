@@ -55,6 +55,8 @@ describe Squall::Hypervisor do
       @hv.success.should be_false
     end
 
+    # The API allows you to commit this value but subsequent
+    # saves do not work because of this missing value.
     it "requires memory_overhead" do
       pending "Broken in OnApp"
       requires_attr(:memory_overhead) { @hv.create(:label => 'Brand New', :ip_address => '222.222.222.222', :hypervisor_type => 'xen') }
