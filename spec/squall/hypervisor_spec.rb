@@ -55,6 +55,11 @@ describe Squall::Hypervisor do
       @hv.success.should be_false
     end
 
+    it "requires memory_overhead" do
+      pending "Broken in OnApp"
+      requires_attr(:memory_overhead) { @hv.create(:label => 'Brand New', :ip_address => '222.222.222.222', :hypervisor_type => 'xen') }
+    end
+
     it "raises error on duplicate account" do
       expect { 
         @hv.create(:label => 'Testing', :ip_address => '123.123.123.123', :hypervisor_type => 'xen')
