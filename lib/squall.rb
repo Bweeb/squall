@@ -13,6 +13,7 @@ module Squall
   autoload :Base,       'squall/base'
   autoload :User,       'squall/user'
   autoload :Role,       'squall/role'
+  autoload :Network,    'squall/network'
 
   extend self
   attr_accessor :configuration, :configuration_file
