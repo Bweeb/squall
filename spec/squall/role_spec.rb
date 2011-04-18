@@ -48,6 +48,10 @@ describe Squall::Role do
       expect { @role.edit(5) }.to raise_error(Squall::NotFound)
     end
 
+    it "allows :label and/or :permission" do
+      expect { @role.edit(3, :missing => 1) }.to raise_error(ArgumentError, /Unknown.*missing/)
+    end
+
     it "updates the role" do
       pending "OnApp is returning an empty response" do
         old_role = @role.show(3)

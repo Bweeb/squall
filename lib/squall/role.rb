@@ -11,7 +11,7 @@ module Squall
     end
 
     def edit(id, options = {})
-      # params.required(:label, :permission).validate!(options)
+      params.accepts(:label, :permission).validate!(options)
       response = request(:put, "/roles/#{id}.json", default_params(options))
     end
 
