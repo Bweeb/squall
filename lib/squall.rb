@@ -15,12 +15,27 @@ module Squall
   autoload :Role,       'squall/role'
 
   extend self
-  attr_accessor :configuration
+  attr_accessor :configuration, :configuration_file
   self.configuration ||= Squall::Config.new
 
   def config
     yield self.configuration if block_given?
     self.configuration.config
+  end
+
+  def config_file(file = nil)
+    file = File.expand_path(File.expand_path(File.join(ENV['HOME'], '.squall.yml'))) if file.nil?
+    if File.exists?(file)
+      self.configuration_file = file
+    else
+      raise ArgumentError, "Config file doesn't exist '#{file}'"
+    end
+    config do |c|
+      conf = YAML::load_file(file)
+      c.base_uri  conf['base_uri']
+      c.username  conf['username']
+      c.password  conf['password']
+    end
   end
 
   def reset_config
