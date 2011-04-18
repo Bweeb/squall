@@ -25,5 +25,9 @@ module Squall
       response = request(:get, "/settings/hypervisors/#{id}/rebooting.json")
       response['hypervisor']
     end
+
+    def delete(id)
+      req = request(:delete, "/settings/hypervisors/#{id}.json")
+    end
   end
 end

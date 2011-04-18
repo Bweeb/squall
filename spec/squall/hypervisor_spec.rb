@@ -119,8 +119,25 @@ describe Squall::Hypervisor do
     it "reboots the hypervisor" do
       reboot = @hv.reboot(1)
       @hv.success.should be_true
-      
-      reboot  
+
+      reboot['label'].should == 'Testing'
+    end
+  end
+
+  describe "#delete" do
+    use_vcr_cassette "hypervisor/delete"
+    it "requires an id" do
+      expect { @hv.delete }.to raise_error(ArgumentError)
+    end
+
+    it "404s on not found" do
+      expect { @hv.delete(404) }.to raise_error(Squall::NotFound)
+      @hv.success.should be_false
+    end
+
+    it "returns a hv" do
+      @hv.delete(3)
+      @hv.success.should be_true
     end
   end
 end
