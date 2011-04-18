@@ -30,6 +30,7 @@ module Squall
     end
 
     def request(request_method, path, options = {})
+      check_config
       @result  = self.class.send(request_method, path, options)
       @success = (200..207).include?(@result.code)
       case @result.code
@@ -42,6 +43,10 @@ module Squall
       else
         raise ServerError, @result
       end
+    end
+
+    def check_config
+      raise NoConfig, "Squall.config must be specified" if Squall.config.empty?
     end
 
     def key_for_class

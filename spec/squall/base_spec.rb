@@ -58,6 +58,11 @@ describe Squall::Base do
       expect { @base.request(:get, '/422') }.to raise_error(Squall::RequestError)
       @base.success.should be_false
     end
+
+    it "is a sad panda when the config hasn't been specified" do
+      Squall.reset_config
+      expect { @base.request(:get, '/money') }.to raise_error(Squall::NoConfig, "Squall.config must be specified")
+    end
   end
 
   describe "#errors" do
