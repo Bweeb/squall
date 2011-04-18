@@ -1,4 +1,5 @@
 require 'httparty'
+
 require 'squall/version'
 require 'squall/exception'
 
@@ -11,6 +12,7 @@ module Squall
   autoload :User,       'squall/user'
   autoload :Role,       'squall/role'
   autoload :Network,    'squall/network'
+  autoload :Ipaddress,  'squall/ipaddress'
 
   extend self
   attr_accessor :configuration, :configuration_file
