@@ -103,4 +103,24 @@ describe Squall::Hypervisor do
       @hv.success.should be_true
     end
   end
+
+  describe "#reboot" do
+    use_vcr_cassette 'hypervisor/reboot'
+    it "requires an id" do
+      expect { @hv.reboot }.to raise_error(ArgumentError)
+      @hv.success.should be_false
+    end
+
+    it "404s on not found" do
+      expect { @hv.reboot(404) }.to raise_error(Squall::NotFound)
+      @hv.success.should be_false
+    end
+
+    it "reboots the hypervisor" do
+      reboot = @hv.reboot(1)
+      @hv.success.should be_true
+      
+      reboot  
+    end
+  end
 end

@@ -20,5 +20,10 @@ module Squall
       params.accepts(:label, :ip_address).validate!(options) 
       request(:put, "/settings/hypervisors/#{id}.json", default_params(options))
     end
+
+    def reboot(id)
+      response = request(:get, "/settings/hypervisors/#{id}/rebooting.json")
+      response['hypervisor']
+    end
   end
 end

@@ -2,6 +2,8 @@
 
 A Ruby library for working with the OnApp REST API
 
+Confirmed to work with ruby 1.8.7, 1.9.2, Rubinis, REE and JRuby 1.6.0 with OnApp 2.1
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
