@@ -23,5 +23,11 @@ module Squall
       response = request(:get, '/permissions.json')
       response.collect { |perm| perm['permission'] }
     end
+
+    def create(options = {})
+      params.required(:label, :identifier).validate!(options)
+      response = request(:post, '/roles.json', default_params(options))
+      response.first[1]
+    end
   end
 end
