@@ -1,14 +1,10 @@
 require 'httparty'
 require 'squall/version'
+require 'squall/exception'
 
 autoload :Params,  'params'
 
 module Squall
-  class NotFound < StandardError;end
-  class RequestError < StandardError;end
-  class ServerError < StandardError;end
-  class NoConfig < StandardError;end
-
   autoload :Hypervisor, 'squall/hypervisor'
   autoload :Config,     'squall/config'
   autoload :Base,       'squall/base'
