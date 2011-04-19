@@ -54,4 +54,50 @@ describe Squall::Network do
       @network.success.should be_false
     end
   end
+
+  describe "#create" do
+    use_vcr_cassette "network/create"
+    it "requires label" do
+      requires_attr(:label) { @network.create }
+    end
+
+    it "raises error on duplicate account" do
+      pending "Broken in OnApp" do
+        expect { 
+          @network.create(:label => 'networktaken')
+        }.to raise_error(Squall::RequestError)
+        @network.errors['label'].should include("has already been taken")
+      end
+    end
+
+    it "raises error on invalid params" do
+      expect { 
+        @network.create(:what => 'networktaken', :label => 'wut')
+      }.to raise_error(ArgumentError, 'Unknown params: what')
+    end
+
+    it "creates a network" do
+      network = @network.create(:label => 'newnetwork', :vlan => 1, :identifier => 'newnetworkid')
+      @network.success.should be_true
+
+      network['label'].should == 'newnetwork'
+      network['vlan'].should == 1
+      network['identifier'].should == 'newnetworkid'
+
+      network = @network.create(:label => 'newnetwork')
+      network['label'].should == 'newnetwork'
+      network['vlan'].should be_nil
+      @network.success.should be_true
+
+      network = @network.create(:label => 'newnetwork', :vlan => 2)
+      network['label'].should == 'newnetwork'
+      network['vlan'].should == 2
+      @network.success.should be_true
+
+      network = @network.create(:label => 'newnetwork', :identifier => 'something')
+      network['label'].should == 'newnetwork'
+      network['identifier'].should == 'something'
+      @network.success.should be_true
+    end
+  end
 end

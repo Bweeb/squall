@@ -1,0 +1,196 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/networks.json?network[label]=networktaken
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://www.example.com/settings/networks/12
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.011776"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 19 Apr 2011 15:54:47 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"network\":{\"label\":\"networktaken\",\"created_at\":\"2011-04-19T15:54:47Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:54:47Z\",\"id\":12,\"vlan\":null,\"identifier\":\"58rrg0s87dhmut\"}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/networks.json?network[identifier]=newnetworkid&network[label]=newnetwork&network[vlan]=1
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      location: 
+      - http://www.example.com/settings/networks/13
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Tue, 19 Apr 2011 15:54:47 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.009338"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "201"
+      transfer-encoding: 
+      - chunked
+    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:54:47Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:54:47Z\",\"id\":13,\"vlan\":1,\"identifier\":\"newnetworkid\"}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/networks.json?network[label]=newnetwork
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      location: 
+      - http://www.example.com/settings/networks/14
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Tue, 19 Apr 2011 15:54:47 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.009260"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "201"
+      transfer-encoding: 
+      - chunked
+    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:54:47Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:54:47Z\",\"id\":14,\"vlan\":null,\"identifier\":\"4appjk9ifgj9un\"}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/networks.json?network[label]=newnetwork&network[vlan]=2
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://www.example.com/settings/networks/15
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.011726"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 19 Apr 2011 15:55:03 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:55:03Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:55:03Z\",\"id\":15,\"vlan\":2,\"identifier\":\"0m1c8zrhpln93g\"}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/networks.json?network[identifier]=something&network[label]=newnetwork
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://www.example.com/settings/networks/16
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.009214"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 19 Apr 2011 15:55:03 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"network\":{\"label\":\"newnetwork\",\"created_at\":\"2011-04-19T15:55:03Z\",\"network_group_id\":null,\"updated_at\":\"2011-04-19T15:55:03Z\",\"id\":16,\"vlan\":null,\"identifier\":\"something\"}}"
+    http_version: "1.1"
