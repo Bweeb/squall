@@ -5,19 +5,23 @@ module Squall
 
     # Optional
     attr_accessor :optional
-    
+
     def initialize
-      @valid    = {}
-      @optional = {}
+      @valid    = []
+      @optional = []
     end
 
     def required(*options)
       @valid = options.flatten.map { |o| o.to_sym}
+      @valid.uniq!
+      @optional.concat @valid
+      @optional.uniq!
       self
     end
 
     def accepts(*options)
-      @optional = options.flatten.map { |o| o.to_sym}
+      @optional.concat options.flatten.map { |o| o.to_sym}
+      @optional.uniq!
       self
     end
 

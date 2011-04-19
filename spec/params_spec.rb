@@ -23,6 +23,22 @@ describe Squall::Params do
       @params.valid.should include(:one, :two)
     end
 
+    it "stores uniq keys only" do
+      @params.required :one, :one
+      @params.valid.size.should == 1
+      @params.valid.should include(:one)
+    end
+
+    it "adds @valid to @optional" do
+      params = [:one, :two]
+      @params.required params
+      @params.valid.size.should == 2
+      @params.optional.size.should == 2
+
+      @params.valid.should include(:one, :two)
+      @params.optional.should include(:one, :two)
+    end
+
     it "returns self" do
       @params.required([:one, :two]).should be_a(Squall::Params)
     end
@@ -48,6 +64,21 @@ describe Squall::Params do
       @params.optional.should include(:one, :two)
     end
 
+    it "stores uniq keys only" do
+      @params.accepts :one, :one
+      @params.optional.size.should == 1
+      @params.optional.should include(:one)
+    end
+
+    it "doesn't reset @valid" do
+      @params.required(:two)
+      @params.accepts(:one)
+
+      @params.optional.uniq.size.should be(2)
+      @params.optional.uniq.should include(:one, :two)
+    end
+
+
     it "returns self" do
       @params.accepts([:one, :two]).should be_a(Squall::Params)
     end
@@ -60,7 +91,7 @@ describe Squall::Params do
 
       params = [:three, :four]
       @params.accepts params
-      @params.optional.size.should == 2
+      @params.optional.size.should == 4
       @params.optional.should include(:three, :four)
     end
   end
