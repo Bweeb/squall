@@ -22,4 +22,38 @@ describe Squall::Template do
       first['label'].should == 'CentOS 5.5 x64'
     end
   end
+
+  describe "#make_public" do
+    use_vcr_cassette 'template/make_public'
+    it "requires an id" do
+      expect { @template.make_public }.to raise_error(ArgumentError)
+      @template.success.should be_false
+    end
+
+    it "404s on not found" do
+      expect { @template.make_public(404) }.to raise_error(Squall::NotFound)
+      @template.success.should be_false
+    end
+    
+    it "makes the template public" do
+      pub = @template.make_public(1)
+      @template.success.should be_true
+      pub.keys.should include(*@keys)
+    end
+  end
+
+  describe "#download" do
+    use_vcr_cassette 'template/download'
+    it "requires an id" do
+      expect { @template.download }.to raise_error(ArgumentError)
+      @template.success.should be_false
+    end
+
+    it "404s on not found" do
+      pending "Broken in OnApp" do
+        expect { @template.download(404) }.to raise_error(Squall::NotFound)
+        @template.success.should be_false
+      end
+    end
+  end
 end
