@@ -17,7 +17,7 @@ module Squall
     end
 
     def delete(id)
-      response = request(:delete, "/settings/networks/#{id}.json")
+      request(:delete, "/settings/networks/#{id}.json")
     end
   end
 end
