@@ -11,7 +11,7 @@ module Squall
   autoload :User,       'squall/user'
   autoload :Role,       'squall/role'
   autoload :Network,    'squall/network'
-  autoload :Ipaddress,  'squall/ipaddress'
+  autoload :IpAddress,  'squall/ip_address'
   autoload :Template,   'squall/template'
 
   extend self
