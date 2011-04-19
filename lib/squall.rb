@@ -3,9 +3,8 @@ require 'httparty'
 require 'squall/version'
 require 'squall/exception'
 
-autoload :Params,  'params'
-
 module Squall
+  autoload :Params,     'squall/params'
   autoload :Hypervisor, 'squall/hypervisor'
   autoload :Config,     'squall/config'
   autoload :Base,       'squall/base'

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Params do
+describe Squall::Params do
   before(:each) do 
-    @params = Params.new
+    @params = Squall::Params.new
   end
 
   describe "#new" do
@@ -24,7 +24,7 @@ describe Params do
     end
 
     it "returns self" do
-      @params.required([:one, :two]).should be_a(Params)
+      @params.required([:one, :two]).should be_a(Squall::Params)
     end
 
     it "resets @valid" do
@@ -49,7 +49,7 @@ describe Params do
     end
 
     it "returns self" do
-      @params.accepts([:one, :two]).should be_a(Params)
+      @params.accepts([:one, :two]).should be_a(Squall::Params)
     end
 
     it "resets @optional" do

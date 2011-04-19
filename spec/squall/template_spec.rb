@@ -34,7 +34,7 @@ describe Squall::Template do
       expect { @template.make_public(404) }.to raise_error(Squall::NotFound)
       @template.success.should be_false
     end
-    
+
     it "makes the template public" do
       pub = @template.make_public(1)
       @template.success.should be_true

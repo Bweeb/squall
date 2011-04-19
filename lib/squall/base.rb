@@ -12,7 +12,7 @@ module Squall
     end
 
     def params
-      @params ||= Params.new
+      @params ||= Squall::Params.new
     end
 
     def default_params(*options)

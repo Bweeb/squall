@@ -81,7 +81,7 @@ describe Squall::Base do
 
   describe "#params" do
     it "returns Params.new" do
-      @base.params.should be_a(Params)
+      @base.params.should be_a(Squall::Params)
     end
   end
 
