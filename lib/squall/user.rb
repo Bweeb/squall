@@ -6,7 +6,7 @@ module Squall
     end
 
     def create(options = {})
-      params.required(:login, :email, :password).validate!(options)
+      params.required(:login, :email, :password).accepts(:first_name, :last_name, :group_id).validate!(options)
       request(:post, '/users.json', default_params(options))
     end
 
