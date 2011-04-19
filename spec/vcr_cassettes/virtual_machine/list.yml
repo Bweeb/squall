@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/virtual_machines.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"d751713988987e9331980363e24189ce\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "18.522050"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 19 Apr 2011 16:56:19 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "[{\"virtual_machine\":{\"label\":\"ohhai.server.com\",\"cpus\":4,\"monthly_bandwidth_used\":\"52.0\",\"operating_system_distro\":\"rhel\",\"created_at\":\"2011-03-28T14:52:33Z\",\"template_id\":1,\"operating_system\":\"linux\",\"cpu_shares\":1000,\"updated_at\":\"2011-03-31T14:54:01Z\",\"memory\":2048,\"local_remote_access_port\":5900,\"allowed_swap\":true,\"recovery_mode\":false,\"allow_resize_without_reboot\":true,\"xen_id\":17,\"id\":12,\"hypervisor_id\":2,\"user_id\":1,\"template_label\":\"CentOS 5.5 x64\",\"hostname\":\"ohhai.server.com\",\"booted\":true,\"total_disk_size\":\"51.0\",\"remote_access_password\":\"lolz\",\"min_disk_size\":5,\"initial_root_password\":\"wut\",\"identifier\":\"geek\",\"ip_addresses\":[{\"ip_address\":{\"netmask\":\"255.255.255.224\",\"disallowed_primary\":false,\"address\":\"127.4.4.197\",\"created_at\":\"2011-03-16T02:17:47Z\",\"updated_at\":\"2011-03-16T02:17:47Z\",\"network_id\":1,\"network_address\":\"127.4.4.192\",\"broadcast\":\"127.4.4.223\",\"id\":4,\"gateway\":\"127.4.4.193\"}}],\"locked\":false,\"built\":true}},{\"virtual_machine\":{\"label\":\"something\",\"cpus\":4,\"monthly_bandwidth_used\":\"234.0\",\"operating_system_distro\":\"rhel\",\"created_at\":\"2011-03-28T17:34:35Z\",\"template_id\":1,\"operating_system\":\"linux\",\"cpu_shares\":10,\"updated_at\":\"2011-04-04T16:55:38Z\",\"memory\":3072,\"local_remote_access_port\":5901,\"allowed_swap\":true,\"recovery_mode\":false,\"allow_resize_without_reboot\":true,\"xen_id\":6,\"id\":13,\"hypervisor_id\":2,\"user_id\":1,\"template_label\":\"CentOS 5.5 x64\",\"hostname\":\"something.server.com\",\"booted\":true,\"total_disk_size\":\"61.0\",\"remote_access_password\":\"nosoupforyou\",\"min_disk_size\":5,\"initial_root_password\":\"newpass\",\"identifier\":\"madunique\",\"ip_addresses\":[{\"ip_address\":{\"netmask\":\"255.255.255.224\",\"disallowed_primary\":false,\"address\":\"127.4.4.198\",\"created_at\":\"2011-03-16T02:17:47Z\",\"updated_at\":\"2011-03-16T02:17:47Z\",\"network_id\":1,\"network_address\":\"127.4.4.192\",\"broadcast\":\"127.4.4.223\",\"id\":5,\"gateway\":\"127.4.4.193\"}},{\"ip_address\":{\"netmask\":\"255.255.255.224\",\"disallowed_primary\":false,\"address\":\"127.4.4.200\",\"created_at\":\"2011-03-16T02:17:47Z\",\"updated_at\":\"2011-03-16T02:17:47Z\",\"network_id\":1,\"network_address\":\"127.4.4.192\",\"broadcast\":\"127.4.4.223\",\"id\":7,\"gateway\":\"127.4.4.193\"}}],\"locked\":false,\"built\":true}}]"
+    http_version: "1.1"
