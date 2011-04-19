@@ -25,4 +25,21 @@ describe Squall::VirtualMachine do
       virtual_machine['label'].should == 'ohhai.server.com'
     end
   end
+
+  describe "#show" do
+    use_vcr_cassette "virtual_machine/show"
+    it "requires an id" do
+      expect { @virtual_machine.show }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.show(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "returns a virtual_machine" do
+      virtual_machine = @virtual_machine.show(1)
+      virtual_machine.keys.should include(*@keys)
+      virtual_machine['label'].should == 'bob'
+    end
+  end
 end
