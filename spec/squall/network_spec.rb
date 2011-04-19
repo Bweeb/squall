@@ -100,4 +100,22 @@ describe Squall::Network do
       @network.success.should be_true
     end
   end
+
+  describe "#delete" do
+    use_vcr_cassette 'network/delete'
+    it "requires an id" do
+      expect { @network.delete }.to raise_error(ArgumentError)
+      @network.success.should be_false
+    end
+
+    it "404s on not found" do
+      expect { @network.delete(404) }.to raise_error(Squall::NotFound)
+      @network.success.should be_false
+    end
+
+    it "deletes the network" do
+      delete = @network.delete(16)
+      @network.success.should be_true
+    end
+  end
 end
