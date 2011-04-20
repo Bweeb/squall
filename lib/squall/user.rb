@@ -20,28 +20,29 @@ module Squall
     end
 
     def suspend(id)
-      req = request(:get, "/users/#{id}/suspend.json")
-      req.first[1]
+      response = request(:get, "/users/#{id}/suspend.json")
+      response.first[1]
     end
 
     def activate(id)
-      req = request(:get, "/users/#{id}/activate_user.json")
-      req.first[1]
+      response = request(:get, "/users/#{id}/activate_user.json")
+      response.first[1]
     end
     alias_method :unsuspend, :activate
 
     def delete(id)
-      req = request(:delete, "/users/#{id}.json")
+      response = request(:delete, "/users/#{id}.json")
       success
     end
 
     def stats(id)
-      req = request(:get, "/users/#{id}/vm_stats.json")
+      response = request(:get, "/users/#{id}/vm_stats.json")
+      response.first['vm_stats']
     end
 
     def virtual_machines(id)
-      req = request(:get, "/users/#{id}/virtual_machines.json")
-      req.collect { |vm| vm['virtual_machine']}
+      response = request(:get, "/users/#{id}/virtual_machines.json")
+      response.collect { |vm| vm['virtual_machine']}
     end
 
     def update_role(id, *roles)

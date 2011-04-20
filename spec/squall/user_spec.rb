@@ -140,8 +140,11 @@ describe Squall::User do
     end
 
     it "returns stats" do
-      pending "Need an example response"
       stats = @user.stats(1)
+      stats['virtual_machine_id'].should == 55
+      keys = ["created_at", "cost", "updated_at", "stat_time", "id", 
+        "user_id", "vm_billing_stat_id", "billing_stats", "virtual_machine_id"]
+      stats.keys.should include *keys
     end
   end
 
