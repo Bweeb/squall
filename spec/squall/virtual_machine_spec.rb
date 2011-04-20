@@ -135,7 +135,7 @@ describe Squall::VirtualMachine do
 
     it "accepts :template_id and :required_startup" do
       hash = [:post, "/virtual_machines/1/build.json", {:query=>{:virtual_machine=>{:template_id=>1, :required_startup=>1}}}]
-      @virtual_machine.should_receive(:request).with(*hash).once
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.build(1, :template_id => 1, :required_startup => 1)
     end
 
