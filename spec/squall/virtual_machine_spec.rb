@@ -125,4 +125,35 @@ describe Squall::VirtualMachine do
       end
     end
   end
+
+  describe "#build" do
+    use_vcr_cassette "virtual_machine/build"
+    it "requires an id" do
+      expect { @virtual_machine.build }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "accepts :template_id and :required_startup" do
+      hash = [:post, "/virtual_machines/1/build.json", {:query=>{:virtual_machine=>{:template_id=>1, :required_startup=>1}}}]
+      @virtual_machine.should_receive(:request).with(*hash).once
+      @virtual_machine.build(1, :template_id => 1, :required_startup => 1)
+    end
+
+    it "raises error on unknown params" do
+      expect { @virtual_machine.build(1, :asdf => 1) }.to raise_error(ArgumentError, 'Unknown params: asdf')
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.build(404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "builds the VM" do
+      build = @virtual_machine.build(72)
+
+      @virtual_machine.success.should be_true
+      build['label'].should == 'Testingagain'
+    end
+  end
 end

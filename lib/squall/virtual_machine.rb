@@ -29,5 +29,11 @@ module Squall
       response = request(:post, '/virtual_machines.json', default_params(options))
       response['virtual_machine']
     end
+
+    def build(id, options = {})
+      params.accepts(:template_id, :required_startup).validate! options
+      response = request(:post, "/virtual_machines/#{id}/build.json", default_params(options)) 
+      response.first[1]
+    end
   end
 end
