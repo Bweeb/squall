@@ -12,7 +12,7 @@ describe Squall::Hypervisor do
       hvs = @hv.list
       hvs.size.should be(2)
 
-      keys = ["label", "called_in_at", "spare", "created_at", "hypervisor_type", 
+      keys = ["label", "called_in_at", "spare", "created_at", "hypervisor_type",
               "updated_at", "xen_info", "id", "hypervisor_group_id", "enabled", "health",
               "failure_count", "memory_overhead", "online", "locked", "ip_address"]
       first = hvs.first
@@ -63,7 +63,7 @@ describe Squall::Hypervisor do
     end
 
     it "raises error on duplicate account" do
-      expect { 
+      expect {
         @hv.create(:label => 'Testing', :ip_address => '123.123.123.123', :hypervisor_type => 'xen')
       }.to raise_error(Squall::RequestError)
       @hv.errors['label'].should include("has already been taken")
@@ -81,25 +81,25 @@ describe Squall::Hypervisor do
     end
   end
 
-  describe "#update" do
-    use_vcr_cassette 'hypervisor/update'
+  describe "#edit" do
+    use_vcr_cassette 'hypervisor/edit'
     it "requires an id" do
-      expect { @hv.update }.to raise_error(ArgumentError)
+      expect { @hv.edit }.to raise_error(ArgumentError)
       @hv.success.should be_false
     end
 
     it "raises an error with unknown param " do
-      expect { @hv.update(3, :blah => 1)}.to raise_error(ArgumentError)
+      expect { @hv.edit(3, :blah => 1)}.to raise_error(ArgumentError)
       @hv.success.should be_false
     end
 
-    it "updates the label" do
-      update = @hv.update(3, :label => 'Old Gregg')
+    it "edits the label" do
+      edit = @hv.edit(3, :label => 'Old Gregg')
       @hv.success.should be_true
     end
 
-    it "updates the ip_address" do
-      update = @hv.update(3, :ip_address => '120.120.120.120')
+    it "edits the ip_address" do
+      edit = @hv.edit(3, :ip_address => '120.120.120.120')
       @hv.success.should be_true
     end
   end

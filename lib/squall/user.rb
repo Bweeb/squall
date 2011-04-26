@@ -45,7 +45,7 @@ module Squall
       response.collect { |vm| vm['virtual_machine']}
     end
 
-    def update_role(id, *roles)
+    def edit_role(id, *roles)
       request(:put, "/users/#{id}.json", default_params(:role_ids => roles))
     end
   end
