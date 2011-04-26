@@ -1,4 +1,5 @@
-= Squall
+Squall
+=======
 [![Build Status](http://travis-ci.org/site5/squall.png)](http://travis-ci.org/site5/squall)
 
 
@@ -6,7 +7,8 @@ A Ruby library for working with the OnApp REST API
 
 Confirmed to work with ruby 1.8.7, 1.9.2, Rubinis, REE and JRuby 1.6.0 with OnApp 2.1
 
-== Note on Patches/Pull Requests
+Note on Patches/Pull Requests
+=======
  
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -16,6 +18,7 @@ Confirmed to work with ruby 1.8.7, 1.9.2, Rubinis, REE and JRuby 1.6.0 with OnAp
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+Copyright
+=======
 
-Copyright (c) 2010 Justin Mazzi. See LICENSE for details.
+Copyright (c) 2011 Site5 LLC. See LICENSE for details.
