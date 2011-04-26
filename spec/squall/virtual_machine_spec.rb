@@ -4,12 +4,12 @@ describe Squall::VirtualMachine do
   before(:each) do
     default_config
     @virtual_machine = Squall::VirtualMachine.new
-    @valid = {:label => 'testmachine', :hypervisor_id => 5, :hostname => 'testmachine', :memory => 512, :cpus => 1, 
+    @valid = {:label => 'testmachine', :hypervisor_id => 5, :hostname => 'testmachine', :memory => 512, :cpus => 1,
               :cpu_shares => 10, :primary_disk_size => 10}
-    @keys = ["monthly_bandwidth_used", "cpus", "label", "created_at", "operating_system_distro", 
-      "cpu_shares", "operating_system", "template_id", "allowed_swap", "local_remote_access_port", 
-      "memory", "updated_at", "allow_resize_without_reboot", "recovery_mode", "hypervisor_id", "id", 
-      "xen_id", "user_id", "total_disk_size", "booted", "hostname", "template_label", "identifier", 
+    @keys = ["monthly_bandwidth_used", "cpus", "label", "created_at", "operating_system_distro",
+      "cpu_shares", "operating_system", "template_id", "allowed_swap", "local_remote_access_port",
+      "memory", "updated_at", "allow_resize_without_reboot", "recovery_mode", "hypervisor_id", "id",
+      "xen_id", "user_id", "total_disk_size", "booted", "hostname", "template_label", "identifier",
       "initial_root_password", "min_disk_size", "remote_access_password", "built", "locked", "ip_addresses"]
   end
 
@@ -57,41 +57,41 @@ describe Squall::VirtualMachine do
     end
 
     it "requires hostname" do
-      requires_attr(:hostname) { 
+      requires_attr(:hostname) {
         @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id])
       }
     end
 
     it "requires memory" do
-      requires_attr(:memory) { 
+      requires_attr(:memory) {
         @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname])
       }
     end
 
     it "requires cpus" do
-      requires_attr(:cpus) { 
+      requires_attr(:cpus) {
         @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname],
                                 :memory => @valid[:memory])
       }
     end
 
     it "requires cpu_shares" do
-      requires_attr(:cpu_shares) { 
+      requires_attr(:cpu_shares) {
         @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname],
                                 :memory => @valid[:memory], :cpus => @valid[:cpu_shares])
       }
     end
 
     it "requires primary_disk_size" do
-      requires_attr(:primary_disk_size) { 
-        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], 
-                                :hostname => @valid[:hostname], :memory => @valid[:memory], :cpus => @valid[:cpu_shares], 
+      requires_attr(:primary_disk_size) {
+        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id],
+                                :hostname => @valid[:hostname], :memory => @valid[:memory], :cpus => @valid[:cpu_shares],
                                 :cpu_shares => @valid[:cpu_shares])
       }
     end
 
     it "raises error on unknown params" do
-      expect { 
+      expect {
         @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname],
                                 :memory => @valid[:memory], :cpus => @valid[:cpus], :cpu_shares => @valid[:cpu_shares], :what => 'what')
       }.to raise_error(ArgumentError, 'Missing required params: primary_disk_size')
@@ -154,6 +154,58 @@ describe Squall::VirtualMachine do
 
       @virtual_machine.success.should be_true
       build['label'].should == 'Testingagain'
+    end
+  end
+
+  describe "#edit" do
+    use_vcr_cassette "virtual_machine/edit"
+
+    it "requires an id" do
+      expect { @virtual_machine.edit }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "raises error on unknown params" do
+      expect { @virtual_machine.edit(1, :blah => 1) }.to raise_error(ArgumentError, 'Unknown params: blah')
+      @virtual_machine.success.should be_false
+    end
+
+    it "404s on not found" do
+      expect { @virtual_machine.edit(404, :label => 1) }.to raise_error(Squall::NotFound)
+    end
+
+    it "accepts all valid keys" do
+      keys = [:label,
+              :hypervisor_id,
+              :hostname,
+              :memory,
+              :cpus,
+              :cpu_shares,
+              :primary_disk_size,
+              :cpu_shares,
+              :swap_disk_size,
+              :primary_network_id,
+              :required_automatic_backup,
+              :rate_limit,
+              :required_ip_address_assignment,
+              :required_virtual_machine_build,
+              :admin_note,
+              :note,
+              :allowed_hot_migrate,
+              :template_id,
+              :initial_root_password
+      ]
+      keys.each do |k|
+        opts = @virtual_machine.default_params(k.to_sym => 1)
+        args = [:put, '/virtual_machines/1.json', opts]
+        @virtual_machine.should_receive(:request).with(*args).once.and_return([])
+        @virtual_machine.edit(1, k.to_sym => 1 )
+      end
+    end
+
+    it "updates the label" do
+      @virtual_machine.edit(1, :label => 'testing')
+      @virtual_machine.success.should be_true
     end
   end
 end
