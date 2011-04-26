@@ -1,5 +1,5 @@
 = Squall
-[![Build Status](http://travis-ci.org/site5/squall.png)][http://travis-ci.org/site5/squall)
+![Build Status](http://travis-ci.org/site5/squall.png)][http://travis-ci.org/site5/squall)
 
 
 A Ruby library for working with the OnApp REST API
