@@ -238,4 +238,28 @@ describe Squall::VirtualMachine do
       result['user_id'].should == 2
     end
   end
+
+  describe "#change_password" do
+    use_vcr_cassette "virtual_machine/change_password"
+    it "requires an id" do
+      expect { @virtual_machine.change_password }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "requires a password" do
+      expect { @virtual_machine.change_password 1 }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "404s on not found" do
+      expect { @virtual_machine.change_password(404, 'password') }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "changes the password" do
+      result = @virtual_machine.change_password(1, 'passwordsareimportant')
+      @virtual_machine.success.should be_true
+      p result
+    end
+  end
 end

@@ -65,5 +65,10 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/change_owner.json", :query => { :user_id => user_id })
       response['virtual_machine']
     end
+
+    def change_password(id, password)
+      response = request(:post, "/virtual_machines/#{id}/reset_password.json", :query => { :new_password => password })
+      response['virtual_machine']
+    end
   end
 end
