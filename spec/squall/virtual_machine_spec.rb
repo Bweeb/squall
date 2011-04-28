@@ -208,4 +208,34 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_true
     end
   end
+
+  describe "#change_owner" do
+    use_vcr_cassette "virtual_machine/change_owner"
+    it "requires an id" do
+      expect { @virtual_machine.change_owner }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "requires a user_id" do
+      expect { @virtual_machine.change_owner 1 }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "404s on not found" do
+      expect { @virtual_machine.change_owner(404, 1) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns error on unknown user" do
+      expect { @virtual_machine.change_owner(1, 404) }.to raise_error(Squall::ServerError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "changes the user" do
+      result = @virtual_machine.change_owner(1, 2)
+      @virtual_machine.success.should be_true
+
+      result['user_id'].should == 2
+    end
+  end
 end

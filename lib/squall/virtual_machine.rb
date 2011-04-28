@@ -60,5 +60,10 @@ module Squall
       params.accepts(optional).validate! options
       request(:put, "/virtual_machines/#{id}.json", default_params(options))
     end
+
+    def change_owner(id, user_id)
+      response = request(:post, "/virtual_machines/#{id}/change_owner.json", :query => { :user_id => user_id })
+      response['virtual_machine']
+    end
   end
 end
