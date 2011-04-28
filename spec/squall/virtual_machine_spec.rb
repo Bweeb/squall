@@ -262,4 +262,43 @@ describe Squall::VirtualMachine do
       p result
     end
   end
+
+  describe "#migrate" do
+    use_vcr_cassette "virtual_machine/migrate"
+    it "requires an id" do
+      expect { @virtual_machine.migrate }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "requires a destination" do
+      requires_attr(:destination) { @virtual_machine.migrate 1 }
+      @virtual_machine.success.should be_false
+    end
+
+    it "accepts cold_migrate_on_rollback" do
+      hash = [:post, "/virtual_machines/1/migrate.json", {:query => {:destination => 1, :cold_migrate_on_rollback => 1} }]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.migrate 1, :destination => 1, :cold_migrate_on_rollback => 1
+    end
+
+    it "404s on not found" do
+      expect { @virtual_machine.migrate(404, :destination => 1) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns error on unknown destination" do
+      pending "Broken in OnApp" do
+        expect { @virtual_machine.migrate(1, :destination => 404) }.to raise_error(Squall::ServerError)
+        @virtual_machine.success.should be_false
+      end
+    end
+
+    it "changes the destination" do
+      pending "Broken in OnApp" do
+        result = @virtual_machine.migrate(1, :destination => 2)
+        @virtual_machine.success.should be_true
+        result['hypervisor_id'].should == 2
+      end
+    end
+  end
 end

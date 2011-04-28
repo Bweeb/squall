@@ -70,5 +70,10 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/reset_password.json", :query => { :new_password => password })
       response['virtual_machine']
     end
+
+    def migrate(id, options = {})
+      params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options 
+      response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => options )
+    end
   end
 end
