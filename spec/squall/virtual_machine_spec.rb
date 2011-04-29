@@ -312,7 +312,7 @@ describe Squall::VirtualMachine do
       expect { @virtual_machine.delete(404) }.to raise_error(Squall::NotFound)
     end
 
-    it "returns a virtual_machine" do
+    it "deletes a virtual_machine" do
       virtual_machine = @virtual_machine.delete(2)
       @virtual_machine.success.should be_true
     end
