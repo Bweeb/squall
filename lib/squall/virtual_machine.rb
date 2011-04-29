@@ -85,5 +85,15 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/resize.json", default_params(options))
       response['virtual_machine']
     end
+
+    def suspend(id)
+      response = request(:post, "/virtual_machines/#{id}/suspend.json")
+      response['virtual_machine']
+    end
+
+    def unlock(id)
+      response = request(:post, "/virtual_machines/#{id}/unlock.json")
+      response['virtual_machine']
+    end
   end
 end

@@ -345,4 +345,36 @@ describe Squall::VirtualMachine do
       virtual_machine['memory'].should == 1000
     end
   end
+
+  describe "#suspend" do
+    use_vcr_cassette "virtual_machine/suspend"
+    it "requires an id" do
+      expect { @virtual_machine.suspend }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.suspend(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "suspends a virtual_machine" do
+      virtual_machine = @virtual_machine.suspend(1)
+      virtual_machine['suspended'].should be_true
+    end
+  end
+
+  describe "#unlock" do
+    use_vcr_cassette "virtual_machine/unlock"
+    it "requires an id" do
+      expect { @virtual_machine.unlock }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.unlock(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "unlocks a virtual_machine" do
+      virtual_machine = @virtual_machine.unlock(1)
+      virtual_machine['locked'].should be_false
+    end
+  end
 end
