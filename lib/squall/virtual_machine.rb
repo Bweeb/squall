@@ -75,5 +75,15 @@ module Squall
       params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options 
       response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => options )
     end
+
+    def delete(id)
+      request(:delete, "/virtual_machines/#{id}.json")
+    end
+
+    def resize(id, options = {})
+      params.required(:memory).accepts(:allow_migration).validate! options
+      response = request(:post, "/virtual_machines/#{id}/resize.json", default_params(options))
+      response['virtual_machine']
+    end
   end
 end
