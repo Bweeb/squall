@@ -90,6 +90,7 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/suspend.json")
       response['virtual_machine']
     end
+    alias_method :unsuspend, :suspend
 
     def unlock(id)
       response = request(:post, "/virtual_machines/#{id}/unlock.json")

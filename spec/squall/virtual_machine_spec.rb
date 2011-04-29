@@ -362,6 +362,22 @@ describe Squall::VirtualMachine do
     end
   end
 
+  describe "#unsuspend" do
+    use_vcr_cassette "virtual_machine/unsuspend"
+    it "requires an id" do
+      expect { @virtual_machine.unsuspend }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.unsuspend(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "unsuspends a virtual_machine" do
+      virtual_machine = @virtual_machine.unsuspend(1)
+      virtual_machine['suspended'].should be_false
+    end
+  end
+
   describe "#unlock" do
     use_vcr_cassette "virtual_machine/unlock"
     it "requires an id" do
