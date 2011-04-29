@@ -301,4 +301,20 @@ describe Squall::VirtualMachine do
       end
     end
   end
+
+  describe "#delete" do
+    use_vcr_cassette "virtual_machine/delete"
+    it "requires an id" do
+      expect { @virtual_machine.delete }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.delete(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "returns a virtual_machine" do
+      virtual_machine = @virtual_machine.delete(2)
+      @virtual_machine.success.should be_true
+    end
+  end
 end
