@@ -14,6 +14,7 @@ module Squall
   autoload :IpAddress,      'squall/ip_address'
   autoload :Template,       'squall/template'
   autoload :VirtualMachine, 'squall/virtual_machine'
+  autoload :Statistics,     'squall/statistics'
 
   extend self
   attr_accessor :configuration, :configuration_file
