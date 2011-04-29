@@ -259,7 +259,6 @@ describe Squall::VirtualMachine do
     it "changes the password" do
       result = @virtual_machine.change_password(1, 'passwordsareimportant')
       @virtual_machine.success.should be_true
-      p result
     end
   end
 
@@ -315,6 +314,35 @@ describe Squall::VirtualMachine do
     it "deletes a virtual_machine" do
       virtual_machine = @virtual_machine.delete(2)
       @virtual_machine.success.should be_true
+    end
+  end
+
+  describe "#resize" do
+    use_vcr_cassette "virtual_machine/resize"
+    it "requires an id" do
+      expect { @virtual_machine.resize }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.resize(404, :memory => 1) }.to raise_error(Squall::NotFound)
+    end
+
+    it "requires memory" do
+      @virtual_machine.stub(:request)
+      requires_attr(:memory) { @virtual_machine.resize(1) }
+    end
+
+    it "accepts allow_migration" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:memory => 1, :allow_migration => 1)]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.resize 1, :memory => 1, :allow_migration => 1
+    end
+
+    it "resizes a virtual_machine" do
+      virtual_machine = @virtual_machine.resize(2, :memory => 1000)
+      @virtual_machine.success.should be_true
+
+      virtual_machine['memory'].should == 1000
     end
   end
 end

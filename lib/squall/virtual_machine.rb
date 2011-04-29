@@ -79,5 +79,11 @@ module Squall
     def delete(id)
       request(:delete, "/virtual_machines/#{id}.json")
     end
+
+    def resize(id, options = {})
+      params.required(:memory).accepts(:allow_migration).validate! options
+      response = request(:post, "/virtual_machines/#{id}/resize.json", default_params(options))
+      response['virtual_machine']
+    end
   end
 end
