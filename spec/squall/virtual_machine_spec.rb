@@ -449,4 +449,23 @@ describe Squall::VirtualMachine do
       virtual_machine['id'].should == 1
     end
   end
+
+  describe "#reboot" do
+    use_vcr_cassette "virtual_machine/reboot"
+    it "requires an id" do
+      expect { @virtual_machine.reboot }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.reboot(404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "will reboot a virtual_machine" do
+      virtual_machine = @virtual_machine.reboot(1)
+      @virtual_machine.success.should be_true
+      virtual_machine['id'].should == 1
+    end
+  end
 end

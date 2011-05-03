@@ -111,5 +111,10 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/stop.json")
       response['virtual_machine']
     end
+
+    def reboot(id)
+      response = request(:post, "/virtual_machines/#{id}/reboot.json")
+      response['virtual_machine']
+    end
   end
 end
