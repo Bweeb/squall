@@ -15,6 +15,7 @@ module Squall
   autoload :Template,       'squall/template'
   autoload :VirtualMachine, 'squall/virtual_machine'
   autoload :Statistics,     'squall/statistics'
+  autoload :Transaction,    'squall/transaction'
 
   extend self
   attr_accessor :configuration, :configuration_file
