@@ -96,5 +96,20 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/unlock.json")
       response['virtual_machine']
     end
+
+    def startup(id)
+      response = request(:post, "/virtual_machines/#{id}/startup.json")
+      response['virtual_machine']
+    end
+
+    def shutdown(id)
+      response = request(:post, "/virtual_machines/#{id}/shutdown.json")
+      response['virtual_machine']
+    end
+
+    def stop(id)
+      response = request(:post, "/virtual_machines/#{id}/stop.json")
+      response['virtual_machine']
+    end
   end
 end

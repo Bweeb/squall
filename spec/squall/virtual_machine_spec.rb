@@ -393,4 +393,60 @@ describe Squall::VirtualMachine do
       virtual_machine['locked'].should be_false
     end
   end
+
+  describe "#startup" do
+    use_vcr_cassette "virtual_machine/startup"
+    it "requires an id" do
+      expect { @virtual_machine.startup }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.startup(404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "startups a virtual_machine" do
+      @virtual_machine.startup(1)
+      @virtual_machine.success.should be_true
+    end
+  end
+
+  describe "#shutdown" do
+    use_vcr_cassette "virtual_machine/shutdown"
+    it "requires an id" do
+      expect { @virtual_machine.shutdown }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.shutdown(404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "will shutdown a virtual_machine" do
+      virtual_machine = @virtual_machine.shutdown(1)
+      @virtual_machine.success.should be_true
+      virtual_machine['id'].should == 1
+    end
+  end
+
+  describe "#stop" do
+    use_vcr_cassette "virtual_machine/stop"
+    it "requires an id" do
+      expect { @virtual_machine.stop }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.stop(404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "will stop a virtual_machine" do
+      virtual_machine = @virtual_machine.stop(1)
+      @virtual_machine.success.should be_true
+      virtual_machine['id'].should == 1
+    end
+  end
 end
