@@ -14,7 +14,7 @@ module Squall
   autoload :IpAddress,      'squall/ip_address'
   autoload :Template,       'squall/template'
   autoload :VirtualMachine, 'squall/virtual_machine'
-  autoload :Statistics,     'squall/statistics'
+  autoload :Statistic,      'squall/statistic'
   autoload :Transaction,    'squall/transaction'
 
   extend self
