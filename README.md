@@ -14,6 +14,7 @@ Install
 
     gem install squall
 
+
 Usage
 -----
 
