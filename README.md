@@ -36,19 +36,19 @@ Show the info for a VM
 
 Create a new VM
 
-   vm = Squall::VirtualMachine.new
+    vm = Squall::VirtualMachine.new
 
-   params = {
-     :label => 'testmachine', 
-     :hypervisor_id => 5,
-     :hostname => 'testmachine', 
-     :memory => 512, 
-     :cpus => 1,
-     :cpu_shares => 10, 
-     :primary_disk_size => 10
-   }
+    params = {
+      :label => 'testmachine', 
+      :hypervisor_id => 5,
+      :hostname => 'testmachine', 
+      :memory => 512, 
+      :cpus => 1,
+      :cpu_shares => 10, 
+      :primary_disk_size => 10
+    }
 
-   vm.create params
+    vm.create params
 
 
 
