@@ -5,7 +5,51 @@ Squall
 
 A Ruby library for working with the OnApp REST API
 
+[RDoc](http://rdoc.info/github/site5/squall/master/frames)
+
 Confirmed to work with ruby 1.8.7, 1.9.2, Rubinis, REE and JRuby 1.6.0 with OnApp 2.1
+
+Install
+-------
+
+    gem install squall
+
+Usage
+-----
+
+Configure
+
+    require 'squall'
+
+    Squall.config do |c|
+      c.base_uri 'https://onappurl.com'
+      c.username 'username'
+      c.password 'topsecret'
+    end
+
+Show the info for a VM
+
+    vm = Squall::VirtualMachine.new
+    vm.show 1
+
+
+Create a new VM
+
+   vm = Squall::VirtualMachine.new
+
+   params = {
+     :label => 'testmachine', 
+     :hypervisor_id => 5,
+     :hostname => 'testmachine', 
+     :memory => 512, 
+     :cpus => 1,
+     :cpu_shares => 10, 
+     :primary_disk_size => 10
+   }
+
+   vm.create params
+
+
 
 Note on Patches/Pull Requests
 =======
