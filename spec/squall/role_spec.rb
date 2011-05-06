@@ -48,6 +48,10 @@ describe Squall::Role do
       expect { @role.edit(5) }.to raise_error(Squall::NotFound)
     end
 
+    it "allows :label and/or :permission" do
+      expect { @role.edit(3, :missing => 1) }.to raise_error(ArgumentError, /Unknown.*missing/)
+    end
+
     it "updates the role" do
       pending "OnApp is returning an empty response" do
         old_role = @role.show(3)
@@ -72,6 +76,48 @@ describe Squall::Role do
     it "returns a role" do
       role = @role.delete(3)
       @role.success.should be_true
+    end
+  end
+
+  describe "#permissions" do
+    use_vcr_cassette "role/permissions"
+    it "returns permissions" do
+      permissions = @role.permissions
+      permissions.size.should be(229)
+
+      keys = ["label", "created_at", "updated_at", "id", "identifier"]
+      first = permissions.first
+      first.keys.should include(*keys)
+
+      keys.each do |key| 
+        first[key].should_not be_nil
+        first[key].to_s.size.should be >= 1
+      end
+    end
+  end
+
+  describe "#create" do
+    use_vcr_cassette "role/create"
+    it "requires login" do
+      requires_attr(:label) { @role.create }
+    end
+
+    it "requires label" do
+      requires_attr(:identifier) { @role.create(:label => 'my-label') }
+    end
+
+    it "raises error on duplicate" do
+      expect { 
+        @role.create(:label => 'Test', :identifier => 'testing')
+      }.to raise_error(Squall::RequestError)
+      @role.errors['identifier'].should include("has already been taken")
+    end
+
+    it "creates a role" do
+      value = {:label => 'Test Create', :identifier => 'testing-create'}
+      role = @role.create(value)
+      role['label'].should  == value[:label]
+      role['identifier'].should == value[:identifier]
     end
   end
 end

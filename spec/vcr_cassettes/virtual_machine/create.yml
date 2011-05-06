@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/virtual_machines.json?virtual_machine[memory]=512&virtual_machine[cpus]=1&virtual_machine[label]=testmachine&virtual_machine[cpu_shares]=10&virtual_machine[hostname]=testmachine&virtual_machine[primary_disk_size]=10&virtual_machine[hypervisor_id]=5
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - https://www.example.com/virtual_machines/70
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.057999"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 19 Apr 2011 20:08:35 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"virtual_machine\":{\"label\":\"testmachine\",\"cpus\":1,\"operating_system_distro\":null,\"created_at\":\"2011-04-19T20:08:35Z\",\"template_id\":null,\"operating_system\":null,\"cpu_shares\":10,\"updated_at\":\"2011-04-19T20:08:35Z\",\"memory\":512,\"local_remote_access_port\":null,\"allowed_swap\":true,\"recovery_mode\":null,\"allow_resize_without_reboot\":null,\"xen_id\":null,\"id\":70,\"hypervisor_id\":5,\"user_id\":4,\"template_label\":null,\"hostname\":\"testmachine\",\"booted\":false,\"remote_access_password\":null,\"min_disk_size\":null,\"initial_root_password\":\"nsdjsadfj2134\",\"identifier\":\"sadfs23\",\"locked\":false,\"built\":false}}"
+    http_version: "1.1"

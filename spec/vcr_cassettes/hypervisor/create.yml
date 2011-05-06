@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/hypervisors.json?hypervisor[ip_address]=123.123.123.123&hypervisor[hypervisor_type]=xen&hypervisor[label]=Testing
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 422
+      message: Unprocessable Entity
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Fri, 15 Apr 2011 20:51:38 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.009919"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "422"
+      transfer-encoding: 
+      - chunked
+    body: "{\"label\":[\"has already been taken\"],\"ip_address\":[\"has already been taken\"]}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/hypervisors.json?hypervisor[ip_address]=126.126.126.126&hypervisor[hypervisor_type]=xen&hypervisor[label]=Brand%20new
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://www.example.com/settings/hypervisors/3
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.016771"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Fri, 15 Apr 2011 20:52:02 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"hypervisor\":{\"called_in_at\":null,\"label\":\"Brand new\",\"created_at\":\"2011-04-15T20:52:02Z\",\"spare\":false,\"hypervisor_type\":\"xen\",\"updated_at\":\"2011-04-15T20:52:02Z\",\"enabled\":true,\"hypervisor_group_id\":null,\"id\":3,\"xen_info\":null,\"failure_count\":0,\"health\":null,\"memory_overhead\":464,\"ip_address\":\"126.126.126.126\",\"locked\":false,\"online\":false}}"
+    http_version: "1.1"

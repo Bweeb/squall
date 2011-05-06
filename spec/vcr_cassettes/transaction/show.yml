@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/transactions/5.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Tue, 03 May 2011 18:09:32 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.039852"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "404"
+      transfer-encoding: 
+      - chunked
+    body: "{\"error\":\"Resource not found\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.example.com:80/transactions/1.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"a6ff1a2063d2158cdfe8d5dab5dc5cc8\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.040787"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 03 May 2011 18:09:33 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "{\"transaction\":{\"pid\":2180,\"created_at\":\"2011-04-28T15:31:22Z\",\"actor\":null,\"updated_at\":\"2011-04-28T15:31:27Z\",\"action\":\"reset_root_password\",\"parent_type\":\"VirtualMachine\",\"priority\":10,\"id\":1,\"allowed_cancel\":true,\"dependent_transaction_id\":null,\"user_id\":2,\"parent_id\":1,\"log_output\":\"\",\"params\":{\"new_password\":null},\"identifier\":\"7z2gzavnrhmmt3\",\"status\":\"complete\"}}"
+    http_version: "1.1"

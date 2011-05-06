@@ -1,4 +1,5 @@
 module Squall
+  # Holds the configuration for Squall
   class Config
     attr_accessor :config
 

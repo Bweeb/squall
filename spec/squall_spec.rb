@@ -38,4 +38,30 @@ describe Squall do
       Squall.config.should be_empty
     end
   end
+
+  describe "#config_file" do
+    it "defaults to ~/.squall" do
+      file = File.join(ENV['HOME'], '.squall.yml')
+      config = {'username' => 'test', 'password' => 'pass', 'base_uri' => 'http://example.com'}
+
+      File.stub(:exists?).and_return(true)
+      YAML.should_receive(:load_file).with(file).and_return(config)
+
+      Squall.configuration_file.should be_nil
+      Squall.config_file
+      Squall.configuration_file.should == file
+    end
+
+    it "returns an error if the file doesn't exist" do
+      expect { Squall.config_file '/tmp/missing.yml'}.to raise_error(ArgumentError, "Config file doesn't exist '/tmp/missing.yml'")
+    end
+
+    it "loads the yaml" do
+      File.stub(:exists?).and_return(true)
+      config = {'username' => 'test', 'password' => 'pass', 'base_uri' => 'http://example.com'}
+      YAML.should_receive(:load_file).with('/tmp/exists.yml').and_return(config)
+      Squall.config_file '/tmp/exists.yml'
+      Squall.config.should include(:username => config['username'], :password => config['password'], :base_uri => config['base_uri'])
+    end
+  end
 end

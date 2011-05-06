@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/virtual_machines/404/reboot.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "3.096855"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 03 May 2011 14:38:07 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "404"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"error\":\"Resource not found\"}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/virtual_machines/1/reboot.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      location: 
+      - http://www.example.com/virtual_machines/1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Tue, 03 May 2011 14:39:57 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.028059"
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      cache-control: 
+      - no-cache
+      status: 
+      - "201"
+      transfer-encoding: 
+      - chunked
+    body: "{\"virtual_machine\":{\"label\":\"testbye\",\"cpus\":1,\"operating_system_distro\":\"rhel\",\"created_at\":\"2011-05-03T14:02:02Z\",\"template_id\":1,\"operating_system\":\"linux\",\"cpu_shares\":1,\"updated_at\":\"2011-05-03T14:39:57Z\",\"memory\":256,\"local_remote_access_port\":5907,\"allowed_swap\":true,\"recovery_mode\":false,\"allow_resize_without_reboot\":true,\"xen_id\":17,\"id\":1,\"hypervisor_id\":6,\"user_id\":4,\"template_label\":\"CentOS 5.5 x64\",\"hostname\":\"testbye\",\"booted\":true,\"remote_access_password\":\"asdfsdf\",\"min_disk_size\":5,\"initial_root_password\":\"asdfasdf\",\"identifier\":\"safsadf\",\"locked\":true,\"built\":true}}"
+    http_version: "1.1"
