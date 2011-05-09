@@ -13,10 +13,5 @@ module Squall
       response = request(:post, "/templates/#{id}/make_public.json")
       response.first[1]
     end
-
-    # Download a Template image
-    def download(id)
-      response = request(:get, "/templates.json?remote_template_id=#{id}")
-    end
   end
 end
