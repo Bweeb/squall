@@ -34,10 +34,11 @@ describe Squall::Base do
   describe "#request" do
     it "200-207 returns success" do
       (200..207).each do |i|
-        mock_request(:get, "/#{i}", :status => [i, "OK"])
+        mock_request(:get, "/#{i}", :status => [i, "OK"], :body => "Body is OK")
         base = Squall::Base.new
         base.request(:get, "/#{i}")
         base.success.should be_true
+        base.result.should match(/OK/)
       end
     end
 
