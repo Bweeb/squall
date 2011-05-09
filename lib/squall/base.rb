@@ -8,6 +8,9 @@ module Squall
     # Returns true/false for successful/unsuccessful requests
     attr_reader :success
 
+    # HTTPart request result
+    attr_reader :result
+
     # HTTParty class methods
     include HTTParty
 
