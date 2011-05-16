@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/settings/networks/1/ip_addresses.json?ip_address[netmask]=255.255.255.194&ip_address[network_address]=109.123.91.66&ip_address[gateway]=109.123.91.67&ip_address[address]=109.123.91.68&ip_address[broadcast]=109.123.91.129
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic WHAT
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"c4ca4238a0b923820dcc509a6f75849b\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.029388"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Mon, 16 May 2011 20:01:54 GMT
+      set-cookie: 
+      - _onapp_session=WHAT; path=/; HttpOnly
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "1"
+    http_version: "1.1"

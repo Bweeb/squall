@@ -68,4 +68,36 @@ describe Squall::IpAddress do
       end
     end
   end
+
+  describe "#create" do
+    use_vcr_cassette 'ipaddress/create'
+
+    it "raises ArgumentError without network_id" do
+      expect { @ip.create }.to raise_error(ArgumentError)
+    end
+
+    it "raises ArgumentError without required options" do
+      expect { @ip.create(1, {}) }.to raise_error(ArgumentError)
+    end
+
+    it "creates a new IP" do
+      new_ip = @ip.create(1,
+        :address         => '109.123.91.68',
+        :netmask         => '255.255.255.194',
+        :broadcast       => '109.123.91.129',
+        :network_address => '109.123.91.66',
+        :gateway         => '109.123.91.67'
+      )
+
+      @ip.success.should be_true
+
+      pending "OnApp isn't returning the newly created IP info right now" do
+        new_ip['address'].should         == '109.123.91.68'
+        new_ip['netmask'].should         == '255.255.255.194'
+        new_ip['broadcast'].should       == '109.123.91.129'
+        new_ip['network_address'].should == '109.123.91.66'
+        new_ip['gateway'].should         == '109.123.91.67'
+      end
+    end
+  end
 end

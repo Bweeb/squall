@@ -20,5 +20,15 @@ module Squall
       params.required(:address, :netmask, :broadcast, :network_address, :gateway).validate!(options)
       response = request(:put, "/settings/networks/#{network_id}/ip_addresses/#{id}.json", default_params(options))
     end
+
+    # Creates a new IpAddress
+    #
+    # ==== Options
+    # * +network_id+ - required
+    # * +options+ - Params for the new IP address
+    def create(network_id, options = {})
+      params.required(:address, :netmask, :broadcast, :network_address, :gateway).validate!(options)
+      response = request(:post, "/settings/networks/#{network_id}/ip_addresses.json", default_params(options))
+    end
   end
 end
