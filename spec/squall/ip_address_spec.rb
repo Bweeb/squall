@@ -57,16 +57,15 @@ describe Squall::IpAddress do
       ip = @ip.edit(1, 1, ip_params)
       @ip.success.should be_true
 
-      # OnApp isn't returning the updated IP info right now, we can uncomment
-      # this when it's fixed
+      pending "OnApp isn't returning the updated IP info right now" do
+        ip.keys.should include(*%w[address netmask broadcast network_address gateway])
 
-      # ip.keys.should include(*%w[address netmask broadcast network_address gateway])
-      #
-      # ip['address'].should         == '109.123.91.67'
-      # ip['netmask'].should         == '255.255.255.193'
-      # ip['broadcast'].should       == '109.123.91.128'
-      # ip['network_address'].should == '109.123.91.65'
-      # ip['gateway'].should         == '109.123.91.66'
+        ip['address'].should         == '109.123.91.67'
+        ip['netmask'].should         == '255.255.255.193'
+        ip['broadcast'].should       == '109.123.91.128'
+        ip['network_address'].should == '109.123.91.65'
+        ip['gateway'].should         == '109.123.91.66'
+      end
     end
   end
 end
