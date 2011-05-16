@@ -100,4 +100,18 @@ describe Squall::IpAddress do
       end
     end
   end
+
+  describe "#delete" do
+    use_vcr_cassette 'ipaddress/delete'
+
+    it "raises ArgumentError without network_id or id" do
+      expect { @ip.delete }.to raise_error(ArgumentError)
+      expect { @ip.delete(1) }.to raise_error(ArgumentError)
+    end
+
+    it "deletes the IP" do
+      @ip.delete(1, 1)
+      @ip.success.should be_true
+    end
+  end
 end

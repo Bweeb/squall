@@ -30,5 +30,14 @@ module Squall
       params.required(:address, :netmask, :broadcast, :network_address, :gateway).validate!(options)
       response = request(:post, "/settings/networks/#{network_id}/ip_addresses.json", default_params(options))
     end
+
+    # Deletes an existing IpAddress
+    #
+    # ==== Options
+    # * +network_id+ - required
+    # * +id+ - required
+    def delete(network_id, id)
+      request(:delete, "/settings/networks/#{network_id}/ip_addresses/#{id}.json")
+    end
   end
 end
