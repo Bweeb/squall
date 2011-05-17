@@ -12,6 +12,7 @@ module Squall
   autoload :Role,           'squall/role'
   autoload :Network,        'squall/network'
   autoload :IpAddress,      'squall/ip_address'
+  autoload :IpAddressJoin,  'squall/ip_address_join'
   autoload :Template,       'squall/template'
   autoload :VirtualMachine, 'squall/virtual_machine'
   autoload :Statistic,      'squall/statistic'
