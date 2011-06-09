@@ -2,6 +2,7 @@ require 'httparty'
 
 require 'squall/version'
 require 'squall/exception'
+require 'squall/yaml'
 
 module Squall
   autoload :Params,         'squall/params'
