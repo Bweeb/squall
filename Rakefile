@@ -39,23 +39,28 @@ task :sanitize_cassettes do
           old.gsub!(uri, 'www.example.com')
           old.gsub!(/_onapp_session=(.*?);/, "_onapp_session=WHAT;")
           old.gsub!(/- Basic .*/, "- Basic WHAT")
-          File.open(file, 'w') do |f| 
-            f.write old 
-          end 
-        # end 
-      end 
+          File.open(file, 'w') do |f|
+            f.write old
+          end
+        # end
+      end
     else
       puts "Nothing to sanitize"
-    end 
+    end
   else
     puts "I can't sanitize without setting up WHM_HASH and WHM_HOST"
-  end 
+  end
 end
 
 desc  "Run all specs with rcov"
 RSpec::Core::RakeTask.new(:rcov) do |t|
   t.rcov = true
   t.rcov_opts = %w{--exclude osx\/objc,gems\/,spec\/,features\/}
+end
+
+desc "Open an irb session preloaded with this library"
+task :console do
+  sh "irb -rubygems -r ./lib/squall.rb -I ./lib"
 end
 
 task :default => [:spec]
