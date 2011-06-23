@@ -7,7 +7,7 @@ A Ruby library for working with the OnApp REST API
 
 [RDoc](http://rdoc.info/github/site5/squall/master/frames)
 
-Confirmed to work with ruby 1.8.7, 1.9.2, Rubinis, REE and JRuby 1.6.0 with OnApp 2.1
+Confirmed to work with ruby 1.8.7, 1.9.2, Rubinis 1.2.3 (and 2.0pre), REE and JRuby 1.6.0 with OnApp 2.1
 
 Install
 -------
