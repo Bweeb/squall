@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+if $0 == __FILE__
+  require 'rubygems'
+  $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+end
+
+require 'squall'
+require 'squall/cli'
+
+help = <<-HELP
+Command list:
+        virtual_machine             Manage virtual machines
+
+Help:
+        --version                   Show Squall version
+        --help                      Show this message
+
+See 'squall COMMAND --help' for more information on a specific command.
+HELP
+
+
+ARGV << '--help' if ARGV.empty?
+
+command = ARGV.shift
+
+case command
+when 'virtual_machine'
+  Squall::CLI::VirtualMachine.run(ARGV)
+when '--version', '-v'
+  require 'squall/version'
+  puts "Squall v#{Squall::VERSION}"
+  exit(0)
+else
+  puts "Error: Invalid command" unless %w[-h --help].include?(command)
+  puts help
+  exit(-1)
+end
