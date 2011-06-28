@@ -13,15 +13,17 @@ module Squall
     end
 
     def help
-      %{Command list:
+      help = %{Usage: squall [command]
+
+        Command list:
                 virtual_machine             Manage virtual machines
 
         Help:
                 --version                   Show Squall version
                 --help                      Show this message
 
-        See 'squall COMMAND --help' for more information on a specific command.
-      }.gsub(/^        /, '')
+        See 'squall [command] --help' for more information on a specific command.}
+      help.gsub(/^        /, '')
     end
 
     def dispatch!
@@ -33,8 +35,14 @@ module Squall
         puts "Squall v#{Squall::VERSION} by Site5 LLC"
         exit(0)
       else
-        puts "Error: Invalid command" unless %w[-h --help].include?(@command)
-        puts help
+
+        if %w[-h --help].include?(@command) || @command.nil?
+          msg = help
+        else
+          msg = "Error: Invalid command #{@command}\n#{help}"
+        end
+        @parser.banner = msg
+        puts @parser.to_s
         exit(-1)
       end
 
