@@ -37,8 +37,10 @@ describe Squall::CLI do
   end
 
   describe "#dispatch!" do
-    it "exits with invalid command", :pending => true do
-      expect { @cli.dispatch! }.to raise_error SystemExit
+    it "exits with invalid command" do
+      @cli.stub(:puts)
+      @cli.should_receive(:exit).with(-1)
+      @cli.dispatch!
     end
   end
 
