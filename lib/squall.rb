@@ -5,6 +5,7 @@ require 'squall/exception'
 require 'squall/yaml'
 
 module Squall
+  autoload :CLI,            'squall/cli'
   autoload :Params,         'squall/params'
   autoload :Hypervisor,     'squall/hypervisor'
   autoload :Config,         'squall/config'
