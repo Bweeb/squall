@@ -28,7 +28,6 @@ module Squall
       case @command
       when 'virtual_machine'
         virtual_machine
-        @parser.parse!(@argv)
       when '--version', '-v'
         require 'squall/version'
         puts "Squall v#{Squall::VERSION} by Site5 LLC"
@@ -38,6 +37,8 @@ module Squall
         puts help
         exit(-1)
       end
+
+      @parser.parse!(@argv)
     end
 
     def virtual_machine
@@ -51,6 +52,8 @@ module Squall
         end
 
         @parser.separator "\nOptional parameters:\n"
+      else
+        print_help_if_argv_empty
       end
     end
 
