@@ -45,3 +45,33 @@ def mock_request(meth, path, options = {})
   url    = "#{uri.scheme}://#{config[:username]}:#{config[:password]}@#{uri.host}:#{uri.port}#{path}"
   FakeWeb.register_uri(meth, url, {:content_type => 'application/json'}.merge(options))
 end
+
+RSpec::Matchers.define :have_attr_accessor do |attribute|
+  match do |object|
+    object.respond_to?(attribute) && object.respond_to?("#{attribute}=")
+  end
+
+  description do
+    "have attr_writer :#{attribute}"
+  end
+end
+
+RSpec::Matchers.define :have_attr_reader do |attribute|
+  match do |object|
+    object.respond_to? attribute
+  end
+
+  description do
+    "have attr_reader :#{attribute}"
+  end
+end
+
+RSpec::Matchers.define :have_attr_writer do |attribute|
+  match do |object|
+    object.respond_to? "#{attribute}="
+  end
+
+  description do
+    "have attr_writer :#{attribute}"
+  end
+end
