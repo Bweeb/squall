@@ -1,7 +1,4 @@
 require 'spec_helper'
-# module Kernel
-#   def puts(*arg); end
-# end
 
 describe Squall::CLI do
   before :each do
