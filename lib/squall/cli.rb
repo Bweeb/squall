@@ -1,6 +1,23 @@
 require 'optparse'
 module Squall
   class CLI
+    autoload :Group,   'squall/cli/group'
+    autoload :Command, 'squall/cli/command'
+
+    class << self
+      def groups
+        @groups ||= []
+      end
+
+      def group(name, &block)
+        unless groups.assoc(name)
+          group = Group.new(name)
+          groups << [name, group]
+          group.instance_eval(&block) if block
+        end
+      end
+    end
+
     attr_reader :parser
 
     def initialize(argv = [])
@@ -26,27 +43,52 @@ module Squall
       help.gsub(/^        /, '')
     end
 
+    # Dispatches the CLI
+    #
+    # Looks for a CLI group named @command, then
+    # tries to run @subcommand using the CLI group's #driver
+    # method
     def dispatch!
-      case @command
-      when 'virtual_machine'
-        virtual_machine
-      when '--version', '-v'
-        require 'squall/version'
-        puts "Squall v#{Squall::VERSION} by Site5 LLC"
-        exit(0)
-      else
-
-        if %w[-h --help].include?(@command) || @command.nil?
-          msg = help
+      group_name   = @command && @command.to_sym
+      command_name = @subcommand && @subcommand.to_sym
+      if group_name && group = self.class.groups.assoc(group_name)
+        group = group[1]
+        if command_name && command = group.commands.assoc(command_name)
+          command = command[1]
+          command.build_parser(@parser)
         else
-          msg = "Error: Invalid command #{@command}\n#{help}"
+          puts "Error: invalid command #{command_name}" if command_name
+          puts group.help
+          exit(-1)
         end
-        @parser.banner = msg
-        puts @parser.to_s
+      else
+        puts "Error: invalid command #{group_name}" if group_name
+        puts help
         exit(-1)
       end
 
+      # case @command
+      # when 'virtual_machine'
+      #   virtual_machine
+      # when '--version', '-v'
+      #   require 'squall/version'
+      #   puts "Squall v#{Squall::VERSION} by Site5 LLC"
+      #   exit(0)
+      # else
+
+      #   if %w[-h --help].include?(@command) || @command.nil?
+      #     msg = "HELP"
+      #   else
+      #     msg = "Error: Invalid command #{@command}\\nHELP"
+      #   end
+      #   @parser.banner = msg
+      #   puts @parser.to_s
+      #   exit(-1)
+      # end
+
+      # puts @argv
       @parser.parse!(@argv)
+      # puts @parser.to_s
     end
 
     def virtual_machine
@@ -70,3 +112,5 @@ module Squall
     end
   end
 end
+
+require 'squall/cli/commands/virtual_machine'

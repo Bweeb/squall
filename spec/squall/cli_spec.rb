@@ -5,6 +5,10 @@ describe Squall::CLI do
     @cli = Squall::CLI.new(%w[delorean time_travel 1955])
   end
 
+  describe "::groups" do
+    it { @cli.class.groups.should be_an Array }
+  end
+
   describe "#initialize" do
     it "sets @command" do
       @cli.instance_variable_get(:@command).should == 'delorean'
@@ -29,10 +33,6 @@ describe Squall::CLI do
     end
   end
 
-  describe "#help" do
-    it { @cli.help.should match /Command list:/ }
-  end
-
   describe "#dispatch!" do
     it "exits with invalid command" do
       @cli.stub(:puts)
@@ -51,11 +51,4 @@ describe Squall::CLI do
     end
   end
 
-end
-
-describe "./bin/squall virtual_machine" do
-  it "returns help with no arguments" do
-    cli = Squall::CLI.new(%w[virtual_machine])
-    cli.parser.to_s.should match /Usage: squall virtual_machine/
-  end
 end
