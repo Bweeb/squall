@@ -52,7 +52,7 @@ RSpec::Matchers.define :have_attr_accessor do |attribute|
   end
 
   description do
-    "have attr_writer :#{attribute}"
+    "have attr_accessor :#{attribute}"
   end
 end
 
