@@ -57,12 +57,22 @@ module Squall
           command = command[1]
           command.build_parser(@parser)
         else
-          puts "Error: invalid command #{command_name}" if command_name
+          if command_name && command_name != '--help'
+            puts "Error: invalid command #{command_name}"
+            exit_code = -1
+          else
+            exit_code = 0
+          end
           puts group.help
-          exit(-1)
+          exit(exit_code)
         end
       else
-        puts "Error: invalid command #{group_name}" if group_name
+        if group_name && group_name != '--help'
+          puts "Error: invalid command #{group_name}"
+          exit_code = -1
+        else
+          exit_code = 0
+        end
         puts help
         exit(-1)
       end

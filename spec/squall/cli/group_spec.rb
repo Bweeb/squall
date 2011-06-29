@@ -34,7 +34,6 @@ describe Squall::CLI::Group do
     it "sets @help with an argument" do
       @group.help "HELP"
       @group.instance_variable_get(:@help).should == "HELP"
-
     end
 
     it "gets @help with no arguement" do
