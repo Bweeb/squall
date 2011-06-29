@@ -12,8 +12,7 @@ module Squall
     end
 
     def description(desc = nil)
-      @description = desc if desc
-      @description
+      @description = desc || @description
     end
 
     def build_parser(option_parser)

@@ -8,18 +8,16 @@ module Squall
     end
 
     def driver(driver = nil)
-      @driver = driver if driver
-      @driver
+      @driver = driver || @driver
     end
 
     def help(help = nil)
-      @help = help if help
-      @help
+      @help = help || @help
     end
 
     def command(name, &block)
       command = CLI::Command.new(name)
-      command.instance_eval(&block) if block
+      command.instance_eval(&block) if block_given?
       @commands << [name, command]
       command
     end

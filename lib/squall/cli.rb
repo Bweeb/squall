@@ -13,7 +13,7 @@ module Squall
         unless groups.assoc(name)
           group = Group.new(name)
           groups << [name, group]
-          group.instance_eval(&block) if block
+          group.instance_eval(&block) if block_given?
         end
       end
     end
