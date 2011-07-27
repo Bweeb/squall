@@ -1,13 +1,14 @@
-Squall
-=======
-[![Build Status](http://travis-ci.org/site5/squall.png)](http://travis-ci.org/site5/squall)
-
+Squall [![Squall Build Status][Build Icon]][Build Status]
+=========================================================
 
 A Ruby library for working with the OnApp REST API
 
 [RDoc](http://rdoc.info/github/site5/squall/master/frames)
 
 Confirmed to work with ruby 1.8.7, 1.9.2, Rubinis 1.2.3 (and 2.0pre), REE and JRuby 1.6.0 with OnApp 2.1
+
+[Build Status]: http://travis-ci.org/site5/squall
+[Build Icon]: https://secure.travis-ci.org/site5/squall.png?branch=master
 
 Install
 -------
