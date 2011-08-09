@@ -29,4 +29,89 @@ describe Squall::IpAddress do
       first['address'].should == '127.2.2.2'
     end
   end
+
+  describe "#edit" do
+    use_vcr_cassette 'ipaddress/edit'
+
+    ip_params = {
+      :address         => '109.123.91.67',
+      :netmask         => '255.255.255.193',
+      :broadcast       => '109.123.91.128',
+      :network_address => '109.123.91.65',
+      :gateway         => '109.123.91.66'
+    }
+
+    it "raises ArgumentError without required arguments" do
+      expect { @ip.edit }.to raise_error(ArgumentError)
+    end
+
+    it "raises ArgumentError without id argument" do
+      expect { @ip.edit(1) }.to raise_error(ArgumentError)
+    end
+
+    it "raises ArgumentError without required options" do
+      expect { @ip.edit(1, 1, {}) }.to raise_error(ArgumentError)
+    end
+
+    it "edits the IpAddress" do
+      ip = @ip.edit(1, 1, ip_params)
+      @ip.success.should be_true
+
+      pending "OnApp isn't returning the updated IP info right now" do
+        ip.keys.should include(*%w[address netmask broadcast network_address gateway])
+
+        ip['address'].should         == '109.123.91.67'
+        ip['netmask'].should         == '255.255.255.193'
+        ip['broadcast'].should       == '109.123.91.128'
+        ip['network_address'].should == '109.123.91.65'
+        ip['gateway'].should         == '109.123.91.66'
+      end
+    end
+  end
+
+  describe "#create" do
+    use_vcr_cassette 'ipaddress/create'
+
+    it "raises ArgumentError without network_id" do
+      expect { @ip.create }.to raise_error(ArgumentError)
+    end
+
+    it "raises ArgumentError without required options" do
+      expect { @ip.create(1, {}) }.to raise_error(ArgumentError)
+    end
+
+    it "creates a new IP" do
+      new_ip = @ip.create(1,
+        :address         => '109.123.91.68',
+        :netmask         => '255.255.255.194',
+        :broadcast       => '109.123.91.129',
+        :network_address => '109.123.91.66',
+        :gateway         => '109.123.91.67'
+      )
+
+      @ip.success.should be_true
+
+      pending "OnApp isn't returning the newly created IP info right now" do
+        new_ip['address'].should         == '109.123.91.68'
+        new_ip['netmask'].should         == '255.255.255.194'
+        new_ip['broadcast'].should       == '109.123.91.129'
+        new_ip['network_address'].should == '109.123.91.66'
+        new_ip['gateway'].should         == '109.123.91.67'
+      end
+    end
+  end
+
+  describe "#delete" do
+    use_vcr_cassette 'ipaddress/delete'
+
+    it "raises ArgumentError without network_id or id" do
+      expect { @ip.delete }.to raise_error(ArgumentError)
+      expect { @ip.delete(1) }.to raise_error(ArgumentError)
+    end
+
+    it "deletes the IP" do
+      @ip.delete(1, 1)
+      @ip.success.should be_true
+    end
+  end
 end

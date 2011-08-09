@@ -33,8 +33,9 @@ module Squall
     #
     #  create params
     def create(options = {})
-      required = [:label, :hypervisor_id, :hostname, :memory, :cpus, :cpu_shares, :primary_disk_size]
-      optional = [:cpu_shares,
+      required = [:label, :hostname, :memory, :cpus, :cpu_shares, :primary_disk_size]
+      optional = [:hypervisor_id,
+                  :cpu_shares,
                   :swap_disk_size,
                   :primary_network_id,
                   :required_automatic_backup,

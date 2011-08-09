@@ -52,10 +52,6 @@ describe Squall::VirtualMachine do
       requires_attr(:label) { @virtual_machine.create }
     end
 
-    it "requires hypervisor_id" do
-      requires_attr(:hypervisor_id) { @virtual_machine.create(:label => @valid[:label]) }
-    end
-
     it "requires hostname" do
       requires_attr(:hostname) {
         @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id])
