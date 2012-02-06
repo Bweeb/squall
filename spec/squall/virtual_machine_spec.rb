@@ -138,20 +138,19 @@ describe Squall::VirtualMachine do
     end
 
     it "raises error on unknown params" do
-      expect { @virtual_machine.build(1, :asdf => 1) }.to raise_error(ArgumentError, 'Unknown params: asdf')
+      expect { @virtual_machine.build(1, :template_id => 1, :asdf => 1) }.to raise_error(ArgumentError, 'Unknown params: asdf')
       @virtual_machine.success.should be_false
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.build(404) }.to raise_error(Squall::NotFound)
+      expect { @virtual_machine.build(404, :template_id => 1) }.to raise_error(Squall::NotFound)
       @virtual_machine.success.should be_false
     end
 
     it "builds the VM" do
-      build = @virtual_machine.build(72)
+      build = @virtual_machine.build(72, :template_id => 1)
 
       @virtual_machine.success.should be_true
-      build['label'].should == 'Testingagain'
     end
   end
 

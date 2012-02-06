@@ -60,7 +60,7 @@ module Squall
     # * +id+
     # * +options+ - :template_id, :required_startup
     def build(id, options = {})
-      params.accepts(:template_id, :required_startup).validate! options
+      params.required(:template_id).accepts(:required_startup).validate! options
       response = request(:post, "/virtual_machines/#{id}/build.json", default_params(options))
       response.first[1]
     end
