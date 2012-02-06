@@ -16,25 +16,165 @@
     headers: 
       x-ua-compatible: 
       - IE=Edge,chrome=1
-      location: 
-      - https://www.example.com/virtual_machines/70
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      location: 
+      - https://www.example.com/virtual_machines/70
       content-type: 
       - application/json; charset=utf-8
-      x-runtime: 
-      - "0.057999"
-      server: 
-      - Apache/2.2.3 (CentOS)
       date: 
       - Tue, 19 Apr 2011 20:08:35 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.057999"
       set-cookie: 
       - _onapp_session=WHAT; path=/; HttpOnly
-      status: 
-      - "201"
       cache-control: 
       - no-cache
+      status: 
+      - "201"
       transfer-encoding: 
       - chunked
     body: "{\"virtual_machine\":{\"label\":\"testmachine\",\"cpus\":1,\"operating_system_distro\":null,\"created_at\":\"2011-04-19T20:08:35Z\",\"template_id\":null,\"operating_system\":null,\"cpu_shares\":10,\"updated_at\":\"2011-04-19T20:08:35Z\",\"memory\":512,\"local_remote_access_port\":null,\"allowed_swap\":true,\"recovery_mode\":null,\"allow_resize_without_reboot\":null,\"xen_id\":null,\"id\":70,\"hypervisor_id\":5,\"user_id\":4,\"template_label\":null,\"hostname\":\"testmachine\",\"booted\":false,\"remote_access_password\":null,\"min_disk_size\":null,\"initial_root_password\":\"nsdjsadfj2134\",\"identifier\":\"sadfs23\",\"locked\":false,\"built\":false}}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://user:pass@www.example.com:80/virtual_machines.json?virtual_machine[memory]=512&virtual_machine[cpus]=1&virtual_machine[cpu_shares]=10&virtual_machine[label]=testmachine&virtual_machine[primary_disk_size]=10&virtual_machine[template_id]=1&virtual_machine[hypervisor_id]=5&virtual_machine[hostname]=testmachine
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic dXNlcjpwYXNz
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 302
+      message: Found
+    headers: 
+      location: 
+      - http://www.iana.org/domains/example/
+      server: 
+      - BigIP
+      content-length: 
+      - "0"
+    body: 
+    http_version: "1.0"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://user:pass@www.iana.org:80/domains/example/
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic dXNlcjpwYXNz
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      last-modified: 
+      - Wed, 09 Feb 2011 17:13:15 GMT
+      content-type: 
+      - text/html; charset=UTF-8
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Mon, 06 Feb 2012 21:03:58 GMT
+      vary: 
+      - Accept-Encoding
+      transfer-encoding: 
+      - chunked
+    body: |
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <html xmlns="http://www.w3.org/1999/xhtml">
+      <head>
+      	<title>IANA &mdash; Example domains</title>
+      	<!-- start common-head -->
+      	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      	<link rel="stylesheet" type="text/css" href="/_css/2008.1/reset-fonts-grids.css" />
+      	<link rel="stylesheet" type="text/css" media="screen" href="/_css/2008.1/screen.css" />
+      	<link rel="stylesheet" type="text/css" media="print" href="/_css/2008.1/print.css" />
+      	<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+      	<script type="text/javascript" src="/_js/prototype.js"></script>
+      	<script type="text/javascript" src="/_js/corners.js"></script>
+      	<script type="text/javascript" src="/_js/common.js"></script>
+      	<!-- end common-head -->
+      
+      </head>
+      <body>
+      	<!-- start common-bodyhead -->
+      	<div id="header-frame">
+      	<div id="header">
+      	<div id="header-logo"><a href="/"><img src="/_img/iana-logo-pageheader.png" alt="Homepage"/></a></div>
+      	<div id="header-nav">
+      	<ul>
+      	<li><a href="/domains/">Domains</a></li>
+      	<li><a href="/numbers/">Numbers</a></li>
+      	<li><a href="/protocols/">Protocols</a></li>
+      	<li><a href="/about/">About IANA</a></li>
+      	</ul>
+      	</div>
+      	</div>
+      	</div>
+      
+      	<div id="body-container">
+      	<div id="body">
+      	<!-- end common-bodyhead -->
+      
+      
+      	<h1>Example Domains</h1>
+      
+      	<p>As described in <a href="/go/rfc2606">RFC 2606</a>,
+      	we maintain a number of domains such as EXAMPLE.COM and EXAMPLE.ORG
+      	for documentation purposes. These domains may be used as illustrative
+      	examples in documents without prior coordination with us. They are 
+      	not available for registration.</p>
+      
+      	 <!-- start common-bodytail -->
+      	</div>
+      	</div>
+      
+      	<div id="footer-frame">
+      	<div id="footer">
+      
+      
+      	<table width=100%>
+      	<tr>
+      		<td id="iana-footer-first"><b><a href="/about/">About</a></b><br/>
+                      <a href="/about/presentations/">Presentations</a><br/>
+                      <a href="/about/performance/">Performance</a><br/>
+      		<a href="/reports/">Reports</a><br/>
+                      </td>
+      
+      		<td><b><a href="/domains/">Domains</a></b><br/>
+      		<a href="/domains/root/">Root Zone</a><br/>
+      		<a href="/domains/int/">.INT</a><br/>
+      		<a href="/domains/arpa/">.ARPA</a><br/>
+      		<a href="/domains/idn-tables/">IDN Repository</a></td>
+      
+      		<td><b><a href="/protocols/">Protocols</a></b><br/>
+      		<br/>
+      		<b><a href="/numbers/">Number Resources</a></b><br/>
+      		<a href="/abuse/">Abuse Information</a></td>
+      
+      		<td id="iana-footer-icann"><img src="/_img/icann-logo-micro.png"><br/>IANA is operated by the<br/><a href="http://www.icann.org/">Internet Corporation for Assigned Names and Numbers</a></td>
+      	</tr>
+      	</table>
+      
+      <div id="footer-beta-feedback">
+              <p>Please direct general feedback regarding IANA to <a href="mailto:iana@iana.org?subject=General%20website%20feedback">iana@iana.org</a>.</p>
+              </div>
+      
+      	</div>
+      	</div>
+      	<!-- end common-bodytail -->
+      
+      
+      </body>
+      </html>
+
     http_version: "1.1"

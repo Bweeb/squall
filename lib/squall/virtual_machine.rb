@@ -28,12 +28,13 @@ module Squall
     #    :memory => 512, 
     #    :cpus => 1,
     #    :cpu_shares => 10, 
-    #    :primary_disk_size => 10
+    #    :primary_disk_size => 10,
+    #    :template_id => 1
     #  }
     #
     #  create params
     def create(options = {})
-      required = [:label, :hostname, :memory, :cpus, :cpu_shares, :primary_disk_size]
+      required = [:label, :hostname, :memory, :cpus, :cpu_shares, :primary_disk_size, :template_id]
       optional = [:hypervisor_id,
                   :cpu_shares,
                   :swap_disk_size,
@@ -45,7 +46,6 @@ module Squall
                   :admin_note,
                   :note,
                   :allowed_hot_migrate,
-                  :template_id,
                   :initial_root_password
       ]
       params.required(required).accepts(optional).validate! options

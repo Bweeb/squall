@@ -47,7 +47,8 @@ Create a new VM:
       :memory            => 512,
       :cpus              => 1,
       :cpu_shares        => 10,
-      :primary_disk_size => 10
+      :primary_disk_size => 10,
+      :template_id       => 1
     }
 
     vm.create params
