@@ -115,7 +115,7 @@ describe Squall::VirtualMachine do
     end
 
     it "creates a virtual_machine" do
-      pending "https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&ref=8181-TYFH-8069" do 
+      pending "broken in OnApp (triggering the Network Interfaces error): https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&ref=8181-TYFH-8069" do 
         virtual_machine = @virtual_machine.create(@valid)
         @valid.each do |k,v|
           virtual_machine[k].should == @valid[k.to_s]
