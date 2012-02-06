@@ -71,6 +71,10 @@ To run tests:
     
 Squall uses [VCR](https://github.com/myronmarston/vcr) to cache server responses to test against. To test via live http connections, make sure you have a config file setup and set the shell var SQUALL_LIVE=1. NOTE: since OnApp does not currently support a test environment this is not recommended!
 
+To enable HTTParty's debug mode:
+
+    Squall::Base.debug_output
+
 Note on Patches/Pull Requests
 -----------------------------
  
