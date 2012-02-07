@@ -4,7 +4,7 @@ describe Squall::VirtualMachine do
   before(:each) do
     default_config
     @virtual_machine = Squall::VirtualMachine.new
-    @valid = {:label => 'testmachine', :hypervisor_id => 5, :hostname => 'testmachine', :memory => 512, :cpus => 1,
+    @valid = {:label => 'testmachine', :hostname => 'testmachine', :memory => 512, :cpus => 1,
               :cpu_shares => 10, :primary_disk_size => 10, :template_id => 1}
     @keys = ["monthly_bandwidth_used", "cpus", "label", "created_at", "operating_system_distro",
       "cpu_shares", "operating_system", "template_id", "allowed_swap", "local_remote_access_port",
