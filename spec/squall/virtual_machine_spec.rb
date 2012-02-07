@@ -88,10 +88,8 @@ describe Squall::VirtualMachine do
 
     it "raises error on unknown params" do
       expect {
-        @virtual_machine.create(:label => @valid[:label], :hostname => @valid[:hostname],
-                                :memory => @valid[:memory], :cpus => @valid[:cpus], :cpu_shares => @valid[:cpu_shares], 
-                                :template_id => @valid[:template_id], :what => 'what')
-      }.to raise_error(ArgumentError, 'Missing required params: primary_disk_size')
+        @virtual_machine.create(@valid.merge(:what => 'what'))
+      }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
     it "allows all optional params" do
