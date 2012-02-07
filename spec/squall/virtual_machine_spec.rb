@@ -4,7 +4,7 @@ describe Squall::VirtualMachine do
   before(:each) do
     default_config
     @virtual_machine = Squall::VirtualMachine.new
-    @valid = {:label => 'testmachine', :hypervisor_id => 5, :hostname => 'testmachine', :memory => 512, :cpus => 1,
+    @valid = {:label => 'testmachine', :hostname => 'testmachine', :memory => 512, :cpus => 1,
               :cpu_shares => 10, :primary_disk_size => 10, :template_id => 1}
     @keys = ["monthly_bandwidth_used", "cpus", "label", "created_at", "operating_system_distro",
       "cpu_shares", "operating_system", "template_id", "allowed_swap", "local_remote_access_port",
@@ -54,44 +54,42 @@ describe Squall::VirtualMachine do
 
     it "requires hostname" do
       requires_attr(:hostname) {
-        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id])
+        @virtual_machine.create(:label => @valid[:label])
       }
     end
 
     it "requires memory" do
       requires_attr(:memory) {
-        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname])
+        @virtual_machine.create(:label => @valid[:label], :hostname => @valid[:hostname])
       }
     end
 
     it "requires cpus" do
       requires_attr(:cpus) {
-        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname],
+        @virtual_machine.create(:label => @valid[:label], :hostname => @valid[:hostname],
                                 :memory => @valid[:memory])
       }
     end
 
     it "requires cpu_shares" do
       requires_attr(:cpu_shares) {
-        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname],
+        @virtual_machine.create(:label => @valid[:label], :hostname => @valid[:hostname],
                                 :memory => @valid[:memory], :cpus => @valid[:cpu_shares])
       }
     end
 
     it "requires primary_disk_size" do
       requires_attr(:primary_disk_size) {
-        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id],
-                                :hostname => @valid[:hostname], :memory => @valid[:memory], :cpus => @valid[:cpu_shares],
+        @virtual_machine.create(:label => @valid[:label], :hostname => @valid[:hostname], 
+                                :memory => @valid[:memory], :cpus => @valid[:cpu_shares],
                                 :cpu_shares => @valid[:cpu_shares])
       }
     end
 
     it "raises error on unknown params" do
       expect {
-        @virtual_machine.create(:label => @valid[:label],  :hypervisor_id => @valid[:hypervisor_id], :hostname => @valid[:hostname],
-                                :memory => @valid[:memory], :cpus => @valid[:cpus], :cpu_shares => @valid[:cpu_shares], 
-                                :template_id => @valid[:template_id], :what => 'what')
-      }.to raise_error(ArgumentError, 'Missing required params: primary_disk_size')
+        @virtual_machine.create(@valid.merge(:what => 'what'))
+      }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
     it "allows all optional params" do
@@ -105,6 +103,7 @@ describe Squall::VirtualMachine do
                   :admin_note,
                   :note,
                   :allowed_hot_migrate,
+                  :hypervisor_id,
                   :initial_root_password
       ]
 

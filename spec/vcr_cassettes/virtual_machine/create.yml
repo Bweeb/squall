@@ -1,7 +1,8 @@
+--- 
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines.json?virtual_machine[cpus]=1&virtual_machine[cpu_shares]=10&virtual_machine[primary_disk_size]=10&virtual_machine[label]=testmachine&virtual_machine[hypervisor_id]=5&virtual_machine[template_id]=1&virtual_machine[hostname]=testmachine&virtual_machine[memory]=512
+    uri: http://user:pass@www.example.com:80/virtual_machines.json?virtual_machine[cpu_shares]=10&virtual_machine[primary_disk_size]=10&virtual_machine[template_id]=1&virtual_machine[label]=testmachine&virtual_machine[hostname]=testmachine&virtual_machine[memory]=512&virtual_machine[cpus]=1
     body: 
     headers: 
       content-type: 
@@ -20,18 +21,18 @@
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.252585"
+      - "0.285970"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Tue, 07 Feb 2012 16:41:00 GMT
+      - Tue, 07 Feb 2012 16:55:28 GMT
       set-cookie: 
-      - _session_id=c8b765d3693ee795df0b95f90df60c72; path=/; HttpOnly
+      - _session_id=23378ba2608e14050dacc611f4c12762; path=/; HttpOnly
       status: 
       - "422"
       cache-control: 
       - no-cache
       transfer-encoding: 
       - chunked
-    body: "{\"errors\":[\"Hypervisor can't be blank\",\"Hypervisor was not selected automatically\"]}"
+    body: "{\"errors\":[\"Network interfaces is invalid\"]}"
     http_version: "1.1"
