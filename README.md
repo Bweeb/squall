@@ -90,4 +90,4 @@ Note on Patches/Pull Requests
 Copyright
 ---------
 
-Copyright (c) 2011 Site5 LLC. See LICENSE for details.
+Copyright (c) 2012 Site5 LLC. See LICENSE for details.
