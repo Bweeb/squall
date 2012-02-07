@@ -82,7 +82,7 @@ describe Squall::IpAddress do
 
     it "creates a new IP" do
       new_ip = @ip.create(1,
-        :address         => '109.123.91.68',
+        :address         => '109.123.91.89',
         :netmask         => '255.255.255.194',
         :broadcast       => '109.123.91.129',
         :network_address => '109.123.91.66',
@@ -91,13 +91,11 @@ describe Squall::IpAddress do
 
       @ip.success.should be_true
 
-      pending "OnApp isn't returning the newly created IP info right now" do
-        new_ip['address'].should         == '109.123.91.68'
-        new_ip['netmask'].should         == '255.255.255.194'
-        new_ip['broadcast'].should       == '109.123.91.129'
-        new_ip['network_address'].should == '109.123.91.66'
-        new_ip['gateway'].should         == '109.123.91.67'
-      end
+      new_ip['ip_address']['address'].should         == '109.123.91.89'
+      new_ip['ip_address']['netmask'].should         == '255.255.255.194'
+      new_ip['ip_address']['broadcast'].should       == '109.123.91.95'
+      new_ip['ip_address']['network_address'].should == '109.123.91.64'
+      new_ip['ip_address']['gateway'].should         == '109.123.91.67'
     end
   end
 

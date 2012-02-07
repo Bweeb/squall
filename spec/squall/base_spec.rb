@@ -34,11 +34,10 @@ describe Squall::Base do
   describe "#request" do
     it "200-207 returns success" do
       (200..207).each do |i|
-        mock_request(:get, "/#{i}", :status => [i, "OK"], :body => "Body is OK")
+        mock_request(:get, "/#{i}", :status => [i, "OK"], :body => "{\"something\":[\"OK\"]}")
         base = Squall::Base.new
         base.request(:get, "/#{i}")
         base.success.should be_true
-        base.result.should match(/OK/)
       end
     end
 
@@ -68,13 +67,13 @@ describe Squall::Base do
 
   describe "#errors" do
     it "is empty on success" do
-      mock_request(:get, '/200_errors', :status => [200, "OK"], :body => '"{\"something\":[\"OK\"]}"')
+      mock_request(:get, '/200_errors', :status => [200, "OK"], :body => "{\"something\":[\"errors\"]}")
       @base.request(:get, '/200_errors')
       @base.errors.should be_empty
     end
 
     it "returns an error hash" do
-      mock_request(:get, '/500_errors', :status => [500, "Internal Server Error"], :body => '"{\"something\":[\"errors\"]}"')
+      mock_request(:get, '/500_errors', :status => [500, "Internal Server Error"], :body => "{\"something\":[\"errors\"]}")
       expect { @base.request(:get, '/500_errors') }.to raise_error(Squall::ServerError)
       @base.errors.should_not be_empty
     end

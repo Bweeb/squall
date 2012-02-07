@@ -7,6 +7,8 @@ VCR.config do |c|
   c.cassette_library_dir = 'spec/vcr_cassettes'
   c.stub_with :fakeweb
   c.default_cassette_options = {:record => :new_episodes}
+  c.filter_sensitive_data("Basic <REDACTED>") { |i| [i.request.headers['authorization']].flatten.first }
+  c.filter_sensitive_data("<REDACTED>") { |i| [i.response.headers['set-cookie']].flatten.first }
 end
 
 RSpec.configure do |c|
@@ -23,6 +25,11 @@ def default_config
     uri  = config['base_uri']
     user = config['username']
     pass = config['password']
+    VCR.config do |c|
+      c.filter_sensitive_data("www.example.com") { URI.parse(config['base_uri']).host }
+      c.filter_sensitive_data("user") { config['username'] }
+      c.filter_sensitive_data("pass") { config['password'] }
+    end
   else
     uri  = 'http://www.example.com'
     user = 'user'
