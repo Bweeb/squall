@@ -30,6 +30,17 @@ Configure:
       c.username 'username'
       c.password 'topsecret'
     end
+    
+Squall can load configuration from a yaml file:
+
+    # .squall.yml
+    base_uri 'https://onappurl.com'
+    username 'username'
+    password 'topsecret'
+    
+To load it (by default it assumes ~/.squall.yml):
+
+    Squall.config_file(/[path]/[to]/.squall.yml)
 
 Show the info for a VM:
 
@@ -47,10 +58,22 @@ Create a new VM:
       :memory            => 512,
       :cpus              => 1,
       :cpu_shares        => 10,
-      :primary_disk_size => 10
+      :primary_disk_size => 10,
+      :template_id       => 1
     }
 
     vm.create params
+    
+To run tests:
+
+    bundle exec rake
+    rspec spec/[module]/[method].rb
+    
+Squall uses [VCR](https://github.com/myronmarston/vcr) to cache server responses to test against. To test via live http connections, make sure you have a config file setup and set the shell var SQUALL_LIVE=1. NOTE: since OnApp does not currently support a test environment this is not recommended!
+
+To enable HTTParty's debug mode:
+
+    Squall::Base.debug_output
 
 Note on Patches/Pull Requests
 -----------------------------

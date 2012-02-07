@@ -19,7 +19,6 @@ module Squall
       self.class.basic_auth Squall::config[:username], Squall::config[:password]
       self.class.format :json
       self.class.headers 'Content-Type' => 'application/json'
-      # self.class.debug_output
     end
 
     # Returns a Params.new
