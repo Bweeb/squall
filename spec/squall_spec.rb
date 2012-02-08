@@ -14,12 +14,14 @@ describe Squall do
     end
 
     it "returns the config after yield" do
+      Squall.reset_config
       Squall.config { |c| c }.should == {}
       Squall.config.should == {}
     end
 
 
     it "returns the config without a block" do
+      Squall.reset_config
       Squall.config.should == {}
     end
 
@@ -32,7 +34,6 @@ describe Squall do
 
   describe "#reset" do
     it "resets the configuration to defaults" do
-      default_config
       Squall.config.should_not be_empty
       Squall.reset_config
       Squall.config.should be_empty
@@ -41,15 +42,10 @@ describe Squall do
 
   describe "#config_file" do
     it "defaults to ~/.squall" do
-      file = File.join(ENV['HOME'], '.squall.yml')
-      config = {'username' => 'test', 'password' => 'pass', 'base_uri' => 'http://example.com'}
-
+      File.should_receive(:join).with(ENV['HOME'], '.squall.yml').and_return("/path/to/file")
       File.stub(:exists?).and_return(true)
-      YAML.should_receive(:load_file).with(file).and_return(config)
-
-      Squall.configuration_file.should be_nil
+      YAML.stub(:load_file).and_return({})
       Squall.config_file
-      Squall.configuration_file.should == file
     end
 
     it "returns an error if the file doesn't exist" do

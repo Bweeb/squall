@@ -3,42 +3,34 @@ require 'rspec'
 require 'vcr'
 require 'squall'
 
+Squall.config_file
+
 VCR.config do |c|
   c.cassette_library_dir = 'spec/vcr_cassettes'
   c.stub_with :fakeweb
   c.default_cassette_options = {:record => :new_episodes}
   c.filter_sensitive_data("Basic <REDACTED>") { |i| [i.request.headers['authorization']].flatten.first }
   c.filter_sensitive_data("<REDACTED>") { |i| [i.response.headers['set-cookie']].flatten.first }
+  c.filter_sensitive_data("<URL>") { URI.parse(Squall.config[:base_uri]).host }
+  c.filter_sensitive_data("<USER>") { Squall.config[:username] }
+  c.filter_sensitive_data("<PASS>") { Squall.config[:password] }
+end
+
+if ENV['RERECORD']
+class VCR
+  class <<self
+    alias_method :use_cassette_without_force, :use_cassette
+  end
+end
 end
 
 RSpec.configure do |c|
   c.extend VCR::RSpec::Macros
+  c.before(:each) do
+    Squall.config_file
+  end
   c.after(:each) do
     Squall.reset_config
-  end
-end
-
-def default_config
-  yaml = File.join(ENV['HOME'], '.squall.yml')
-  if ENV['SQUALL_LIVE'] && File.exists?(yaml)
-    config = YAML::load_file(yaml)
-    uri  = config['base_uri']
-    user = config['username']
-    pass = config['password']
-    VCR.config do |c|
-      c.filter_sensitive_data("www.example.com") { URI.parse(config['base_uri']).host }
-      c.filter_sensitive_data("user") { config['username'] }
-      c.filter_sensitive_data("pass") { config['password'] }
-    end
-  else
-    uri  = 'http://www.example.com'
-    user = 'user'
-    pass = 'pass'
-  end
-  Squall.config do |c|
-    c.base_uri uri
-    c.username user
-    c.password pass
   end
 end
 

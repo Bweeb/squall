@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/404/suspend.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/suspend.json
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 404
@@ -27,7 +27,7 @@
       x-runtime: 
       - "0.029671"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - no-cache
       status: 
@@ -39,13 +39,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/1/suspend.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/suspend.json
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -66,7 +66,7 @@
       date: 
       - Fri, 29 Apr 2011 19:19:26 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "201"
       cache-control: 

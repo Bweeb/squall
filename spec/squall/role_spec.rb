@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::Role do
   before(:each) do
-    default_config
     @role = Squall::Role.new
     @keys = ["label", "created_at", "updated_at", "id", "permissions", "identifier"]
   end

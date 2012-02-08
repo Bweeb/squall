@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/404/change_owner.json?user_id=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/change_owner.json?user_id=1
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 404
@@ -27,7 +27,7 @@
       date: 
       - Thu, 28 Apr 2011 15:16:51 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "404"
       cache-control: 
@@ -39,13 +39,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/1/change_owner.json?user_id=404
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/change_owner.json?user_id=404
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 500
@@ -70,13 +70,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/1/change_owner.json?user_id=2
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/change_owner.json?user_id=2
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -97,7 +97,7 @@
       date: 
       - Thu, 28 Apr 2011 15:18:02 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "201"
       cache-control: 

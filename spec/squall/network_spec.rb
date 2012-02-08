@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::Network do
   before(:each) do
-    default_config
     @network = Squall::Network.new
     @keys = ["label", "created_at", "updated_at", "network_group_id", "vlan", "id", "identifier"]
   end

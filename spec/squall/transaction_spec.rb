@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::Transaction do
   before(:each) do
-    default_config
     @transaction = Squall::Transaction.new
     @keys = ["pid", "created_at", "updated_at", "actor", "priority", 
       "parent_type", "action", "id", "user_id", "dependent_transaction_id", 

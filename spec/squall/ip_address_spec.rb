@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::IpAddress do
   before(:each) do
-    default_config
     @ip = Squall::IpAddress.new
     @keys = ["netmask", "disallowed_primary", "address", "created_at", "updated_at", "network_id", 
     "network_address", "broadcast", "id", "gateway"]

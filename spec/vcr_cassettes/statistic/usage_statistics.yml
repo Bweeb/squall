@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://user:pass@www.example.com:80/usage_statistics.json?
+    uri: http://<USER>:<PASS>@<URL>:80/usage_statistics.json?
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -29,7 +29,7 @@
       date: 
       - Fri, 29 Apr 2011 17:22:31 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "200"
       cache-control: 

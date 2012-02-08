@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/settings/networks/1/ip_addresses.json?ip_address[netmask]=255.255.255.194&ip_address[network_address]=109.123.91.66&ip_address[gateway]=109.123.91.67&ip_address[broadcast]=109.123.91.129&ip_address[address]=109.123.91.89
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses.json?ip_address[netmask]=255.255.255.194&ip_address[network_address]=109.123.91.66&ip_address[gateway]=109.123.91.67&ip_address[broadcast]=109.123.91.129&ip_address[address]=109.123.91.89
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201

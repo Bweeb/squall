@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::VirtualMachine do
   before(:each) do
-    default_config
     @virtual_machine = Squall::VirtualMachine.new
     @valid = {:label => 'testmachine', :hostname => 'testmachine', :memory => 512, :cpus => 1,
               :cpu_shares => 10, :primary_disk_size => 10, :template_id => 1}
@@ -259,6 +258,24 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_true
     end
   end
+  
+  describe "#set_ssh_keys" do
+    use_vcr_cassette "virtual_machine/set_ssh_keys"
+    it "requires an id" do
+      expect { @virtual_machine.set_ssh_keys }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+    
+    it "404s on not found" do
+      expect { @virtual_machine.set_ssh_keys(404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+    
+    it "sets the SSH keys" do
+      result = @virtual_machine.set_ssh_keys(1)
+      @virtual_machine.success.should be_true
+    end
+  end
 
   describe "#migrate" do
     use_vcr_cassette "virtual_machine/migrate"
@@ -273,7 +290,7 @@ describe Squall::VirtualMachine do
     end
 
     it "accepts cold_migrate_on_rollback" do
-      hash = [:post, "/virtual_machines/1/migrate.json", {:query => {:destination => 1, :cold_migrate_on_rollback => 1} }]
+      hash = [:post, "/virtual_machines/1/migrate.json", {:query => {:virtual_machine => {:destination => 1, :cold_migrate_on_rollback => 1}} }]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.migrate 1, :destination => 1, :cold_migrate_on_rollback => 1
     end
@@ -283,18 +300,40 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_false
     end
 
-    it "returns error on unknown destination" do
-      pending "Broken in OnApp" do
-        expect { @virtual_machine.migrate(1, :destination => 404) }.to raise_error(Squall::ServerError)
+    it "404s on unknown destination" do
+        expect { @virtual_machine.migrate(1, :destination => 404) }.to raise_error(Squall::NotFound)
         @virtual_machine.success.should be_false
-      end
     end
 
-    it "changes the destination" do
+    it "changes the hypervisor" do
       pending "Broken in OnApp" do
         result = @virtual_machine.migrate(1, :destination => 2)
         @virtual_machine.success.should be_true
-        result['hypervisor_id'].should == 2
+        result['virtual_machine']['hypervisor_id'].should == 2
+      end
+    end
+  end
+  
+  describe "#set_vip" do
+    use_vcr_cassette "virtual_machine/set_vip"
+    it "requires an id" do
+      expect { @virtual_machine.set_vip }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.set_vip(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "deletes a virtual_machine" do
+      @virtual_machine.set_vip(1)
+      @virtual_machine.success.should be_true
+    end
+    
+    it "sets the vip status to false if currently true" do
+      pending "No way to actually test this without being able to interact with server state" do
+        result = @virtual_machine.set_vip(1)
+        result['virtual_machine']['vip'].should be_false
+        flunk("currently untestable, so make sure it doesn't pass by accident")
       end
     end
   end
@@ -310,7 +349,7 @@ describe Squall::VirtualMachine do
     end
 
     it "deletes a virtual_machine" do
-      virtual_machine = @virtual_machine.delete(2)
+      virtual_machine = @virtual_machine.delete(1)
       @virtual_machine.success.should be_true
     end
   end
@@ -324,23 +363,40 @@ describe Squall::VirtualMachine do
     it "returns not found for invalid virtual_machines" do
       expect { @virtual_machine.resize(404, :memory => 1) }.to raise_error(Squall::NotFound)
     end
-
-    it "requires memory" do
-      @virtual_machine.stub(:request)
-      requires_attr(:memory) { @virtual_machine.resize(1) }
-    end
-
-    it "accepts allow_migration" do
-      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:memory => 1, :allow_migration => 1)]
+    
+    it "accepts memory" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:memory => 1)]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
-      @virtual_machine.resize 1, :memory => 1, :allow_migration => 1
+      @virtual_machine.resize 1, :memory => 1
+    end
+    
+    it "accepts cpus" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:cpus => 1)]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.resize 1, :cpus => 1
+    end
+    
+    it "accepts cpu_shares" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:cpu_shares => 1)]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.resize 1, :cpu_shares => 1
+    end
+    
+    it "accepts allow_cold_resize" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:allow_cold_resize => 1)]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.resize 1, :allow_cold_resize => 1
     end
 
     it "resizes a virtual_machine" do
-      virtual_machine = @virtual_machine.resize(2, :memory => 1000)
+      virtual_machine = @virtual_machine.resize(1, :memory => 1000)
       @virtual_machine.success.should be_true
 
       virtual_machine['memory'].should == 1000
+    end
+    
+    it "requires at least one option" do
+      expect { @virtual_machine.resize(1) }.to raise_error(ArgumentError)
     end
   end
 

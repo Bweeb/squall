@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/404/stop.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/stop.json
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 404
@@ -27,7 +27,7 @@
       date: 
       - Tue, 03 May 2011 14:15:26 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "404"
       cache-control: 
@@ -39,13 +39,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/1/stop.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/stop.json
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -66,7 +66,7 @@
       x-runtime: 
       - "0.029755"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - no-cache
       status: 

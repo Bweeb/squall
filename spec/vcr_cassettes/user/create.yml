@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/users.json?user[email]=me%40example.com&user[password]=CD2480A3413F&user[login]=user&user[first_name]=John&user[last_name]=Doe
+    uri: http://<USER>:<PASS>@<URL>:80/users.json?user[email]=me%40example.com&user[password]=CD2480A3413F&user[login]=user&user[first_name]=John&user[last_name]=Doe
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -29,7 +29,7 @@
       x-runtime: 
       - "0.037750"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - no-cache
       status: 
@@ -41,13 +41,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/users.json?user[email]=metaken%40example.com&user[first_name]=John&user[password]=CD2480A3413F&user[last_name]=Doe&user[group_id]=10&user[login]=usertaken
+    uri: http://<USER>:<PASS>@<URL>:80/users.json?user[email]=metaken%40example.com&user[first_name]=John&user[password]=CD2480A3413F&user[last_name]=Doe&user[group_id]=10&user[login]=usertaken
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 422
@@ -66,7 +66,7 @@
       x-runtime: 
       - "2.828053"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - no-cache
       status: 
@@ -78,13 +78,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/users.json?user[email]=me%40example.com&user[password]=CD2480A3413F&user[login]=user&user[first_name]=John&user[last_name]=Doe&user[group_id]=10
+    uri: http://<USER>:<PASS>@<URL>:80/users.json?user[email]=me%40example.com&user[password]=CD2480A3413F&user[login]=user&user[first_name]=John&user[last_name]=Doe&user[group_id]=10
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -105,7 +105,7 @@
       date: 
       - Wed, 13 Apr 2011 20:03:56 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "201"
       cache-control: 

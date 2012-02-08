@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/set_ssh_keys.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Wed, 08 Feb 2012 16:58:45 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.029641"
+      set-cookie: 
+      - <REDACTED>
+      cache-control: 
+      - no-cache
+      status: 
+      - "404"
+      transfer-encoding: 
+      - chunked
+    body: "{\"errors\":[\"Resource not found\"]}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/set_ssh_keys.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://www.example.com/virtual_machines/rq2l6j9j8jg51a
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.053561"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Wed, 08 Feb 2012 16:58:45 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"virtual_machine\":{\"monthly_bandwidth_used\":30090,\"aflexi_id\":null,\"cpus\":1,\"label\":\"testing\",\"created_at\":\"2011-12-16T11:46:18Z\",\"operating_system_distro\":\"2003\",\"cpu_shares\":25,\"enable_autoscale\":false,\"operating_system\":\"windows\",\"template_id\":1,\"allowed_swap\":false,\"local_remote_access_port\":null,\"memory\":2048,\"updated_at\":\"2012-02-08T16:56:46Z\",\"allow_resize_without_reboot\":false,\"recovery_mode\":false,\"enable_monitis\":false,\"hypervisor_id\":1,\"id\":1333,\"update_billing_stat\":false,\"xen_id\":null,\"admin_note\":null,\"allowed_hot_migrate\":false,\"user_id\":100,\"note\":null,\"strict_virtual_machine_id\":null,\"suspended\":false,\"vip\":null,\"booted\":false,\"hostname\":\"VH\",\"max_memory\":32768,\"template_label\":\"Windows Server 2003 x86\",\"total_disk_size\":14,\"add_to_marketplace\":null,\"identifier\":\"rq2l6j9j8jg51a\",\"initial_root_password\":\"kghxzabxml61\",\"min_disk_size\":10,\"remote_access_password\":\"mt3n2r4gdg99\",\"built\":true,\"locked\":false,\"state\":\"new\",\"ip_addresses\":[{\"ip_address\":{\"address\":\"83.170.67.231\",\"disallowed_primary\":false,\"netmask\":\"255.255.255.224\",\"created_at\":\"2011-01-20T11:23:30Z\",\"broadcast\":\"83.170.67.255\",\"updated_at\":\"2011-10-10T09:15:15Z\",\"network_id\":1,\"network_address\":\"83.170.67.224\",\"id\":33448,\"free\":false,\"gateway\":\"83.170.67.225\"}}]}}"
+    http_version: "1.1"

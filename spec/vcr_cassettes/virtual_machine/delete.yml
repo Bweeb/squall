@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://user:pass@www.example.com:80/virtual_machines/404.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404.json
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 404
@@ -21,31 +21,31 @@
       content-type: 
       - application/json; charset=utf-8
       date: 
-      - Fri, 29 Apr 2011 15:54:28 GMT
+      - Wed, 08 Feb 2012 18:29:22 GMT
       server: 
       - Apache/2.2.3 (CentOS)
       x-runtime: 
-      - "0.028585"
+      - "0.028383"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - no-cache
       status: 
       - "404"
       transfer-encoding: 
       - chunked
-    body: "{\"error\":\"Resource not found\"}"
+    body: "{\"errors\":[\"Resource not found\"]}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://user:pass@www.example.com:80/virtual_machines/2.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1.json
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -60,13 +60,13 @@
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.052069"
+      - "0.050863"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Fri, 29 Apr 2011 15:54:28 GMT
+      - Wed, 08 Feb 2012 18:29:23 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "200"
       cache-control: 
