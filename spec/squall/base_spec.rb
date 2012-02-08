@@ -14,7 +14,7 @@ describe Squall::Base do
 
   describe "#initialize" do
     it "sets the base_uri" do
-      @base.class.base_uri.should_not == nil
+      @base.class.base_uri.should_not be_nil
     end
 
     it "sets credentials" do
