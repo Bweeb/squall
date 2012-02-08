@@ -259,6 +259,24 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_true
     end
   end
+  
+  describe "#set_ssh_keys" do
+    use_vcr_cassette "virtual_machine/set_ssh_keys"
+    it "requires an id" do
+      expect { @virtual_machine.set_ssh_keys }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+    
+    it "404s on not found" do
+      expect { @virtual_machine.set_ssh_keys(404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+    
+    it "sets the SSH keys" do
+      result = @virtual_machine.set_ssh_keys(1)
+      @virtual_machine.success.should be_true
+    end
+  end
 
   describe "#migrate" do
     use_vcr_cassette "virtual_machine/migrate"

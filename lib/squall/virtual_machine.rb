@@ -124,6 +124,12 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/reset_password.json", :query => { :new_password => password })
       response['virtual_machine']
     end
+    
+    # Assigns SSH keys of all administrators and a VM owner to a VM 
+    def set_ssh_keys(id)
+      response = request(:post, "/virtual_machines/#{id}/set_ssh_keys.json")
+      response['virtual_machine']
+    end
 
     # Migrate a VirtualMachine to a new Hypervisor
     #
