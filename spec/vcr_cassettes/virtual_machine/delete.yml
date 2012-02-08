@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://user:pass@www.example.com:80/virtual_machines/2.json
+    uri: http://user:pass@www.example.com:80/virtual_machines/1.json
     body: 
     headers: 
       content-type: 

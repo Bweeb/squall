@@ -349,7 +349,7 @@ describe Squall::VirtualMachine do
     end
 
     it "deletes a virtual_machine" do
-      virtual_machine = @virtual_machine.delete(2)
+      virtual_machine = @virtual_machine.delete(1)
       @virtual_machine.success.should be_true
     end
   end
