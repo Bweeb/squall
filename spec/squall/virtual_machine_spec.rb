@@ -291,7 +291,7 @@ describe Squall::VirtualMachine do
     end
 
     it "accepts cold_migrate_on_rollback" do
-      hash = [:post, "/virtual_machines/1/migrate.json", {:query => {:destination => 1, :cold_migrate_on_rollback => 1} }]
+      hash = [:post, "/virtual_machines/1/migrate.json", {:query => {:virtual_machine => {:destination => 1, :cold_migrate_on_rollback => 1}} }]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.migrate 1, :destination => 1, :cold_migrate_on_rollback => 1
     end
@@ -301,18 +301,16 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_false
     end
 
-    it "returns error on unknown destination" do
-      pending "Broken in OnApp" do
-        expect { @virtual_machine.migrate(1, :destination => 404) }.to raise_error(Squall::ServerError)
+    it "404s on unknown destination" do
+        expect { @virtual_machine.migrate(1, :destination => 404) }.to raise_error(Squall::NotFound)
         @virtual_machine.success.should be_false
-      end
     end
 
-    it "changes the destination" do
+    it "changes the hypervisor" do
       pending "Broken in OnApp" do
         result = @virtual_machine.migrate(1, :destination => 2)
         @virtual_machine.success.should be_true
-        result['hypervisor_id'].should == 2
+        result['virtual_machine']['hypervisor_id'].should == 2
       end
     end
   end

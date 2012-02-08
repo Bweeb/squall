@@ -139,7 +139,7 @@ module Squall
     # * +options+ - :destination, :cold_migrate_on_rollback
     def migrate(id, options = {})
       params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options 
-      response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => options )
+      response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => {:virtual_machine => options} )
     end
 
     # Delete a VirtualMachine
