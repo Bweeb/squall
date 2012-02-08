@@ -74,6 +74,11 @@ Squall uses [VCR](https://github.com/myronmarston/vcr) to cache server responses
 To enable HTTParty's debug mode:
 
     Squall::Base.debug_output
+    
+Known issues:
+
+1. virtual_machines#change_user currently breaks the parser on an invalid user_id  because OnApp returns html instead of JSON
+2. virtual_machines#create is currently broken in certain cases.  See https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&ref=8181-TYFH-8069
 
 Note on Patches/Pull Requests
 -----------------------------

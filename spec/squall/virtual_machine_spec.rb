@@ -114,7 +114,7 @@ describe Squall::VirtualMachine do
     end
 
     it "creates a virtual_machine" do
-      pending "broken in OnApp (triggering the Network Interfaces error): https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&ref=8181-TYFH-8069" do 
+      pending "broken in OnApp (triggering the Network Interfaces error): see README (and update when fixed)" do 
         virtual_machine = @virtual_machine.create(@valid)
         @valid.each do |k,v|
           virtual_machine[k].should == @valid[k.to_s]
@@ -222,9 +222,11 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_false
     end
 
-    it "returns error on unknown user" do
-      expect { @virtual_machine.change_owner(1, 404) }.to raise_error(Squall::ServerError)
-      @virtual_machine.success.should be_false
+    pending "this should raise a 422 on OnApp's side, but it's currently raising a 500 which causes HTTParty to explode, see README (and update when fixed)" do
+      it "returns error on unknown user" do
+        expect { @virtual_machine.change_owner(1, 2) }.to raise_error(Squall::ServerError)
+        @virtual_machine.success.should be_false
+      end
     end
 
     it "changes the user" do
