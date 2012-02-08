@@ -16,6 +16,14 @@ VCR.config do |c|
   c.filter_sensitive_data("<PASS>") { Squall.config[:password] }
 end
 
+if ENV['RERECORD']
+class VCR
+  class <<self
+    alias_method :use_cassette_without_force, :use_cassette
+  end
+end
+end
+
 RSpec.configure do |c|
   c.extend VCR::RSpec::Macros
   c.before(:each) do
