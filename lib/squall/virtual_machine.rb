@@ -141,6 +141,12 @@ module Squall
       params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options 
       response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => {:virtual_machine => options} )
     end
+    
+    # Toggle the VIP status of the VirtualMachine
+    def set_vip(id)
+      response = request(:post, "/virtual_machines/#{id}/set_vip.json")
+      response['virtual_machine']
+    end
 
     # Delete a VirtualMachine
     def delete(id)

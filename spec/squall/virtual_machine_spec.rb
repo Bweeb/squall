@@ -314,6 +314,29 @@ describe Squall::VirtualMachine do
       end
     end
   end
+  
+  describe "#set_vip" do
+    use_vcr_cassette "virtual_machine/set_vip"
+    it "requires an id" do
+      expect { @virtual_machine.set_vip }.to raise_error(ArgumentError)
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      expect { @virtual_machine.set_vip(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "deletes a virtual_machine" do
+      @virtual_machine.set_vip(1)
+      @virtual_machine.success.should be_true
+    end
+    
+    it "sets the vip status to false if currently true" do
+      pending "No way to actually test this without being able to interact with server state" do
+        result = @virtual_machine.set_vip(1)
+        result['virtual_machine']['vip'].should == "false"
+      end
+    end
+  end
 
   describe "#delete" do
     use_vcr_cassette "virtual_machine/delete"
