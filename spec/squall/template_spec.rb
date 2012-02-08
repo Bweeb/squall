@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::Template do
   before(:each) do
-    default_config
     @template = Squall::Template.new
     @keys = ["label", "operating_system_distro", "operating_system_arch", "created_at", 
       "operating_system_tail", "operating_system", "updated_at", "operating_system_edition", 

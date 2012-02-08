@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/networks/1.json?network[label]=one
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[label]=one
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -29,7 +29,7 @@
       x-runtime: 
       - "0.011287"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - max-age=0, private, must-revalidate
       status: 
@@ -41,13 +41,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/networks/1.json?network[network_group_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[network_group_id]=1
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -68,7 +68,7 @@
       x-runtime: 
       - "0.009696"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - max-age=0, private, must-revalidate
       status: 
@@ -80,13 +80,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/networks/1.json?network[identifier]=lolzsdfds
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[identifier]=lolzsdfds
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -107,7 +107,7 @@
       x-runtime: 
       - "0.012071"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - max-age=0, private, must-revalidate
       status: 
@@ -119,13 +119,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/networks/1.json?network[vlan]=1
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[vlan]=1
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -146,7 +146,7 @@
       x-runtime: 
       - "0.013193"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - max-age=0, private, must-revalidate
       status: 
@@ -158,13 +158,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/networks/1.json?network[identifier]=woah&network[label]=two&network[vlan]=2
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[identifier]=woah&network[label]=two&network[vlan]=2
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -185,7 +185,7 @@
       x-runtime: 
       - "0.010704"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - max-age=0, private, must-revalidate
       status: 
@@ -197,13 +197,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/networks/404.json?
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/404.json?
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 404
@@ -222,7 +222,7 @@
       date: 
       - Tue, 19 Apr 2011 15:27:18 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "404"
       cache-control: 

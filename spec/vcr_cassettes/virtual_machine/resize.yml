@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/404/resize.json?virtual_machine[memory]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/resize.json?virtual_machine[memory]=1
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/1/resize.json?virtual_machine[memory]=1000
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/resize.json?virtual_machine[memory]=1000
     body: 
     headers: 
       content-type: 

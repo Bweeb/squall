@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/404/set_ssh_keys.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/set_ssh_keys.json
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/virtual_machines/1/set_ssh_keys.json
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/set_ssh_keys.json
     body: 
     headers: 
       content-type: 

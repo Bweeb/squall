@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::VirtualMachine do
   before(:each) do
-    default_config
     @virtual_machine = Squall::VirtualMachine.new
     @valid = {:label => 'testmachine', :hostname => 'testmachine', :memory => 512, :cpus => 1,
               :cpu_shares => 10, :primary_disk_size => 10, :template_id => 1}

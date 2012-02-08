@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::User do
   before(:each) do
-    default_config
     @keys = ["total_amount", "activated_at", "created_at", "memory_available", "remember_token_expires_at",
             "used_disk_size", "deleted_at", "updated_at", "used_ip_addresses", "activation_code", "used_cpu_shares",
             "used_cpus", "group_id", "id", "used_memory", "payment_amount", "last_name", "remember_token",

@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::IpAddressJoin do
   before(:each) do
-    default_config
     @join = Squall::IpAddressJoin.new
   end
 
