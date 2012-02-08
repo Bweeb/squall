@@ -21,14 +21,14 @@ end
 RSpec.configure do |c|
   c.extend VCR::RSpec::Macros
   c.before(:each) do
-    configure_squall_for_tests
+    configure_for_tests
   end
   c.after(:each) do
     Squall.reset_config
   end
 end
 
-def configure_squall_for_tests
+def configure_for_tests
   if ENV['RERECORD']
     Squall.config_file 	
   else
