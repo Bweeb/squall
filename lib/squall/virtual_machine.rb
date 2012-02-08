@@ -124,6 +124,12 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/reset_password.json", :query => { :new_password => password })
       response['virtual_machine']
     end
+    
+    # Assigns SSH keys of all administrators and a VM owner to a VM 
+    def set_ssh_keys(id)
+      response = request(:post, "/virtual_machines/#{id}/set_ssh_keys.json")
+      response['virtual_machine']
+    end
 
     # Migrate a VirtualMachine to a new Hypervisor
     #
@@ -133,7 +139,13 @@ module Squall
     # * +options+ - :destination, :cold_migrate_on_rollback
     def migrate(id, options = {})
       params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options 
-      response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => options )
+      response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => {:virtual_machine => options} )
+    end
+    
+    # Toggle the VIP status of the VirtualMachine
+    def set_vip(id)
+      response = request(:post, "/virtual_machines/#{id}/set_vip.json")
+      response['virtual_machine']
     end
 
     # Delete a VirtualMachine
@@ -142,8 +154,13 @@ module Squall
     end
 
     # Resize a VirtualMachine's memory
+    #
+    # ==== Options
+    # * +id+
+    # * +options+ - :memory, :cpus, :cpu_shares, :allow_cold_resize
     def resize(id, options = {})
-      params.required(:memory).accepts(:allow_migration).validate! options
+      raise ArgumentError, "You must specify at least one of the following attributes to resize: :memory, :cpus, :cpu_shares, :allow_cold_resize" if options.empty?
+      params.accepts(:memory, :cpus, :cpu_shares, :allow_cold_resize).validate! options 
       response = request(:post, "/virtual_machines/#{id}/resize.json", default_params(options))
       response['virtual_machine']
     end

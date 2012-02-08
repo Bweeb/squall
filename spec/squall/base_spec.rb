@@ -9,17 +9,16 @@ end
 
 describe Squall::Base do
   before(:each) do
-    default_config
     @base = Squall::Base.new
   end
 
   describe "#initialize" do
     it "sets the base_uri" do
-      @base.class.base_uri.should == 'http://www.example.com'
+      @base.class.base_uri.should_not == nil
     end
 
     it "sets credentials" do
-      @base.class.default_options[:basic_auth].should include(:username => 'user', :password => 'pass')
+      @base.class.default_options[:basic_auth].should include(:username, :password)
     end
 
     it "uses JSON" do

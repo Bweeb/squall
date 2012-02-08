@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/hypervisors/3.json?hypervisor[label]=Old%20Gregg
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/3.json?hypervisor[label]=Old%20Gregg
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -29,7 +29,7 @@
       x-runtime: 
       - "0.023556"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - max-age=0, private, must-revalidate
       status: 
@@ -41,13 +41,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://user:pass@www.example.com:80/settings/hypervisors/3.json?hypervisor[ip_address]=120.120.120.120
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/3.json?hypervisor[ip_address]=120.120.120.120
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 200
@@ -68,7 +68,7 @@
       date: 
       - Fri, 15 Apr 2011 22:06:52 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "200"
       cache-control: 

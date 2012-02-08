@@ -2,13 +2,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/settings/networks.json?network[label]=networktaken
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[label]=networktaken
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -29,7 +29,7 @@
       date: 
       - Tue, 19 Apr 2011 15:54:47 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "201"
       cache-control: 
@@ -41,13 +41,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/settings/networks.json?network[identifier]=newnetworkid&network[label]=newnetwork&network[vlan]=1
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[identifier]=newnetworkid&network[label]=newnetwork&network[vlan]=1
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -68,7 +68,7 @@
       x-runtime: 
       - "0.009338"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - no-cache
       status: 
@@ -80,13 +80,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/settings/networks.json?network[label]=newnetwork
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[label]=newnetwork
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -107,7 +107,7 @@
       x-runtime: 
       - "0.009260"
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       cache-control: 
       - no-cache
       status: 
@@ -119,13 +119,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/settings/networks.json?network[label]=newnetwork&network[vlan]=2
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[label]=newnetwork&network[vlan]=2
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -146,7 +146,7 @@
       date: 
       - Tue, 19 Apr 2011 15:55:03 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "201"
       cache-control: 
@@ -158,13 +158,13 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://user:pass@www.example.com:80/settings/networks.json?network[identifier]=something&network[label]=newnetwork
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[identifier]=something&network[label]=newnetwork
     body: 
     headers: 
       content-type: 
       - application/json
       authorization: 
-      - Basic WHAT
+      - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
       code: 201
@@ -185,7 +185,7 @@
       date: 
       - Tue, 19 Apr 2011 15:55:03 GMT
       set-cookie: 
-      - _onapp_session=WHAT; path=/; HttpOnly
+      - <REDACTED>
       status: 
       - "201"
       cache-control: 

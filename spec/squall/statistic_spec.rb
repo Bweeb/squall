@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::Statistic do
   before(:each) do
-    default_config
     @statistic = Squall::Statistic.new
   end
 

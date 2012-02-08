@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::Hypervisor do
   before(:each) do
-    default_config
     @hv = Squall::Hypervisor.new
   end
 
