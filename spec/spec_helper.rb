@@ -9,7 +9,7 @@ VCR.config do |c|
   if ENV['RERECORD']
     c.default_cassette_options = {:record => :all}
   else
-    c.default_cassette_options = {:record => :new_episodes}
+    c.default_cassette_options = {:record => :none}
   end
   c.filter_sensitive_data("Basic <REDACTED>") { |i| [i.request.headers['authorization']].flatten.first }
   c.filter_sensitive_data("<REDACTED>") { |i| [i.response.headers['set-cookie']].flatten.first }
