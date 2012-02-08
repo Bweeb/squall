@@ -332,7 +332,8 @@ describe Squall::VirtualMachine do
     it "sets the vip status to false if currently true" do
       pending "No way to actually test this without being able to interact with server state" do
         result = @virtual_machine.set_vip(1)
-        result['virtual_machine']['vip'].should == "false"
+        result['virtual_machine']['vip'].should == false
+        flunk("currently untestable, so make sure it doesn't pass by accident")
       end
     end
   end
