@@ -3,7 +3,15 @@ require 'rspec'
 require 'vcr'
 require 'squall'
 
-Squall.config_file
+if ENV['RERECORD']
+  Squall.config_file
+else
+  Squall.config do |c|
+    c.username "test"
+    c.password "test"
+    c.base_uri "http://example.com"
+  end
+end
 
 VCR.config do |c|
   c.cassette_library_dir = 'spec/vcr_cassettes'
@@ -14,14 +22,6 @@ VCR.config do |c|
   c.filter_sensitive_data("<URL>") { URI.parse(Squall.config[:base_uri]).host }
   c.filter_sensitive_data("<USER>") { Squall.config[:username] }
   c.filter_sensitive_data("<PASS>") { Squall.config[:password] }
-end
-
-if ENV['RERECORD']
-class VCR
-  class <<self
-    alias_method :use_cassette_without_force, :use_cassette
-  end
-end
 end
 
 RSpec.configure do |c|
