@@ -363,23 +363,40 @@ describe Squall::VirtualMachine do
     it "returns not found for invalid virtual_machines" do
       expect { @virtual_machine.resize(404, :memory => 1) }.to raise_error(Squall::NotFound)
     end
-
-    it "requires memory" do
-      @virtual_machine.stub(:request)
-      requires_attr(:memory) { @virtual_machine.resize(1) }
-    end
-
-    it "accepts allow_migration" do
-      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:memory => 1, :allow_migration => 1)]
+    
+    it "accepts memory" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:memory => 1)]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
-      @virtual_machine.resize 1, :memory => 1, :allow_migration => 1
+      @virtual_machine.resize 1, :memory => 1
+    end
+    
+    it "accepts cpus" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:cpus => 1)]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.resize 1, :cpus => 1
+    end
+    
+    it "accepts cpu_shares" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:cpu_shares => 1)]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.resize 1, :cpu_shares => 1
+    end
+    
+    it "accepts allow_cold_resize" do
+      hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:allow_cold_resize => 1)]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.resize 1, :allow_cold_resize => 1
     end
 
     it "resizes a virtual_machine" do
-      virtual_machine = @virtual_machine.resize(2, :memory => 1000)
+      virtual_machine = @virtual_machine.resize(1, :memory => 1000)
       @virtual_machine.success.should be_true
 
       virtual_machine['memory'].should == 1000
+    end
+    
+    it "requires at least one option" do
+      expect { @virtual_machine.resize(1) }.to raise_error(ArgumentError)
     end
   end
 

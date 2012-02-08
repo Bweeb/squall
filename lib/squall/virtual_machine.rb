@@ -154,8 +154,13 @@ module Squall
     end
 
     # Resize a VirtualMachine's memory
+    #
+    # ==== Options
+    # * +id+
+    # * +options+ - :memory, :cpus, :cpu_shares, :allow_cold_resize
     def resize(id, options = {})
-      params.required(:memory).accepts(:allow_migration).validate! options
+      raise ArgumentError, "You must specify at least one of the following attributes to resize: :memory, :cpus, :cpu_shares, :allow_cold_resize" if options.empty?
+      params.accepts(:memory, :cpus, :cpu_shares, :allow_cold_resize).validate! options 
       response = request(:post, "/virtual_machines/#{id}/resize.json", default_params(options))
       response['virtual_machine']
     end
