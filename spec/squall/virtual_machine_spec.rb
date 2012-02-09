@@ -483,7 +483,6 @@ describe Squall::VirtualMachine do
     it "will stop a virtual_machine" do
       virtual_machine = @virtual_machine.stop(1)
       @virtual_machine.success.should be_true
-      virtual_machine['id'].should == 1
     end
   end
 
