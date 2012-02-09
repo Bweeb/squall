@@ -170,7 +170,6 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/suspend.json")
       response['virtual_machine']
     end
-    alias_method :unsuspend, :suspend
 
     # Unlock a VirtualMachine
     def unlock(id)
@@ -197,8 +196,34 @@ module Squall
     end
 
     # Reboot a VirtualMachine
-    def reboot(id)
-      response = request(:post, "/virtual_machines/#{id}/reboot.json")
+    #
+    # ==== Options
+    # * +id+
+    # * +recovery+ - set to true to reboot in recovery
+    def reboot(id, recovery=false)
+      response = request(:post, "/virtual_machines/#{id}/reboot.json", {:query => recovery ? {:mode => :recovery} : nil})
+      response['virtual_machine']
+    end
+    
+    # Segregate a VirtualMachine from another VirtualMachine
+    #
+    # ==== Options
+    # * +id+ - id of the VirtualMachine
+    # * +target_vm_id+ - id of another VirtualMachine from which it should be segregated
+    def segregate(id, target_vm_id)
+      response = request(:post, "/virtual_machines/#{id}/strict_vm.json", default_params(:strict_virtual_machine_id => target_vm_id))
+      response['virtual_machine']
+    end
+    
+    # Open a console for a VirtualMachine
+    def console(id)
+      response = request(:post, "/virtual_machines/#{id}/console.json")
+      response['virtual_machine']
+    end
+    
+    # Get billing statistics for a VirtualMachine
+    def stats(id)
+      response = request(:post, "/virtual_machines/#{id}/vm_stats.json")
       response['virtual_machine']
     end
   end

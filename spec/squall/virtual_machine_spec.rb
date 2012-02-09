@@ -416,22 +416,6 @@ describe Squall::VirtualMachine do
     end
   end
 
-  describe "#unsuspend" do
-    use_vcr_cassette "virtual_machine/unsuspend"
-    it "requires an id" do
-      expect { @virtual_machine.unsuspend }.to raise_error(ArgumentError)
-    end
-
-    it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.unsuspend(404) }.to raise_error(Squall::NotFound)
-    end
-
-    it "unsuspends a virtual_machine" do
-      virtual_machine = @virtual_machine.unsuspend(1)
-      virtual_machine['suspended'].should be_false
-    end
-  end
-
   describe "#unlock" do
     use_vcr_cassette "virtual_machine/unlock"
     it "requires an id" do
@@ -481,7 +465,6 @@ describe Squall::VirtualMachine do
     it "will shutdown a virtual_machine" do
       virtual_machine = @virtual_machine.shutdown(1)
       @virtual_machine.success.should be_true
-      virtual_machine['id'].should == 1
     end
   end
 
@@ -500,7 +483,6 @@ describe Squall::VirtualMachine do
     it "will stop a virtual_machine" do
       virtual_machine = @virtual_machine.stop(1)
       @virtual_machine.success.should be_true
-      virtual_machine['id'].should == 1
     end
   end
 
@@ -519,7 +501,84 @@ describe Squall::VirtualMachine do
     it "will reboot a virtual_machine" do
       virtual_machine = @virtual_machine.reboot(1)
       @virtual_machine.success.should be_true
-      virtual_machine['id'].should == 1
+    end
+    
+    it "reboots in recovery" do
+      hash = [:post, "/virtual_machines/1/reboot.json", {:query => {:mode => :recovery}}]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.reboot 1, true
+    end
+  end
+  
+  describe "#segregate" do
+    use_vcr_cassette "virtual_machine/segregate"
+    it "requires an id" do
+      expect { @virtual_machine.segregate }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "requires a target_vm_id" do
+      expect { @virtual_machine.segregate 1 }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "404s on not found" do
+      expect { @virtual_machine.segregate(404, 1) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns 404 on unknown target vm id" do
+      expect { @virtual_machine.segregate(1, 404) }.to raise_error(Squall::NotFound)
+      @virtual_machine.success.should be_false
+    end
+
+    it "changes the user" do
+      result = @virtual_machine.segregate(1, 2)
+      @virtual_machine.success.should be_true
+    end
+  end
+  
+  describe "#console" do
+    use_vcr_cassette "virtual_machine/console"
+    it "requires an id" do
+      expect { @virtual_machine.console }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      pending "broken on OnApp (returning 500)" do
+        expect { @virtual_machine.console(404) }.to raise_error(Squall::NotFound)
+        @virtual_machine.success.should be_false
+      end
+    end
+    
+    it "will reboot a virtual_machine" do
+      pending "broken on OnApp (returning 500)" do
+        virtual_machine = @virtual_machine.console(1)
+        @virtual_machine.success.should be_true
+      end
+    end
+  end
+  
+  describe "#stats" do
+    use_vcr_cassette "virtual_machine/stats"
+    it "requires an id" do
+      expect { @virtual_machine.stats }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      pending "broken on OnApp (returning 500)" do
+        expect { @virtual_machine.stats(404) }.to raise_error(Squall::NotFound)
+        @virtual_machine.success.should be_false
+      end
+    end
+
+    it "will stop a virtual_machine" do
+      pending "broken on OnApp (returning 500)" do
+        virtual_machine = @virtual_machine.stats(1)
+        @virtual_machine.success.should be_true
+      end
     end
   end
 end
