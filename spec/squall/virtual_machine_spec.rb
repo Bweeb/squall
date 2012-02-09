@@ -465,7 +465,6 @@ describe Squall::VirtualMachine do
     it "will shutdown a virtual_machine" do
       virtual_machine = @virtual_machine.shutdown(1)
       @virtual_machine.success.should be_true
-      virtual_machine['id'].should == 1
     end
   end
 
