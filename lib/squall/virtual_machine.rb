@@ -204,5 +204,15 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/reboot.json", {:query => recovery ? {:mode => :recovery} : nil})
       response['virtual_machine']
     end
+    
+    # Segregate a VirtualMachine from another VirtualMachine
+    #
+    # ==== Options
+    # * +id+ - id of the VirtualMachine
+    # * +target_vm_id+ - id of another VirtualMachine from which it should be segregated
+    def segregate(id, target_vm_id)
+      response = request(:post, "/virtual_machines/#{id}/strict_vm.json", default_params(:strict_virtual_machine_id => target_vm_id))
+      response['virtual_machine']
+    end
   end
 end
