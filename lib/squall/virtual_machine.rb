@@ -220,5 +220,11 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/console.json")
       response['virtual_machine']
     end
+    
+    # Get billing statistics for a VirtualMachine
+    def stats(id)
+      response = request(:post, "/virtual_machines/#{id}/vm_stats.json")
+      response['virtual_machine']
+    end
   end
 end

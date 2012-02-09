@@ -559,4 +559,26 @@ describe Squall::VirtualMachine do
       end
     end
   end
+  
+  describe "#stats" do
+    use_vcr_cassette "virtual_machine/stats"
+    it "requires an id" do
+      expect { @virtual_machine.stats }.to raise_error(ArgumentError)
+      @virtual_machine.success.should be_false
+    end
+
+    it "returns not found for invalid virtual_machines" do
+      pending "broken on OnApp (returning 500)" do
+        expect { @virtual_machine.stats(404) }.to raise_error(Squall::NotFound)
+        @virtual_machine.success.should be_false
+      end
+    end
+
+    it "will stop a virtual_machine" do
+      pending "broken on OnApp (returning 500)" do
+        virtual_machine = @virtual_machine.stats(1)
+        @virtual_machine.success.should be_true
+      end
+    end
+  end
 end
