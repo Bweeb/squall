@@ -10,13 +10,7 @@ describe Squall::Role do
     use_vcr_cassette "role/list"
     it "returns roles" do
       roles = @role.list
-      roles.size.should be(2)
-    end
-
-    it "contains the role of a user" do
-      role = @role.list.first
-      role.keys.should include(*@keys)
-      role['label'].should == "Administrator"
+      roles.all?{|r| r.first == "role"}
     end
   end
 
