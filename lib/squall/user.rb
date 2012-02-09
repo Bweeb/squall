@@ -16,14 +16,14 @@ module Squall
     #
     # ==== Example
     #
-    #   create :login      => 'bob',
-    #          :email      => 'something@example.com',
-    #          :password   => 'secret',
-    #          :first_name => 'Bob',
-    #          :last_name  => 'Smith',
-    #          :group_id   => 1
+    #   create :login                 => 'bob',
+    #          :email                 => 'something@example.com',
+    #          :password              => 'secret',
+    #          :password_confirmation => 'secret'
+    #          :first_name            => 'Bob',
+    #          :last_name             => 'Smith'
     def create(options = {})
-      params.required(:login, :email, :password).accepts(:first_name, :last_name, :group_id).validate!(options)
+      params.required(:login, :email,:first_name, :last_name, :password, :password_confirmation).accepts(:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at).validate!(options)
       request(:post, '/users.json', default_params(options))
     end
 
