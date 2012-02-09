@@ -20,14 +20,13 @@ describe Squall::Role do
       expect { @role.show }.to raise_error(ArgumentError)
     end
 
-    it "returns not found for invalid user" do
-      expect { @role.show(5) }.to raise_error(Squall::NotFound)
+    it "returns 404 for invalid id" do
+      expect { @role.show(404) }.to raise_error(Squall::NotFound)
     end
 
     it "returns a role" do
       role = @role.show(1)
       role.keys.should include(*@keys)
-      role['label'].should == "Administrator"
     end
   end
 
