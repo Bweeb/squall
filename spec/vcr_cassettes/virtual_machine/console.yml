@@ -1,0 +1,63 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/console.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 500
+      message: Internal Server Error
+    headers: 
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - text/html; charset=UTF-8
+      date: 
+      - Thu, 09 Feb 2012 15:37:11 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.002128"
+      status: 
+      - "500"
+      transfer-encoding: 
+      - chunked
+    body: <html><body><h1>500 Internal Server Error</h1>If you are the administrator of this website, then please read this web application's log file and/or the web server's log file to find out what went wrong.</body></html>
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/console.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 500
+      message: Internal Server Error
+    headers: 
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - text/html; charset=UTF-8
+      x-runtime: 
+      - "0.002128"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Thu, 09 Feb 2012 15:37:11 GMT
+      status: 
+      - "500"
+      transfer-encoding: 
+      - chunked
+    body: <html><body><h1>500 Internal Server Error</h1>If you are the administrator of this website, then please read this web application's log file and/or the web server's log file to find out what went wrong.</body></html>
+    http_version: "1.1"
