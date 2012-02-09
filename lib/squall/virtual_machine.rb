@@ -214,5 +214,11 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/strict_vm.json", default_params(:strict_virtual_machine_id => target_vm_id))
       response['virtual_machine']
     end
+    
+    # Open a console for a VirtualMachine
+    def console(id)
+      response = request(:post, "/virtual_machines/#{id}/console.json")
+      response['virtual_machine']
+    end
   end
 end
