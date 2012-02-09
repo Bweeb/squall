@@ -499,8 +499,14 @@ describe Squall::VirtualMachine do
     end
 
     it "will reboot a virtual_machine" do
-      virtual_machine = @virtual_machine.reboot(1343)
+      virtual_machine = @virtual_machine.reboot(1)
       @virtual_machine.success.should be_true
+    end
+    
+    it "reboots in recovery" do
+      hash = [:post, "/virtual_machines/1/reboot.json", {:query => {:mode => :recovery}}]
+      @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
+      @virtual_machine.reboot 1, true
     end
   end
 end

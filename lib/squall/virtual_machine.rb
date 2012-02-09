@@ -196,8 +196,12 @@ module Squall
     end
 
     # Reboot a VirtualMachine
-    def reboot(id)
-      response = request(:post, "/virtual_machines/#{id}/reboot.json")
+    #
+    # ==== Options
+    # * +id+
+    # * +recovery+ - set to true to reboot in recovery
+    def reboot(id, recovery=false)
+      response = request(:post, "/virtual_machines/#{id}/reboot.json", {:query => recovery ? {:mode => :recovery} : nil})
       response['virtual_machine']
     end
   end
