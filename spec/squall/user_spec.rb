@@ -7,40 +7,57 @@ describe Squall::User do
             "used_cpus", "group_id", "id", "used_memory", "payment_amount", "last_name", "remember_token",
             "disk_space_available", "time_zone", "outstanding_amount", "login", "roles", "email", "first_name"]
     @user = Squall::User.new
-    @valid = {:login => 'user', :email => 'me@example.com', :password => 'CD2480A3413F',
-              :first_name => 'John', :last_name => 'Doe', :group_id => 10 }
+    @valid = {:login => 'johndoe', :email => 'johndoe@example.com', :password => 'CD2480A3413F',
+              :password_confirmation => 'CD2480A3413F', :first_name => 'John', :last_name => 'Doe' }
   end
 
   describe "#create" do
     use_vcr_cassette "user/create"
     it "requires login" do
-      requires_attr(:login) { @user.create }
+      invalid = @valid.reject{|k,v| k == :login }
+      requires_attr(:login) { @user.create(invalid) }
     end
 
     it "requires email" do
-      requires_attr(:email) { @user.create(:login => @valid[:login]) }
+      invalid = @valid.reject{|k,v| k == :email }
+      requires_attr(:email) { @user.create(invalid) }
     end
 
     it "requires password" do
-      requires_attr(:password) {
-        @user.create(:login => @valid[:login], :email => @valid[:email])
-      }
+      invalid = @valid.reject{|k,v| k == :password }
+      requires_attr(:password) { @user.create(invalid) }
     end
-
-    it "raises error on duplicate account" do
-      expect {
-        @user.create(@valid.merge(:login => 'usertaken', :email => 'metaken@example.com'))
-      }.to raise_error(Squall::RequestError)
-      @user.errors['login'].should include("has already been taken")
-      @user.errors['email'].should include("has already been taken")
+    
+    it "requires password confirmation" do
+      invalid = @valid.reject{|k,v| k == :password_confirmation }
+      requires_attr(:password_confirmation) { @user.create(invalid) }
+    end
+    
+    it "requires first name" do
+      invalid = @valid.reject{|k,v| k == :first_name }
+      requires_attr(:first_name) { @user.create(invalid) }
+    end
+    
+    it "requires last name" do
+      invalid = @valid.reject{|k,v| k == :last_name }
+      requires_attr(:last_name) { @user.create(invalid) }
+    end
+    
+    it "allows all optional params" do
+      optional = [:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at]
+      @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new('virtual_machine' => [])
+      optional.each do |k,v|
+        @user.create(@valid.merge(k.to_sym => v))
+      end
+    end
+    
+    it "raises error on unknown params" do
+      expect { @user.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
     it "creates a user" do
       user = @user.create(@valid)
-      user['email'].should      == @valid['email']
-      user['first_name'].should == @valid['first_name']
-      user['last_name'].should  == @valid['last_name']
-      user['group_id'].should   == @valid['group_id']
+      @user.success.should be_true
     end
   end
 
