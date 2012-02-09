@@ -20,21 +20,21 @@
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
       content-type: 
       - application/json; charset=utf-8
-      x-runtime: 
-      - "3.096855"
+      date: 
+      - Thu, 09 Feb 2012 14:54:44 GMT
       server: 
       - Apache/2.2.3 (CentOS)
-      date: 
-      - Tue, 03 May 2011 14:38:07 GMT
+      x-runtime: 
+      - "0.030964"
       set-cookie: 
       - <REDACTED>
-      status: 
-      - "404"
       cache-control: 
       - no-cache
+      status: 
+      - "404"
       transfer-encoding: 
       - chunked
-    body: "{\"error\":\"Resource not found\"}"
+    body: "{\"errors\":[\"Resource not found\"]}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
@@ -53,25 +53,25 @@
     headers: 
       x-ua-compatible: 
       - IE=Edge,chrome=1
+      location: 
+      - http://<URL>/virtual_machines/cjiul6p4pljqzy
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      location: 
-      - http://www.example.com/virtual_machines/1
       content-type: 
       - application/json; charset=utf-8
-      date: 
-      - Tue, 03 May 2011 14:39:57 GMT
+      x-runtime: 
+      - "0.111955"
       server: 
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.028059"
+      date: 
+      - Thu, 09 Feb 2012 14:54:44 GMT
       set-cookie: 
       - <REDACTED>
-      cache-control: 
-      - no-cache
       status: 
       - "201"
+      cache-control: 
+      - no-cache
       transfer-encoding: 
       - chunked
-    body: "{\"virtual_machine\":{\"label\":\"testbye\",\"cpus\":1,\"operating_system_distro\":\"rhel\",\"created_at\":\"2011-05-03T14:02:02Z\",\"template_id\":1,\"operating_system\":\"linux\",\"cpu_shares\":1,\"updated_at\":\"2011-05-03T14:39:57Z\",\"memory\":256,\"local_remote_access_port\":5907,\"allowed_swap\":true,\"recovery_mode\":false,\"allow_resize_without_reboot\":true,\"xen_id\":17,\"id\":1,\"hypervisor_id\":6,\"user_id\":4,\"template_label\":\"CentOS 5.5 x64\",\"hostname\":\"testbye\",\"booted\":true,\"remote_access_password\":\"asdfsdf\",\"min_disk_size\":5,\"initial_root_password\":\"asdfasdf\",\"identifier\":\"safsadf\",\"locked\":true,\"built\":true}}"
+    body: "{\"virtual_machine\":{\"monthly_bandwidth_used\":25927,\"aflexi_id\":null,\"cpus\":1,\"label\":\"oscar-vm-do-not-delete\",\"created_at\":\"2011-12-19T16:34:51Z\",\"operating_system_distro\":\"ubuntu\",\"cpu_shares\":34,\"enable_autoscale\":true,\"operating_system\":\"linux\",\"template_id\":264,\"allowed_swap\":true,\"local_remote_access_port\":5905,\"memory\":1000,\"updated_at\":\"2012-02-09T14:54:44Z\",\"allow_resize_without_reboot\":false,\"recovery_mode\":false,\"enable_monitis\":true,\"hypervisor_id\":1,\"id\":1343,\"update_billing_stat\":true,\"xen_id\":518,\"admin_note\":null,\"allowed_hot_migrate\":false,\"user_id\":942,\"note\":null,\"strict_virtual_machine_id\":null,\"suspended\":true,\"vip\":true,\"booted\":true,\"hostname\":\"t\",\"max_memory\":16000,\"template_label\":\"Debian 6.0.0 LAMP x64\",\"total_disk_size\":10,\"add_to_marketplace\":null,\"identifier\":\"cjiul6p4pljqzy\",\"initial_root_password\":\"11111111-t\",\"min_disk_size\":5,\"remote_access_password\":\"0jfd3mz3tec3\",\"built\":true,\"locked\":true,\"state\":\"new\",\"ip_addresses\":[{\"ip_address\":{\"address\":\"109.123.105.212\",\"disallowed_primary\":false,\"netmask\":\"255.255.255.240\",\"created_at\":\"2010-10-27T15:28:22Z\",\"broadcast\":\"109.123.105.223\",\"updated_at\":\"2011-10-10T09:03:14Z\",\"network_id\":1,\"network_address\":\"109.123.105.208\",\"id\":17,\"free\":false,\"gateway\":\"109.123.105.209\"}}]}}"
     http_version: "1.1"

@@ -499,9 +499,8 @@ describe Squall::VirtualMachine do
     end
 
     it "will reboot a virtual_machine" do
-      virtual_machine = @virtual_machine.reboot(1)
+      virtual_machine = @virtual_machine.reboot(1343)
       @virtual_machine.success.should be_true
-      virtual_machine['id'].should == 1
     end
   end
 end
