@@ -170,7 +170,6 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/suspend.json")
       response['virtual_machine']
     end
-    alias_method :unsuspend, :suspend
 
     # Unlock a VirtualMachine
     def unlock(id)
