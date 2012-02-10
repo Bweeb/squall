@@ -79,6 +79,22 @@ module Squall
       response = request(:get, "/users/#{id}/virtual_machines.json")
       response.collect { |vm| vm['virtual_machine']}
     end
+    
+    # Return a list of Hypervisors for a User's VirtualMachines
+    def hypervisors(id)
+      response = request(:get, "/users/#{id}/hypervisors.json")
+      response.collect { |vm| vm['hypervisor']}
+    end
+
+    def data_store_zones(id)
+      response = request(:get, "/users/#{id}/data_store_zones.json")
+      response.collect { |vm| vm['data-store-group']}
+    end
+
+    def network_zones(id)
+      response = request(:get, "/users/#{id}/network_zones.json")
+      response.collect { |vm| vm['network_group']}
+    end
 
   end
 end
