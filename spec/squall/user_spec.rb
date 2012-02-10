@@ -86,7 +86,7 @@ describe Squall::User do
     use_vcr_cassette "user/list"
     it "returns a user list" do
       users = @user.list
-      users.should be_a(Array)
+      users.should be_an(Array)
     end
 
     it "contains first users data" do
@@ -175,7 +175,7 @@ describe Squall::User do
 
     it "returns stats" do
       stats = @user.stats(1)
-      stats.should be_a(Array)
+      stats.should be_an(Array)
     end
   end
 
