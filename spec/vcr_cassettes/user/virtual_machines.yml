@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/users/500/virtual_machines.json
+    uri: http://<USER>:<PASS>@<URL>:80/users/404/virtual_machines.json
     body: 
     headers: 
       content-type: 
@@ -11,32 +11,30 @@
       - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers: 
       x-ua-compatible: 
       - IE=Edge,chrome=1
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      etag: 
-      - "\"d751713988987e9331980363e24189ce\""
       content-type: 
       - application/json; charset=utf-8
       date: 
-      - Thu, 14 Apr 2011 16:10:46 GMT
+      - Fri, 10 Feb 2012 20:22:53 GMT
       server: 
       - Apache/2.2.3 (CentOS)
       x-runtime: 
-      - "0.013584"
+      - "0.038951"
       set-cookie: 
       - <REDACTED>
       cache-control: 
-      - max-age=0, private, must-revalidate
+      - no-cache
       status: 
-      - "200"
+      - "404"
       transfer-encoding: 
       - chunked
-    body: "[]"
+    body: "{\"errors\":[\"Resource not found\"]}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
@@ -56,17 +54,17 @@
       x-ua-compatible: 
       - IE=Edge,chrome=1
       etag: 
-      - "\"d751713988987e9331980363e24189ce\""
+      - "\"d63e5272c65252750429f3f149c7f8ec\""
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.016482"
+      - "0.073640"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Thu, 14 Apr 2011 16:13:18 GMT
+      - Fri, 10 Feb 2012 20:22:54 GMT
       set-cookie: 
       - <REDACTED>
       status: 
@@ -75,5 +73,5 @@
       - max-age=0, private, must-revalidate
       transfer-encoding: 
       - chunked
-    body: "[{\"virtual_machine\":{\"label\":\"testing\",\"cpus\":1,\"operating_system_distro\":\"rhel\",\"created_at\":\"2011-04-14T16:24:24Z\",\"template_id\":1,\"operating_system\":\"linux\",\"cpu_shares\":1,\"monthly_bandwidth_used\":\"0.0\",\"updated_at\":\"2011-04-14T16:25:42Z\",\"memory\":256,\"local_remote_access_port\":null,\"allowed_swap\":true,\"recovery_mode\":null,\"allow_resize_without_reboot\":true,\"xen_id\":null,\"id\":61,\"hypervisor_id\":2,\"ip_addresses\":[{\"ip_address\":{\"netmask\":\"255.255.255.224\",\"disallowed_primary\":true,\"address\":\"123.123.108.226\",\"created_at\":\"2011-03-16T02:19:11Z\",\"updated_at\":\"2011-03-16T02:19:11Z\",\"network_id\":2,\"network_address\":\"123.123.108.224\",\"broadcast\":\"123.123.108.255\",\"id\":30,\"gateway\":\"123.123.108.225\"}}],\"user_id\":4,\"template_label\":\"CentOS 5.5 x64\",\"hostname\":\"delete-when-done.com\",\"booted\":false,\"total_disk_size\":\"5.0\",\"remote_access_password\":null,\"min_disk_size\":5,\"initial_root_password\":\"dffsdfssdffds\",\"identifier\":\"k4orgyjxzb6ks7\",\"locked\":false,\"built\":true}},{\"virtual_machine\":{\"label\":\"testing2\",\"cpus\":1,\"operating_system_distro\":\"rhel\",\"created_at\":\"2011-04-14T16:28:08Z\",\"template_id\":1,\"operating_system\":\"linux\",\"cpu_shares\":1,\"monthly_bandwidth_used\":\"0.0\",\"updated_at\":\"2011-04-14T16:28:08Z\",\"memory\":256,\"local_remote_access_port\":null,\"allowed_swap\":true,\"recovery_mode\":null,\"allow_resize_without_reboot\":true,\"xen_id\":null,\"id\":62,\"hypervisor_id\":2,\"ip_addresses\":[{\"ip_address\":{\"netmask\":\"255.255.255.224\",\"disallowed_primary\":false,\"address\":\"123.123.123.219\",\"created_at\":\"2011-03-16T02:17:47Z\",\"updated_at\":\"2011-03-16T02:17:47Z\",\"network_id\":1,\"network_address\":\"123.123.123.192\",\"broadcast\":\"123.123.123.223\",\"id\":26,\"gateway\":\"123.123.123.193\"}}],\"user_id\":4,\"template_label\":\"CentOS 5.5 x64\",\"hostname\":\"delete-when-done2.com\",\"booted\":false,\"total_disk_size\":\"5.0\",\"remote_access_password\":\"23fsdfsd\",\"min_disk_size\":5,\"initial_root_password\":\"sdfsdfdsfsd\",\"identifier\":\"i4zpd1kpng8da4\",\"locked\":true,\"built\":false}}]"
+    body: "[{\"virtual_machine\":{\"monthly_bandwidth_used\":0,\"aflexi_id\":null,\"cpus\":1,\"label\":\"test\",\"created_at\":\"2012-02-09T10:43:07Z\",\"operating_system_distro\":\"rhel\",\"cpu_shares\":1,\"enable_autoscale\":false,\"operating_system\":\"linux\",\"template_id\":384,\"allowed_swap\":true,\"local_remote_access_port\":null,\"memory\":256,\"updated_at\":\"2012-02-10T11:50:18Z\",\"allow_resize_without_reboot\":false,\"recovery_mode\":null,\"enable_monitis\":false,\"hypervisor_id\":1,\"id\":1511,\"update_billing_stat\":false,\"xen_id\":null,\"admin_note\":null,\"allowed_hot_migrate\":false,\"user_id\":1,\"note\":null,\"strict_virtual_machine_id\":null,\"suspended\":false,\"vip\":null,\"booted\":false,\"hostname\":\"test.com\",\"max_memory\":null,\"template_label\":\"CentOS 6.2 x64\",\"total_disk_size\":6,\"add_to_marketplace\":null,\"identifier\":\"qbf3061qubd7sk\",\"initial_root_password\":\"solekam1\",\"min_disk_size\":5,\"remote_access_password\":\"lybii1fdo2ui\",\"built\":false,\"locked\":true,\"state\":\"new\",\"ip_addresses\":[{\"ip_address\":{\"address\":\"109.123.105.210\",\"disallowed_primary\":false,\"netmask\":\"255.255.255.240\",\"created_at\":\"2010-10-27T15:28:22Z\",\"broadcast\":\"109.123.105.223\",\"updated_at\":\"2011-10-10T09:03:14Z\",\"network_id\":1,\"network_address\":\"109.123.105.208\",\"id\":15,\"free\":false,\"gateway\":\"109.123.105.209\"}}]}},{\"virtual_machine\":{\"monthly_bandwidth_used\":7204,\"aflexi_id\":null,\"cpus\":1,\"label\":\"az_ip\",\"created_at\":\"2012-02-09T12:19:17Z\",\"operating_system_distro\":\"ubuntu\",\"cpu_shares\":1,\"enable_autoscale\":false,\"operating_system\":\"linux\",\"template_id\":8,\"allowed_swap\":true,\"local_remote_access_port\":null,\"memory\":128,\"updated_at\":\"2012-02-10T17:07:06Z\",\"allow_resize_without_reboot\":false,\"recovery_mode\":false,\"enable_monitis\":false,\"hypervisor_id\":1,\"id\":1517,\"update_billing_stat\":false,\"xen_id\":null,\"admin_note\":null,\"allowed_hot_migrate\":false,\"user_id\":1,\"note\":null,\"strict_virtual_machine_id\":null,\"suspended\":false,\"vip\":null,\"booted\":false,\"hostname\":\"az\",\"max_memory\":2048,\"template_label\":\"Debian 5.0 (Lenny) x64\",\"total_disk_size\":6,\"add_to_marketplace\":null,\"identifier\":\"g2wslf8wu43b6v\",\"initial_root_password\":\"qwaszx\",\"min_disk_size\":5,\"remote_access_password\":null,\"built\":true,\"locked\":false,\"state\":\"new\",\"ip_addresses\":[{\"ip_address\":{\"address\":\"109.123.105.215\",\"disallowed_primary\":false,\"netmask\":\"255.255.255.240\",\"created_at\":\"2010-10-27T15:28:22Z\",\"broadcast\":\"109.123.105.223\",\"updated_at\":\"2011-10-10T09:03:14Z\",\"network_id\":1,\"network_address\":\"109.123.105.208\",\"id\":20,\"free\":false,\"gateway\":\"109.123.105.209\"}},{\"ip_address\":{\"address\":\"83.170.67.234\",\"disallowed_primary\":false,\"netmask\":\"255.255.255.224\",\"created_at\":\"2011-01-20T11:23:31Z\",\"broadcast\":\"83.170.67.255\",\"updated_at\":\"2011-10-10T09:15:15Z\",\"network_id\":1,\"network_address\":\"83.170.67.224\",\"id\":33451,\"free\":false,\"gateway\":\"83.170.67.225\"}}]}}]"
     http_version: "1.1"
