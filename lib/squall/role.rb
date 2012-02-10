@@ -20,10 +20,9 @@ module Squall
     # * +options+ - Params for editing the Role
     # ==== Example
     #
-    #   edit :label => 'myrole', :permission => [1,3]
-    #   edit :label => 'myrole', :permission => 1
+    #   edit 1, :label => 'myrole', :permission_ids => [1,3]
     def edit(id, options = {})
-      params.accepts(:label, :permission).validate!(options)
+      params.accepts(:label, :permission_ids).validate!(options)
       response = request(:put, "/roles/#{id}.json", default_params(options))
     end
 
@@ -46,11 +45,10 @@ module Squall
     #
     # ==== Example
     #
-    #   create :label => 'mypriv', :identifier => 'magic'
+    #   create :label => 'Admin'
     def create(options = {})
-      params.required(:label, :identifier).validate!(options)
+      params.required(:label).accepts(:permission_ids).validate!(options)
       response = request(:post, '/roles.json', default_params(options))
-      response.first[1]
     end
   end
 end
