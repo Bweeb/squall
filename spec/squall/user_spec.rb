@@ -228,5 +228,23 @@ describe Squall::User do
       data_store_zones.should be_an(Array)
     end
   end
+
+  describe "#network_zones" do
+    use_vcr_cassette "user/network_zones"
+    it "requires an id" do
+      expect { @user.network_zones }.to raise_error(ArgumentError)
+    end
+
+    it "404s on not found" do
+      pending "Broken on OnApp: returns success despite non-existent user" do
+        expect { @user.network_zones(2532564353245) }.to raise_error(Squall::NotFound)
+      end
+    end
+
+    it "returns the network_zones" do
+      network_zones = @user.network_zones(1)
+      network_zones.should be_an(Array)
+    end
+  end
   
 end
