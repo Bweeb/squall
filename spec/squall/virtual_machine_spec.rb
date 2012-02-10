@@ -107,8 +107,8 @@ describe Squall::VirtualMachine do
       ]
 
       @virtual_machine.should_receive(:request).exactly(optional.size).times.and_return Hash.new('virtual_machine' => [])
-      optional.each do |k,v|
-        @virtual_machine.create(@valid.merge(k.to_sym => v))
+      optional.each do |param|
+        @virtual_machine.create(@valid.merge(param => "test"))
       end
     end
 
