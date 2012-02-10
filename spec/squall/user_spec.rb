@@ -65,13 +65,12 @@ describe Squall::User do
     use_vcr_cassette "user/list"
     it "returns a user list" do
       users = @user.list
-      users.size.should be(2)
+      users.should be_a(Array)
     end
 
     it "contains first users data" do
       user = @user.list.first
-      user.keys.should include(*@keys)
-      user['email'].should == "user@example.com"
+      user.should be_a(Hash)
     end
   end
 

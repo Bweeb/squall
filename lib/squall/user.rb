@@ -4,7 +4,7 @@ module Squall
     # Return a list of all users
     def list
       response = request(:get, '/users.json')
-      response.collect { |user| user['user']}
+      response.collect { |user| user['user'] }
     end
 
 
