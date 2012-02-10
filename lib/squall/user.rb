@@ -69,10 +69,9 @@ module Squall
       request(:delete, "/users/#{id}.json")
     end
 
-    # Get the stats for a User
+    # Get the stats for each of a User's VirtualMachines
     def stats(id)
-      response = request(:get, "/users/#{id}/vm_stats.json")
-      response.first['vm_stats']
+      request(:get, "/users/#{id}/vm_stats.json")
     end
 
     # Return a list of VirtualMachines for a User
