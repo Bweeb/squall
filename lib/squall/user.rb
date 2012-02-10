@@ -88,12 +88,12 @@ module Squall
 
     def data_store_zones(id)
       response = request(:get, "/users/#{id}/data_store_zones.json")
-      response.collect { |vm| vm['<data-store-group']}
+      response.collect { |vm| vm['data-store-group']}
     end
 
     def network_zones(id)
       response = request(:get, "/users/#{id}/network_zones.json")
-      response.collect { |vm| vm['network_zone']}
+      response.collect { |vm| vm['network_group']}
     end
 
   end
