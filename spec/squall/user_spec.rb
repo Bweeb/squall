@@ -46,8 +46,8 @@ describe Squall::User do
     it "allows all optional params" do
       optional = [:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at]
       @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new('virtual_machine' => [])
-      optional.each do |k,v|
-        @user.create(@valid.merge(k.to_sym => v))
+      optional.each do |param|
+        @user.create(@valid.merge(param => "test"))
       end
     end
     
