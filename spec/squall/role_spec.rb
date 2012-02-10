@@ -77,7 +77,7 @@ describe Squall::Role do
     use_vcr_cassette "role/permissions"
     it "returns permissions" do
       permissions = @role.permissions
-      permissions.size.should be(229)
+      permissions.size.should be(369)
 
       keys = ["label", "created_at", "updated_at", "id", "identifier"]
       first = permissions.first
