@@ -36,21 +36,24 @@ describe Squall::Role do
       expect { @role.edit }.to raise_error(ArgumentError)
     end
 
-    it "returns not found for invalid user" do
-      expect { @role.edit(5) }.to raise_error(Squall::NotFound)
+    it "returns 404 for invalid id" do
+      expect { @role.edit(404) }.to raise_error(Squall::NotFound)
     end
 
-    it "allows :label and/or :permission" do
-      expect { @role.edit(3, :missing => 1) }.to raise_error(ArgumentError, /Unknown.*missing/)
+    it "allows all optional params" do
+      optional = [:label, :permission_ids]
+      optional.each do |k|
+        opts = @role.default_params(k.to_sym => 1)
+        args = [:put, '/roles/1.json', opts]
+        @role.should_receive(:request).with(*args).once.and_return([])
+        @role.edit(1, k.to_sym => 1 )
+      end
     end
 
     it "updates the role" do
       pending "OnApp is returning an empty response" do
-        old_role = @role.show(3)
-        old_role['label'].should == "Other"
-
-        new_role = @role.edit(3, :label => 'New')
-        new_role['label'].should == 'New'
+        role = @role.edit(1, :label => 'New')
+        role['label'].should == 'New'
       end
     end
   end
@@ -90,26 +93,20 @@ describe Squall::Role do
 
   describe "#create" do
     use_vcr_cassette "role/create"
-    it "requires login" do
-      requires_attr(:label) { @role.create }
-    end
 
     it "requires label" do
-      requires_attr(:identifier) { @role.create(:label => 'my-label') }
+      requires_attr(:label) { @role.create }
     end
-
-    it "raises error on duplicate" do
-      expect { 
-        @role.create(:label => 'Test', :identifier => 'testing')
-      }.to raise_error(Squall::RequestError)
-      @role.errors['identifier'].should include("has already been taken")
+    
+    it "allows permission_ids" do
+      @role.should_receive(:request).once.and_return Hash.new('role' => [])
+      @role.create(:label => "test", :permission_ids => 1)
     end
 
     it "creates a role" do
-      value = {:label => 'Test Create', :identifier => 'testing-create'}
-      role = @role.create(value)
-      role['label'].should  == value[:label]
-      role['identifier'].should == value[:identifier]
+      response = @role.create({:label => 'Test Create', :permission_ids => 1})
+      response["role"]['label'].should  == 'Test Create'
+      response["role"]['permissions'].should_not be_empty
     end
   end
 end
