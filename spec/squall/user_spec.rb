@@ -195,4 +195,20 @@ describe Squall::User do
     end
   end
   
+  describe "#hypervisors" do
+    use_vcr_cassette "user/hypervisors"
+    it "requires an id" do
+      expect { @user.hypervisors }.to raise_error(ArgumentError)
+    end
+
+    it "404s on not found" do
+      expect { @user.hypervisors(404) }.to raise_error(Squall::NotFound)
+    end
+
+    it "returns the virtual_machines" do
+      hypervisors = @user.hypervisors(1)
+      hypervisors.should be_an(Array)
+    end
+  end
+  
 end
