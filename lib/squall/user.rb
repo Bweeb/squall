@@ -85,6 +85,11 @@ module Squall
       response = request(:get, "/users/#{id}/hypervisors.json")
       response.collect { |vm| vm['hypervisor']}
     end
-
+    
+    def data_store_zones(id)
+      response = request(:get, "/users/#{id}/data_store_zones.json")
+      response.collect { |vm| vm['<data-store-group']}
+    end
+    
   end
 end

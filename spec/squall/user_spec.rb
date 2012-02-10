@@ -211,4 +211,22 @@ describe Squall::User do
     end
   end
   
+  describe "#data_store_zones" do
+    use_vcr_cassette "user/data_store_zones"
+    it "requires an id" do
+      expect { @user.data_store_zones }.to raise_error(ArgumentError)
+    end
+
+    it "404s on not found" do
+      pending "Broken on OnApp: returns success despite non-existent user" do
+        expect { @user.data_store_zones(2532564353245) }.to raise_error(Squall::NotFound)
+      end
+    end
+
+    it "returns the virtual_machines" do
+      data_store_zones = @user.data_store_zones(1)
+      data_store_zones.should be_an(Array)
+    end
+  end
+  
 end
