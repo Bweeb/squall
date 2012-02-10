@@ -60,6 +60,27 @@ describe Squall::User do
       @user.success.should be_true
     end
   end
+  
+  describe "#edit" do
+    use_vcr_cassette "user/edit"
+    
+    it "allows select params" do
+      optional = [:email, :password, :password_confirmation, :first_name, :last_name, :user_group_id, :billing_plan_id, :role_ids, :suspend_at]
+      @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new('user' => [])
+      optional.each do |param|
+        @user.edit(1, param => "test")
+      end
+    end
+    
+    it "raises error on unknown params" do
+      expect { @user.edit(1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
+    end
+
+    it "edits a user" do
+      user = @user.edit(1, :first_name => "Test")
+      @user.success.should be_true
+    end
+  end
 
   describe "#list" do
     use_vcr_cassette "user/list"
@@ -186,25 +207,5 @@ describe Squall::User do
       virtual_machines.first.should include(*keys)
     end
   end
-
-  describe "#edit_role" do
-    use_vcr_cassette "user/edit_role"
-    it "requires an id" do
-      expect { @user.edit_role }.to raise_error(ArgumentError)
-    end
-
-    it "404s on not found" do
-      expect { @user.edit_role(500, nil) }.to raise_error(Squall::NotFound)
-    end
-
-    it "edits one role for a user" do
-      @user.edit_role(7, 4)
-      @user.success.should be_true
-    end
-
-    it "edits two roles for a user" do
-      @user.edit_role(7, 4, 2)
-      @user.success.should be_true
-    end
-  end
+  
 end

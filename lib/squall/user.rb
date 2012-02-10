@@ -26,6 +26,16 @@ module Squall
       params.required(:login, :email,:first_name, :last_name, :password, :password_confirmation).accepts(:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at).validate!(options)
       request(:post, '/users.json', default_params(options))
     end
+    
+    # Edit a user
+    #
+    # ==== Options
+    # 
+    # * +options+ - Params for editing the User.  Note that OnApp only honors select attributes for editing: email, password (and password_confirmation), first_name, last_name, user_group_id, billing_plan_id, role_ids, suspend_at
+    def edit(id, options={})
+      params.accepts(:email, :password, :password_confirmation, :first_name, :last_name, :user_group_id, :billing_plan_id, :role_ids, :suspend_at).validate!(options)
+      request(:put, "/users/#{id}.json", default_params(options))
+    end
 
     # Return a Hash of the given User
     def show(id)
@@ -69,19 +79,5 @@ module Squall
       response.collect { |vm| vm['virtual_machine']}
     end
 
-    # Edit a role for a user
-    #
-    # ==== Options
-    #
-    # * +id+ - id of the User
-    # * +roles+ - A single Role id or Array of Roles
-    #
-    # ==== Example
-    #
-    #   edit_role 1, 2 # Role 2
-    #   edit_role 1, [1,2] # Role 1 & 2
-    def edit_role(id, *roles)
-      request(:put, "/users/#{id}.json", default_params(:role_ids => roles))
-    end
   end
 end
