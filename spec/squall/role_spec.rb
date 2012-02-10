@@ -42,11 +42,10 @@ describe Squall::Role do
 
     it "allows all optional params" do
       optional = [:label, :permission_ids]
-      optional.each do |k|
-        opts = @role.default_params(k.to_sym => 1)
-        args = [:put, '/roles/1.json', opts]
+      optional.each do |param|
+        args = [:put, '/roles/1.json', @role.default_params(param => 1)]
         @role.should_receive(:request).with(*args).once.and_return([])
-        @role.edit(1, k.to_sym => 1 )
+        @role.edit(1, param => 1 )
       end
     end
 
