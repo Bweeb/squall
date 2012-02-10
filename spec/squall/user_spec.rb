@@ -45,7 +45,7 @@ describe Squall::User do
     
     it "allows all optional params" do
       optional = [:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at]
-      @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new('virtual_machine' => [])
+      @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new("user" => {})
       optional.each do |param|
         @user.create(@valid.merge(param => "test"))
       end
@@ -60,18 +60,38 @@ describe Squall::User do
       @user.success.should be_true
     end
   end
+  
+  describe "#edit" do
+    use_vcr_cassette "user/edit"
+    
+    it "allows select params" do
+      optional = [:email, :password, :password_confirmation, :first_name, :last_name, :user_group_id, :billing_plan_id, :role_ids, :suspend_at]
+      @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new()
+      optional.each do |param|
+        @user.edit(1, param => "test")
+      end
+    end
+    
+    it "raises error on unknown params" do
+      expect { @user.edit(1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
+    end
+
+    it "edits a user" do
+      user = @user.edit(1, :first_name => "Test")
+      @user.success.should be_true
+    end
+  end
 
   describe "#list" do
     use_vcr_cassette "user/list"
     it "returns a user list" do
       users = @user.list
-      users.size.should be(2)
+      users.should be_an(Array)
     end
 
     it "contains first users data" do
       user = @user.list.first
-      user.keys.should include(*@keys)
-      user['email'].should == "user@example.com"
+      user.should be_a(Hash)
     end
   end
 
@@ -82,12 +102,12 @@ describe Squall::User do
     end
 
     it "returns not found for invalid users" do
-      expect { @user.show(5) }.to raise_error(Squall::NotFound)
+      expect { @user.show(404) }.to raise_error(Squall::NotFound)
     end
 
     it "returns a user" do
       user = @user.show(1)
-      user['login'].should == 'user'
+      user.should be_a(Hash)
     end
   end
 
@@ -98,10 +118,8 @@ describe Squall::User do
     end
 
     it "generates a new key" do
-      pending "Broken in OnApp" do
-        user = @user.generate_api_key(1)
-        user['api_key'].should == '7d97e98f8af710c7e7fe703abc8f639e0ee507c4'
-      end
+      user = @user.generate_api_key(1)
+      user.should be_a(Hash)
     end
   end
 
@@ -112,7 +130,7 @@ describe Squall::User do
     end
 
     it "suspends a user" do
-      user = @user.suspend(2)
+      user = @user.suspend(1)
       user['status'].should == "suspended"
     end
   end
@@ -124,7 +142,7 @@ describe Squall::User do
     end
 
     it "activates a user" do
-      user = @user.activate(2)
+      user = @user.activate(1)
       user['status'].should == "active"
     end
 
@@ -139,13 +157,13 @@ describe Squall::User do
       expect { @user.delete }.to raise_error(ArgumentError)
     end
 
-    it "deltes a user" do
-      delete = @user.delete(6)
-      delete.should be_true
+    it "deletes a user" do
+      @user.delete(1)
+      @user.success.should be_true
     end
 
     it "returns NotFound for missing user" do
-      expect { @user.delete(22222) }.to raise_error(Squall::NotFound)
+      expect { @user.delete(404) }.to raise_error(Squall::NotFound)
     end
   end
 
@@ -157,10 +175,7 @@ describe Squall::User do
 
     it "returns stats" do
       stats = @user.stats(1)
-      stats['virtual_machine_id'].should == 55
-      keys = ["created_at", "cost", "updated_at", "stat_time", "id",
-        "user_id", "vm_billing_stat_id", "billing_stats", "virtual_machine_id"]
-      stats.keys.should include *keys
+      stats.should be_an(Array)
     end
   end
 
@@ -187,25 +202,5 @@ describe Squall::User do
       virtual_machines.first.should include(*keys)
     end
   end
-
-  describe "#edit_role" do
-    use_vcr_cassette "user/edit_role"
-    it "requires an id" do
-      expect { @user.edit_role }.to raise_error(ArgumentError)
-    end
-
-    it "404s on not found" do
-      expect { @user.edit_role(500, nil) }.to raise_error(Squall::NotFound)
-    end
-
-    it "edits one role for a user" do
-      @user.edit_role(7, 4)
-      @user.success.should be_true
-    end
-
-    it "edits two roles for a user" do
-      @user.edit_role(7, 4, 2)
-      @user.success.should be_true
-    end
-  end
+  
 end
