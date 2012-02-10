@@ -4,7 +4,7 @@ module Squall
     # Return a list of all users
     def list
       response = request(:get, '/users.json')
-      response.collect { |user| user['user']}
+      response.collect { |user| user['user'] }
     end
 
 
@@ -26,41 +26,52 @@ module Squall
       params.required(:login, :email,:first_name, :last_name, :password, :password_confirmation).accepts(:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at).validate!(options)
       request(:post, '/users.json', default_params(options))
     end
+    
+    # Edit a user
+    #
+    # ==== Options
+    # 
+    # * +options+ - Params for editing the User.  Note that OnApp only honors select attributes for editing: email, password (and password_confirmation), first_name, last_name, user_group_id, billing_plan_id, role_ids, suspend_at
+    def edit(id, options={})
+      params.accepts(:email, :password, :password_confirmation, :first_name, :last_name, :user_group_id, :billing_plan_id, :role_ids, :suspend_at).validate!(options)
+      request(:put, "/users/#{id}.json", default_params(options))
+    end
 
     # Return a Hash of the given User
     def show(id)
       response = request(:get, "/users/#{id}.json")
-      response.first[1]
+      response["user"]
     end
 
     # Create a new API Key for a User
     def generate_api_key(id)
-      request(:post, "/users/#{id}/make_new_api_key.json")
+      response = request(:post, "/users/#{id}/make_new_api_key.json")
+      response["user"]
     end
 
     # Suspend a User
     def suspend(id)
       response = request(:get, "/users/#{id}/suspend.json")
-      response.first[1]
+      response["user"]
     end
 
     # Activate a user
     def activate(id)
       response = request(:get, "/users/#{id}/activate_user.json")
-      response.first[1]
+      response["user"]
     end
     alias_method :unsuspend, :activate
 
     # Delete a user
+    #
+    # Note: this does not delete remove a user from the database.  First, their status will be set to "Deleted."  If you call this method again, the user will be completely removed.
     def delete(id)
-      response = request(:delete, "/users/#{id}.json")
-      success
+      request(:delete, "/users/#{id}.json")
     end
 
-    # Get the stats for a User
+    # Get the stats for each of a User's VirtualMachines
     def stats(id)
-      response = request(:get, "/users/#{id}/vm_stats.json")
-      response.first['vm_stats']
+      request(:get, "/users/#{id}/vm_stats.json")
     end
 
     # Return a list of VirtualMachines for a User
@@ -69,19 +80,5 @@ module Squall
       response.collect { |vm| vm['virtual_machine']}
     end
 
-    # Edit a role for a user
-    #
-    # ==== Options
-    #
-    # * +id+ - id of the User
-    # * +roles+ - A single Role id or Array of Roles
-    #
-    # ==== Example
-    #
-    #   edit_role 1, 2 # Role 2
-    #   edit_role 1, [1,2] # Role 1 & 2
-    def edit_role(id, *roles)
-      request(:put, "/users/#{id}.json", default_params(:role_ids => roles))
-    end
   end
 end
