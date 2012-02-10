@@ -118,10 +118,8 @@ describe Squall::User do
     end
 
     it "generates a new key" do
-      pending "Broken in OnApp" do
-        user = @user.generate_api_key(1)
-        user['api_key'].should == '7d97e98f8af710c7e7fe703abc8f639e0ee507c4'
-      end
+      user = @user.generate_api_key(1)
+      user.should be_a(Hash)
     end
   end
 

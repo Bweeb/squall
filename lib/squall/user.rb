@@ -45,7 +45,8 @@ module Squall
 
     # Create a new API Key for a User
     def generate_api_key(id)
-      request(:post, "/users/#{id}/make_new_api_key.json")
+      response = request(:post, "/users/#{id}/make_new_api_key.json")
+      response["user"]
     end
 
     # Suspend a User
