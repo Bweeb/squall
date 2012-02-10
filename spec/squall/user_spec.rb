@@ -142,7 +142,7 @@ describe Squall::User do
     end
 
     it "activates a user" do
-      user = @user.activate(2)
+      user = @user.activate(1)
       user['status'].should == "active"
     end
 
