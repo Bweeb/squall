@@ -157,13 +157,13 @@ describe Squall::User do
       expect { @user.delete }.to raise_error(ArgumentError)
     end
 
-    it "deltes a user" do
-      delete = @user.delete(6)
-      delete.should be_true
+    it "deletes a user" do
+      @user.delete(1)
+      @user.success.should be_true
     end
 
     it "returns NotFound for missing user" do
-      expect { @user.delete(22222) }.to raise_error(Squall::NotFound)
+      expect { @user.delete(404) }.to raise_error(Squall::NotFound)
     end
   end
 

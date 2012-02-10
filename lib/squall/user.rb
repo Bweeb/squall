@@ -63,9 +63,10 @@ module Squall
     alias_method :unsuspend, :activate
 
     # Delete a user
+    #
+    # Note: this does not delete remove a user from the database.  First, their status will be set to "Deleted."  If you call this method again, the user will be completely removed.
     def delete(id)
-      response = request(:delete, "/users/#{id}.json")
-      success
+      request(:delete, "/users/#{id}.json")
     end
 
     # Get the stats for a User

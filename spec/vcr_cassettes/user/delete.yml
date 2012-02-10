@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://<USER>:<PASS>@<URL>:80/users/6.json
+    uri: http://<USER>:<PASS>@<URL>:80/users/1.json
     body: 
     headers: 
       content-type: 
@@ -23,11 +23,11 @@
       content-type: 
       - application/json; charset=utf-8
       date: 
-      - Wed, 13 Apr 2011 21:21:49 GMT
+      - Fri, 10 Feb 2012 17:45:39 GMT
       server: 
       - Apache/2.2.3 (CentOS)
       x-runtime: 
-      - "0.165735"
+      - "0.044770"
       set-cookie: 
       - <REDACTED>
       cache-control: 
@@ -41,7 +41,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://<USER>:<PASS>@<URL>:80/users/22222.json
+    uri: http://<USER>:<PASS>@<URL>:80/users/404.json
     body: 
     headers: 
       content-type: 
@@ -60,11 +60,11 @@
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.032186"
+      - "0.026929"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Wed, 13 Apr 2011 21:21:49 GMT
+      - Fri, 10 Feb 2012 17:45:40 GMT
       set-cookie: 
       - <REDACTED>
       status: 
@@ -73,5 +73,5 @@
       - no-cache
       transfer-encoding: 
       - chunked
-    body: "{\"error\":\"Resource not found\"}"
+    body: "{\"errors\":[\"Resource not found\"]}"
     http_version: "1.1"
