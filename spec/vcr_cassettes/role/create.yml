@@ -2,44 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/roles.json?role[identifier]=testing&role[label]=Test
-    body: 
-    headers: 
-      content-type: 
-      - application/json
-      authorization: 
-      - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 422
-      message: Unprocessable Entity
-    headers: 
-      x-ua-compatible: 
-      - IE=Edge,chrome=1
-      x-powered-by: 
-      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
-      - application/json; charset=utf-8
-      x-runtime: 
-      - "0.008168"
-      server: 
-      - Apache/2.2.3 (CentOS)
-      date: 
-      - Mon, 18 Apr 2011 14:51:07 GMT
-      set-cookie: 
-      - <REDACTED>
-      status: 
-      - "422"
-      cache-control: 
-      - no-cache
-      transfer-encoding: 
-      - chunked
-    body: "{\"identifier\":[\"has already been taken\"]}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/roles.json?role[identifier]=testing-create&role[label]=Test%20Create
+    uri: http://<USER>:<PASS>@<URL>:80/roles.json?role[permission_ids]=1&role[label]=Test%20Create
     body: 
     headers: 
       content-type: 
@@ -54,17 +17,17 @@
       x-ua-compatible: 
       - IE=Edge,chrome=1
       location: 
-      - http://www.example.com/roles/7
+      - http://<URL>/roles/407
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.019195"
+      - "0.317188"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Mon, 18 Apr 2011 14:54:29 GMT
+      - Fri, 10 Feb 2012 14:25:06 GMT
       set-cookie: 
       - <REDACTED>
       status: 
@@ -73,5 +36,5 @@
       - no-cache
       transfer-encoding: 
       - chunked
-    body: "{\"role\":{\"label\":\"Test Create\",\"created_at\":\"2011-04-18T14:54:29Z\",\"updated_at\":\"2011-04-18T14:54:29Z\",\"id\":7,\"permissions\":[],\"identifier\":\"testing-create\"}}"
+    body: "{\"role\":{\"label\":\"Test Create\",\"created_at\":\"2012-02-10T14:25:06Z\",\"updated_at\":\"2012-02-10T14:25:06Z\",\"id\":407,\"permissions\":[{\"permission\":{\"label\":\"Any action on virtual machines\",\"created_at\":\"2010-10-27T10:08:25Z\",\"updated_at\":\"2010-10-27T10:08:25Z\",\"id\":1,\"identifier\":\"virtual_machines\"}}],\"identifier\":\"pz9ypw3ct32mbw\"}}"
     http_version: "1.1"

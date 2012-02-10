@@ -45,11 +45,10 @@ module Squall
     #
     # ==== Example
     #
-    #   create :label => 'mypriv', :identifier => 'magic'
+    #   create :label => 'Admin'
     def create(options = {})
-      params.required(:label, :identifier).validate!(options)
+      params.required(:label).accepts(:permission_ids).validate!(options)
       response = request(:post, '/roles.json', default_params(options))
-      response.first[1]
     end
   end
 end

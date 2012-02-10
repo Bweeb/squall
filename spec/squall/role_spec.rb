@@ -93,26 +93,20 @@ describe Squall::Role do
 
   describe "#create" do
     use_vcr_cassette "role/create"
-    it "requires login" do
-      requires_attr(:label) { @role.create }
-    end
 
     it "requires label" do
-      requires_attr(:identifier) { @role.create(:label => 'my-label') }
+      requires_attr(:label) { @role.create }
     end
-
-    it "raises error on duplicate" do
-      expect { 
-        @role.create(:label => 'Test', :identifier => 'testing')
-      }.to raise_error(Squall::RequestError)
-      @role.errors['identifier'].should include("has already been taken")
+    
+    it "allows permission_ids" do
+      @role.should_receive(:request).once.and_return Hash.new('role' => [])
+      @role.create(:label => "test", :permission_ids => 1)
     end
 
     it "creates a role" do
-      value = {:label => 'Test Create', :identifier => 'testing-create'}
-      role = @role.create(value)
-      role['label'].should  == value[:label]
-      role['identifier'].should == value[:identifier]
+      response = @role.create({:label => 'Test Create', :permission_ids => 1})
+      response["role"]['label'].should  == 'Test Create'
+      response["role"]['permissions'].should_not be_empty
     end
   end
 end
