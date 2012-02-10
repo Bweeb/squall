@@ -52,7 +52,7 @@ module Squall
     # Suspend a User
     def suspend(id)
       response = request(:get, "/users/#{id}/suspend.json")
-      response.first[1]
+      response["user"]
     end
 
     # Activate a user

@@ -130,7 +130,7 @@ describe Squall::User do
     end
 
     it "suspends a user" do
-      user = @user.suspend(2)
+      user = @user.suspend(1)
       user['status'].should == "suspended"
     end
   end
