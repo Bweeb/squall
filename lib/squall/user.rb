@@ -30,7 +30,7 @@ module Squall
     # Return a Hash of the given User
     def show(id)
       response = request(:get, "/users/#{id}.json")
-      response.first[1]
+      response["user"]
     end
 
     # Create a new API Key for a User

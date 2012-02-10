@@ -81,12 +81,12 @@ describe Squall::User do
     end
 
     it "returns not found for invalid users" do
-      expect { @user.show(5) }.to raise_error(Squall::NotFound)
+      expect { @user.show(404) }.to raise_error(Squall::NotFound)
     end
 
     it "returns a user" do
       user = @user.show(1)
-      user['login'].should == 'user'
+      user.should be_a(Hash)
     end
   end
 
