@@ -4,7 +4,6 @@ describe Squall::FirewallRule do
   before(:each) do
     @firewall_rule = Squall::FirewallRule.new
     @valid = {:command => "DROP", :protocol => "TCP", :network_interface_id => 1}
-    @optional = [:address, :port]
   end
 
   describe "#list" do
@@ -43,8 +42,9 @@ describe Squall::FirewallRule do
     end
     
     it "allows all optional params" do
-      @firewall_rule.should_receive(:request).exactly(@optional.size).times.and_return Hash.new("firewall_rule" => {})
-      @optional.each do |param|
+      optional = [:network_interface_id, :address, :port]
+      @firewall_rule.should_receive(:request).exactly(optional.size).times.and_return Hash.new("firewall_rule" => {})
+      optional.each do |param|
         @firewall_rule.create(1, @valid.merge(param => "test"))
       end
     end
@@ -67,8 +67,9 @@ describe Squall::FirewallRule do
     use_vcr_cassette "firewall_rule/edit"
     
     it "allows select params" do
-      @firewall_rule.should_receive(:request).exactly(@optional.size).times.and_return Hash.new()
-      @optional.each do |param|
+      optional = [:command, :protocol, :network_interface_id, :address, :port]
+      @firewall_rule.should_receive(:request).exactly(optional.size).times.and_return Hash.new()
+      optional.each do |param|
         @firewall_rule.edit(1, 1, param => "test")
       end
     end
