@@ -19,6 +19,7 @@ module Squall
   autoload :Statistic,      'squall/statistic'
   autoload :Transaction,    'squall/transaction'
   autoload :Payment,        'squall/payment'
+  autoload :UserGroup,      'squall/user_group'
 
   extend self
 

@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/user_groups.json?user_group[label]=My%20new%20group
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://<URL>/user_groups/29
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.029662"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Mon, 13 Feb 2012 19:19:40 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:19:40Z\",\"updated_at\":\"2012-02-13T19:19:40Z\",\"id\":29}}"
+    http_version: "1.1"
