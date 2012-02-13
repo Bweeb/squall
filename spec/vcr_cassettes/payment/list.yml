@@ -1,0 +1,41 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/users/1/payments.json
+    body:
+    headers:
+      content-type:
+      - application/json
+      authorization:
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 13 Feb 2012 17:31:41 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      etag:
+      - ! '"634902b4eeb4ad7853662e843fc1de6b"'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      x-runtime:
+      - '0.041789'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - <REDACTED>
+      status:
+      - '200'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '[{"payment":{"created_at":"2010-12-09T13:22:38Z","updated_at":"2010-12-09T13:22:38Z","amount":"1000.0","id":1,"invoice_number":"00001","user_id":1}},{"payment":{"created_at":"2011-08-10T15:42:34Z","updated_at":"2011-08-10T15:42:34Z","amount":"2000.0","id":16,"invoice_number":"002","user_id":1}},{"payment":{"created_at":"2011-12-07T21:25:10Z","updated_at":"2011-12-07T21:25:10Z","amount":"1000000.0","id":32,"invoice_number":"3","user_id":1}}]'
+    http_version: '1.1'
+...
