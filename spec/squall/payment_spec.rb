@@ -53,5 +53,30 @@ describe Squall::Payment do
       @payment.success.should be_true
     end
   end
+  
+  describe "#edit" do
+    use_vcr_cassette "payment/edit"
+    
+    it "allows select params" do
+      optional = [:amount, :invoice_number]
+      @payment.should_receive(:request).exactly(optional.size).times.and_return Hash.new()
+      optional.each do |param|
+        @payment.edit(1, 1, param => "test")
+      end
+    end
+    
+    it "raises error on unknown params" do
+      expect { @payment.edit(1, 1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
+    end
+
+    it "edits a payment" do
+      user = @payment.edit(1, 1, :amount => 100)
+      @payment.success.should be_true
+    end
+    
+    it "raises an error for an invalid payment id" do
+      expect { @payment.edit(1, 404, @valid) }.to raise_error(Squall::NotFound)
+    end
+  end
 
 end
