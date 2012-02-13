@@ -10,12 +10,12 @@ describe Squall::UserGroup do
   describe "#list" do
     use_vcr_cassette "user_group/list"
     
-    it "returns a user list" do
+    it "returns a list of user groups" do
       user_groups = @user_group.list
       user_groups.should be_an(Array)
     end
 
-    it "contains first user_group's data" do
+    it "contains first user group's data" do
       user_group = @user_group.list.first
       user_group.should be_a(Hash)
     end
@@ -32,8 +32,8 @@ describe Squall::UserGroup do
       expect { @user_group.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
-    it "creates a user_group" do
-      user = @user_group.create(@valid)
+    it "creates a user group" do
+      @user_group.create(@valid)
       @user_group.success.should be_true
     end
   end
@@ -45,12 +45,12 @@ describe Squall::UserGroup do
       expect { @user_group.edit(1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
-    it "edits a user_group" do
-      user = @user_group.edit(1, @valid)
+    it "edits a user group" do
+      @user_group.edit(1, @valid)
       @user_group.success.should be_true
     end
     
-    it "raises an error for an invalid user_group id" do
+    it "raises an error for an invalid user group id" do
       expect { @user_group.edit(404, @valid) }.to raise_error(Squall::NotFound)
     end
   end
@@ -61,7 +61,7 @@ describe Squall::UserGroup do
       expect { @user_group.delete }.to raise_error(ArgumentError)
     end
 
-    it "deletes a user_group" do
+    it "deletes a user group" do
       @user_group.delete(1)
       @user_group.success.should be_true
     end
