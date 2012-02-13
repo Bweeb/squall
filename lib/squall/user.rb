@@ -73,6 +73,11 @@ module Squall
     def stats(id)
       request(:get, "/users/#{id}/vm_stats.json")
     end
+    
+    # Get a list of bills for the User
+    def monthly_bills(id)
+      response = request(:get, "/users/#{id}/monthly_bills.json")
+    end
 
     # Return a list of VirtualMachines for a User
     def virtual_machines(id)

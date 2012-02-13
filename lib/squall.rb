@@ -37,6 +37,7 @@ module Squall
   # * +base_uri+ - URL of your OnApp instance
   # * +username+ - API username
   # * +password+ - API Password
+  # * +debug+ - Toggle debug mode to log HTTParty
   #
   # ==== Example
   #
@@ -69,11 +70,9 @@ module Squall
     else
       raise ArgumentError, "Config file doesn't exist '#{file}'"
     end
-    config do |c|
-      conf = YAML::load_file(file)
-      c.base_uri  conf['base_uri']
-      c.username  conf['username']
-      c.password  conf['password']
+    settings = YAML::load_file(file)
+    config do |c| 
+      settings.each { |k, v| c.send(k, v) }
     end
   end
 
