@@ -78,5 +78,21 @@ describe Squall::Payment do
       expect { @payment.edit(1, 404, @valid) }.to raise_error(Squall::NotFound)
     end
   end
+  
+  describe "#delete" do
+    use_vcr_cassette "payment/delete"
+    it "requires an id" do
+      expect { @payment.delete }.to raise_error(ArgumentError)
+    end
+
+    it "deletes a payment" do
+      @payment.delete(1, 1)
+      @payment.success.should be_true
+    end
+
+    it "returns NotFound for missing user" do
+      expect { @payment.delete(1, 404) }.to raise_error(Squall::NotFound)
+    end
+  end
 
 end

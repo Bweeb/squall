@@ -32,6 +32,11 @@ module Squall
       params.accepts(:amount, :invoice_number).validate!(options)
       request(:put, "/users/#{user_id}/payments/#{id}.json", default_params(options))
     end
+    
+    # Delete a payment
+    def delete(user_id, id)
+      request(:delete, "/users/#{user_id}/payments/#{id}.json")
+    end
 
   end
 end
