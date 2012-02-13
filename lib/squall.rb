@@ -5,9 +5,11 @@ require 'squall/support/exception'
 require 'squall/support/yaml'
 
 module Squall
+  # Support
   autoload :Params,         'squall/support/params'
   autoload :Config,         'squall/support/config'
   autoload :Base,           'squall/support/base'
+  # Api
   autoload :Hypervisor,     'squall/hypervisor'
   autoload :User,           'squall/user'
   autoload :Role,           'squall/role'
