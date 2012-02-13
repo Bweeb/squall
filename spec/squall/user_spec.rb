@@ -178,6 +178,18 @@ describe Squall::User do
       stats.should be_an(Array)
     end
   end
+  
+  describe "#monthly_bills" do
+    use_vcr_cassette "user/monthly_bills"
+    it "requires an id" do
+      expect { @user.monthly_bills }.to raise_error(ArgumentError)
+    end
+
+    it "returns an array of bills for the user" do
+      stats = @user.monthly_bills(1)
+      stats.should be_an(Array)
+    end
+  end
 
   describe "#virtual_machines" do
     use_vcr_cassette "user/virtual_machines"
