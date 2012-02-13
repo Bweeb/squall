@@ -20,6 +20,7 @@ module Squall
   autoload :Transaction,    'squall/transaction'
   autoload :Payment,        'squall/payment'
   autoload :UserGroup,      'squall/user_group'
+  autoload :Whitelist,      'squall/whitelist'
 
   extend self
 
