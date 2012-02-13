@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/user_groups.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"284946cbb5d408bdafc3456b7171361d\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.039263"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Mon, 13 Feb 2012 19:19:40 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "[{\"user_group\":{\"label\":\"someother\",\"created_at\":\"2011-08-10T08:48:05Z\",\"updated_at\":\"2011-09-08T09:04:08Z\",\"id\":4}},{\"user_group\":{\"label\":\"testing_group\",\"created_at\":\"2011-08-10T08:55:36Z\",\"updated_at\":\"2011-08-10T08:55:36Z\",\"id\":5}},{\"user_group\":{\"label\":\"asdfasdfa\",\"created_at\":\"2011-10-12T09:43:35Z\",\"updated_at\":\"2011-10-12T09:43:35Z\",\"id\":8}},{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:11:16Z\",\"updated_at\":\"2012-02-13T19:11:16Z\",\"id\":19}},{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:11:51Z\",\"updated_at\":\"2012-02-13T19:11:51Z\",\"id\":20}},{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:12:14Z\",\"updated_at\":\"2012-02-13T19:12:14Z\",\"id\":21}},{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:16:51Z\",\"updated_at\":\"2012-02-13T19:16:51Z\",\"id\":25}},{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:17:14Z\",\"updated_at\":\"2012-02-13T19:17:14Z\",\"id\":26}},{\"user_group\":{\"label\":\"My new group\",\"created_at\":\"2012-02-13T19:17:58Z\",\"updated_at\":\"2012-02-13T19:17:58Z\",\"id\":28}}]"
+    http_version: "1.1"
