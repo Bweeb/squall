@@ -33,7 +33,6 @@ module Squall
   # Config 
   attr_accessor :configuration_file
 
-  # The path to your squall.yml
   self.configuration ||= Squall::Config.new
 
   # Specificy the config via block
