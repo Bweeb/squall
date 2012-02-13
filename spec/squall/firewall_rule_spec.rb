@@ -58,7 +58,7 @@ describe Squall::FirewallRule do
     end
 
     it "creates a firewall rule for a virtual machine" do
-      user = @firewall_rule.create(1, @valid)
+      @firewall_rule.create(1, @valid)
       @firewall_rule.success.should be_true
     end
   end
