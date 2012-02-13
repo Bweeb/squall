@@ -22,5 +22,9 @@ module Squall
     def password(value)
       @config[:password] = value
     end
+    
+    def debug(value)
+      @config[:debug] = value
+    end
   end
 end

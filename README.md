@@ -34,9 +34,10 @@ Configure:
 Squall can load configuration from a yaml file:
 
     # .squall.yml
-    base_uri 'https://onappurl.com'
-    username 'username'
-    password 'topsecret'
+    base_uri: 'https://onappurl.com' # Root level URI for OnApp isntance
+    username: 'username' # OnApp username
+    password: 'topsecret' # OnApp password
+    debug: false # Toggle HTTParty debugging (prints to $stderr)
     
 To load it (by default it assumes ~/.squall.yml):
 
@@ -70,10 +71,6 @@ To run tests:
     rspec spec/[module]/[method].rb
     
 Squall uses [VCR](https://github.com/myronmarston/vcr) to cache server responses to test against. To test via live http connections, make sure you have a config file setup and set the shell var SQUALL_LIVE=1. NOTE: since OnApp does not currently support a test environment this is not recommended!
-
-To enable HTTParty's debug mode:
-
-    Squall::Base.debug_output
     
 Known issues:
 
