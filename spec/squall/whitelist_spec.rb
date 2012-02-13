@@ -36,8 +36,8 @@ describe Squall::Whitelist do
     end
 
     it "returns a whitelist" do
-      user = @whitelist.show(1, 2)
-      user.should be_a(Hash)
+      whitelist = @whitelist.show(1, 2)
+      whitelist.should be_a(Hash)
     end
   end
   
@@ -65,7 +65,7 @@ describe Squall::Whitelist do
     end
 
     it "creates a whitelist for a user" do
-      user = @whitelist.create(1, @valid)
+      @whitelist.create(1, @valid)
       @whitelist.success.should be_true
     end
   end
@@ -86,7 +86,7 @@ describe Squall::Whitelist do
     end
 
     it "edits a whitelist" do
-      user = @whitelist.edit(1, 1, :description => "This is actually a different computer.")
+      @whitelist.edit(1, 1, :description => "This is actually a different computer.")
       @whitelist.success.should be_true
     end
     
