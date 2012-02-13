@@ -23,6 +23,7 @@ module Squall
   autoload :Payment,        'squall/payment'
   autoload :UserGroup,      'squall/user_group'
   autoload :Whitelist,      'squall/whitelist'
+  autoload :FirewallRule,   'squall/firewall_rule'
 
   extend self
 
