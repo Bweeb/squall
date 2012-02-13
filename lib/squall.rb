@@ -1,14 +1,14 @@
 require 'httparty'
 
-require 'squall/version'
-require 'squall/exception'
-require 'squall/yaml'
+require 'squall/support/version'
+require 'squall/support/exception'
+require 'squall/support/yaml'
 
 module Squall
-  autoload :Params,         'squall/params'
+  autoload :Params,         'squall/support/params'
+  autoload :Config,         'squall/support/config'
+  autoload :Base,           'squall/support/base'
   autoload :Hypervisor,     'squall/hypervisor'
-  autoload :Config,         'squall/config'
-  autoload :Base,           'squall/base'
   autoload :User,           'squall/user'
   autoload :Role,           'squall/role'
   autoload :Network,        'squall/network'
