@@ -39,5 +39,11 @@ module Squall
       request(:delete, "/settings/hypervisor_zones/#{id}.json")
     end
     
+    # Get the list of hypervisors attached to a zone
+    def hypervisors(id)
+      response = request(:get, "/settings/hypervisor_zones/#{id}/hypervisors.json")
+      response.collect { |hv| hv['hypervisor'] }
+    end
+    
   end
 end

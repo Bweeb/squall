@@ -93,5 +93,20 @@ describe Squall::HypervisorZone do
       expect { @hypervisor_zone.delete(404) }.to raise_error(Squall::NotFound)
     end
   end
+  
+  describe "#hypervisors" do
+    use_vcr_cassette "hypervisor_zones/hypervisors"
+    
+    it "returns a list of hypervisors" do
+      hypervisors = @hypervisor_zone.hypervisors(1)
+      hypervisors.should be_an(Array)
+    end
+    
+    it "contains the hypervisor data" do
+      hypervisors = @hypervisor_zone.hypervisors(1)
+      hypervisors.all? {|w| w.is_a?(Hash) }.should be_true
+    end
+    
+  end
 
 end
