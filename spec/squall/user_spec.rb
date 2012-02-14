@@ -258,5 +258,21 @@ describe Squall::User do
       network_zones.should be_an(Array)
     end
   end
+
+  describe "#limits" do
+    use_vcr_cassette "user/limits"
+    it "requires an id" do
+      expect { @user.limits }.to raise_error(ArgumentError)
+    end
+
+    it "404s on not found" do
+      expect { @user.limits(438768534623) }.to raise_error(Squall::NotFound)
+    end
+
+    it "returns the limits" do
+      limits = @user.limits(1)
+      limits.should be_a(Hash)
+    end
+  end
   
 end
