@@ -123,5 +123,68 @@ describe Squall::HypervisorZone do
     end
     
   end
+  
+  describe "#add_data_store_join" do
+    use_vcr_cassette "hypervisor_zones/add_data_store_join"
+    
+    it "adds the data store to the hypervisor zone" do
+      @hypervisor_zone.add_data_store_join(1, 1)
+      @hypervisor_zone.success.should be_true
+    end
+    
+  end
+  
+  describe "#remove_data_store_join" do
+    use_vcr_cassette "hypervisor_zones/remove_data_store_join"
+    
+    it "removes the data store from the hypervisor zone" do
+      @hypervisor_zone.remove_data_store_join(1, 1)
+      @hypervisor_zone.success.should be_true
+    end
+    
+  end
+  
+  describe "#network_joins" do
+    use_vcr_cassette "hypervisor_zones/network_joins"
+    
+    it "returns a list of network joins" do
+      joins = @hypervisor_zone.network_joins(1)
+      joins.should be_an(Array)
+    end
+    
+    it "contains the network join data" do
+      joins = @hypervisor_zone.network_joins(1)
+      joins.all? {|w| w.is_a?(Hash) }.should be_true
+    end
+    
+  end
+  
+  describe "#add_network_join" do
+    use_vcr_cassette "hypervisor_zones/add_network_join"
+    
+    it "requires network id" do
+      requires_attr(:network_id) { @hypervisor_zone.add_network_join(1, :interface => "interface") }
+    end
+    
+    it "requires interface" do
+      requires_attr(:interface) { @hypervisor_zone.add_network_join(1, :network_id => 1) }
+    end
+    
+    it "adds the network to the hypervisor zone" do
+      @hypervisor_zone.add_network_join(1, :network_id => 1, :interface => "interface")
+      @hypervisor_zone.success.should be_true
+    end
+    
+  end
+  
+  describe "#remove_network_join" do
+    use_vcr_cassette "hypervisor_zones/remove_network_join"
+    
+    it "removes the network from the hypervisor zone" do
+      @hypervisor_zone.remove_network_join(1, 1)
+      @hypervisor_zone.success.should be_true
+    end
+    
+  end
 
 end

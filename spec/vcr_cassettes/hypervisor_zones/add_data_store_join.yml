@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/1/data_store_joins.json?data_store_id=1
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      location: 
+      - http://<URL>/settings/hypervisor_zones/3/data_store_joins/9
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.039128"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 14 Feb 2012 17:37:31 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "201"
+      cache-control: 
+      - no-cache
+      transfer-encoding: 
+      - chunked
+    body: "{\"data_store_join\":{\"created_at\":\"2012-02-14T17:37:31Z\",\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2012-02-14T17:37:31Z\",\"data_store_id\":1,\"hypervisor_id\":null,\"id\":9,\"target_join_id\":3}}"
+    http_version: "1.1"
