@@ -1,10 +1,10 @@
 module Squall
   # OnApp Statistic
   class Statistic < Base
-    # Returns statitics for a given VirtualMachine
-    def daily_stats(id)
+    # Returns statitics for virtual machines
+    def daily_stats
       response = request(:get, "/usage_statistics.json")
-      response.first['vm_hourly_stat']
+      response.collect {|s| s["vm_stat"]}
     end
   end
 end

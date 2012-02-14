@@ -9,6 +9,10 @@ module Squall
 
     # Make a Template public so that it can be downloaded
     # via a HTTP url
+    #
+    # ==== Params
+    #
+    # * +id*+ - ID of template
     def make_public(id)
       response = request(:post, "/templates/#{id}/make_public.json")
       response.first[1]
