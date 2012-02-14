@@ -10,9 +10,15 @@ module Squall
     
     # Create a payment for a user
     #
+    # ==== Params
+    #
+    # * +user_id*+ - ID of the user
+    # * +options+ - Params for creating the User
+    #
     # ==== Options
     #
-    # * +options+ - Params for creating the User
+    # * +amount*+ - Amount of the payment
+    # * +invoice_number+ - Number of the invoice
     #
     # ==== Example
     #
@@ -25,15 +31,26 @@ module Squall
     
     # Edit a payment
     #
+    # ==== Params
+    #
+    # * +user_id*+ - ID of the user
+    # * +id*+ - ID of the payment
+    # * +options+ - Params for editing the payment
+    #
     # ==== Options
-    # 
-    # * +options+ - Params for editing the payment.
+    #
+    # See #create
     def edit(user_id, id, options={})
       params.accepts(:amount, :invoice_number).validate!(options)
       request(:put, "/users/#{user_id}/payments/#{id}.json", default_params(options))
     end
     
     # Delete a payment
+    #
+    # ==== Params
+    #
+    # * +user_id*+ - ID of the user
+    # * +id*+ - ID of the payment
     def delete(user_id, id)
       request(:delete, "/users/#{user_id}/payments/#{id}.json")
     end

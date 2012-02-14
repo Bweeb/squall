@@ -3,6 +3,10 @@ module Squall
   class FirewallRule < Base
 
     # Return a list of all firewall rules for a virtual machine
+    #
+    # ==== Params
+    #
+    # * +vm_id*+ - ID of the virtual machine
     def list(vm_id)
       response = request(:get, "/virtual_machines/#{vm_id}/firewall_rules.json")
       response.collect { |firewall_rule| user['firewall_rule'] }
@@ -10,9 +14,17 @@ module Squall
     
     # Create a firewall rule for a virtual machine
     #
+    # ==== Params
+    #
+    # * +vm_id*+ - ID of the virtual machine
+    #
     # ==== Options
     #
-    # * +options+ - Params for creating the firewall rule
+    # * +command*+ - DROP or ACCEPT
+    # * +protocol*+ - TCP or UDP
+    # * +network_interface_id*+ - ID of the network interface
+    # * +address+ - IP address or range scope for rule.  Leave blank to apply to all.
+    # * +port+ - Port address for rule
     #
     # ==== Example
     #
@@ -26,15 +38,26 @@ module Squall
     
     # Edit a firewall rule
     #
+    # ==== Params
+    #
+    # * +vm_id+ - ID of the virtual machine
+    # * +id+ - ID of the firewall rule
+    # * +options+ - Options for the firewall rule.
+    #
     # ==== Options
-    # 
-    # * +options+ - Params for editing the firewall rule.
+    #
+    # See #create
     def edit(vm_id, id, options={})
       params.accepts(:command, :protocol, :network_interface_id, :address, :port).validate!(options)
       request(:put, "/virtual_machines/#{vm_id}/firewall_rules/#{id}.json", default_params(options))
     end
     
     # Delete a firewall rule
+    #
+    # ==== Params
+    #
+    # * +vm_id*+ - ID of the virtual machine
+    # * +id+ - ID of the firewall rule
     def delete(vm_id, id)
       request(:delete, "/virtual_machines/#{vm_id}/firewall_rules/#{id}.json")
     end

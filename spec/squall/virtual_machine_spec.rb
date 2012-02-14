@@ -92,8 +92,7 @@ describe Squall::VirtualMachine do
     end
 
     it "allows all optional params" do
-      optional = [:cpu_shares,
-                  :swap_disk_size,
+      optional = [:swap_disk_size,
                   :primary_network_id,
                   :required_automatic_backup,
                   :rate_limit,

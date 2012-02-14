@@ -2,17 +2,17 @@ module Squall
   # OnApp Hypervisor
   class Hypervisor < Base
 
-    # Returns a list of all Hypervisors
+    # Returns a list of all hypervisors
     def list
       req = request(:get, '/settings/hypervisors.json')
       req.collect { |hv| hv['hypervisor'] }
     end
 
-    # Returns the Hypervisor info as a Hash
+    # Returns the hypervisor info as a hash
     #
-    # ==== Options
+    # ==== Params
     #
-    # * +id+ - The id of the Hypervisor
+    # * +id+ - The id of the hypervisor
     def show(id)
       req = request(:get, "/settings/hypervisors/#{id}.json")
       req.first[1]
@@ -20,9 +20,15 @@ module Squall
 
     # Create a new Hypervisor
     #
+    # ==== Params
+    #
+    # * +options+ - Options for creating the hypervisor
+    #
     # ==== Options
     #
-    # * +options+ - Params for creating the Hypervisor
+    # * +label*+ - Label for the hypervisor
+    # * +ip_address*+ - IP for the hypervisor
+    # * +hypervisor_type*+ - Type of the hypervisor
     #
     # ==== Example
     #
@@ -35,24 +41,38 @@ module Squall
 
     # Edit a Hypervisor
     #
+    # ==== Params
+    #
+    # * +id*+ - ID of the hypervisor 
+    # * +options+ - Params for editing the Hypervisor
+    #
     # ==== Options
     #
-    # * +options+ - Params for editing the Hypervisor
+    # See #create
+    #
     # ==== Example
     #
-    #   edit :label => 'myhv', :ip_address => '127.0.0.1'
+    #   edit 1, :label => 'myhv', :ip_address => '127.0.0.1'
     def edit(id, options ={})
       params.accepts(:label, :ip_address).validate!(options)
       request(:put, "/settings/hypervisors/#{id}.json", default_params(options))
     end
 
-    # Reboot a Hypervisor
+    # Reboot a hypervisor
+    #
+    # ==== Params
+    #
+    # * +id*+ - ID of the hypervisor
     def reboot(id)
       response = request(:get, "/settings/hypervisors/#{id}/rebooting.json")
       response['hypervisor']
     end
 
-    # Delete a Hypervisor
+    # Delete a hypervisor
+    #
+    # ==== Params
+    #
+    # * +id*+ - ID of the hypervisor
     def delete(id)
       req = request(:delete, "/settings/hypervisors/#{id}.json")
     end
