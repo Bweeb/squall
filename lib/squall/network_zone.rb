@@ -38,5 +38,23 @@ module Squall
     def delete(id)
       request(:delete, "/network_zones/#{id}.json")
     end
+    
+    # Attach a network to a network zone
+    #
+    # ==== Options
+    # * +id+ - required
+    # * +network_id+ - required
+    def attach(id, network_id)
+      request(:post, "/network_zones/#{id}/networks/#{network_id}/attach.json")
+    end
+    
+    # Detach a network to a network zone
+    #
+    # ==== Options
+    # * +id+ - required
+    # * +network_id+ - required
+    def detach(id, network_id)
+      request(:post, "/network_zones/#{id}/networks/#{network_id}/detach.json")
+    end
   end
 end
