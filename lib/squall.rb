@@ -5,9 +5,11 @@ require 'squall/support/exception'
 require 'squall/support/yaml'
 
 module Squall
+  # Support
   autoload :Params,         'squall/support/params'
   autoload :Config,         'squall/support/config'
   autoload :Base,           'squall/support/base'
+  # Api
   autoload :Hypervisor,     'squall/hypervisor'
   autoload :User,           'squall/user'
   autoload :Role,           'squall/role'
@@ -20,7 +22,11 @@ module Squall
   autoload :Transaction,    'squall/transaction'
   autoload :Payment,        'squall/payment'
   autoload :UserGroup,      'squall/user_group'
-
+  autoload :Whitelist,      'squall/whitelist'
+  autoload :FirewallRule,   'squall/firewall_rule'
+  autoload :DataStoreZone,  'squall/data_store_zone'
+  autoload :NetworkZone,    'squall/network_zone'
+  
   extend self
 
   # Config
@@ -29,7 +35,6 @@ module Squall
   # Config 
   attr_accessor :configuration_file
 
-  # The path to your squall.yml
   self.configuration ||= Squall::Config.new
 
   # Specificy the config via block
