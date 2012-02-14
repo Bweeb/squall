@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Squall::Whitelist do
   before(:each) do
-    @keys = ["ip", "description"]
     @whitelist = Squall::Whitelist.new
     @valid = {:ip => "192.168.1.1"}
   end
