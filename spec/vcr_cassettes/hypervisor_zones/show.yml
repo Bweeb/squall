@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/404.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Tue, 14 Feb 2012 16:25:00 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.023004"
+      set-cookie: 
+      - <REDACTED>
+      cache-control: 
+      - no-cache
+      status: 
+      - "404"
+      transfer-encoding: 
+      - chunked
+    body: "{\"errors\":[\"Resource not found\"]}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/1.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"0d55e6d791b6a1033a72b02248cd1251\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.039348"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 14 Feb 2012 16:25:00 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "{\"hypervisor_group\":{\"label\":\"Default Hypervisor Zone\",\"created_at\":\"2011-07-20T15:49:08Z\",\"updated_at\":\"2011-07-20T15:49:08Z\",\"id\":3}}"
+    http_version: "1.1"

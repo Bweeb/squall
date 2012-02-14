@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :delete
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/1/data_store_joins/1.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"99914b932bd37a50b983c5e7c90ae93b\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.034897"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 14 Feb 2012 18:21:42 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "{}"
+    http_version: "1.1"
