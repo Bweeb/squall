@@ -34,7 +34,7 @@ module Squall
     #
     #   create :label => 'myhv', :ip_address => '127.0.0.1', :hypervisor_type => 'xen'
     def create(options = {})
-      params.required(:label, :ip_address, :hypervisor_type).validate!(options)
+      params.required(:label, :ip_address, :hypervisor_type).accepts(:memory_overhead, :enabled, :hypervisor_group_id, :disable_failover).validate!(options)
       req = request(:post, '/settings/hypervisors.json', default_params(options))
       req.first[1]
     end
@@ -54,7 +54,7 @@ module Squall
     #
     #   edit 1, :label => 'myhv', :ip_address => '127.0.0.1'
     def edit(id, options ={})
-      params.accepts(:label, :ip_address).validate!(options)
+      params.accepts(:label, :ip_address, :hypervisor_type, :memory_overhead, :enabled, :hypervisor_group_id, :disable_failover).validate!(options)
       request(:put, "/settings/hypervisors/#{id}.json", default_params(options))
     end
 
@@ -75,6 +75,38 @@ module Squall
     # * +id*+ - ID of the hypervisor
     def delete(id)
       req = request(:delete, "/settings/hypervisors/#{id}.json")
+    end
+    
+    def virtual_machines(id)
+      response = request(:get, "/settings/hypervisors/#{id}/virtual_machines.json")
+      response.collect { |vm| vm['virtual_machine'] }
+    end
+    
+    def data_store_joins(id)
+      response = request(:get, "/settings/hypervisors/#{id}/data_store_joins.json")
+      response.collect { |dsj| dsj['data_store_join'] }
+    end
+    
+    def add_data_store_join(id, data_store_id)
+      request(:post, "/settings/hypervisors/#{id}/data_store_joins.json", :query => {:data_store_id => data_store_id})
+    end
+    
+    def remove_data_store_join(id, data_store_join_id)
+      request(:delete, "/settings/hypervisors/#{id}/data_store_joins/#{data_store_join_id}.json")
+    end
+    
+    def network_joins(id)
+      response = request(:get, "/settings/hypervisors/#{id}/network_joins.json")
+      response.collect { |nj| nj['network_join'] }
+    end
+    
+    def add_network_join(id, options)
+      params.required(:network_id, :interface).validate!(options)
+      request(:post, "/settings/hypervisors/#{id}/network_joins.json", :query => {:network_join => options})
+    end
+    
+    def remove_network_join(id, network_join_id)
+      request(:delete, "/settings/hypervisors/#{id}/network_joins/#{network_join_id}.json")
     end
   end
 end

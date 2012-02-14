@@ -21,11 +21,11 @@
       content-type: 
       - application/json; charset=utf-8
       date: 
-      - Mon, 18 Apr 2011 17:13:08 GMT
+      - Tue, 14 Feb 2012 22:03:24 GMT
       server: 
       - Apache/2.2.3 (CentOS)
       x-runtime: 
-      - "0.117341"
+      - "0.024855"
       set-cookie: 
       - <REDACTED>
       cache-control: 
@@ -34,12 +34,12 @@
       - "404"
       transfer-encoding: 
       - chunked
-    body: "{\"error\":\"Resource not found\"}"
+    body: "{\"errors\":[\"Resource not found\"]}"
     http_version: "1.1"
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/3.json
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/1.json
     body: 
     headers: 
       content-type: 
@@ -60,11 +60,11 @@
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.192936"
+      - "0.045992"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Mon, 18 Apr 2011 17:13:08 GMT
+      - Tue, 14 Feb 2012 22:03:24 GMT
       set-cookie: 
       - <REDACTED>
       status: 
