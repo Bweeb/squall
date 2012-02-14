@@ -10,9 +10,13 @@ module Squall
     
     # Create a user group
     #
-    # ==== Options
+    # ==== Params
     #
     # * +options+ - Params for creating the user groups
+    #
+    # ==== Options
+    #
+    # * +label*+ - Label for the user group
     #
     # ==== Example
     #
@@ -24,7 +28,14 @@ module Squall
     
     # Edit a user group
     #
+    # ==== Params
+    #
+    # * +id*+ - ID of the user group
+    # * +options+ - Params for creating the user groups
+    #
     # ==== Options
+    #
+    # See #create
     # 
     # * +options+ - Params for editing the user group.
     def edit(id, options={})
@@ -33,6 +44,10 @@ module Squall
     end
     
     # Delete a user group
+    #
+    # ==== Params
+    #
+    # * +id*+ - ID of the user group
     def delete(id)
       request(:delete, "/user_groups/#{id}.json")
     end

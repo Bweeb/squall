@@ -8,6 +8,10 @@ module Squall
     end
 
     # Return a Hash for the given Transaction
+    #
+    # ==== Params
+    #
+    # * +id*+ - ID of transaction
     def show(id)
       response = request :get, "/transactions/#{id}.json"
       response['transaction']

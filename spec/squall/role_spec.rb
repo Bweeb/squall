@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Squall::Role do
   before(:each) do
     @role = Squall::Role.new
-    @keys = ["label", "created_at", "updated_at", "id", "permissions", "identifier"]
   end
 
   describe "#list" do
@@ -26,7 +25,7 @@ describe Squall::Role do
 
     it "returns a role" do
       role = @role.show(1)
-      role.keys.should include(*@keys)
+      role.should be_a(Hash)
     end
   end
 
@@ -75,19 +74,17 @@ describe Squall::Role do
 
   describe "#permissions" do
     use_vcr_cassette "role/permissions"
+    
     it "returns permissions" do
       permissions = @role.permissions
-      permissions.size.should == 369
-
-      keys = ["label", "created_at", "updated_at", "id", "identifier"]
-      first = permissions.first
-      first.keys.should include(*keys)
-
-      keys.each do |key| 
-        first[key].should_not be_nil
-        first[key].to_s.size.should be >= 1
-      end
+      permissions.should be_an(Array)
     end
+    
+    it "contains role data" do
+      permissions = @role.permissions
+      permissions.all?.should be_true
+    end
+    
   end
 
   describe "#create" do

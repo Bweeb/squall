@@ -10,8 +10,9 @@ module Squall
 
     # Get the list of IP address assignments for a particular VM
     #
-    # ==== Options
-    # * +virtual_machine_id+ - Virtual machine ID to lookup
+    # ==== Params
+    #
+    # * +virtual_machine_id*+ - Virtual machine ID to lookup
     def list(virtual_machine_id)
       response = request(:get, "/virtual_machines/#{virtual_machine_id}/ip_addresses.json")
       response.collect { |ip| ip['ip_address_join'] }
@@ -19,7 +20,8 @@ module Squall
 
     # Assigns an IP address to a VM
     #
-    # ==== Options
+    # ==== Params
+    #
     # * +virtual_machine_id+ - Virtual machine ID to assign IP to
     # * +options+ - Params for IP assignment
     def assign(virtual_machine_id, options = {})
@@ -30,7 +32,8 @@ module Squall
 
     # Deletes an IP address assignment from a VM
     #
-    # ==== Options
+    # ==== Params
+    #
     # * +virtual_machine_id+ - Virtual machine ID to remove IP join from
     # * +ip_address_id+ - IP Address ID to remove
     def delete(virtual_machine_id, ip_address_id)

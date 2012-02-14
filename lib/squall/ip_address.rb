@@ -1,21 +1,31 @@
 module Squall
   # OnApp IpAddress
   class IpAddress < Base
-    # Returns a list of IpAddresses
+    # Returns a list of ip addresses for a network
     #
-    # ==== Options
-    # * +network_id+ - required
+    # ==== Params
+    #
+    # * +network_id+ - ID of the network
     def list(network_id)
       response = request(:get, "/settings/networks/#{network_id}/ip_addresses.json")
       response.collect { |ip| ip['ip_address'] }
     end
 
-    # Updates an existing IpAddress
+    # Updates an existing ip address
+    #
+    # ==== Params
+    #
+    # * +network_id+ - ID of the network
+    # * +id+ - ID of the ip address
+    # * +options+ - Params for updating the ip address
     #
     # ==== Options
-    # * +network_id+ - required
-    # * +id+ - required
-    # * +options+ - Params for updating the IpAddress
+    #
+    # * +address*+
+    # * +netmask*+
+    # * +broadcast*+
+    # * +network_address*+
+    # * +gateway*+
     def edit(network_id, id, options = {})
       params.required(:address, :netmask, :broadcast, :network_address, :gateway).validate!(options)
       response = request(:put, "/settings/networks/#{network_id}/ip_addresses/#{id}.json", default_params(options))
@@ -23,19 +33,21 @@ module Squall
 
     # Creates a new IpAddress
     #
-    # ==== Options
-    # * +network_id+ - required
-    # * +options+ - Params for the new IP address
+    # ==== Params
+    #
+    # * +network_id+ - ID of the network
+    # * +options+ - Params for the new ip address
     def create(network_id, options = {})
       params.required(:address, :netmask, :broadcast, :network_address, :gateway).validate!(options)
       response = request(:post, "/settings/networks/#{network_id}/ip_addresses.json", default_params(options))
     end
 
-    # Deletes an existing IpAddress
+    # Deletes an existing ip address
     #
-    # ==== Options
-    # * +network_id+ - required
-    # * +id+ - required
+    # ==== Params
+    #
+    # * +network_id+ - ID of the network
+    # * +id+ - ID of the ip address
     def delete(network_id, id)
       request(:delete, "/settings/networks/#{network_id}/ip_addresses/#{id}.json")
     end
