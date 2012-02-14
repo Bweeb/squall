@@ -25,7 +25,8 @@ module Squall
   autoload :Whitelist,      'squall/whitelist'
   autoload :FirewallRule,   'squall/firewall_rule'
   autoload :DataStoreZone,  'squall/data_store_zone'
-
+  autoload :NetworkZone,    'squall/network_zone'
+  
   extend self
 
   # Config

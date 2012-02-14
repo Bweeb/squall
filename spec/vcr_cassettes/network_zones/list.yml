@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/network_zones.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"412900ccaad65684f1c4a5201ab4a690\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.022710"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 14 Feb 2012 15:23:33 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "[{\"network_group\":{\"label\":\"Default Network Zone\",\"created_at\":\"2011-07-20T15:49:07Z\",\"updated_at\":\"2011-07-20T15:49:07Z\",\"id\":2}},{\"network_group\":{\"label\":\"Private\",\"created_at\":\"2011-10-17T19:53:54Z\",\"updated_at\":\"2011-10-17T19:53:54Z\",\"id\":10}}]"
+    http_version: "1.1"
