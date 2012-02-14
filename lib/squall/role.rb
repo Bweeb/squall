@@ -10,7 +10,7 @@ module Squall
     # Returns a Hash of the given Role
     def show(id)
       response = request(:get, "/roles/#{id}.json")
-      response.first[1]
+      response["role"]
     end
 
     # Edit a Role
