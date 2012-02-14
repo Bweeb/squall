@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :get
-    uri: http://<USER>:<PASS>@<URL>:80/usage_statistics.json?
+    uri: http://<USER>:<PASS>@<URL>:80/usage_statistics.json
     body: 
     headers: 
       content-type: 
@@ -17,17 +17,17 @@
       x-ua-compatible: 
       - IE=Edge,chrome=1
       etag: 
-      - "\"9606792d4817ad0122726aa62e0a9bd2\""
+      - "\"965fdf816e8b7cacc432b9e3e3e6fa5b\""
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.030343"
+      - "0.153006"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Fri, 29 Apr 2011 17:22:31 GMT
+      - Tue, 14 Feb 2012 19:47:27 GMT
       set-cookie: 
       - <REDACTED>
       status: 
@@ -36,5 +36,5 @@
       - max-age=0, private, must-revalidate
       transfer-encoding: 
       - chunked
-    body: "[{\"vm_hourly_stat\":{\"created_at\":\"2011-04-29T17:00:06Z\",\"cost\":0.0,\"updated_at\":\"2011-04-29T17:00:06Z\",\"stat_time\":\"2011-04-29T17:00:00Z\",\"id\":1,\"user_id\":2,\"vm_billing_stat_id\":3,\"virtual_machine_id\":2}}]"
+    body: "[{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1475,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1477,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":1,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1517,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1500,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"16752.0\",\"data_read\":\"8400.0\",\"writes_completed\":\"100749.0\",\"data_written\":\"551148.0\",\"data_sent\":\"23692.0\",\"user_id\":963,\"reads_completed\":\"2088.0\",\"virtual_machine_id\":1507,\"cpu_usage\":\"5016.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":115,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1359,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1501,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1502,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"18878.0\",\"data_read\":\"8668.0\",\"writes_completed\":\"109805.0\",\"data_written\":\"599568.0\",\"data_sent\":\"27285.0\",\"user_id\":974,\"reads_completed\":\"2115.0\",\"virtual_machine_id\":1516,\"cpu_usage\":\"5264.0\"}},{\"vm_stat\":{\"data_received\":\"10789.0\",\"data_read\":\"59272.0\",\"writes_completed\":\"57078.0\",\"data_written\":\"311620.0\",\"data_sent\":\"13707.0\",\"user_id\":114,\"reads_completed\":\"4295.0\",\"virtual_machine_id\":1503,\"cpu_usage\":\"4306.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"0.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":1,\"reads_completed\":\"0.0\",\"virtual_machine_id\":1511,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"3328.0\",\"data_read\":\"12876.0\",\"writes_completed\":\"4792.0\",\"data_written\":\"20528.0\",\"data_sent\":\"1221.0\",\"user_id\":942,\"reads_completed\":\"3193.0\",\"virtual_machine_id\":1343,\"cpu_usage\":\"1013.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"4160.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"1040.0\",\"virtual_machine_id\":1494,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1483,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"0.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":115,\"reads_completed\":\"0.0\",\"virtual_machine_id\":1331,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"0.0\",\"data_read\":\"8320.0\",\"writes_completed\":\"0.0\",\"data_written\":\"0.0\",\"data_sent\":\"0.0\",\"user_id\":114,\"reads_completed\":\"2080.0\",\"virtual_machine_id\":1495,\"cpu_usage\":\"0.0\"}},{\"vm_stat\":{\"data_received\":\"21331.0\",\"data_read\":\"424306.0\",\"writes_completed\":\"123154.0\",\"data_written\":\"2198676.0\",\"data_sent\":\"32970.0\",\"user_id\":952,\"reads_completed\":\"40696.0\",\"virtual_machine_id\":1520,\"cpu_usage\":\"826228.0\"}},{\"vm_stat\":{\"data_received\":\"3638.0\",\"data_read\":\"2102283.0\",\"writes_completed\":\"96488.0\",\"data_written\":\"1070538.0\",\"data_sent\":\"10624.0\",\"user_id\":114,\"reads_completed\":\"165891.0\",\"virtual_machine_id\":1518,\"cpu_usage\":\"8467.0\"}}]"
     http_version: "1.1"

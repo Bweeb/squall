@@ -8,15 +8,14 @@ describe Squall::Statistic do
   describe "#usage_statistic" do
     use_vcr_cassette "statistic/usage_statistics"
 
-    it "requires an id" do
-      expect { @statistic.daily_stats }.to raise_error(ArgumentError)
-      @statistic.success.should be_false
-    end
-
     it "returns the daily statistics" do
-      result = @statistic.daily_stats(1)
-      result['id'].to_i.should == 1
-      result['cost'].to_f.should == 0.0
+      result = @statistic.daily_stats
+      result.should be_an(Array)
+    end
+    
+    it "contains the statistic data" do
+      result = @statistic.daily_stats
+      result.all?.should be_true
     end
   end
 end
