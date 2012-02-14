@@ -45,5 +45,11 @@ module Squall
       response.collect { |hv| hv['hypervisor'] }
     end
     
+    # Get the list of data store joins attached to a hypervisor zone
+    def data_store_joins(id)
+      response = request(:get, "/settings/hypervisor_zones/#{id}/data_store_joins.json")
+      response.collect { |i| i['data_store_join'] }
+    end
+    
   end
 end

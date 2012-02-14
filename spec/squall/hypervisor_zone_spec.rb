@@ -108,5 +108,20 @@ describe Squall::HypervisorZone do
     end
     
   end
+  
+  describe "#data_store_joins" do
+    use_vcr_cassette "hypervisor_zones/data_store_joins"
+    
+    it "returns a list of data store joins" do
+      joins = @hypervisor_zone.data_store_joins(1)
+      joins.should be_an(Array)
+    end
+    
+    it "contains the data store join data" do
+      joins = @hypervisor_zone.data_store_joins(1)
+      joins.all? {|w| w.is_a?(Hash) }.should be_true
+    end
+    
+  end
 
 end
