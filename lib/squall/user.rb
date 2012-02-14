@@ -100,6 +100,12 @@ module Squall
       response = request(:get, "/users/#{id}/network_zones.json")
       response.collect { |vm| vm['network_group']}
     end
+    
+    # Return a description of resources available to a user for creating a virtual machine
+    def limits(id)
+      response = request(:get, "/users/#{id}/limits.json")
+      response["limits"]
+    end
 
   end
 end

@@ -1,0 +1,77 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/users/438768534623/limits.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      date: 
+      - Tue, 14 Feb 2012 14:40:42 GMT
+      server: 
+      - Apache/2.2.3 (CentOS)
+      x-runtime: 
+      - "0.038479"
+      set-cookie: 
+      - <REDACTED>
+      cache-control: 
+      - no-cache
+      status: 
+      - "404"
+      transfer-encoding: 
+      - chunked
+    body: "{\"errors\":[\"Resource not found\"]}"
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/users/1/limits.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"9c65dc1f69bd0327775ca3e78281d162\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.450571"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 14 Feb 2012 14:40:43 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "{\"limits\":{\"cpus\":4,\"cpu_shares\":400,\"swap_disk_size\":460,\"memory\":4332,\"rate\":1000,\"data_store_groups\":[{\"label\":\"Default DataStore Zone\",\"id\":1}],\"network_groups\":[{\"label\":\"Default Network Zone\",\"id\":2}],\"hypervisor_groups\":[{\"label\":\"Default Hypervisor Zone\",\"id\":3}],\"primary_disk_size\":460,\"hypervisors\":[{\"label\":\"HV1_DEV7\",\"hypervisor_type\":\"xen\",\"id\":1},{\"label\":\"dev7hv2\",\"hypervisor_type\":\"xen\",\"id\":5}]},\"best_data_store_group_primary_id\":1,\"best_data_store_group_swap_id\":1,\"best_network_group_id\":2}"
+    http_version: "1.1"
