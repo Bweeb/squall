@@ -1,0 +1,40 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/1/data_store_joins.json
+    body: 
+    headers: 
+      content-type: 
+      - application/json
+      authorization: 
+      - Basic <REDACTED>
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      x-ua-compatible: 
+      - IE=Edge,chrome=1
+      etag: 
+      - "\"fe577dfd21d6621a6f481d70763228b4\""
+      x-powered-by: 
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      content-type: 
+      - application/json; charset=utf-8
+      x-runtime: 
+      - "0.039438"
+      server: 
+      - Apache/2.2.3 (CentOS)
+      date: 
+      - Tue, 14 Feb 2012 16:57:21 GMT
+      set-cookie: 
+      - <REDACTED>
+      status: 
+      - "200"
+      cache-control: 
+      - max-age=0, private, must-revalidate
+      transfer-encoding: 
+      - chunked
+    body: "[{\"data_store_join\":{\"created_at\":\"2011-08-12T09:02:06Z\",\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-08-12T09:02:06Z\",\"data_store_id\":1,\"hypervisor_id\":null,\"id\":5,\"target_join_id\":3}},{\"data_store_join\":{\"created_at\":\"2011-11-24T17:02:00Z\",\"target_join_type\":\"HypervisorGroup\",\"updated_at\":\"2011-11-24T17:02:00Z\",\"data_store_id\":2,\"hypervisor_id\":null,\"id\":6,\"target_join_id\":3}}]"
+    http_version: "1.1"

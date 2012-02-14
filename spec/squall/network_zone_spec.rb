@@ -9,12 +9,12 @@ describe Squall::NetworkZone do
   describe "#list" do
     use_vcr_cassette "network_zones/list"
     
-    it "returns all data store zones" do
+    it "returns all network zones" do
       network_zoness = @network_zone.list
       network_zoness.should be_an(Array)
     end
 
-    it "contains the data store zone data" do
+    it "contains the network zone data" do
       network_zoness = @network_zone.list
       network_zoness.all? {|w| w.is_a?(Hash) }.should be_true
     end
@@ -26,11 +26,11 @@ describe Squall::NetworkZone do
       expect { @network_zone.show }.to raise_error(ArgumentError)
     end
 
-    it "returns not found for invalid data store zone id" do
+    it "returns not found for invalid network zone id" do
       expect { @network_zone.show(404) }.to raise_error(Squall::NotFound)
     end
 
-    it "returns a data store zone" do
+    it "returns a network zone" do
       network_zones = @network_zone.show(1)
       network_zones.should be_a(Hash)
     end
@@ -47,7 +47,7 @@ describe Squall::NetworkZone do
       expect { @network_zone.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
-    it "creates a data store zone" do
+    it "creates a network zone" do
       @network_zone.create(@valid)
       @network_zone.success.should be_true
     end
@@ -68,12 +68,12 @@ describe Squall::NetworkZone do
       expect { @network_zone.edit(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
-    it "edits a data store zone" do
+    it "edits a network zone" do
       @network_zone.edit(1, :label => "Updated zone")
       @network_zone.success.should be_true
     end
     
-    it "raises an error for an invalid data store zone id" do
+    it "raises an error for an invalid network zone id" do
       expect { @network_zone.edit(404, @valid) }.to raise_error(Squall::NotFound)
     end
   end
@@ -84,12 +84,12 @@ describe Squall::NetworkZone do
       expect { @network_zone.delete }.to raise_error(ArgumentError)
     end
 
-    it "deletes a data store zone" do
+    it "deletes a network zone" do
       @network_zone.delete(1)
       @network_zone.success.should be_true
     end
 
-    it "returns NotFound for invalid data store zone id" do
+    it "returns NotFound for invalid network zone id" do
       expect { @network_zone.delete(404) }.to raise_error(Squall::NotFound)
     end
   end
