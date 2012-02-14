@@ -24,6 +24,7 @@ module Squall
   autoload :UserGroup,      'squall/user_group'
   autoload :Whitelist,      'squall/whitelist'
   autoload :FirewallRule,   'squall/firewall_rule'
+  autoload :DataStoreZone,  'squall/data_store_zone'
 
   extend self
 
