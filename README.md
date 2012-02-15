@@ -20,37 +20,37 @@ Install
     bundle install
 
 Configuration
------
+-------------
 
 You have two main options for configuring Squall.
 
-1. Directly in a config block:
+Directly in a config block:
 
-        require 'squall'
+    require 'squall'
 
-        Squall.config do |c|
-          c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
-          c.username 'username' # OnApp username
-          c.password 'topsecret' # OnApp password
-          c.debug true # Toggle HTTParty debugging (prints to $stderr)
-        end
+    Squall.config do |c|
+      c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
+      c.username 'username' # OnApp username
+      c.password 'topsecret' # OnApp password
+      c.debug true # Toggle HTTParty debugging (prints to $stderr)
+    end
 
-2. Squall can load configuration from a yaml file:
+Squall can load configuration from a yaml file:
 
-        # .squall.yml
-        base_uri: 'https://onappurl.com'
-        username: 'username'
-        password: 'topsecret'
-        debug: false
+    # .squall.yml
+    base_uri: 'https://onappurl.com'
+    username: 'username'
+    password: 'topsecret'
+    debug: false
 
 To load it (by default it assumes ~/.squall.yml):
 
     Squall.config_file(/[path]/[to]/.squall.yml)
-    
+
 It is also possible to change individual configuration settings on the fly.
 
     Squall.configuration.debug(true)
-    
+
 Note: you will need to re-instantiate all modules after changing Squall's configuration.
 
 Usage
@@ -77,11 +77,11 @@ Create a new VM:
     }
 
     vm.create params
-    
-Incomplete
------
 
-This gem partially implements the OnApp api v2.3.
+Supported Methods
+-----------------
+
+This gem partially implements the OnApp API v2.3.
 
 The following OnApp modules have been added:
 
@@ -89,8 +89,8 @@ The following OnApp modules have been added:
 * Firewall rules
 * Hypervisors
 * Hypervisor zones
-* Ip addresses
-* Ip address joins
+* IP addresses
+* IP address joins
 * Networks
 * Network zones
 * Users
@@ -132,17 +132,23 @@ Squall uses rspec for tests. To run:
     bundle exec rake # Runs all tests
     bundle exec rspec spec/squall/[module]_spec.rb # Runs tests for a specific module
 
-Squall uses [VCR](https://github.com/myronmarston/vcr) to cache server responses to test against. To test via live http connections, pass RERECORD=1 into test command. NOTE: since OnApp does not currently support a test environment this is not recommended unless you know what you're doing, as it will destroy live data!
-    
+Squall uses [VCR](https://github.com/myronmarston/vcr) to cache server
+responses to test against. To test via live http connections, pass RERECORD=1
+into test command. NOTE: since OnApp does not currently support a test
+environment this is not recommended unless you know what you're doing, as it
+will destroy live data!
+
 Known issues:
 
-1. VirtualMachine#change_user currently breaks the parser on an invalid user_id  because OnApp returns html instead of JSON
-2. VirtualMachine#create is currently broken in certain cases.  See https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&ref=8181-TYFH-8069
+1. VirtualMachine#change_user currently breaks the parser on an invalid
+   user_id  because OnApp returns html instead of JSON
+2. VirtualMachine#create is currently broken in certain cases.  See
+   <https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&ref=8181-TYFH-8069>
 3. FirewallRule#edit and #create break the parser by returning invalid JSON
 
 Note on Patches/Pull Requests
 -----------------------------
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
