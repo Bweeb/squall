@@ -7,7 +7,7 @@ module Squall
       response = request(:get, "/user_groups.json")
       response.collect { |user_group| user_group['user_group'] }
     end
-    
+
     # Create a user group
     #
     # ==== Params
@@ -25,7 +25,7 @@ module Squall
       params.required(:label).validate!(options)
       request(:post, "/user_groups.json", default_params(options))
     end
-    
+
     # Edit a user group
     #
     # ==== Params
@@ -36,13 +36,13 @@ module Squall
     # ==== Options
     #
     # See #create
-    # 
+    #
     # * +options+ - Params for editing the user group.
     def edit(id, options={})
       params.accepts(:label).validate!(options)
       request(:put, "/user_groups/#{id}.json", default_params(options))
     end
-    
+
     # Delete a user group
     #
     # ==== Params

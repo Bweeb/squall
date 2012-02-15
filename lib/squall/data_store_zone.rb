@@ -6,7 +6,7 @@ module Squall
       response = request(:get, "/data_store_zones.json")
       response.collect { |i| i['data_store_group'] }
     end
-    
+
     # Get the details for a data store zone
     #
     # ==== Params

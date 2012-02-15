@@ -1,5 +1,5 @@
 module Squall
-  # All OnApp API classes subclass Base to get access to 
+  # All OnApp API classes subclass Base to get access to
   # HTTParty methods and other convenience methods
   class Base
     # Params instance
@@ -87,8 +87,8 @@ module Squall
       raise NoConfig, "Squall.config must be specified" if Squall.config.empty?
     end
 
-    # Sets the default param container for request. It is derived from the 
-    # class name. Given the class name *Sandwich* and a param *bread* the 
+    # Sets the default param container for request. It is derived from the
+    # class name. Given the class name *Sandwich* and a param *bread* the
     # resulting params would be 'bob[bread]=wheat'
     def key_for_class
       word = self.class.name.split("::").last.to_s.dup

@@ -6,7 +6,7 @@ module Squall
       response = request(:get, "/network_zones.json")
       response.collect { |i| i['network_group'] }
     end
-    
+
     # Get the details for a network zone
     #
     # ==== Params
@@ -49,7 +49,7 @@ module Squall
     def delete(id)
       request(:delete, "/network_zones/#{id}.json")
     end
-    
+
     # Attach a network to a network zone
     #
     # ==== Params
@@ -59,7 +59,7 @@ module Squall
     def attach(id, network_id)
       request(:post, "/network_zones/#{id}/networks/#{network_id}/attach.json")
     end
-    
+
     # Detach a network from a network zone
     #
     # ==== Params

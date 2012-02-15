@@ -27,19 +27,19 @@ module Squall
   autoload :DataStoreZone,  'squall/data_store_zone'
   autoload :NetworkZone,    'squall/network_zone'
   autoload :HypervisorZone, 'squall/hypervisor_zone'
-  
+
   extend self
 
   # Config
   attr_accessor :configuration
 
-  # Config 
+  # Config
   attr_accessor :configuration_file
 
   self.configuration ||= Squall::Config.new
 
   # Specificy the config via block
-  # 
+  #
   # ==== Attributes
   #
   # * +base_uri+ - URL of your OnApp instance
@@ -79,7 +79,7 @@ module Squall
       raise ArgumentError, "Config file doesn't exist '#{file}'"
     end
     settings = YAML::load_file(file)
-    config do |c| 
+    config do |c|
       settings.each { |k, v| c.send(k, v) }
     end
   end

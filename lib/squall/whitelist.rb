@@ -11,7 +11,7 @@ module Squall
       response = request(:get, "/users/#{user_id}/user_white_lists.json")
       response.collect { |user| user['user_white_list'] }
     end
-    
+
     # Get the details for a whitelist
     #
     # ==== Params
@@ -22,7 +22,7 @@ module Squall
       response = request(:get, "/users/#{user_id}/user_white_lists/#{id}.json")
       response['user_white_list']
     end
-    
+
     # Create a whitelist for a user
     #
     # ==== Params
@@ -43,7 +43,7 @@ module Squall
       params.required(:ip).accepts(:description).validate!(options)
       request(:post, "/users/#{user_id}/user_white_lists.json", :query => {:user_white_list => options})
     end
-    
+
     # Edit a whitelist
     #
     # ==== Params
@@ -59,7 +59,7 @@ module Squall
       params.accepts(:ip, :description).validate!(options)
       request(:put, "/users/#{user_id}/user_white_lists/#{id}.json", :query => {:user_white_list => options})
     end
-    
+
     # Delete a whitelist
     #
     # ==== Params

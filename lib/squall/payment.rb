@@ -7,7 +7,7 @@ module Squall
       response = request(:get, "/users/#{user_id}/payments.json")
       response.collect { |user| user['payment'] }
     end
-    
+
     # Create a payment for a user
     #
     # ==== Params
@@ -28,7 +28,7 @@ module Squall
       params.required(:amount).accepts(:invoice_number).validate!(options)
       request(:post, "/users/#{user_id}/payments.json", default_params(options))
     end
-    
+
     # Edit a payment
     #
     # ==== Params
@@ -44,7 +44,7 @@ module Squall
       params.accepts(:amount, :invoice_number).validate!(options)
       request(:put, "/users/#{user_id}/payments/#{id}.json", default_params(options))
     end
-    
+
     # Delete a payment
     #
     # ==== Params

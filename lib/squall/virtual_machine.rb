@@ -47,12 +47,12 @@ module Squall
     # ==== Example
     #
     #  params = {
-    #    :label => 'testmachine', 
+    #    :label => 'testmachine',
     #    :hypervisor_id => 5,
-    #    :hostname => 'testmachine', 
-    #    :memory => 512, 
+    #    :hostname => 'testmachine',
+    #    :memory => 512,
     #    :cpus => 1,
-    #    :cpu_shares => 10, 
+    #    :cpu_shares => 10,
     #    :primary_disk_size => 10,
     #    :template_id => 1
     #  }
@@ -150,7 +150,7 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/reset_password.json", :query => { :new_password => password })
       response['virtual_machine']
     end
-    
+
     # Assigns SSH keys of all administrators and a owner to a virtual machine
     #
     # ==== Params
@@ -173,10 +173,10 @@ module Squall
     # * +destination*+ - ID of a hypervisor to which to migrate the virtual machine
     # * +cold_migrate_on_rollback+ - Set to '1' to switch to cold migration if migration fails
     def migrate(id, options = {})
-      params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options 
+      params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options
       response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => {:virtual_machine => options} )
     end
-    
+
     # Toggle the VIP status of the virtual machine
     #
     # ==== Params
@@ -211,7 +211,7 @@ module Squall
     # * +allow_cold_resize*+ - Set to '1' to allow cold resize
     def resize(id, options = {})
       raise ArgumentError, "You must specify at least one of the following attributes to resize: :memory, :cpus, :cpu_shares, :allow_cold_resize" if options.empty?
-      params.accepts(:memory, :cpus, :cpu_shares, :allow_cold_resize).validate! options 
+      params.accepts(:memory, :cpus, :cpu_shares, :allow_cold_resize).validate! options
       response = request(:post, "/virtual_machines/#{id}/resize.json", default_params(options))
       response['virtual_machine']
     end
@@ -276,7 +276,7 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/reboot.json", {:query => recovery ? {:mode => :recovery} : nil})
       response['virtual_machine']
     end
-    
+
     # Segregate a virtual machine from another virtual machine
     #
     # ==== Params
@@ -287,7 +287,7 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/strict_vm.json", default_params(:strict_virtual_machine_id => target_vm_id))
       response['virtual_machine']
     end
-    
+
     # Open a console for a virtual machine
     #
     # ==== Params
@@ -297,7 +297,7 @@ module Squall
       response = request(:post, "/virtual_machines/#{id}/console.json")
       response['virtual_machine']
     end
-    
+
     # Get billing statistics for a virtual machine
     #
     # ==== Params

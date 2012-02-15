@@ -10,7 +10,7 @@ module Squall
     # Returns a Hash of the given roles
     #
     # ==== Params
-    # 
+    #
     # * +id*+ - ID of the role
     def show(id)
       response = request(:get, "/roles/#{id}.json")
@@ -20,7 +20,7 @@ module Squall
     # Edit a Role
     #
     # ==== Params
-    # 
+    #
     # * +id*+ - ID of the role
     # * +options+ - Params for editing the roles
     #
@@ -39,7 +39,7 @@ module Squall
     # Delete a Role
     #
     # ==== Params
-    # 
+    #
     # * +id*+ - ID of the role
     def delete(id)
       request(:delete, "/roles/#{id}.json")

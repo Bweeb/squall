@@ -11,7 +11,7 @@ module Squall
       response = request(:get, "/virtual_machines/#{vm_id}/firewall_rules.json")
       response.collect { |firewall_rule| user['firewall_rule'] }
     end
-    
+
     # Create a firewall rule for a virtual machine
     #
     # ==== Params
@@ -35,7 +35,7 @@ module Squall
       params.required(:command, :protocol, :network_interface_id).accepts(:address, :port).validate!(options)
       request(:post, "/virtual_machines/#{vm_id}/firewall_rules.json", default_params(options))
     end
-    
+
     # Edit a firewall rule
     #
     # ==== Params
@@ -51,7 +51,7 @@ module Squall
       params.accepts(:command, :protocol, :network_interface_id, :address, :port).validate!(options)
       request(:put, "/virtual_machines/#{vm_id}/firewall_rules/#{id}.json", default_params(options))
     end
-    
+
     # Delete a firewall rule
     #
     # ==== Params

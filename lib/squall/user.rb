@@ -43,7 +43,7 @@ module Squall
       params.required(:login, :email,:first_name, :last_name, :password, :password_confirmation).accepts(:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at).validate!(options)
       request(:post, '/users.json', default_params(options))
     end
-    
+
     # Edit a user
     #
     # ==== Params
@@ -52,7 +52,7 @@ module Squall
     # * +options+ - Params for creating the user
     #
     # ==== Options
-    # 
+    #
     # See #create
     def edit(id, options={})
       params.accepts(:email, :password, :password_confirmation, :first_name, :last_name, :user_group_id, :billing_plan_id, :role_ids, :suspend_at).validate!(options)
@@ -119,7 +119,7 @@ module Squall
     def stats(id)
       request(:get, "/users/#{id}/vm_stats.json")
     end
-    
+
     # Get a list of bills for the User
     #
     # ==== Params
@@ -138,7 +138,7 @@ module Squall
       response = request(:get, "/users/#{id}/virtual_machines.json")
       response.collect { |vm| vm['virtual_machine']}
     end
-    
+
     # Return a list of Hypervisors for a User's VirtualMachines
     #
     # ==== Params
@@ -168,7 +168,7 @@ module Squall
       response = request(:get, "/users/#{id}/network_zones.json")
       response.collect { |vm| vm['network_group']}
     end
-    
+
     # Return a description of resources available to a user for creating a virtual machine
     #
     # ==== Params
