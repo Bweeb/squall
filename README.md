@@ -77,6 +77,52 @@ Create a new VM:
     }
 
     vm.create params
+    
+Incomplete
+-----
+
+This gem partially implements the OnApp api v2.3.
+
+The following OnApp modules have been added:
+
+* Data store zones
+* Firewall rules
+* Hypervisors
+* Hypervisor zones
+* Ip addresses
+* Ip address joins
+* Networks
+* Network zones
+* Users
+* User groups
+* Roles
+* Statistics
+* Templates
+* Transactions
+* Virtual machines
+* Whitelists
+
+The following still need to be added:
+
+* Billing plans
+* Currencies
+* Network interfaces
+* Disks
+* Template groups
+* Software licenses
+* Resolvers
+* VM autoscaling
+* Load Balancers
+* CDN edge servers
+* CDN resources
+* CDN edge groups
+* Backups
+* Autobackup Presets
+* Schedules
+* SSH keys
+* Alerts
+* Logs
+* System configuration
 
 Tests
 -----
