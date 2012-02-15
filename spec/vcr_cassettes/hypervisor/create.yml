@@ -2,44 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors.json?hypervisor[ip_address]=123.123.123.123&hypervisor[hypervisor_type]=xen&hypervisor[label]=Testing
-    body: 
-    headers: 
-      content-type: 
-      - application/json
-      authorization: 
-      - Basic <REDACTED>
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 422
-      message: Unprocessable Entity
-    headers: 
-      x-ua-compatible: 
-      - IE=Edge,chrome=1
-      x-powered-by: 
-      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      content-type: 
-      - application/json; charset=utf-8
-      date: 
-      - Fri, 15 Apr 2011 20:51:38 GMT
-      server: 
-      - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.009919"
-      set-cookie: 
-      - <REDACTED>
-      cache-control: 
-      - no-cache
-      status: 
-      - "422"
-      transfer-encoding: 
-      - chunked
-    body: "{\"label\":[\"has already been taken\"],\"ip_address\":[\"has already been taken\"]}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors.json?hypervisor[ip_address]=126.126.126.126&hypervisor[hypervisor_type]=xen&hypervisor[label]=Brand%20new
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors.json?hypervisor[label]=A%20new%20hypervisor&hypervisor[ip_address]=127.126.126.126&hypervisor[hypervisor_type]=xen
     body: 
     headers: 
       content-type: 
@@ -54,17 +17,17 @@
       x-ua-compatible: 
       - IE=Edge,chrome=1
       location: 
-      - http://www.example.com/settings/hypervisors/3
+      - http://<URL>/settings/hypervisors/9
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.016771"
+      - "0.039541"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Fri, 15 Apr 2011 20:52:02 GMT
+      - Tue, 14 Feb 2012 21:59:37 GMT
       set-cookie: 
       - <REDACTED>
       status: 
@@ -73,5 +36,5 @@
       - no-cache
       transfer-encoding: 
       - chunked
-    body: "{\"hypervisor\":{\"called_in_at\":null,\"label\":\"Brand new\",\"created_at\":\"2011-04-15T20:52:02Z\",\"spare\":false,\"hypervisor_type\":\"xen\",\"updated_at\":\"2011-04-15T20:52:02Z\",\"enabled\":true,\"hypervisor_group_id\":null,\"id\":3,\"xen_info\":null,\"failure_count\":0,\"health\":null,\"memory_overhead\":464,\"ip_address\":\"126.126.126.126\",\"locked\":false,\"online\":false}}"
+    body: "{\"hypervisor\":{\"called_in_at\":null,\"disable_failover\":false,\"label\":\"A new hypervisor\",\"redis_password\":null,\"created_at\":\"2012-02-14T21:59:37Z\",\"spare\":false,\"hypervisor_type\":\"xen\",\"used_cpu_resources\":0,\"updated_at\":\"2012-02-14T21:59:37Z\",\"enabled\":true,\"hypervisor_group_id\":null,\"id\":9,\"xen_info\":null,\"failure_count\":0,\"health\":null,\"total_cpus\":0,\"total_memory\":0,\"memory_overhead\":464,\"cpu_cores\":0,\"free_memory\":-464,\"ip_address\":\"127.126.126.126\",\"locked\":false,\"online\":false,\"data_store_free_space\":0}}"
     http_version: "1.1"

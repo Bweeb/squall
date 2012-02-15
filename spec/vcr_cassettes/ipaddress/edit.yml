@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses/1.json?ip_address[netmask]=255.255.255.193&ip_address[network_address]=109.123.91.65&ip_address[gateway]=109.123.91.66&ip_address[address]=109.123.91.67&ip_address[broadcast]=109.123.91.128
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses/1.json?ip_address[address]=109.123.91.67&ip_address[netmask]=255.255.255.193&ip_address[network_address]=109.123.91.65&ip_address[broadcast]=109.123.91.128&ip_address[gateway]=109.123.91.66
     body: 
     headers: 
       content-type: 
@@ -23,11 +23,11 @@
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "12.584432"
+      - "0.057182"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Mon, 16 May 2011 19:30:27 GMT
+      - Wed, 15 Feb 2012 14:51:34 GMT
       set-cookie: 
       - <REDACTED>
       status: 

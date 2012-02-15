@@ -1,8 +1,8 @@
 --- 
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
-    method: :delete
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses/1.json
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/1/data_store_joins.json?data_store_id=1
     body: 
     headers: 
       content-type: 
@@ -11,30 +11,30 @@
       - Basic <REDACTED>
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers: 
       x-ua-compatible: 
       - IE=Edge,chrome=1
-      etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
+      location: 
+      - http://<URL>/settings/hypervisors/1/data_store_joins/10
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.047822"
+      - "0.032309"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Wed, 15 Feb 2012 15:00:15 GMT
+      - Tue, 14 Feb 2012 22:19:13 GMT
       set-cookie: 
       - <REDACTED>
       status: 
-      - "200"
+      - "201"
       cache-control: 
-      - max-age=0, private, must-revalidate
+      - no-cache
       transfer-encoding: 
       - chunked
-    body: "{}"
+    body: "{\"data_store_join\":{\"created_at\":\"2012-02-14T22:19:13Z\",\"target_join_type\":\"Hypervisor\",\"updated_at\":\"2012-02-14T22:19:13Z\",\"data_store_id\":1,\"hypervisor_id\":null,\"id\":10,\"target_join_id\":1}}"
     http_version: "1.1"
