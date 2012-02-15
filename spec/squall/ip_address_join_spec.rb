@@ -13,15 +13,17 @@ describe Squall::IpAddressJoin do
     end
 
     it "raises NotFound with an invalid virtual machine ID" do
-      expect { @join.list(4040404) }.to raise_error(Squall::NotFound)
+      expect { @join.list(404) }.to raise_error(Squall::NotFound)
     end
 
-    it "returns ip_addresses" do
+    it "returns list of ip_addresses" do
       ips = @join.list(1)
-      ips.size.should == 1
-
-      ip = ips.first
-      ip.keys.should include(*%w[ip_address_id network_interface_id ip_address])
+      ips.should be_an(Array)
+    end
+    
+    it "contains IP address data" do
+      ips = @join.list(1)
+      ips.all?.should be_true
     end
   end
 
@@ -31,27 +33,17 @@ describe Squall::IpAddressJoin do
     it "raises ArgumentError without required arguments" do
       expect { @join.assign    }.to raise_error(ArgumentError)
       expect { @join.assign(1) }.to raise_error(ArgumentError)
-      expect { @join.assign(2) }.to raise_error(ArgumentError)
     end
 
     it "raises NotFound with an invalid virtual machine ID" do
       expect {
-        @join.assign(40404, {
-          :ip_address_id        => 1,
-          :network_interface_id => 1
-        })
+        @join.assign(404, {:ip_address_id => 1, :network_interface_id => 1})
       }.to raise_error(Squall::NotFound)
     end
 
     it "assigns the IP join" do
-      join = @join.assign(1, {
-        :ip_address_id        => 5,
-        :network_interface_id => 1
-      })
+      join = @join.assign(1, {:ip_address_id => 1, :network_interface_id => 1})
       @join.success.should be_true
-      join['ip_address_id'].should == 5
-      join['network_interface_id'].should == 1
-      join['virtual_machine_id'].should == 1
     end
   end
 
@@ -64,7 +56,7 @@ describe Squall::IpAddressJoin do
     end
 
     it "raises NotFound with an invalid ID" do
-      expect { @join.delete(123456, 1) }.to raise_error(Squall::NotFound)
+      expect { @join.delete(404, 1) }.to raise_error(Squall::NotFound)
     end
 
     it "deletes the IP join" do

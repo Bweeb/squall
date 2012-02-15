@@ -2,13 +2,7 @@ module Squall
   # Handles IP assignments for virtual machines
   class IpAddressJoin < Base
 
-    # OnApp uses params[:ip_address] for joins, so we need to override
-    # key_for_class accordingly.
-    def key_for_class
-      :ip_address
-    end
-
-    # Get the list of IP address assignments for a particular VM
+    # Get the list of IP address assignments for a particular virtual machine
     #
     # ==== Params
     #
@@ -22,8 +16,13 @@ module Squall
     #
     # ==== Params
     #
-    # * +virtual_machine_id+ - Virtual machine ID to assign IP to
+    # * +virtual_machine_id*+ - Virtual machine ID to assign IP to
     # * +options+ - Params for IP assignment
+    #
+    # ==== Options
+    #
+    # * +ip_address_id*+ - ID of the IP address
+    # * +network_interface_id*+ - ID of the network interface id
     def assign(virtual_machine_id, options = {})
       params.required(:ip_address_id, :network_interface_id).validate!(options)
       response = request(:post, "/virtual_machines/#{virtual_machine_id}/ip_addresses.json", default_params(options))
@@ -36,6 +35,10 @@ module Squall
     #
     # * +virtual_machine_id+ - Virtual machine ID to remove IP join from
     # * +ip_address_id+ - IP Address ID to remove
+    #
+    # ==== Options
+    #
+    # See #assign
     def delete(virtual_machine_id, ip_address_id)
       request(:delete, "/virtual_machines/#{virtual_machine_id}/ip_addresses/#{ip_address_id}.json")
     end
