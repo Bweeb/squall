@@ -26,22 +26,22 @@ You have two main options for configuring Squall.
 
 1. Directly in a config block:
 
-    require 'squall'
+        require 'squall'
 
-    Squall.config do |c|
-      c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
-      c.username 'username' # OnApp username
-      c.password 'topsecret' # OnApp password
-      c.debug true # Toggle HTTParty debugging (prints to $stderr)
-    end
+        Squall.config do |c|
+          c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
+          c.username 'username' # OnApp username
+          c.password 'topsecret' # OnApp password
+          c.debug true # Toggle HTTParty debugging (prints to $stderr)
+        end
 
 2. Squall can load configuration from a yaml file:
 
-    # .squall.yml
-    base_uri: 'https://onappurl.com'
-    username: 'username'
-    password: 'topsecret'
-    debug: false
+        # .squall.yml
+        base_uri: 'https://onappurl.com'
+        username: 'username'
+        password: 'topsecret'
+        debug: false
 
 To load it (by default it assumes ~/.squall.yml):
 
@@ -77,6 +77,52 @@ Create a new VM:
     }
 
     vm.create params
+    
+Incomplete
+-----
+
+This gem partially implements the OnApp api v2.3.
+
+The following OnApp modules have been added:
+
+* Data store zones
+* Firewall rules
+* Hypervisors
+* Hypervisor zones
+* Ip addresses
+* Ip address joins
+* Networks
+* Network zones
+* Users
+* User groups
+* Roles
+* Statistics
+* Templates
+* Transactions
+* Virtual machines
+* Whitelists
+
+The following still need to be added:
+
+* Billing plans
+* Currencies
+* Network interfaces
+* Disks
+* Template groups
+* Software licenses
+* Resolvers
+* VM autoscaling
+* Load Balancers
+* CDN edge servers
+* CDN resources
+* CDN edge groups
+* Backups
+* Autobackup Presets
+* Schedules
+* SSH keys
+* Alerts
+* Logs
+* System configuration
 
 Tests
 -----
