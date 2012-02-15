@@ -26,22 +26,22 @@ You have two main options for configuring Squall.
 
 1. Directly in a config block:
 
-    require 'squall'
+        require 'squall'
 
-    Squall.config do |c|
-      c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
-      c.username 'username' # OnApp username
-      c.password 'topsecret' # OnApp password
-      c.debug true # Toggle HTTParty debugging (prints to $stderr)
-    end
+        Squall.config do |c|
+          c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
+          c.username 'username' # OnApp username
+          c.password 'topsecret' # OnApp password
+          c.debug true # Toggle HTTParty debugging (prints to $stderr)
+        end
 
 2. Squall can load configuration from a yaml file:
 
-    # .squall.yml
-    base_uri: 'https://onappurl.com'
-    username: 'username'
-    password: 'topsecret'
-    debug: false
+        # .squall.yml
+        base_uri: 'https://onappurl.com'
+        username: 'username'
+        password: 'topsecret'
+        debug: false
 
 To load it (by default it assumes ~/.squall.yml):
 
