@@ -21,13 +21,9 @@ module Squall
     #
     # ==== Options
     #
-    # * +address*+
-    # * +netmask*+
-    # * +broadcast*+
-    # * +network_address*+
-    # * +gateway*+
+    # See #create
     def edit(network_id, id, options = {})
-      params.required(:address, :netmask, :broadcast, :network_address, :gateway).validate!(options)
+      params.accepts(:address, :netmask, :broadcast, :network_address, :gateway, :disallowed_primary).validate!(options)
       response = request(:put, "/settings/networks/#{network_id}/ip_addresses/#{id}.json", default_params(options))
     end
 
@@ -37,8 +33,17 @@ module Squall
     #
     # * +network_id+ - ID of the network
     # * +options+ - Params for the new ip address
+    #
+    # ==== Options
+    #
+    # * +address*+ - IP address
+    # * +netmask*+ - Network mask
+    # * +broadcast*+ - A logical address at which all devices connected to a multiple-access communications network are enabled to receive datagrams
+    # * +network_address*+ - IP address of network
+    # * +gateway*+ - Gateway address
+    # * +disallowed_primary+ - Set to '1' to prevent this address being used as primary
     def create(network_id, options = {})
-      params.required(:address, :netmask, :broadcast, :network_address, :gateway).validate!(options)
+      params.required(:address, :netmask, :broadcast, :network_address, :gateway).accepts(:disallowed_primary).validate!(options)
       response = request(:post, "/settings/networks/#{network_id}/ip_addresses.json", default_params(options))
     end
 
