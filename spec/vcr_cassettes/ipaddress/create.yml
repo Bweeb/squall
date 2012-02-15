@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses.json?ip_address[netmask]=255.255.255.194&ip_address[network_address]=109.123.91.66&ip_address[gateway]=109.123.91.67&ip_address[broadcast]=109.123.91.129&ip_address[address]=109.123.91.89
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses.json?ip_address[address]=109.123.91.24&ip_address[netmask]=255.255.255.194&ip_address[network_address]=109.123.91.66&ip_address[broadcast]=109.123.91.129&ip_address[gateway]=109.123.91.67
     body: 
     headers: 
       content-type: 
@@ -16,25 +16,25 @@
     headers: 
       x-ua-compatible: 
       - IE=Edge,chrome=1
+      location: 
+      - http://<URL>/settings/networks/1/ip_addresses
       x-powered-by: 
       - Phusion Passenger (mod_rails/mod_rack) 3.0.1
-      location: 
-      - http://www.example.com/settings/networks/1/ip_addresses
       content-type: 
       - application/json; charset=utf-8
-      date: 
-      - Tue, 07 Feb 2012 20:37:45 GMT
+      x-runtime: 
+      - "0.087995"
       server: 
       - Apache/2.2.3 (CentOS)
-      x-runtime: 
-      - "0.321553"
+      date: 
+      - Wed, 15 Feb 2012 15:01:17 GMT
       set-cookie: 
-      - _session_id=0c39908ff5ff059f37d9b165690da5a7; path=/; HttpOnly
-      cache-control: 
-      - no-cache
+      - <REDACTED>
       status: 
       - "201"
+      cache-control: 
+      - no-cache
       transfer-encoding: 
       - chunked
-    body: "{\"ip_address\":{\"netmask\":\"255.255.255.194\",\"disallowed_primary\":null,\"address\":\"109.123.91.89\",\"created_at\":null,\"network_address\":\"109.123.91.64\",\"network_id\":1,\"updated_at\":null,\"broadcast\":\"109.123.91.95\",\"free\":true,\"gateway\":\"109.123.91.67\"}}"
+    body: "{\"ip_address\":{\"netmask\":\"255.255.255.194\",\"disallowed_primary\":null,\"address\":\"109.123.91.24\",\"created_at\":null,\"network_address\":\"109.123.91.0\",\"network_id\":1,\"updated_at\":null,\"broadcast\":\"109.123.91.31\",\"free\":true,\"gateway\":\"109.123.91.67\"}}"
     http_version: "1.1"

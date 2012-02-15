@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses/1.json
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/1/data_store_joins/1.json
     body: 
     headers: 
       content-type: 
@@ -23,11 +23,11 @@
       content-type: 
       - application/json; charset=utf-8
       x-runtime: 
-      - "0.047822"
+      - "0.031386"
       server: 
       - Apache/2.2.3 (CentOS)
       date: 
-      - Wed, 15 Feb 2012 15:00:15 GMT
+      - Tue, 14 Feb 2012 22:37:27 GMT
       set-cookie: 
       - <REDACTED>
       status: 
