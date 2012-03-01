@@ -31,17 +31,6 @@ module Squall
       options.empty? ? {} : {:query => { key_for_class => options.first}}
     end
 
-    # Returns an array of Request errors
-    def errors
-      return [] if @success
-      err = {}
-      @result.each do |k,v|
-        err[k] ||= []
-        err[k].push v.respond_to?(:first) ? v.first : v
-      end
-      err
-    end
-
     # Peforms an HTTP Request
     #
     # ==== Options

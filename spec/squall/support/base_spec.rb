@@ -48,22 +48,6 @@ describe Squall::Base do
     end
   end
 
-  describe "#errors" do
-    it "is empty on success" do
-      mock_request(:get, '/200_errors', :status => [200, "OK"], :body => "{\"something\":[\"errors\"]}")
-      @base.request(:get, '/200_errors')
-      @base.errors.should be_empty
-    end
-
-    it "returns an error hash" do
-      mock_request(:get, '/500_errors', :status => [500, "Internal Server Error"], :body => "{\"something\":[\"errors\"]}")
-      expect { @base.request(:get, '/500_errors') }.to raise_error(OnApp::ServerError)
-      pending "Can't add errors without customizing middleware" do
-        @base.errors.should_not be_empty
-      end
-    end
-  end
-
   describe "#params" do
     it "returns Params.new" do
       @base.params.should be_a(Squall::Params)
