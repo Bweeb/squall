@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/500.json?user[role_ids][]=
+    uri: http://<USER>:<PASS>@<URL>:80/users/500.json?user%5Brole_ids%5D%5B%5D=
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/7.json?user[role_ids][]=4
+    uri: http://<USER>:<PASS>@<URL>:80/users/7.json?user%5Brole_ids%5D%5B%5D=4
     body: 
     headers: 
       content-type: 
@@ -78,7 +78,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/7.json?user[role_ids][]=4&user[role_ids][]=2
+    uri: http://<USER>:<PASS>@<URL>:80/users/7.json?user%5Brole_ids%5D%5B%5D=4&user%5Brole_ids%5D%5B%5D=2
     body: 
     headers: 
       content-type: 

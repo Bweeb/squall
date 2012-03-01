@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones.json?pack[label]=My%20zone
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones.json?pack%5Blabel%5D=My+zone
     body: 
     headers: 
       content-type: 

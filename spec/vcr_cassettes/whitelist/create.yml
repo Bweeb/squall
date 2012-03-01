@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/users/404/user_white_lists.json?user_white_list[ip]=192.168.1.1
+    uri: http://<USER>:<PASS>@<URL>:80/users/404/user_white_lists.json?user_white_list%5Bip%5D=192.168.1.1
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/user_white_lists.json?user_white_list[ip]=192.168.1.1
+    uri: http://<USER>:<PASS>@<URL>:80/users/1/user_white_lists.json?user_white_list%5Bip%5D=192.168.1.1
     body: 
     headers: 
       content-type: 

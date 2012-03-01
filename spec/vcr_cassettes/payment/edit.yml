@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/payments/1.json?payment[amount]=100
+    uri: http://<USER>:<PASS>@<URL>:80/users/1/payments/1.json?payment%5Bamount%5D=100
     body: 
     headers: 
       content-type: 
@@ -41,7 +41,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/payments/404.json?payment[amount]=500
+    uri: http://<USER>:<PASS>@<URL>:80/users/1/payments/404.json?payment%5Bamount%5D=500
     body: 
     headers: 
       content-type: 

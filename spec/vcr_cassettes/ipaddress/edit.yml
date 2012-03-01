@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses/1.json?ip_address[address]=109.123.91.67&ip_address[netmask]=255.255.255.193&ip_address[network_address]=109.123.91.65&ip_address[broadcast]=109.123.91.128&ip_address[gateway]=109.123.91.66
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1/ip_addresses/1.json?ip_address%5Baddress%5D=109.123.91.67&ip_address%5Bnetmask%5D=255.255.255.193&ip_address%5Bnetwork_address%5D=109.123.91.65&ip_address%5Bbroadcast%5D=109.123.91.128&ip_address%5Bgateway%5D=109.123.91.66
     body: 
     headers: 
       content-type: 

@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/build.json?virtual_machine[template_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/build.json?virtual_machine%5Btemplate_id%5D=1
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/72/build.json?virtual_machine[template_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/72/build.json?virtual_machine%5Btemplate_id%5D=1
     body: 
     headers: 
       content-type: 

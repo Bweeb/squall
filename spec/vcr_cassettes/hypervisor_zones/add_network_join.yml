@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/1/network_joins.json?network_join[interface]=interface&network_join[network_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisor_zones/1/network_joins.json?network_join%5Binterface%5D=interface&network_join%5Bnetwork_id%5D=1
     body: 
     headers: 
       content-type: 

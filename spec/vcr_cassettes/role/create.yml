@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/roles.json?role[permission_ids]=1&role[label]=Test%20Create
+    uri: http://<USER>:<PASS>@<URL>:80/roles.json?role%5Bpermission_ids%5D=1&role%5Blabel%5D=Test+Create
     body: 
     headers: 
       content-type: 

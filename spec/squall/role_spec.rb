@@ -20,7 +20,7 @@ describe Squall::Role do
     end
 
     it "returns 404 for invalid id" do
-      expect { @role.show(404) }.to raise_error(Squall::NotFound)
+      expect { @role.show(404) }.to raise_error(Faraday::Error::ResourceNotFound)
     end
 
     it "returns a role" do
@@ -36,7 +36,7 @@ describe Squall::Role do
     end
 
     it "returns 404 for invalid id" do
-      expect { @role.edit(404) }.to raise_error(Squall::NotFound)
+      expect { @role.edit(404) }.to raise_error(Faraday::Error::ResourceNotFound)
     end
 
     it "allows all optional params" do
@@ -63,7 +63,7 @@ describe Squall::Role do
     end
 
     it "returns not found for invalid user" do
-      expect { @role.delete(5) }.to raise_error(Squall::NotFound)
+      expect { @role.delete(5) }.to raise_error(Faraday::Error::ResourceNotFound)
     end
 
     it "returns a role" do

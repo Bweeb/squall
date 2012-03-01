@@ -51,7 +51,7 @@ describe Squall::UserGroup do
     end
     
     it "raises an error for an invalid user group id" do
-      expect { @user_group.edit(404, @valid) }.to raise_error(Squall::NotFound)
+      expect { @user_group.edit(404, @valid) }.to raise_error(Faraday::Error::ResourceNotFound)
     end
   end
   
@@ -67,7 +67,7 @@ describe Squall::UserGroup do
     end
 
     it "returns NotFound for missing user" do
-      expect { @user_group.delete(404) }.to raise_error(Squall::NotFound)
+      expect { @user_group.delete(404) }.to raise_error(Faraday::Error::ResourceNotFound)
     end
   end
 

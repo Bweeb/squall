@@ -1,4 +1,5 @@
-require 'httparty'
+require 'faraday'
+require 'faraday_middleware'
 
 require 'squall/support/version'
 require 'squall/support/exception'

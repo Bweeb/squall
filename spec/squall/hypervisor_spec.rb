@@ -28,7 +28,7 @@ describe Squall::Hypervisor do
     end
 
     it "returns not found for invalid hvs" do
-      expect { @hv.show(404) }.to raise_error(Squall::NotFound)
+      expect { @hv.show(404) }.to raise_error(Faraday::Error::ResourceNotFound)
     end
 
     it "returns a hv" do
@@ -89,7 +89,7 @@ describe Squall::Hypervisor do
     end
 
     it "404s on not found" do
-      expect { @hv.reboot(404) }.to raise_error(Squall::NotFound)
+      expect { @hv.reboot(404) }.to raise_error(Faraday::Error::ResourceNotFound)
       @hv.success.should be_false
     end
 
@@ -106,7 +106,7 @@ describe Squall::Hypervisor do
     end
 
     it "404s on not found" do
-      expect { @hv.delete(404) }.to raise_error(Squall::NotFound)
+      expect { @hv.delete(404) }.to raise_error(Faraday::Error::ResourceNotFound)
       @hv.success.should be_false
     end
 

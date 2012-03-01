@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/1.json?user[first_name]=Test
+    uri: http://<USER>:<PASS>@<URL>:80/users/1.json?user%5Bfirst_name%5D=Test
     body: 
     headers: 
       content-type: 

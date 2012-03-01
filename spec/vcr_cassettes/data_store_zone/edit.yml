@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/data_store_zones/1.json?pack[label]=Updated%20zone
+    uri: http://<USER>:<PASS>@<URL>:80/data_store_zones/1.json?pack%5Blabel%5D=Updated+zone
     body: 
     headers: 
       content-type: 
@@ -41,7 +41,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/data_store_zones/404.json?pack[label]=My%20zone
+    uri: http://<USER>:<PASS>@<URL>:80/data_store_zones/404.json?pack%5Blabel%5D=My+zone
     body: 
     headers: 
       content-type: 
