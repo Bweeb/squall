@@ -531,7 +531,7 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_false
     end
 
-    it "changes the user" do
+    it "segregates the VMS with given ids" do
       result = @virtual_machine.segregate(1, 2)
       @virtual_machine.success.should be_true
     end
