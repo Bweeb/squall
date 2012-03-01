@@ -1,3 +1,5 @@
+Faraday.register_middleware :response, :on_app_errors => Faraday::Response::OnAppErrors
+
 module Squall
   # All OnApp API classes subclass Base to get access to
   # HTTParty methods and other convenience methods
@@ -57,7 +59,7 @@ module Squall
         c.basic_auth Squall.config[:username], Squall.config[:password]
         c.params = (options[:query] || {})
         c.request :url_encoded
-        c.response :raise_error
+        c.response :on_app_errors
         c.response :json
         c.adapter :net_http
       end

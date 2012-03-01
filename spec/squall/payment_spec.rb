@@ -45,7 +45,7 @@ describe Squall::Payment do
     end
     
     it "raises an error for an invalid user id" do
-      expect { @payment.create(404, @valid) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @payment.create(404, @valid) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "creates a payment for a user" do
@@ -75,7 +75,7 @@ describe Squall::Payment do
     end
     
     it "raises an error for an invalid payment id" do
-      expect { @payment.edit(1, 404, @valid) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @payment.edit(1, 404, @valid) }.to raise_error(OnApp::NotFoundError)
     end
   end
   
@@ -91,7 +91,7 @@ describe Squall::Payment do
     end
 
     it "returns NotFound for missing user" do
-      expect { @payment.delete(1, 404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @payment.delete(1, 404) }.to raise_error(OnApp::NotFoundError)
     end
   end
 

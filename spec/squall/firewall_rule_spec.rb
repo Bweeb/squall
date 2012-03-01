@@ -54,7 +54,7 @@ describe Squall::FirewallRule do
     end
     
     it "raises an error for an invalid vm id" do
-      expect { @firewall_rule.create(404, @valid) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @firewall_rule.create(404, @valid) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "creates a firewall rule for a virtual machine" do
@@ -86,7 +86,7 @@ describe Squall::FirewallRule do
     end
     
     it "raises an error for an invalid firewall rule id" do
-      expect { @firewall_rule.edit(1, 404, @valid) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @firewall_rule.edit(1, 404, @valid) }.to raise_error(OnApp::NotFoundError)
     end
   end
   
@@ -105,7 +105,7 @@ describe Squall::FirewallRule do
     end
 
     it "returns NotFound for missing virtual machine" do
-      expect { @firewall_rule.delete(1, 404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @firewall_rule.delete(1, 404) }.to raise_error(OnApp::NotFoundError)
     end
   end
 

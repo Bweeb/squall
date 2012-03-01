@@ -30,7 +30,7 @@ describe Squall::Template do
     end
 
     it "404s on not found" do
-      expect { @template.make_public(404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @template.make_public(404) }.to raise_error(OnApp::NotFoundError)
       @template.success.should be_false
     end
 

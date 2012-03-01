@@ -24,7 +24,7 @@ describe Squall::Base do
 
     it "raises NotFound for 404s" do
       mock_request(:get, '/404', :status => [404, "NotFound"])
-      expect { @base.request(:get, '/404') }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @base.request(:get, '/404') }.to raise_error(OnApp::NotFoundError)
       @base.success.should be_false
     end
 
@@ -38,7 +38,7 @@ describe Squall::Base do
 
     it "raises RequestError on errors" do
       mock_request(:get, '/422', :status => [422, "Unprocessable"])
-      expect { @base.request(:get, '/422') }.to raise_error(Faraday::Error::ClientError)
+      expect { @base.request(:get, '/422') }.to raise_error(OnApp::ClientError)
       @base.success.should be_false
     end
 
@@ -57,7 +57,7 @@ describe Squall::Base do
 
     it "returns an error hash" do
       mock_request(:get, '/500_errors', :status => [500, "Internal Server Error"], :body => "{\"something\":[\"errors\"]}")
-      expect { @base.request(:get, '/500_errors') }.to raise_error(Faraday::Error::ClientError)
+      expect { @base.request(:get, '/500_errors') }.to raise_error(OnApp::ServerError)
       pending "Can't add errors without customizing middleware" do
         @base.errors.should_not be_empty
       end

@@ -27,7 +27,7 @@ describe Squall::HypervisorZone do
     end
 
     it "returns not found for invalid hypervisor zone id" do
-      expect { @hypervisor_zone.show(404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @hypervisor_zone.show(404) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns a hypervisor zone" do
@@ -74,7 +74,7 @@ describe Squall::HypervisorZone do
     end
     
     it "raises an error for an invalid hypervisor zone id" do
-      expect { @hypervisor_zone.edit(404, @valid) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @hypervisor_zone.edit(404, @valid) }.to raise_error(OnApp::NotFoundError)
     end
   end
   
@@ -90,7 +90,7 @@ describe Squall::HypervisorZone do
     end
 
     it "returns NotFound for invalid hypervisor zone id" do
-      expect { @hypervisor_zone.delete(404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @hypervisor_zone.delete(404) }.to raise_error(OnApp::NotFoundError)
     end
   end
   

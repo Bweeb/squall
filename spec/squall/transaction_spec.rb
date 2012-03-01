@@ -27,7 +27,7 @@ describe Squall::Transaction do
     end
 
     it "returns not found for invalid" do
-      expect { @transaction.show(5) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @transaction.show(5) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns a transaction" do

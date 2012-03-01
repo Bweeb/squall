@@ -15,7 +15,7 @@ describe Squall::IpAddress do
     end
 
     it "404s on invalid network" do
-      expect { @ip.list(404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @ip.list(404) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns ip_addresses" do

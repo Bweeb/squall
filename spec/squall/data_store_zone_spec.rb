@@ -27,7 +27,7 @@ describe Squall::DataStoreZone do
     end
 
     it "returns not found for invalid data store zone id" do
-      expect { @data_store_zone.show(404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @data_store_zone.show(404) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns a data store zone" do
@@ -74,7 +74,7 @@ describe Squall::DataStoreZone do
     end
     
     it "raises an error for an invalid data store zone id" do
-      expect { @data_store_zone.edit(404, @valid) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @data_store_zone.edit(404, @valid) }.to raise_error(OnApp::NotFoundError)
     end
   end
   
@@ -90,7 +90,7 @@ describe Squall::DataStoreZone do
     end
 
     it "returns NotFound for invalid data store zone id" do
-      expect { @data_store_zone.delete(404) }.to raise_error(Faraday::Error::ResourceNotFound)
+      expect { @data_store_zone.delete(404) }.to raise_error(OnApp::NotFoundError)
     end
   end
 
