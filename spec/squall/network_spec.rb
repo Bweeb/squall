@@ -49,7 +49,7 @@ describe Squall::Network do
     end
 
     it "404s on not found" do
-      expect { @network.edit(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @network.edit(404) }.to raise_error(Squall::NotFoundError)
       @network.success.should be_false
     end
   end
@@ -64,7 +64,7 @@ describe Squall::Network do
       pending "Broken in OnApp" do
         expect { 
           @network.create(:label => 'networktaken')
-        }.to raise_error(OnApp::ServerError)
+        }.to raise_error(Squall::ServerError)
         @network.errors['label'].should include("has already been taken")
       end
     end
@@ -108,7 +108,7 @@ describe Squall::Network do
     end
 
     it "404s on not found" do
-      expect { @network.delete(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @network.delete(404) }.to raise_error(Squall::NotFoundError)
       @network.success.should be_false
     end
 

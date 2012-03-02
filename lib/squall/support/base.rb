@@ -1,4 +1,4 @@
-Faraday.register_middleware :response, :on_app_errors => Faraday::Response::OnAppErrors
+Faraday.register_middleware :response, :on_app_errors => Squall::OnAppErrors
 
 module Squall
   # All OnApp API classes subclass Base to get access to
