@@ -34,7 +34,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.show(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.show(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns a virtual_machine" do
@@ -140,7 +140,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.build(404, :template_id => 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.build(404, :template_id => 1) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
@@ -165,7 +165,7 @@ describe Squall::VirtualMachine do
     end
 
     it "404s on not found" do
-      expect { @virtual_machine.edit(404, :label => 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.edit(404, :label => 1) }.to raise_error(Squall::NotFoundError)
     end
 
     it "accepts all valid keys" do
@@ -216,13 +216,13 @@ describe Squall::VirtualMachine do
     end
 
     it "404s on not found" do
-      expect { @virtual_machine.change_owner(404, 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.change_owner(404, 1) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
     pending "this should raise a 422 on OnApp's side, but it's currently raising a 500 which causes HTTParty to explode, see README (and update when fixed)" do
       it "returns error on unknown user" do
-        expect { @virtual_machine.change_owner(1, 2) }.to raise_error(OnApp::ServerError)
+        expect { @virtual_machine.change_owner(1, 2) }.to raise_error(Squall::ServerError)
         @virtual_machine.success.should be_false
       end
     end
@@ -248,7 +248,7 @@ describe Squall::VirtualMachine do
     end
 
     it "404s on not found" do
-      expect { @virtual_machine.change_password(404, 'password') }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.change_password(404, 'password') }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
@@ -266,7 +266,7 @@ describe Squall::VirtualMachine do
     end
     
     it "404s on not found" do
-      expect { @virtual_machine.set_ssh_keys(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.set_ssh_keys(404) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
     
@@ -295,12 +295,12 @@ describe Squall::VirtualMachine do
     end
 
     it "404s on not found" do
-      expect { @virtual_machine.migrate(404, :destination => 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.migrate(404, :destination => 1) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
     it "404s on unknown destination" do
-        expect { @virtual_machine.migrate(1, :destination => 404) }.to raise_error(OnApp::NotFoundError)
+        expect { @virtual_machine.migrate(1, :destination => 404) }.to raise_error(Squall::NotFoundError)
         @virtual_machine.success.should be_false
     end
 
@@ -320,7 +320,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.set_vip(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.set_vip(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "deletes a virtual_machine" do
@@ -344,7 +344,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.delete(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.delete(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "deletes a virtual_machine" do
@@ -360,7 +360,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.resize(404, :memory => 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.resize(404, :memory => 1) }.to raise_error(Squall::NotFoundError)
     end
     
     it "accepts memory" do
@@ -406,7 +406,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.suspend(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.suspend(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "suspends a virtual_machine" do
@@ -422,7 +422,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.unlock(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.unlock(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "unlocks a virtual_machine" do
@@ -439,7 +439,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.startup(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.startup(404) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
@@ -457,7 +457,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.shutdown(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.shutdown(404) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
@@ -475,7 +475,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.stop(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.stop(404) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
@@ -493,7 +493,7 @@ describe Squall::VirtualMachine do
     end
 
     it "returns not found for invalid virtual_machines" do
-      expect { @virtual_machine.reboot(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.reboot(404) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
@@ -522,12 +522,12 @@ describe Squall::VirtualMachine do
     end
 
     it "404s on not found" do
-      expect { @virtual_machine.segregate(404, 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.segregate(404, 1) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
     it "returns 404 on unknown target vm id" do
-      expect { @virtual_machine.segregate(1, 404) }.to raise_error(OnApp::NotFoundError)
+      expect { @virtual_machine.segregate(1, 404) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
 
@@ -546,7 +546,7 @@ describe Squall::VirtualMachine do
 
     it "returns not found for invalid virtual_machines" do
       pending "broken on OnApp (returning 500)" do
-        expect { @virtual_machine.console(404) }.to raise_error(OnApp::NotFoundError)
+        expect { @virtual_machine.console(404) }.to raise_error(Squall::NotFoundError)
         @virtual_machine.success.should be_false
       end
     end
@@ -568,7 +568,7 @@ describe Squall::VirtualMachine do
 
     it "returns not found for invalid virtual_machines" do
       pending "broken on OnApp (returning 500)" do
-        expect { @virtual_machine.stats(404) }.to raise_error(OnApp::NotFoundError)
+        expect { @virtual_machine.stats(404) }.to raise_error(Squall::NotFoundError)
         @virtual_machine.success.should be_false
       end
     end
