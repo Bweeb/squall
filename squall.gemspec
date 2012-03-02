@@ -14,13 +14,15 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "squall"
 
-  s.add_runtime_dependency 'httparty', '~> 0.8.1'
+  s.add_runtime_dependency 'faraday', '~> 0.8.0.rc2'
+  s.add_runtime_dependency 'faraday_middleware', '~> 0.8.4'
+  s.add_runtime_dependency 'json', '~> 1.6.1' if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
   s.add_runtime_dependency('jruby-openssl', '~> 0.7.3') if RUBY_PLATFORM == 'java'
 
   s.add_development_dependency 'rspec', '~> 2.5'
   s.add_development_dependency 'fakeweb', '~> 1.3'
   s.add_development_dependency 'vcr', '~> 1.8'
-  s.add_development_dependency 'awesome_print'
+  s.add_development_dependency 'awesome_print', '~> 1.0.2'
   s.add_development_dependency 'rake', '~> 0.8.7'
   if !defined?(RUBY_ENGINE) || RUBY_ENGINE != 'rbx'
     s.add_development_dependency 'rcov', '~> 0.9' 

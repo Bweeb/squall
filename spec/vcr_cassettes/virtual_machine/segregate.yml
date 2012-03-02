@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/strict_vm.json?virtual_machine[strict_virtual_machine_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/strict_vm.json?virtual_machine%5Bstrict_virtual_machine_id%5D=1
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/strict_vm.json?virtual_machine[strict_virtual_machine_id]=404
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/strict_vm.json?virtual_machine%5Bstrict_virtual_machine_id%5D=404
     body: 
     headers: 
       content-type: 
@@ -76,7 +76,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/strict_vm.json?virtual_machine[strict_virtual_machine_id]=2
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/strict_vm.json?virtual_machine%5Bstrict_virtual_machine_id%5D=2
     body: 
     headers: 
       content-type: 

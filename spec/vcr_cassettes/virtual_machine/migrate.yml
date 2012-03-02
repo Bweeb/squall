@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/migrate.json?virtual_machine[destination]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/migrate.json?virtual_machine%5Bdestination%5D=1
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/migrate.json?virtual_machine[destination]=404
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/migrate.json?virtual_machine%5Bdestination%5D=404
     body: 
     headers: 
       content-type: 
@@ -76,7 +76,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/migrate.json?virtual_machine[destination]=2
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/migrate.json?virtual_machine%5Bdestination%5D=2
     body: 
     headers: 
       content-type: 

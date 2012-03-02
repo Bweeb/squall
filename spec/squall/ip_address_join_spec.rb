@@ -13,7 +13,7 @@ describe Squall::IpAddressJoin do
     end
 
     it "raises NotFound with an invalid virtual machine ID" do
-      expect { @join.list(404) }.to raise_error(Squall::NotFound)
+      expect { @join.list(404) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns list of ip_addresses" do
@@ -38,7 +38,7 @@ describe Squall::IpAddressJoin do
     it "raises NotFound with an invalid virtual machine ID" do
       expect {
         @join.assign(404, {:ip_address_id => 1, :network_interface_id => 1})
-      }.to raise_error(Squall::NotFound)
+      }.to raise_error(OnApp::NotFoundError)
     end
 
     it "assigns the IP join" do
@@ -56,7 +56,7 @@ describe Squall::IpAddressJoin do
     end
 
     it "raises NotFound with an invalid ID" do
-      expect { @join.delete(404, 1) }.to raise_error(Squall::NotFound)
+      expect { @join.delete(404, 1) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "deletes the IP join" do

@@ -102,7 +102,7 @@ describe Squall::User do
     end
 
     it "returns not found for invalid users" do
-      expect { @user.show(404) }.to raise_error(Squall::NotFound)
+      expect { @user.show(404) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns a user" do
@@ -163,7 +163,7 @@ describe Squall::User do
     end
 
     it "returns NotFound for missing user" do
-      expect { @user.delete(404) }.to raise_error(Squall::NotFound)
+      expect { @user.delete(404) }.to raise_error(OnApp::NotFoundError)
     end
   end
 
@@ -198,7 +198,7 @@ describe Squall::User do
     end
 
     it "404s on not found" do
-      expect { @user.virtual_machines(404) }.to raise_error(Squall::NotFound)
+      expect { @user.virtual_machines(404) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns the virtual_machines" do
@@ -214,7 +214,7 @@ describe Squall::User do
     end
 
     it "404s on not found" do
-      expect { @user.hypervisors(404) }.to raise_error(Squall::NotFound)
+      expect { @user.hypervisors(404) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns the virtual_machines" do
@@ -231,7 +231,7 @@ describe Squall::User do
 
     it "404s on not found" do
       pending "Broken on OnApp: returns success despite non-existent user" do
-        expect { @user.data_store_zones(2532564353245) }.to raise_error(Squall::NotFound)
+        expect { @user.data_store_zones(2532564353245) }.to raise_error(OnApp::NotFoundError)
       end
     end
 
@@ -249,7 +249,7 @@ describe Squall::User do
 
     it "404s on not found" do
       pending "Broken on OnApp: returns success despite non-existent user" do
-        expect { @user.network_zones(2532564353245) }.to raise_error(Squall::NotFound)
+        expect { @user.network_zones(2532564353245) }.to raise_error(OnApp::NotFoundError)
       end
     end
 
@@ -266,7 +266,7 @@ describe Squall::User do
     end
 
     it "404s on not found" do
-      expect { @user.limits(438768534623) }.to raise_error(Squall::NotFound)
+      expect { @user.limits(438768534623) }.to raise_error(OnApp::NotFoundError)
     end
 
     it "returns the limits" do
