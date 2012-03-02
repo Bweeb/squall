@@ -1,5 +1,5 @@
-module Faraday
-  class Response::OnAppErrors < Response::Middleware
+module Squall
+  class OnAppErrors < Faraday::Response::Middleware
 
     def on_complete(env)
       # https://help.onapp.com/manual.php?m=2#p29
