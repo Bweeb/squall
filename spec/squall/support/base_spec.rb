@@ -24,21 +24,19 @@ describe Squall::Base do
 
     it "raises NotFound for 404s" do
       mock_request(:get, '/404', :status => [404, "NotFound"])
-      expect { @base.request(:get, '/404') }.to raise_error(OnApp::NotFoundError)
+      expect { @base.request(:get, '/404') }.to raise_error(Squall::NotFoundError)
       @base.success.should be_false
     end
 
     it "raises ServerError on errors" do
-      pending "Not supported by current middleware" do
-        mock_request(:get, '/500', :status => [500, "Internal Server Error"])
-        expect { @base.request(:get, '/500') }.to raise_error(Squall::ServerError)
-        @base.success.should be_false
-      end
+      mock_request(:get, '/500', :status => [500, "Internal Server Error"])
+      expect { @base.request(:get, '/500') }.to raise_error(Squall::ServerError)
+      @base.success.should be_false
     end
 
     it "raises RequestError on errors" do
       mock_request(:get, '/422', :status => [422, "Unprocessable"])
-      expect { @base.request(:get, '/422') }.to raise_error(OnApp::ClientError)
+      expect { @base.request(:get, '/422') }.to raise_error(Squall::ClientError)
       @base.success.should be_false
     end
 

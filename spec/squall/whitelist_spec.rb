@@ -31,7 +31,7 @@ describe Squall::Whitelist do
     end
 
     it "returns not found for invalid whitelists" do
-      expect { @whitelist.show(1, 404) }.to raise_error(OnApp::NotFoundError)
+      expect { @whitelist.show(1, 404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns a whitelist" do
@@ -60,7 +60,7 @@ describe Squall::Whitelist do
     end
     
     it "raises an error for an invalid user id" do
-      expect { @whitelist.create(404, @valid) }.to raise_error(OnApp::NotFoundError)
+      expect { @whitelist.create(404, @valid) }.to raise_error(Squall::NotFoundError)
     end
 
     it "creates a whitelist for a user" do
@@ -90,7 +90,7 @@ describe Squall::Whitelist do
     end
     
     it "raises an error for an invalid whitelist id" do
-      expect { @whitelist.edit(1, 404, @valid) }.to raise_error(OnApp::NotFoundError)
+      expect { @whitelist.edit(1, 404, @valid) }.to raise_error(Squall::NotFoundError)
     end
   end
   
@@ -106,7 +106,7 @@ describe Squall::Whitelist do
     end
 
     it "returns NotFound for missing user" do
-      expect { @whitelist.delete(1, 404) }.to raise_error(OnApp::NotFoundError)
+      expect { @whitelist.delete(1, 404) }.to raise_error(Squall::NotFoundError)
     end
   end
 

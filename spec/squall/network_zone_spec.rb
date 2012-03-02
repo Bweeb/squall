@@ -27,7 +27,7 @@ describe Squall::NetworkZone do
     end
 
     it "returns not found for invalid network zone id" do
-      expect { @network_zone.show(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @network_zone.show(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns a network zone" do
@@ -74,7 +74,7 @@ describe Squall::NetworkZone do
     end
     
     it "raises an error for an invalid network zone id" do
-      expect { @network_zone.edit(404, @valid) }.to raise_error(OnApp::NotFoundError)
+      expect { @network_zone.edit(404, @valid) }.to raise_error(Squall::NotFoundError)
     end
   end
   
@@ -90,7 +90,7 @@ describe Squall::NetworkZone do
     end
 
     it "returns NotFound for invalid network zone id" do
-      expect { @network_zone.delete(404) }.to raise_error(OnApp::NotFoundError)
+      expect { @network_zone.delete(404) }.to raise_error(Squall::NotFoundError)
     end
   end
 
@@ -106,11 +106,11 @@ describe Squall::NetworkZone do
     end
     
     it "returns NotFound error for invalid id" do
-      expect { @network_zone.attach(404, 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @network_zone.attach(404, 1) }.to raise_error(Squall::NotFoundError)
     end
     
     it "returns NotFound error for invalid network id" do
-      expect { @network_zone.attach(1, 404) }.to raise_error(OnApp::NotFoundError)
+      expect { @network_zone.attach(1, 404) }.to raise_error(Squall::NotFoundError)
     end
     
     it "attaches a network to the network zone" do
@@ -131,11 +131,11 @@ describe Squall::NetworkZone do
     end
     
     it "returns NotFound error for invalid id" do
-      expect { @network_zone.detach(404, 1) }.to raise_error(OnApp::NotFoundError)
+      expect { @network_zone.detach(404, 1) }.to raise_error(Squall::NotFoundError)
     end
     
     it "returns NotFound error for invalid network id" do
-      expect { @network_zone.detach(1, 404) }.to raise_error(OnApp::NotFoundError)
+      expect { @network_zone.detach(1, 404) }.to raise_error(Squall::NotFoundError)
     end
     
     it "detaches a network to the network zone" do
