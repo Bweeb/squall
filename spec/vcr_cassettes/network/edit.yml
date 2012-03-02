@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[label]=one
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Blabel%5D=one
     body: 
     headers: 
       content-type: 
@@ -41,7 +41,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[network_group_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bnetwork_group_id%5D=1
     body: 
     headers: 
       content-type: 
@@ -80,7 +80,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[identifier]=lolzsdfds
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bidentifier%5D=lolzsdfds
     body: 
     headers: 
       content-type: 
@@ -119,7 +119,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[vlan]=1
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bvlan%5D=1
     body: 
     headers: 
       content-type: 
@@ -158,7 +158,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network[identifier]=woah&network[label]=two&network[vlan]=2
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks/1.json?network%5Bidentifier%5D=woah&network%5Blabel%5D=two&network%5Bvlan%5D=2
     body: 
     headers: 
       content-type: 

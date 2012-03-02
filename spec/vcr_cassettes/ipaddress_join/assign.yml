@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/ip_addresses.json?ip_address_join[network_interface_id]=1&ip_address_join[ip_address_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/ip_addresses.json?ip_address_join%5Bnetwork_interface_id%5D=1&ip_address_join%5Bip_address_id%5D=1
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/ip_addresses.json?ip_address_join[network_interface_id]=1&ip_address_join[ip_address_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/ip_addresses.json?ip_address_join%5Bnetwork_interface_id%5D=1&ip_address_join%5Bip_address_id%5D=1
     body: 
     headers: 
       content-type: 

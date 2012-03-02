@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines.json?virtual_machine[cpu_shares]=10&virtual_machine[primary_disk_size]=10&virtual_machine[template_id]=1&virtual_machine[label]=testmachine&virtual_machine[hostname]=testmachine&virtual_machine[memory]=512&virtual_machine[cpus]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines.json?virtual_machine%5Bcpu_shares%5D=10&virtual_machine%5Bprimary_disk_size%5D=10&virtual_machine%5Btemplate_id%5D=1&virtual_machine%5Blabel%5D=testmachine&virtual_machine%5Bhostname%5D=testmachine&virtual_machine%5Bmemory%5D=512&virtual_machine%5Bcpus%5D=1
     body: 
     headers: 
       content-type: 

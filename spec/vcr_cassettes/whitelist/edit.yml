@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/user_white_lists/1.json?user_white_list[description]=This%20is%20actually%20a%20different%20computer.
+    uri: http://<USER>:<PASS>@<URL>:80/users/1/user_white_lists/1.json?user_white_list%5Bdescription%5D=This+is+actually+a+different+computer.
     body: 
     headers: 
       content-type: 
@@ -41,7 +41,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/users/1/user_white_lists/404.json?user_white_list[ip]=192.168.1.1
+    uri: http://<USER>:<PASS>@<URL>:80/users/1/user_white_lists/404.json?user_white_list%5Bip%5D=192.168.1.1
     body: 
     headers: 
       content-type: 

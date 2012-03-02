@@ -1,3 +1,5 @@
+Faraday.register_middleware :response, :on_app_errors => Faraday::Response::OnAppErrors
+
 module Squall
   # All OnApp API classes subclass Base to get access to
   # HTTParty methods and other convenience methods
@@ -10,21 +12,6 @@ module Squall
 
     # HTTPart request result
     attr_reader :result
-
-    # HTTParty class methods
-    include HTTParty
-
-    def initialize
-      self.class.base_uri Squall::config[:base_uri]
-      self.class.basic_auth Squall::config[:username], Squall::config[:password]
-      self.class.format :json
-      self.class.headers 'Content-Type' => 'application/json'
-      if Squall::config[:debug]
-        self.class.debug_output
-      else
-        self.class.debug_output(nil)
-      end
-    end
 
     # Returns a Params.new
     def params
@@ -44,17 +31,6 @@ module Squall
       options.empty? ? {} : {:query => { key_for_class => options.first}}
     end
 
-    # Returns an array of Request errors
-    def errors
-      return [] if @success
-      err = {}
-      @result.each do |k,v|
-        err[k] ||= []
-        err[k].push v.respond_to?(:first) ? v.first : v
-      end
-      err
-    end
-
     # Peforms an HTTP Request
     #
     # ==== Options
@@ -68,18 +44,17 @@ module Squall
     #   request :put, '/something.json', :something => 1 # PUT /something.json?something=1
     def request(request_method, path, options = {})
       check_config
-      @result  = self.class.send(request_method, path, options)
-      @success = (200..207).include?(@result.code)
-      case @result.code
-      when (200..207)
-        @result
-      when 404
-        raise NotFound, @result
-      when 422
-        raise RequestError, @result
-      else
-        raise ServerError, @result
+      conn = Faraday.new(:url => Squall.config[:base_uri]) do |c|
+        c.basic_auth Squall.config[:username], Squall.config[:password]
+        c.params = (options[:query] || {})
+        c.request :url_encoded
+        c.response :on_app_errors
+        c.response :json
+        c.adapter :net_http
       end
+      response = conn.send(request_method, path)
+      @success = (200..207).include?(response.env[:status])
+      @result = conn.send(request_method, path).body
     end
 
     # Raises an error if a request is made without first calling Squall.config

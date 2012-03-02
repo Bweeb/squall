@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/1.json?hypervisor[label]=A%20new%20label
+    uri: http://<USER>:<PASS>@<URL>:80/settings/hypervisors/1.json?hypervisor%5Blabel%5D=A+new+label
     body: 
     headers: 
       content-type: 

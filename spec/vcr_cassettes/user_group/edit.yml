@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/user_groups/1.json?user_group[label]=My%20new%20group
+    uri: http://<USER>:<PASS>@<URL>:80/user_groups/1.json?user_group%5Blabel%5D=My+new+group
     body: 
     headers: 
       content-type: 
@@ -41,7 +41,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/user_groups/404.json?user_group[label]=My%20new%20group
+    uri: http://<USER>:<PASS>@<URL>:80/user_groups/404.json?user_group%5Blabel%5D=My+new+group
     body: 
     headers: 
       content-type: 

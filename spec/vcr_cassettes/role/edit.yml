@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :put
-    uri: http://<USER>:<PASS>@<URL>:80/roles/1.json?role[label]=New
+    uri: http://<USER>:<PASS>@<URL>:80/roles/1.json?role%5Blabel%5D=New
     body: 
     headers: 
       content-type: 

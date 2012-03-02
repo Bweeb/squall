@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/firewall_rules.json?firewall_rule[command]=DROP&firewall_rule[protocol]=TCP&firewall_rule[network_interface_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/404/firewall_rules.json?firewall_rule%5Bcommand%5D=DROP&firewall_rule%5Bprotocol%5D=TCP&firewall_rule%5Bnetwork_interface_id%5D=1
     body: 
     headers: 
       content-type: 
@@ -39,7 +39,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/firewall_rules.json?firewall_rule[command]=DROP&firewall_rule[protocol]=TCP&firewall_rule[network_interface_id]=1
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/1/firewall_rules.json?firewall_rule%5Bcommand%5D=DROP&firewall_rule%5Bprotocol%5D=TCP&firewall_rule%5Bnetwork_interface_id%5D=1
     body: 
     headers: 
       content-type: 

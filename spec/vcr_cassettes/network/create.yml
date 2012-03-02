@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[label]=networktaken
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Blabel%5D=networktaken
     body: 
     headers: 
       content-type: 
@@ -41,7 +41,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[identifier]=newnetworkid&network[label]=newnetwork&network[vlan]=1
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Bidentifier%5D=newnetworkid&network%5Blabel%5D=newnetwork&network%5Bvlan%5D=1
     body: 
     headers: 
       content-type: 
@@ -80,7 +80,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[label]=newnetwork
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Blabel%5D=newnetwork
     body: 
     headers: 
       content-type: 
@@ -119,7 +119,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[label]=newnetwork&network[vlan]=2
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Blabel%5D=newnetwork&network%5Bvlan%5D=2
     body: 
     headers: 
       content-type: 
@@ -158,7 +158,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :post
-    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network[identifier]=something&network[label]=newnetwork
+    uri: http://<USER>:<PASS>@<URL>:80/settings/networks.json?network%5Bidentifier%5D=something&network%5Blabel%5D=newnetwork
     body: 
     headers: 
       content-type: 
