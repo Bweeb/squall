@@ -51,10 +51,14 @@ module Squall
         c.response :on_app_errors
         c.response :json
         c.adapter :net_http
+        if Squall.config[:debug]
+         c.use Faraday::Response::Logger
+        end
       end
       response = conn.send(request_method, path)
       @success = (200..207).include?(response.env[:status])
-      @result = conn.send(request_method, path).body
+  #    @result = conn.send(request_method, path).body
+      @result = response.body
     end
 
     # Raises an error if a request is made without first calling Squall.config
