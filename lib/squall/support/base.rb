@@ -57,7 +57,6 @@ module Squall
       end
       response = conn.send(request_method, path)
       @success = (200..207).include?(response.env[:status])
-  #    @result = conn.send(request_method, path).body
       @result = response.body
     end
 
