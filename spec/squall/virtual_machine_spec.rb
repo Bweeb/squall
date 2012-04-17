@@ -79,7 +79,7 @@ describe Squall::VirtualMachine do
 
     it "requires primary_disk_size" do
       requires_attr(:primary_disk_size) {
-        @virtual_machine.create(:label => @valid[:label], :hostname => @valid[:hostname], 
+        @virtual_machine.create(:label => @valid[:label], :hostname => @valid[:hostname],
                                 :memory => @valid[:memory], :cpus => @valid[:cpu_shares],
                                 :cpu_shares => @valid[:cpu_shares])
       }
@@ -102,7 +102,8 @@ describe Squall::VirtualMachine do
                   :note,
                   :allowed_hot_migrate,
                   :hypervisor_id,
-                  :initial_root_password
+                  :initial_root_password,
+                  :hypervisor_group_id
       ]
 
       @virtual_machine.should_receive(:request).exactly(optional.size).times.and_return Hash.new('virtual_machine' => [])
@@ -112,7 +113,7 @@ describe Squall::VirtualMachine do
     end
 
     it "creates a virtual_machine" do
-      pending "broken in OnApp (triggering the Network Interfaces error): see README (and update when fixed)" do 
+      pending "broken in OnApp (triggering the Network Interfaces error): see README (and update when fixed)" do
         virtual_machine = @virtual_machine.create(@valid)
         @valid.each do |k,v|
           virtual_machine[k].should == @valid[k.to_s]
@@ -257,19 +258,19 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_true
     end
   end
-  
+
   describe "#set_ssh_keys" do
     use_vcr_cassette "virtual_machine/set_ssh_keys"
     it "requires an id" do
       expect { @virtual_machine.set_ssh_keys }.to raise_error(ArgumentError)
       @virtual_machine.success.should be_false
     end
-    
+
     it "404s on not found" do
       expect { @virtual_machine.set_ssh_keys(404) }.to raise_error(Squall::NotFoundError)
       @virtual_machine.success.should be_false
     end
-    
+
     it "sets the SSH keys" do
       result = @virtual_machine.set_ssh_keys(1)
       @virtual_machine.success.should be_true
@@ -312,7 +313,7 @@ describe Squall::VirtualMachine do
       end
     end
   end
-  
+
   describe "#set_vip" do
     use_vcr_cassette "virtual_machine/set_vip"
     it "requires an id" do
@@ -327,7 +328,7 @@ describe Squall::VirtualMachine do
       @virtual_machine.set_vip(1)
       @virtual_machine.success.should be_true
     end
-    
+
     it "sets the vip status to false if currently true" do
       pending "No way to actually test this without being able to interact with server state" do
         result = @virtual_machine.set_vip(1)
@@ -362,25 +363,25 @@ describe Squall::VirtualMachine do
     it "returns not found for invalid virtual_machines" do
       expect { @virtual_machine.resize(404, :memory => 1) }.to raise_error(Squall::NotFoundError)
     end
-    
+
     it "accepts memory" do
       hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:memory => 1)]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.resize 1, :memory => 1
     end
-    
+
     it "accepts cpus" do
       hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:cpus => 1)]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.resize 1, :cpus => 1
     end
-    
+
     it "accepts cpu_shares" do
       hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:cpu_shares => 1)]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.resize 1, :cpu_shares => 1
     end
-    
+
     it "accepts allow_cold_resize" do
       hash = [:post, "/virtual_machines/1/resize.json",  @virtual_machine.default_params(:allow_cold_resize => 1)]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
@@ -393,7 +394,7 @@ describe Squall::VirtualMachine do
 
       virtual_machine['memory'].should == 1000
     end
-    
+
     it "requires at least one option" do
       expect { @virtual_machine.resize(1) }.to raise_error(ArgumentError)
     end
@@ -501,14 +502,14 @@ describe Squall::VirtualMachine do
       virtual_machine = @virtual_machine.reboot(1)
       @virtual_machine.success.should be_true
     end
-    
+
     it "reboots in recovery" do
       hash = [:post, "/virtual_machines/1/reboot.json", {:query => {:mode => :recovery}}]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.reboot 1, true
     end
   end
-  
+
   describe "#segregate" do
     use_vcr_cassette "virtual_machine/segregate"
     it "requires an id" do
@@ -536,7 +537,7 @@ describe Squall::VirtualMachine do
       @virtual_machine.success.should be_true
     end
   end
-  
+
   describe "#console" do
     use_vcr_cassette "virtual_machine/console"
     it "requires an id" do
@@ -550,7 +551,7 @@ describe Squall::VirtualMachine do
         @virtual_machine.success.should be_false
       end
     end
-    
+
     it "will reboot a virtual_machine" do
       pending "broken on OnApp (returning 500)" do
         virtual_machine = @virtual_machine.console(1)
@@ -558,7 +559,7 @@ describe Squall::VirtualMachine do
       end
     end
   end
-  
+
   describe "#stats" do
     use_vcr_cassette "virtual_machine/stats"
     it "requires an id" do

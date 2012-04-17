@@ -43,6 +43,8 @@ module Squall
     # * +note+ - Comment that can be set by the user of the virtual machine
     # * +allowed_hot_migrate+ - Set to '1'  to allow hot migration
     # * +initial_root_password+ - Root password for the virtual machine.  6-31 characters consisting of letters, numbers, '-' and '_'
+    # * hypervisor_group_id - the ID of the hypervisor zone in which the VM will be created. Optional: if no hypervisor zone is set, the VM will be built in any available hypervisor zone.
+
     #
     # ==== Example
     #
@@ -70,7 +72,8 @@ module Squall
                   :admin_note,
                   :note,
                   :allowed_hot_migrate,
-                  :initial_root_password
+                  :initial_root_password,
+                  :hypervisor_group_id
       ]
       params.required(required).accepts(optional).validate! options
       response = request(:post, '/virtual_machines.json', default_params(options))
