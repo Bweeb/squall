@@ -1,3 +1,3 @@
 module Squall
-  VERSION = '1.2.1beta1'
+  VERSION = '1.2.2'
 end
