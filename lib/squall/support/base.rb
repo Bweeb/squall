@@ -1,5 +1,3 @@
-Faraday.register_middleware :response, :on_app_errors => Squall::OnAppErrors
-
 module Squall
   # All OnApp API classes subclass Base to get access to
   # HTTParty methods and other convenience methods
@@ -44,20 +42,22 @@ module Squall
     #   request :put, '/something.json', :something => 1 # PUT /something.json?something=1
     def request(request_method, path, options = {})
       check_config
+
       conn = Faraday.new(:url => Squall.config[:base_uri]) do |c|
         c.basic_auth Squall.config[:username], Squall.config[:password]
         c.params = (options[:query] || {})
         c.request :url_encoded
-        c.response :on_app_errors
         c.response :json
         c.adapter :net_http
         if Squall.config[:debug]
          c.use Faraday::Response::Logger
         end
       end
+
       response = conn.send(request_method, path)
+
       @success = (200..207).include?(response.env[:status])
-      @result = response.body
+      @result  = response.body
     end
 
     # Raises an error if a request is made without first calling Squall.config

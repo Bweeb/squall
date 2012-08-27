@@ -53,10 +53,6 @@ describe Squall::FirewallRule do
       expect { @firewall_rule.create(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
-    it "raises an error for an invalid vm id" do
-      expect { @firewall_rule.create(404, @valid) }.to raise_error(Squall::NotFoundError)
-    end
-
     it "creates a firewall rule for a virtual machine" do
       @firewall_rule.create(1, @valid)
       @firewall_rule.success.should be_true
@@ -82,10 +78,6 @@ describe Squall::FirewallRule do
       @firewall_rule.edit(1, 1, :port => 1000)
       @firewall_rule.success.should be_true
     end
-
-    it "raises an error for an invalid firewall rule id" do
-      expect { @firewall_rule.edit(1, 404, @valid) }.to raise_error(Squall::NotFoundError)
-    end
   end
 
   describe "#delete" do
@@ -98,10 +90,6 @@ describe Squall::FirewallRule do
     it "deletes a firewall rule" do
       @firewall_rule.delete(1, 1)
       @firewall_rule.success.should be_true
-    end
-
-    it "returns NotFound for missing virtual machine" do
-      expect { @firewall_rule.delete(1, 404) }.to raise_error(Squall::NotFoundError)
     end
   end
 

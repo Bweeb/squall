@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Squall::Template do
   before(:each) do
     @template = Squall::Template.new
-    @keys = ["label", "operating_system_distro", "operating_system_arch", "created_at", 
-      "operating_system_tail", "operating_system", "updated_at", "operating_system_edition", 
-      "allowed_swap", "allow_resize_without_reboot", "virtualization", "id", "file_name", 
+    @keys = ["label", "operating_system_distro", "operating_system_arch", "created_at",
+      "operating_system_tail", "operating_system", "updated_at", "operating_system_edition",
+      "allowed_swap", "allow_resize_without_reboot", "virtualization", "id", "file_name",
       "checksum", "version", "user_id", "template_size", "allowed_hot_migrate", "min_disk_size", "state"]
   end
 
@@ -26,11 +26,6 @@ describe Squall::Template do
     use_vcr_cassette 'template/make_public'
     it "requires an id" do
       expect { @template.make_public }.to raise_error(ArgumentError)
-      @template.success.should be_false
-    end
-
-    it "404s on not found" do
-      expect { @template.make_public(404) }.to raise_error(Squall::NotFoundError)
       @template.success.should be_false
     end
 

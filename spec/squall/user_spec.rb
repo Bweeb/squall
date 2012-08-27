@@ -27,22 +27,22 @@ describe Squall::User do
       invalid = @valid.reject{|k,v| k == :password }
       requires_attr(:password) { @user.create(invalid) }
     end
-    
+
     it "requires password confirmation" do
       invalid = @valid.reject{|k,v| k == :password_confirmation }
       requires_attr(:password_confirmation) { @user.create(invalid) }
     end
-    
+
     it "requires first name" do
       invalid = @valid.reject{|k,v| k == :first_name }
       requires_attr(:first_name) { @user.create(invalid) }
     end
-    
+
     it "requires last name" do
       invalid = @valid.reject{|k,v| k == :last_name }
       requires_attr(:last_name) { @user.create(invalid) }
     end
-    
+
     it "allows all optional params" do
       optional = [:role, :time_zone, :locale, :status, :billing_plan_id, :role_ids, :suspend_after_hours, :suspend_at]
       @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new("user" => {})
@@ -50,7 +50,7 @@ describe Squall::User do
         @user.create(@valid.merge(param => "test"))
       end
     end
-    
+
     it "raises error on unknown params" do
       expect { @user.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
@@ -60,10 +60,10 @@ describe Squall::User do
       @user.success.should be_true
     end
   end
-  
+
   describe "#edit" do
     use_vcr_cassette "user/edit"
-    
+
     it "allows select params" do
       optional = [:email, :password, :password_confirmation, :first_name, :last_name, :user_group_id, :billing_plan_id, :role_ids, :suspend_at]
       @user.should_receive(:request).exactly(optional.size).times.and_return Hash.new()
@@ -71,7 +71,7 @@ describe Squall::User do
         @user.edit(1, param => "test")
       end
     end
-    
+
     it "raises error on unknown params" do
       expect { @user.edit(1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
     end
@@ -99,10 +99,6 @@ describe Squall::User do
     use_vcr_cassette "user/show"
     it "requires an id" do
       expect { @user.show }.to raise_error(ArgumentError)
-    end
-
-    it "returns not found for invalid users" do
-      expect { @user.show(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns a user" do
@@ -161,10 +157,6 @@ describe Squall::User do
       @user.delete(1)
       @user.success.should be_true
     end
-
-    it "returns NotFound for missing user" do
-      expect { @user.delete(404) }.to raise_error(Squall::NotFoundError)
-    end
   end
 
   describe "#stats" do
@@ -178,7 +170,7 @@ describe Squall::User do
       stats.should be_an(Array)
     end
   end
-  
+
   describe "#monthly_bills" do
     use_vcr_cassette "user/monthly_bills"
     it "requires an id" do
@@ -197,24 +189,16 @@ describe Squall::User do
       expect { @user.virtual_machines }.to raise_error(ArgumentError)
     end
 
-    it "404s on not found" do
-      expect { @user.virtual_machines(404) }.to raise_error(Squall::NotFoundError)
-    end
-
     it "returns the virtual_machines" do
       virtual_machines = @user.virtual_machines(1)
       virtual_machines.should be_an(Array)
     end
   end
-  
+
   describe "#hypervisors" do
     use_vcr_cassette "user/hypervisors"
     it "requires an id" do
       expect { @user.hypervisors }.to raise_error(ArgumentError)
-    end
-
-    it "404s on not found" do
-      expect { @user.hypervisors(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns the virtual_machines" do
@@ -222,17 +206,11 @@ describe Squall::User do
       hypervisors.should be_an(Array)
     end
   end
-  
+
   describe "#data_store_zones" do
     use_vcr_cassette "user/data_store_zones"
     it "requires an id" do
       expect { @user.data_store_zones }.to raise_error(ArgumentError)
-    end
-
-    it "404s on not found" do
-      pending "Broken on OnApp: returns success despite non-existent user" do
-        expect { @user.data_store_zones(2532564353245) }.to raise_error(Squall::NotFoundError)
-      end
     end
 
     it "returns the virtual_machines" do
@@ -247,12 +225,6 @@ describe Squall::User do
       expect { @user.network_zones }.to raise_error(ArgumentError)
     end
 
-    it "404s on not found" do
-      pending "Broken on OnApp: returns success despite non-existent user" do
-        expect { @user.network_zones(2532564353245) }.to raise_error(Squall::NotFoundError)
-      end
-    end
-
     it "returns the network_zones" do
       network_zones = @user.network_zones(1)
       network_zones.should be_an(Array)
@@ -265,14 +237,10 @@ describe Squall::User do
       expect { @user.limits }.to raise_error(ArgumentError)
     end
 
-    it "404s on not found" do
-      expect { @user.limits(438768534623) }.to raise_error(Squall::NotFoundError)
-    end
-
     it "returns the limits" do
       limits = @user.limits(1)
       limits.should be_a(Hash)
     end
   end
-  
+
 end

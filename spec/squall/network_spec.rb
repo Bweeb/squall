@@ -47,11 +47,6 @@ describe Squall::Network do
       @network.edit(1, :label => 'two', :vlan => 2, :identifier => 'woah')
       @network.success.should be_true
     end
-
-    it "404s on not found" do
-      expect { @network.edit(404) }.to raise_error(Squall::NotFoundError)
-      @network.success.should be_false
-    end
   end
 
   describe "#create" do
@@ -62,7 +57,7 @@ describe Squall::Network do
 
     it "raises error on duplicate account" do
       pending "Broken in OnApp" do
-        expect { 
+        expect {
           @network.create(:label => 'networktaken')
         }.to raise_error(Squall::ServerError)
         @network.errors['label'].should include("has already been taken")
@@ -70,7 +65,7 @@ describe Squall::Network do
     end
 
     it "raises error on invalid params" do
-      expect { 
+      expect {
         @network.create(:what => 'networktaken', :label => 'wut')
       }.to raise_error(ArgumentError, 'Unknown params: what')
     end
@@ -104,11 +99,6 @@ describe Squall::Network do
     use_vcr_cassette 'network/delete'
     it "requires an id" do
       expect { @network.delete }.to raise_error(ArgumentError)
-      @network.success.should be_false
-    end
-
-    it "404s on not found" do
-      expect { @network.delete(404) }.to raise_error(Squall::NotFoundError)
       @network.success.should be_false
     end
 

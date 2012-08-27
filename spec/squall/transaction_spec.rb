@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Squall::Transaction do
   before(:each) do
     @transaction = Squall::Transaction.new
-    @keys = ["pid", "created_at", "updated_at", "actor", "priority", 
-      "parent_type", "action", "id", "user_id", "dependent_transaction_id", 
+    @keys = ["pid", "created_at", "updated_at", "actor", "priority",
+      "parent_type", "action", "id", "user_id", "dependent_transaction_id",
       "allowed_cancel", "parent_id", "params", "log_output", "status", "identifier"
     ]
   end
@@ -24,10 +24,6 @@ describe Squall::Transaction do
     use_vcr_cassette "transaction/show"
     it "requires an id" do
       expect { @transaction.show }.to raise_error(ArgumentError)
-    end
-
-    it "returns not found for invalid" do
-      expect { @transaction.show(5) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns a transaction" do
