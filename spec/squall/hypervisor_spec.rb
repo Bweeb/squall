@@ -13,22 +13,18 @@ describe Squall::Hypervisor do
       hvs = @hv.list
       hvs.should be_an(Array)
     end
-    
+
     it "contains hypervisor data" do
       hvs = @hv.list
       hvs.all?.should be_true
     end
-    
+
   end
 
   describe "#show" do
     use_vcr_cassette "hypervisor/show"
     it "requires an id" do
       expect { @hv.show }.to raise_error(ArgumentError)
-    end
-
-    it "returns not found for invalid hvs" do
-      expect { @hv.show(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns a hv" do
@@ -88,11 +84,6 @@ describe Squall::Hypervisor do
       @hv.success.should be_false
     end
 
-    it "404s on not found" do
-      expect { @hv.reboot(404) }.to raise_error(Squall::NotFoundError)
-      @hv.success.should be_false
-    end
-
     it "reboots the hypervisor" do
       reboot = @hv.reboot(1)
       @hv.success.should be_true
@@ -105,92 +96,87 @@ describe Squall::Hypervisor do
       expect { @hv.delete }.to raise_error(ArgumentError)
     end
 
-    it "404s on not found" do
-      expect { @hv.delete(404) }.to raise_error(Squall::NotFoundError)
-      @hv.success.should be_false
-    end
-
     it "returns a hv" do
       @hv.delete(1)
       @hv.success.should be_true
     end
   end
-  
+
   describe "#data_store_joins" do
     use_vcr_cassette "hypervisor/data_store_joins"
-    
+
     it "returns a list of data store joins" do
       joins = @hv.data_store_joins(1)
       joins.should be_an(Array)
     end
-    
+
     it "contains the data store join data" do
       joins = @hv.data_store_joins(1)
       joins.all? {|w| w.is_a?(Hash) }.should be_true
     end
-    
+
   end
-  
+
   describe "#add_data_store_join" do
     use_vcr_cassette "hypervisor/add_data_store_join"
-    
+
     it "adds the data store to the hypervisor zone" do
       @hv.add_data_store_join(1, 1)
       @hv.success.should be_true
     end
-    
+
   end
-  
+
   describe "#remove_data_store_join" do
     use_vcr_cassette "hypervisor/remove_data_store_join"
-    
+
     it "removes the data store from the hypervisor zone" do
       @hv.remove_data_store_join(1, 1)
       @hv.success.should be_true
     end
-    
+
   end
-  
+
   describe "#network_joins" do
     use_vcr_cassette "hypervisor/network_joins"
-    
+
     it "returns a list of network joins" do
       joins = @hv.network_joins(1)
       joins.should be_an(Array)
     end
-    
+
     it "contains the network join data" do
       joins = @hv.network_joins(1)
       joins.all? {|w| w.is_a?(Hash) }.should be_true
     end
-    
+
   end
-  
+
   describe "#add_network_join" do
     use_vcr_cassette "hypervisor/add_network_join"
-    
+
     it "requires network id" do
       requires_attr(:network_id) { @hv.add_network_join(1, :interface => "interface") }
     end
-    
+
     it "requires interface" do
       requires_attr(:interface) { @hv.add_network_join(1, :network_id => 1) }
     end
-    
+
     it "adds the network to the hypervisor zone" do
       @hv.add_network_join(1, :network_id => 1, :interface => "interface")
       @hv.success.should be_true
     end
-    
+
   end
-  
+
   describe "#remove_network_join" do
     use_vcr_cassette "hypervisor/remove_network_join"
-    
+
     it "removes the network from the hypervisor zone" do
       @hv.remove_network_join(1, 1)
       @hv.success.should be_true
     end
-    
+
   end
 end

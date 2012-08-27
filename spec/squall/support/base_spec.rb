@@ -23,21 +23,27 @@ describe Squall::Base do
     end
 
     it "raises NotFound for 404s" do
-      mock_request(:get, '/404', :status => [404, "NotFound"])
-      expect { @base.request(:get, '/404') }.to raise_error(Squall::NotFoundError)
+      mock_request(:get, '/404', :status => [404, "NotFound"], :body => "{\"errors\":[\"Resource not found\"]}")
+      @base.request(:get, '/404')
+
       @base.success.should be_false
+      @base.result.should == { "errors" => ["Resource not found"] }
     end
 
     it "raises ServerError on errors" do
-      mock_request(:get, '/500', :status => [500, "Internal Server Error"])
-      expect { @base.request(:get, '/500') }.to raise_error(Squall::ServerError)
+      mock_request(:get, '/500', :status => [500, "Internal Server Error"], :body => "{\"errors\":[\"Internal Server Error\"]}")
+      @base.request(:get, '/500')
+
       @base.success.should be_false
+      @base.result.should == { "errors" => ["Internal Server Error"] }
     end
 
     it "raises RequestError on errors" do
-      mock_request(:get, '/422', :status => [422, "Unprocessable"])
-      expect { @base.request(:get, '/422') }.to raise_error(Squall::ClientError)
+      mock_request(:get, '/422', :status => [422, "Unprocessable"], :body => "{\"errors\":[\"Unprocessable\"]}")
+      @base.request(:get, '/422')
+
       @base.success.should be_false
+      @base.result.should == { "errors" => ["Unprocessable"] }
     end
 
     it "is a sad panda when the config hasn't been specified" do
@@ -59,7 +65,7 @@ describe Squall::Base do
 
     it "merges the query in" do
       expected = {
-        :query => { 
+        :query => {
           :base => {:one => 1, :two => 2}
         }
       }
@@ -70,7 +76,7 @@ describe Squall::Base do
       base_test = CamelTest.new
       base_test.default_params.should == {}
       expected = {
-        :query => { 
+        :query => {
           :camel_test => {:one => 1, :two => 2}
         }
       }
@@ -92,11 +98,11 @@ describe Squall::Base do
     it "converts Subclass::Test to :test" do
       sub_class = Subclass::Test.new
       sub_class.key_for_class.should == :test
-    end 
+    end
 
     it "converts Subclass::CamelTest to :camel_test" do
       camel_test = Subclass::CamelTest.new
       camel_test.key_for_class.should == :camel_test
-    end 
+    end
   end
 end

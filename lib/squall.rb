@@ -3,7 +3,6 @@ require 'faraday_middleware'
 
 require 'squall/support/version'
 require 'squall/support/exception'
-require 'squall/support/on_app_errors'
 require 'squall/support/yaml'
 
 module Squall
