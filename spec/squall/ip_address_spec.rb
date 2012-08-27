@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Squall::IpAddress do
   before(:each) do
     @ip = Squall::IpAddress.new
-    @keys = ["netmask", "disallowed_primary", "address", "created_at", "updated_at", "network_id", 
+    @keys = ["netmask", "disallowed_primary", "address", "created_at", "updated_at", "network_id",
     "network_address", "broadcast", "id", "gateway"]
   end
 
@@ -14,15 +14,11 @@ describe Squall::IpAddress do
       expect { @ip.list }.to raise_error(ArgumentError)
     end
 
-    it "404s on invalid network" do
-      expect { @ip.list(404) }.to raise_error(Squall::NotFoundError)
-    end
-
     it "returns ip_addresses" do
       ips = @ip.list(1)
       ips.should be_an(Array)
     end
-    
+
     it "contains ip address data" do
       ips = @ip.list(1)
       ips.all?.should be_true

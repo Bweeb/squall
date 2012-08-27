@@ -19,10 +19,6 @@ describe Squall::Role do
       expect { @role.show }.to raise_error(ArgumentError)
     end
 
-    it "returns 404 for invalid id" do
-      expect { @role.show(404) }.to raise_error(Squall::NotFoundError)
-    end
-
     it "returns a role" do
       role = @role.show(1)
       role.should be_a(Hash)
@@ -33,10 +29,6 @@ describe Squall::Role do
     use_vcr_cassette "role/edit"
     it "requires an id" do
       expect { @role.edit }.to raise_error(ArgumentError)
-    end
-
-    it "returns 404 for invalid id" do
-      expect { @role.edit(404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "allows all optional params" do
@@ -62,10 +54,6 @@ describe Squall::Role do
       expect { @role.delete }.to raise_error(ArgumentError)
     end
 
-    it "returns not found for invalid user" do
-      expect { @role.delete(5) }.to raise_error(Squall::NotFoundError)
-    end
-
     it "returns a role" do
       role = @role.delete(3)
       @role.success.should be_true
@@ -74,17 +62,17 @@ describe Squall::Role do
 
   describe "#permissions" do
     use_vcr_cassette "role/permissions"
-    
+
     it "returns permissions" do
       permissions = @role.permissions
       permissions.should be_an(Array)
     end
-    
+
     it "contains role data" do
       permissions = @role.permissions
       permissions.all?.should be_true
     end
-    
+
   end
 
   describe "#create" do
@@ -93,7 +81,7 @@ describe Squall::Role do
     it "requires label" do
       requires_attr(:label) { @role.create }
     end
-    
+
     it "allows permission_ids" do
       @role.should_receive(:request).once.and_return Hash.new('role' => [])
       @role.create(:label => "test", :permission_ids => 1)

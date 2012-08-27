@@ -8,11 +8,11 @@ describe Squall::Whitelist do
 
   describe "#list" do
     use_vcr_cassette "whitelist/list"
-    
+
     it "requires user id" do
       expect { @whitelist.list }.to raise_error(ArgumentError)
     end
-    
+
     it "returns a user's whitelists" do
       whitelists = @whitelist.list(1)
       whitelists.should be_an(Array)
@@ -23,15 +23,11 @@ describe Squall::Whitelist do
       whitelists.all? {|w| w.is_a?(Hash) }.should be_true
     end
   end
-  
+
   describe "#show" do
     use_vcr_cassette "whitelist/show"
     it "requires an id" do
       expect { @whitelist.show(1) }.to raise_error(ArgumentError)
-    end
-
-    it "returns not found for invalid whitelists" do
-      expect { @whitelist.show(1, 404) }.to raise_error(Squall::NotFoundError)
     end
 
     it "returns a whitelist" do
@@ -39,14 +35,14 @@ describe Squall::Whitelist do
       whitelist.should be_a(Hash)
     end
   end
-  
+
   describe "#create" do
     use_vcr_cassette "whitelist/create"
     it "requires amount" do
       invalid = @valid.reject{|k,v| k == :ip }
       requires_attr(:ip) { @whitelist.create(1, invalid) }
     end
-    
+
     it "allows all optional params" do
       optional = [:description]
       @whitelist.should_receive(:request).exactly(optional.size).times.and_return Hash.new("whitelist" => {})
@@ -54,13 +50,9 @@ describe Squall::Whitelist do
         @whitelist.create(1, @valid.merge(param => "test"))
       end
     end
-    
+
     it "raises error on unknown params" do
       expect { @whitelist.create(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
-    
-    it "raises an error for an invalid user id" do
-      expect { @whitelist.create(404, @valid) }.to raise_error(Squall::NotFoundError)
     end
 
     it "creates a whitelist for a user" do
@@ -68,10 +60,10 @@ describe Squall::Whitelist do
       @whitelist.success.should be_true
     end
   end
-  
+
   describe "#edit" do
     use_vcr_cassette "whitelist/edit"
-    
+
     it "allows select params" do
       optional = [:ip, :description]
       @whitelist.should_receive(:request).exactly(optional.size).times.and_return Hash.new()
@@ -79,7 +71,7 @@ describe Squall::Whitelist do
         @whitelist.edit(1, 1, param => "test")
       end
     end
-    
+
     it "raises error on unknown params" do
       expect { @whitelist.edit(1, 1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
     end
@@ -88,12 +80,8 @@ describe Squall::Whitelist do
       @whitelist.edit(1, 1, :description => "This is actually a different computer.")
       @whitelist.success.should be_true
     end
-    
-    it "raises an error for an invalid whitelist id" do
-      expect { @whitelist.edit(1, 404, @valid) }.to raise_error(Squall::NotFoundError)
-    end
   end
-  
+
   describe "#delete" do
     use_vcr_cassette "whitelist/delete"
     it "requires an id" do
@@ -103,10 +91,6 @@ describe Squall::Whitelist do
     it "deletes a whitelist" do
       @whitelist.delete(1, 1)
       @whitelist.success.should be_true
-    end
-
-    it "returns NotFound for missing user" do
-      expect { @whitelist.delete(1, 404) }.to raise_error(Squall::NotFoundError)
     end
   end
 
