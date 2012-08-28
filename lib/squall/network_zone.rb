@@ -27,7 +27,6 @@ module Squall
     #
     # See #create
     def edit(id, options = {})
-      params.required(:label).validate!(options)
       response = request(:put, "/network_zones/#{id}.json", :query => {:pack => options})
     end
 
@@ -37,7 +36,6 @@ module Squall
     #
     # * +label*+ - Label for the network zone
     def create(options = {})
-      params.required(:label).validate!(options)
       response = request(:post, "/network_zones.json", :query => {:pack => options})
     end
 

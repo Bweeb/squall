@@ -24,10 +24,6 @@ describe Squall::Template do
 
   describe "#make_public" do
     use_vcr_cassette 'template/make_public'
-    it "requires an id" do
-      expect { @template.make_public }.to raise_error(ArgumentError)
-      @template.success.should be_false
-    end
 
     it "makes the template public" do
       pub = @template.make_public(1)

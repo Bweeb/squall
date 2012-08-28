@@ -22,8 +22,7 @@ module Squall
     #
     #   edit 1, :label => 'mynetwork', :network_group_id => 1, :vlan => 2, :identifier => 'something'
     def edit(id, options = {})
-      params.accepts(:label, :network_group_id, :vlan, :identifier).validate!(options)
-      response = request(:put, "/settings/networks/#{id}.json", default_params(options))
+      request(:put, "/settings/networks/#{id}.json", default_params(options))
     end
 
     # Create a Network
@@ -42,7 +41,6 @@ module Squall
     #
     #   create :label => 'mynetwork', :network_group_id => 1, :vlan => 2, :identifier => 'something'
     def create(options = {})
-      params.accepts(:vlan, :identifier).required(:label).validate!(options)
       response = request(:post, '/settings/networks.json', default_params(options))
       response.first[1]
     end

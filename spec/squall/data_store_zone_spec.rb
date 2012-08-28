@@ -22,9 +22,6 @@ describe Squall::DataStoreZone do
 
   describe "#show" do
     use_vcr_cassette "data_store_zone/show"
-    it "requires an id" do
-      expect { @data_store_zone.show }.to raise_error(ArgumentError)
-    end
 
     it "returns a data store zone" do
       data_store_zone = @data_store_zone.show(1)
@@ -34,14 +31,6 @@ describe Squall::DataStoreZone do
 
   describe "#create" do
     use_vcr_cassette "data_store_zone/create"
-    it "requires label" do
-      invalid = @valid.reject{|k,v| k == :label }
-      requires_attr(:label) { @data_store_zone.create(invalid) }
-    end
-
-    it "raises error on unknown params" do
-      expect { @data_store_zone.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
 
     it "creates a data store zone" do
       @data_store_zone.create(@valid)
@@ -60,10 +49,6 @@ describe Squall::DataStoreZone do
       end
     end
 
-    it "raises error on unknown params" do
-      expect { @data_store_zone.edit(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
-
     it "edits a data store zone" do
       @data_store_zone.edit(1, :label => "Updated zone")
       @data_store_zone.success.should be_true
@@ -72,9 +57,6 @@ describe Squall::DataStoreZone do
 
   describe "#delete" do
     use_vcr_cassette "data_store_zone/delete"
-    it "requires an id" do
-      expect { @data_store_zone.delete }.to raise_error(ArgumentError)
-    end
 
     it "deletes a data store zone" do
       @data_store_zone.delete(1)

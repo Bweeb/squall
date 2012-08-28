@@ -9,10 +9,6 @@ describe Squall::FirewallRule do
   describe "#list" do
     use_vcr_cassette "firewall_rule/list"
 
-    it "requires vm id" do
-      expect { @firewall_rule.list }.to raise_error(ArgumentError)
-    end
-
     it "returns a list of firewall rules for a vm" do
       firewall_rules = @firewall_rule.list(1)
       firewall_rules.should be_an(Array)
@@ -26,20 +22,6 @@ describe Squall::FirewallRule do
 
   describe "#create" do
     use_vcr_cassette "firewall_rule/create"
-    it "requires command" do
-      invalid = @valid.reject{|k,v| k == :command }
-      requires_attr(:command) { @firewall_rule.create(1, invalid) }
-    end
-
-    it "requires protocol" do
-      invalid = @valid.reject{|k,v| k == :protocol }
-      requires_attr(:protocol) { @firewall_rule.create(1, invalid) }
-    end
-
-    it "requires network_interface_id" do
-      invalid = @valid.reject{|k,v| k == :network_interface_id }
-      requires_attr(:network_interface_id) { @firewall_rule.create(1, invalid) }
-    end
 
     it "allows all optional params" do
       optional = [:network_interface_id, :address, :port]
@@ -47,10 +29,6 @@ describe Squall::FirewallRule do
       optional.each do |param|
         @firewall_rule.create(1, @valid.merge(param => "test"))
       end
-    end
-
-    it "raises error on unknown params" do
-      expect { @firewall_rule.create(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
     it "creates a firewall rule for a virtual machine" do
@@ -70,10 +48,6 @@ describe Squall::FirewallRule do
       end
     end
 
-    it "raises error on unknown params" do
-      expect { @firewall_rule.edit(1, 1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
-
     it "edits a firewall rule" do
       @firewall_rule.edit(1, 1, :port => 1000)
       @firewall_rule.success.should be_true
@@ -82,10 +56,6 @@ describe Squall::FirewallRule do
 
   describe "#delete" do
     use_vcr_cassette "firewall_rule/delete"
-
-    it "requires an id" do
-      expect { @firewall_rule.delete }.to raise_error(ArgumentError)
-    end
 
     it "deletes a firewall rule" do
       @firewall_rule.delete(1, 1)

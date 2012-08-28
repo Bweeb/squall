@@ -8,6 +8,7 @@ describe Squall::Network do
 
   describe "#list" do
     use_vcr_cassette "network/list"
+
     it "returns a network list" do
       networks = @network.list
       networks.size.should be(2)
@@ -22,14 +23,6 @@ describe Squall::Network do
 
   describe "#edit" do
     use_vcr_cassette 'network/edit'
-    it "requires an id" do
-      expect { @network.edit }.to raise_error(ArgumentError)
-      @network.success.should be_false
-    end
-
-    it "errors on invalid params" do
-      expect { @network.edit(1, :what => 1) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
 
     it "accepts valid params" do
       @network.edit(1, :label => 'one')
@@ -51,9 +44,6 @@ describe Squall::Network do
 
   describe "#create" do
     use_vcr_cassette "network/create"
-    it "requires label" do
-      requires_attr(:label) { @network.create }
-    end
 
     it "raises error on duplicate account" do
       pending "Broken in OnApp" do
@@ -62,12 +52,6 @@ describe Squall::Network do
         }.to raise_error(Squall::ServerError)
         @network.errors['label'].should include("has already been taken")
       end
-    end
-
-    it "raises error on invalid params" do
-      expect {
-        @network.create(:what => 'networktaken', :label => 'wut')
-      }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
     it "creates a network" do
@@ -97,10 +81,6 @@ describe Squall::Network do
 
   describe "#delete" do
     use_vcr_cassette 'network/delete'
-    it "requires an id" do
-      expect { @network.delete }.to raise_error(ArgumentError)
-      @network.success.should be_false
-    end
 
     it "deletes the network" do
       delete = @network.delete(16)

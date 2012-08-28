@@ -24,7 +24,6 @@ module Squall
     # * +ip_address_id*+ - ID of the IP address
     # * +network_interface_id*+ - ID of the network interface id
     def assign(virtual_machine_id, options = {})
-      params.required(:ip_address_id, :network_interface_id).validate!(options)
       response = request(:post, "/virtual_machines/#{virtual_machine_id}/ip_addresses.json", default_params(options))
       response['ip_address_join']
     end

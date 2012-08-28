@@ -7,6 +7,7 @@ describe Squall::Role do
 
   describe "#list" do
     use_vcr_cassette "role/list"
+
     it "returns roles" do
       roles = @role.list
       roles.all?{|r| r.first == "role"}
@@ -15,9 +16,6 @@ describe Squall::Role do
 
   describe "#show" do
     use_vcr_cassette "role/show"
-    it "requires an id" do
-      expect { @role.show }.to raise_error(ArgumentError)
-    end
 
     it "returns a role" do
       role = @role.show(1)
@@ -27,9 +25,6 @@ describe Squall::Role do
 
   describe "#edit" do
     use_vcr_cassette "role/edit"
-    it "requires an id" do
-      expect { @role.edit }.to raise_error(ArgumentError)
-    end
 
     it "allows all optional params" do
       optional = [:label, :permission_ids]
@@ -50,9 +45,6 @@ describe Squall::Role do
 
   describe "#delete" do
     use_vcr_cassette "role/delete"
-    it "requires an id" do
-      expect { @role.delete }.to raise_error(ArgumentError)
-    end
 
     it "returns a role" do
       role = @role.delete(3)
@@ -77,10 +69,6 @@ describe Squall::Role do
 
   describe "#create" do
     use_vcr_cassette "role/create"
-
-    it "requires label" do
-      requires_attr(:label) { @role.create }
-    end
 
     it "allows permission_ids" do
       @role.should_receive(:request).once.and_return Hash.new('role' => [])

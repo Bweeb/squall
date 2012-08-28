@@ -34,7 +34,6 @@ module Squall
     #
     #   create :label => 'myhv', :ip_address => '127.0.0.1', :hypervisor_type => 'xen'
     def create(options = {})
-      params.required(:label, :ip_address, :hypervisor_type).accepts(:memory_overhead, :enabled, :hypervisor_group_id, :disable_failover).validate!(options)
       req = request(:post, '/settings/hypervisors.json', default_params(options))
       req.first[1]
     end
@@ -54,7 +53,6 @@ module Squall
     #
     #   edit 1, :label => 'myhv', :ip_address => '127.0.0.1'
     def edit(id, options ={})
-      params.accepts(:label, :ip_address, :hypervisor_type, :memory_overhead, :enabled, :hypervisor_group_id, :disable_failover).validate!(options)
       request(:put, "/settings/hypervisors/#{id}.json", default_params(options))
     end
 
@@ -101,7 +99,6 @@ module Squall
     end
 
     def add_network_join(id, options)
-      params.required(:network_id, :interface).validate!(options)
       request(:post, "/settings/hypervisors/#{id}/network_joins.json", :query => {:network_join => options})
     end
 
