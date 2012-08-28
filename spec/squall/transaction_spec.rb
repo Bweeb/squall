@@ -11,6 +11,7 @@ describe Squall::Transaction do
 
   describe "#list" do
     use_vcr_cassette 'transaction/list'
+
     it "lists transactions" do
       list = @transaction.list
       list.size.should be(3)
@@ -22,9 +23,6 @@ describe Squall::Transaction do
 
   describe "#show" do
     use_vcr_cassette "transaction/show"
-    it "requires an id" do
-      expect { @transaction.show }.to raise_error(ArgumentError)
-    end
 
     it "returns a transaction" do
       transaction = @transaction.show(1)

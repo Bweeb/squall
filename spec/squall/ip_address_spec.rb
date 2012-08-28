@@ -10,10 +10,6 @@ describe Squall::IpAddress do
   describe "#list" do
     use_vcr_cassette 'ipaddress/list'
 
-    it "requires network_id" do
-      expect { @ip.list }.to raise_error(ArgumentError)
-    end
-
     it "returns ip_addresses" do
       ips = @ip.list(1)
       ips.should be_an(Array)
@@ -36,14 +32,6 @@ describe Squall::IpAddress do
       :gateway         => '109.123.91.66'
     }
 
-    it "raises ArgumentError without required arguments" do
-      expect { @ip.edit }.to raise_error(ArgumentError)
-    end
-
-    it "raises ArgumentError without id argument" do
-      expect { @ip.edit(1) }.to raise_error(ArgumentError)
-    end
-
     it "edits the IpAddress" do
       ip = @ip.edit(1, 1, ip_params)
       @ip.success.should be_true
@@ -52,14 +40,6 @@ describe Squall::IpAddress do
 
   describe "#create" do
     use_vcr_cassette 'ipaddress/create'
-
-    it "raises ArgumentError without network_id" do
-      expect { @ip.create }.to raise_error(ArgumentError)
-    end
-
-    it "raises ArgumentError without required options" do
-      expect { @ip.create(1, {}) }.to raise_error(ArgumentError)
-    end
 
     it "creates a new IP" do
       new_ip = @ip.create(1,
@@ -76,11 +56,6 @@ describe Squall::IpAddress do
 
   describe "#delete" do
     use_vcr_cassette 'ipaddress/delete'
-
-    it "raises ArgumentError without network_id or id" do
-      expect { @ip.delete }.to raise_error(ArgumentError)
-      expect { @ip.delete(1) }.to raise_error(ArgumentError)
-    end
 
     it "deletes the IP" do
       @ip.delete(1, 1)

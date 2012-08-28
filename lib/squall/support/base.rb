@@ -2,19 +2,11 @@ module Squall
   # All OnApp API classes subclass Base to get access to
   # HTTParty methods and other convenience methods
   class Base
-    # Params instance
-    attr_reader :params
-
     # Returns true/false for successful/unsuccessful requests
     attr_reader :success
 
     # HTTPart request result
     attr_reader :result
-
-    # Returns a Params.new
-    def params
-      @params = Squall::Params.new
-    end
 
     # Sets the default URL params for requests and merges +options+
     #

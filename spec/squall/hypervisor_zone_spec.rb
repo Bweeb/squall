@@ -22,9 +22,6 @@ describe Squall::HypervisorZone do
 
   describe "#show" do
     use_vcr_cassette "hypervisor_zones/show"
-    it "requires an id" do
-      expect { @hypervisor_zone.show }.to raise_error(ArgumentError)
-    end
 
     it "returns a hypervisor zone" do
       hypervisor_zones = @hypervisor_zone.show(1)
@@ -34,14 +31,6 @@ describe Squall::HypervisorZone do
 
   describe "#create" do
     use_vcr_cassette "hypervisor_zones/create"
-    it "requires label" do
-      invalid = @valid.reject{|k,v| k == :label }
-      requires_attr(:label) { @hypervisor_zone.create(invalid) }
-    end
-
-    it "raises error on unknown params" do
-      expect { @hypervisor_zone.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
 
     it "creates a hypervisor zone" do
       @hypervisor_zone.create(@valid)
@@ -58,10 +47,6 @@ describe Squall::HypervisorZone do
       optional.each do |param|
         @hypervisor_zone.edit(1, param => "test")
       end
-    end
-
-    it "raises error on unknown params" do
-      expect { @hypervisor_zone.edit(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
     end
 
     it "edits a hypervisor zone" do
@@ -150,14 +135,6 @@ describe Squall::HypervisorZone do
   describe "#add_network_join" do
     use_vcr_cassette "hypervisor_zones/add_network_join"
 
-    it "requires network id" do
-      requires_attr(:network_id) { @hypervisor_zone.add_network_join(1, :interface => "interface") }
-    end
-
-    it "requires interface" do
-      requires_attr(:interface) { @hypervisor_zone.add_network_join(1, :network_id => 1) }
-    end
-
     it "adds the network to the hypervisor zone" do
       @hypervisor_zone.add_network_join(1, :network_id => 1, :interface => "interface")
       @hypervisor_zone.success.should be_true
@@ -172,7 +149,5 @@ describe Squall::HypervisorZone do
       @hypervisor_zone.remove_network_join(1, 1)
       @hypervisor_zone.success.should be_true
     end
-
   end
-
 end

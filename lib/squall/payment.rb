@@ -25,7 +25,6 @@ module Squall
     #   create :amount                 => 500,
     #          :invoice_number         => "01234",
     def create(user_id, options={})
-      params.required(:amount).accepts(:invoice_number).validate!(options)
       request(:post, "/users/#{user_id}/payments.json", default_params(options))
     end
 
@@ -41,7 +40,6 @@ module Squall
     #
     # See #create
     def edit(user_id, id, options={})
-      params.accepts(:amount, :invoice_number).validate!(options)
       request(:put, "/users/#{user_id}/payments/#{id}.json", default_params(options))
     end
 
@@ -54,6 +52,5 @@ module Squall
     def delete(user_id, id)
       request(:delete, "/users/#{user_id}/payments/#{id}.json")
     end
-
   end
 end

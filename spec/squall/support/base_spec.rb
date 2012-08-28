@@ -52,12 +52,6 @@ describe Squall::Base do
     end
   end
 
-  describe "#params" do
-    it "returns Params.new" do
-      @base.params.should be_a(Squall::Params)
-    end
-  end
-
   describe "#default_params" do
     it "sets the default options" do
       @base.default_params.should == {}

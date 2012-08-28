@@ -32,7 +32,6 @@ module Squall
     #          :protocol             => "TCP",
     #          :network_interface_id => 1
     def create(vm_id, options={})
-      params.required(:command, :protocol, :network_interface_id).accepts(:address, :port).validate!(options)
       request(:post, "/virtual_machines/#{vm_id}/firewall_rules.json", default_params(options))
     end
 
@@ -48,7 +47,6 @@ module Squall
     #
     # See #create
     def edit(vm_id, id, options={})
-      params.accepts(:command, :protocol, :network_interface_id, :address, :port).validate!(options)
       request(:put, "/virtual_machines/#{vm_id}/firewall_rules/#{id}.json", default_params(options))
     end
 
@@ -61,6 +59,5 @@ module Squall
     def delete(vm_id, id)
       request(:delete, "/virtual_machines/#{vm_id}/firewall_rules/#{id}.json")
     end
-
   end
 end

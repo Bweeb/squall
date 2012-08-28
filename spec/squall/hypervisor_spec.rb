@@ -23,9 +23,6 @@ describe Squall::Hypervisor do
 
   describe "#show" do
     use_vcr_cassette "hypervisor/show"
-    it "requires an id" do
-      expect { @hv.show }.to raise_error(ArgumentError)
-    end
 
     it "returns a hv" do
       @hv.show(1)
@@ -35,23 +32,6 @@ describe Squall::Hypervisor do
 
   describe "#create" do
     use_vcr_cassette "hypervisor/create"
-    it "requires label" do
-      invalid = @valid.reject{|k,v| k == :label }
-      requires_attr(:label) { @hv.create(invalid) }
-      @hv.success.should be_false
-    end
-
-    it "requires ip_address" do
-      invalid = @valid.reject{|k,v| k == :ip_address }
-      requires_attr(:ip_address) { @hv.create(invalid) }
-      @hv.success.should be_false
-    end
-
-    it "requires hypervisor_type" do
-      invalid = @valid.reject{|k,v| k == :hypervisor_type }
-      requires_attr(:hypervisor_type) { @hv.create(invalid) }
-      @hv.success.should be_false
-    end
 
     it "creates a hypervisor" do
       @hv.create(@valid)
@@ -61,15 +41,6 @@ describe Squall::Hypervisor do
 
   describe "#edit" do
     use_vcr_cassette 'hypervisor/edit'
-    it "requires an id" do
-      expect { @hv.edit }.to raise_error(ArgumentError)
-      @hv.success.should be_false
-    end
-
-    it "raises an error with unknown param " do
-      expect { @hv.edit(1, :blah => 1)}.to raise_error(ArgumentError)
-      @hv.success.should be_false
-    end
 
     it "edits the hypervisor" do
       edit = @hv.edit(1, :label => 'A new label')
@@ -79,10 +50,6 @@ describe Squall::Hypervisor do
 
   describe "#reboot" do
     use_vcr_cassette 'hypervisor/reboot'
-    it "requires an id" do
-      expect { @hv.reboot }.to raise_error(ArgumentError)
-      @hv.success.should be_false
-    end
 
     it "reboots the hypervisor" do
       reboot = @hv.reboot(1)
@@ -92,9 +59,6 @@ describe Squall::Hypervisor do
 
   describe "#delete" do
     use_vcr_cassette "hypervisor/delete"
-    it "requires an id" do
-      expect { @hv.delete }.to raise_error(ArgumentError)
-    end
 
     it "returns a hv" do
       @hv.delete(1)
@@ -154,14 +118,6 @@ describe Squall::Hypervisor do
 
   describe "#add_network_join" do
     use_vcr_cassette "hypervisor/add_network_join"
-
-    it "requires network id" do
-      requires_attr(:network_id) { @hv.add_network_join(1, :interface => "interface") }
-    end
-
-    it "requires interface" do
-      requires_attr(:interface) { @hv.add_network_join(1, :network_id => 1) }
-    end
 
     it "adds the network to the hypervisor zone" do
       @hv.add_network_join(1, :network_id => 1, :interface => "interface")

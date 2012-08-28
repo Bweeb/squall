@@ -7,7 +7,6 @@ require 'squall/support/yaml'
 
 module Squall
   # Support
-  autoload :Params,         'squall/support/params'
   autoload :Config,         'squall/support/config'
   autoload :Base,           'squall/support/base'
   # Api
