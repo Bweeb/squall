@@ -8,10 +8,6 @@ describe Squall::IpAddressJoin do
   describe "#list" do
     use_vcr_cassette 'ipaddress_join/list'
 
-    it "requires virtual machine ID" do
-      expect { @join.list }.to raise_error(ArgumentError)
-    end
-
     it "returns list of ip_addresses" do
       ips = @join.list(1)
       ips.should be_an(Array)
@@ -26,11 +22,6 @@ describe Squall::IpAddressJoin do
   describe "#assign" do
     use_vcr_cassette "ipaddress_join/assign"
 
-    it "raises ArgumentError without required arguments" do
-      expect { @join.assign    }.to raise_error(ArgumentError)
-      expect { @join.assign(1) }.to raise_error(ArgumentError)
-    end
-
     it "assigns the IP join" do
       join = @join.assign(1, {:ip_address_id => 1, :network_interface_id => 1})
       @join.success.should be_true
@@ -39,11 +30,6 @@ describe Squall::IpAddressJoin do
 
   describe "#delete" do
     use_vcr_cassette "ipaddress_join/delete"
-
-    it "raises ArgumentError without required arguments" do
-      expect { @join.delete    }.to raise_error(ArgumentError)
-      expect { @join.delete(1) }.to raise_error(ArgumentError)
-    end
 
     it "deletes the IP join" do
       @join.delete(1, 1)

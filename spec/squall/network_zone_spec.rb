@@ -22,9 +22,6 @@ describe Squall::NetworkZone do
 
   describe "#show" do
     use_vcr_cassette "network_zones/show"
-    it "requires an id" do
-      expect { @network_zone.show }.to raise_error(ArgumentError)
-    end
 
     it "returns a network zone" do
       network_zones = @network_zone.show(1)
@@ -34,14 +31,6 @@ describe Squall::NetworkZone do
 
   describe "#create" do
     use_vcr_cassette "network_zones/create"
-    it "requires label" do
-      invalid = @valid.reject{|k,v| k == :label }
-      requires_attr(:label) { @network_zone.create(invalid) }
-    end
-
-    it "raises error on unknown params" do
-      expect { @network_zone.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
 
     it "creates a network zone" do
       @network_zone.create(@valid)
@@ -60,10 +49,6 @@ describe Squall::NetworkZone do
       end
     end
 
-    it "raises error on unknown params" do
-      expect { @network_zone.edit(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
-
     it "edits a network zone" do
       @network_zone.edit(1, :label => "Updated zone")
       @network_zone.success.should be_true
@@ -72,9 +57,6 @@ describe Squall::NetworkZone do
 
   describe "#delete" do
     use_vcr_cassette "network_zones/delete"
-    it "requires an id" do
-      expect { @network_zone.delete }.to raise_error(ArgumentError)
-    end
 
     it "deletes a network zone" do
       @network_zone.delete(1)
@@ -85,14 +67,6 @@ describe Squall::NetworkZone do
   describe "#attach" do
     use_vcr_cassette "network_zones/attach"
 
-    it "requires an id" do
-      expect { @network_zone.attach }.to raise_error(ArgumentError)
-    end
-
-    it "requires a network id" do
-      expect { @network_zone.attach(1) }.to raise_error(ArgumentError)
-    end
-
     it "attaches a network to the network zone" do
       request = @network_zone.attach(1, 2)
       @network_zone.success.should be_true
@@ -101,14 +75,6 @@ describe Squall::NetworkZone do
 
   describe "#detach" do
     use_vcr_cassette "network_zones/detach"
-
-    it "requires an id" do
-      expect { @network_zone.detach }.to raise_error(ArgumentError)
-    end
-
-    it "requires a network id" do
-      expect { @network_zone.detach(1) }.to raise_error(ArgumentError)
-    end
 
     it "detaches a network to the network zone" do
       request = @network_zone.detach(1, 2)

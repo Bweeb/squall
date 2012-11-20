@@ -32,8 +32,7 @@ module Squall
     #
     #   edit 1, :label => 'myrole', :permission_ids => [1,3]
     def edit(id, options = {})
-      params.accepts(:label, :permission_ids).validate!(options)
-      response = request(:put, "/roles/#{id}.json", default_params(options))
+      request(:put, "/roles/#{id}.json", default_params(options))
     end
 
     # Delete a Role
@@ -66,8 +65,7 @@ module Squall
     #
     #   create :label => 'Admin'
     def create(options = {})
-      params.required(:label).accepts(:permission_ids).validate!(options)
-      response = request(:post, '/roles.json', default_params(options))
+      request(:post, '/roles.json', default_params(options))
     end
   end
 end

@@ -23,14 +23,6 @@ describe Squall::UserGroup do
 
   describe "#create" do
     use_vcr_cassette "user_group/create"
-    it "requires label" do
-      invalid = @valid.reject{|k,v| k == :label }
-      requires_attr(:label) { @user_group.create(invalid) }
-    end
-
-    it "raises error on unknown params" do
-      expect { @user_group.create(@valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
 
     it "creates a user group" do
       @user_group.create(@valid)
@@ -41,10 +33,6 @@ describe Squall::UserGroup do
   describe "#edit" do
     use_vcr_cassette "user_group/edit"
 
-    it "raises error on unknown params" do
-      expect { @user_group.edit(1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
-
     it "edits a user group" do
       @user_group.edit(1, @valid)
       @user_group.success.should be_true
@@ -53,14 +41,10 @@ describe Squall::UserGroup do
 
   describe "#delete" do
     use_vcr_cassette "user_group/delete"
-    it "requires an id" do
-      expect { @user_group.delete }.to raise_error(ArgumentError)
-    end
 
     it "deletes a user group" do
       @user_group.delete(1)
       @user_group.success.should be_true
     end
   end
-
 end

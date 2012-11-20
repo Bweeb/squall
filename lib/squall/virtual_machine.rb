@@ -61,21 +61,6 @@ module Squall
     #
     #  create params
     def create(options = {})
-      required = [:label, :hostname, :memory, :cpus, :cpu_shares, :primary_disk_size, :template_id]
-      optional = [:hypervisor_id,
-                  :swap_disk_size,
-                  :primary_network_id,
-                  :required_automatic_backup,
-                  :rate_limit,
-                  :required_ip_address_assignment,
-                  :required_virtual_machine_build,
-                  :admin_note,
-                  :note,
-                  :allowed_hot_migrate,
-                  :initial_root_password,
-                  :hypervisor_group_id
-      ]
-      params.required(required).accepts(optional).validate! options
       response = request(:post, '/virtual_machines.json', default_params(options))
       response['virtual_machine']
     end
@@ -92,7 +77,6 @@ module Squall
     # * +template_id*+ - ID of the template to be used to build the virtual machine
     # * +required_startup+ - Set to '1' to startup virtual machine after building
     def build(id, options = {})
-      params.required(:template_id).accepts(:required_startup).validate! options
       response = request(:post, "/virtual_machines/#{id}/build.json", default_params(options))
       response.first[1]
     end
@@ -108,27 +92,6 @@ module Squall
     #
     # See #create
     def edit(id, options = {})
-      optional = [:label,
-                  :hypervisor_id,
-                  :hostname,
-                  :memory,
-                  :cpus,
-                  :cpu_shares,
-                  :primary_disk_size,
-                  :cpu_shares,
-                  :swap_disk_size,
-                  :primary_network_id,
-                  :required_automatic_backup,
-                  :rate_limit,
-                  :required_ip_address_assignment,
-                  :required_virtual_machine_build,
-                  :admin_note,
-                  :note,
-                  :allowed_hot_migrate,
-                  :template_id,
-                  :initial_root_password
-      ]
-      params.accepts(optional).validate! options
       request(:put, "/virtual_machines/#{id}.json", default_params(options))
     end
 
@@ -176,7 +139,6 @@ module Squall
     # * +destination*+ - ID of a hypervisor to which to migrate the virtual machine
     # * +cold_migrate_on_rollback+ - Set to '1' to switch to cold migration if migration fails
     def migrate(id, options = {})
-      params.required(:destination).accepts(:cold_migrate_on_rollback).validate! options
       response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => {:virtual_machine => options} )
     end
 
@@ -213,8 +175,6 @@ module Squall
     # * +cpu_shares*+ - CPU priority for this virtual machine
     # * +allow_cold_resize*+ - Set to '1' to allow cold resize
     def resize(id, options = {})
-      raise ArgumentError, "You must specify at least one of the following attributes to resize: :memory, :cpus, :cpu_shares, :allow_cold_resize" if options.empty?
-      params.accepts(:memory, :cpus, :cpu_shares, :allow_cold_resize).validate! options
       response = request(:post, "/virtual_machines/#{id}/resize.json", default_params(options))
       response['virtual_machine']
     end

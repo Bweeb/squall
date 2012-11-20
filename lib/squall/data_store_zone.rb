@@ -28,7 +28,6 @@ module Squall
     #
     # * +label*+ - Label for the data store zone
     def edit(id, options = {})
-      params.required(:label).validate!(options)
       response = request(:put, "/data_store_zones/#{id}.json", :query => {:pack => options})
     end
 
@@ -42,7 +41,6 @@ module Squall
     #
     # * +label*+ - Label for the data store zone
     def create(options = {})
-      params.required(:label).validate!(options)
       response = request(:post, "/data_store_zones.json", :query => {:pack => options})
     end
 

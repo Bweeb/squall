@@ -28,7 +28,6 @@ module Squall
     #
     # See #create
     def edit(id, options = {})
-      params.required(:label).validate!(options)
       response = request(:put, "/settings/hypervisor_zones/#{id}.json", :query => {:pack => options})
     end
 
@@ -42,7 +41,6 @@ module Squall
     #
     # * +label*+ - Label for the hypervisor zone
     def create(options = {})
-      params.required(:label).validate!(options)
       response = request(:post, "/settings/hypervisor_zones.json", :query => {:pack => options})
     end
 
@@ -117,7 +115,6 @@ module Squall
     # * +network_id*+ - The ID of the network to add to the hypervisor zone
     # * +interface*+ - The name of the appropriate network interface
     def add_network_join(id, options={})
-      params.required(:network_id, :interface).validate!(options)
       request(:post, "/settings/hypervisor_zones/#{id}/network_joins.json", :query => {:network_join => options})
     end
 
@@ -130,6 +127,5 @@ module Squall
     def remove_network_join(id, network_join_id)
       request(:delete, "/settings/hypervisor_zones/#{id}/network_joins/#{network_join_id}.json")
     end
-
   end
 end

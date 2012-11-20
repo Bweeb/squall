@@ -9,10 +9,6 @@ describe Squall::Whitelist do
   describe "#list" do
     use_vcr_cassette "whitelist/list"
 
-    it "requires user id" do
-      expect { @whitelist.list }.to raise_error(ArgumentError)
-    end
-
     it "returns a user's whitelists" do
       whitelists = @whitelist.list(1)
       whitelists.should be_an(Array)
@@ -26,9 +22,6 @@ describe Squall::Whitelist do
 
   describe "#show" do
     use_vcr_cassette "whitelist/show"
-    it "requires an id" do
-      expect { @whitelist.show(1) }.to raise_error(ArgumentError)
-    end
 
     it "returns a whitelist" do
       whitelist = @whitelist.show(1, 2)
@@ -38,22 +31,6 @@ describe Squall::Whitelist do
 
   describe "#create" do
     use_vcr_cassette "whitelist/create"
-    it "requires amount" do
-      invalid = @valid.reject{|k,v| k == :ip }
-      requires_attr(:ip) { @whitelist.create(1, invalid) }
-    end
-
-    it "allows all optional params" do
-      optional = [:description]
-      @whitelist.should_receive(:request).exactly(optional.size).times.and_return Hash.new("whitelist" => {})
-      optional.each do |param|
-        @whitelist.create(1, @valid.merge(param => "test"))
-      end
-    end
-
-    it "raises error on unknown params" do
-      expect { @whitelist.create(1, @valid.merge(:what => 'what')) }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
 
     it "creates a whitelist for a user" do
       @whitelist.create(1, @valid)
@@ -64,18 +41,6 @@ describe Squall::Whitelist do
   describe "#edit" do
     use_vcr_cassette "whitelist/edit"
 
-    it "allows select params" do
-      optional = [:ip, :description]
-      @whitelist.should_receive(:request).exactly(optional.size).times.and_return Hash.new()
-      optional.each do |param|
-        @whitelist.edit(1, 1, param => "test")
-      end
-    end
-
-    it "raises error on unknown params" do
-      expect { @whitelist.edit(1, 1, :what => 'what') }.to raise_error(ArgumentError, 'Unknown params: what')
-    end
-
     it "edits a whitelist" do
       @whitelist.edit(1, 1, :description => "This is actually a different computer.")
       @whitelist.success.should be_true
@@ -84,9 +49,6 @@ describe Squall::Whitelist do
 
   describe "#delete" do
     use_vcr_cassette "whitelist/delete"
-    it "requires an id" do
-      expect { @whitelist.delete }.to raise_error(ArgumentError)
-    end
 
     it "deletes a whitelist" do
       @whitelist.delete(1, 1)
