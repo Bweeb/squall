@@ -10,4 +10,4 @@ coverage/
 doc/
 TODO
 Gemfile.lock
-
+.rvmrc
