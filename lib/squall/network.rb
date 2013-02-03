@@ -53,5 +53,15 @@ module Squall
     def delete(id)
       request(:delete, "/settings/networks/#{id}.json")
     end
+
+
+    # Rebuild VM network
+    #
+    # ==== Params
+    #
+    # * +id*+ - ID of the virtual machine
+    def rebuild(id)
+      request(:post, "/virtual_machines/#{id}/rebuild_network.json")
+    end
   end
 end
