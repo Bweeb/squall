@@ -1,0 +1,40 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/settings/disks/78/unlock.json
+    body: 
+    headers:
+      authorization:
+      - Basic <REDACTED>
+      content-length:
+      - '0'
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 201
+      message: Created
+    headers:
+      date:
+      - Sun, 03 Feb 2013 22:22:03 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      x-runtime:
+      - '0.025621'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - no-cache
+      set-cookie:
+      - <REDACTED>
+      location:
+      - http://<URL>/settings/disks/78
+      status:
+      - '201'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '{"disk":{"locked":false,"disk_vm_number":2,"has_autobackups":false,"disk_size":3,"is_swap":false,"primary":false,"identifier":"auga35lagbqjjg","updated_at":"2013-02-03T21:47:38Z","add_to_linux_fstab":false,"mount_point":"/disk2","data_store_id":1,"built":true,"created_at":"2013-02-03T21:28:41Z","virtual_machine_id":58,"id":78}}'
+    http_version: '1.1'

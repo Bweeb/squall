@@ -1,0 +1,38 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/58/disks/78/migrate.json?disk%5Bdata_store_id%5D=2
+    body: 
+    headers:
+      authorization:
+      - Basic <REDACTED>
+      content-length:
+      - '0'
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      date:
+      - Sun, 03 Feb 2013 21:59:11 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      x-runtime:
+      - '0.028626'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - no-cache
+      set-cookie:
+      - <REDACTED>
+      status:
+      - '422'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '{"errors":["Data store cannot be associated with this virtual machine."]}'
+    http_version: '1.1'

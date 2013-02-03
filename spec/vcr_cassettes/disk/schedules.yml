@@ -1,0 +1,40 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/settings/disks/78/schedules.json
+    body: 
+    headers:
+      authorization:
+      - Basic <REDACTED>
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 03 Feb 2013 22:39:08 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      x-runtime:
+      - '0.170110'
+      etag:
+      - ! '"2c59b110ae7d525eabb4b879132f5612"'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - <REDACTED>
+      status:
+      - '200'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '[{"schedule":{"target_id":78,"action":"autobackup","updated_at":"2013-02-03T22:33:42Z","schedule_logs":[{"schedule_log":{"updated_at":"2013-02-03T22:31:41Z","status":"complete","log_output":"","created_at":"2013-02-03T22:31:41Z","schedule_id":13,"id":68}}],"duration":1,"start_at":"2013-02-04T22:31:36Z","user_id":17,"period":"days","failure_count":0,"status":"disabled","target_type":"Disk","created_at":"2013-02-03T22:31:36Z","id":13,"params":null}},{"schedule":{"target_id":78,"action":"autobackup","updated_at":"2013-02-03T22:33:42Z","schedule_logs":[{"schedule_log":{"updated_at":"2013-02-03T22:31:46Z","status":"complete","log_output":"","created_at":"2013-02-03T22:31:46Z","schedule_id":14,"id":69}}],"duration":1,"start_at":"2013-02-10T22:31:36Z","user_id":17,"period":"weeks","failure_count":0,"status":"disabled","target_type":"Disk","created_at":"2013-02-03T22:31:36Z","id":14,"params":null}},{"schedule":{"target_id":78,"action":"autobackup","updated_at":"2013-02-03T22:33:42Z","schedule_logs":[{"schedule_log":{"updated_at":"2013-02-03T22:31:51Z","status":"complete","log_output":"","created_at":"2013-02-03T22:31:51Z","schedule_id":15,"id":70}}],"duration":1,"start_at":"2013-03-03T22:31:36Z","user_id":17,"period":"months","failure_count":0,"status":"disabled","target_type":"Disk","created_at":"2013-02-03T22:31:36Z","id":15,"params":null}},{"schedule":{"target_id":78,"action":"autobackup","updated_at":"2013-02-03T22:33:42Z","schedule_logs":[{"schedule_log":{"updated_at":"2013-02-03T22:31:56Z","status":"complete","log_output":"","created_at":"2013-02-03T22:31:56Z","schedule_id":16,"id":71}}],"duration":1,"start_at":"2014-02-03T22:31:36Z","user_id":17,"period":"years","failure_count":0,"status":"disabled","target_type":"Disk","created_at":"2013-02-03T22:31:36Z","id":16,"params":null}}]'
+    http_version: '1.1'

@@ -1,0 +1,40 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/settings/disks/78/backups.json
+    body: 
+    headers:
+      authorization:
+      - Basic <REDACTED>
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 03 Feb 2013 22:56:19 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      x-runtime:
+      - '0.181057'
+      etag:
+      - ! '"5df41d1c5711c1a66a1ef2398522fe78"'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - <REDACTED>
+      status:
+      - '200'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '[{"backup":{"allow_resize_without_reboot":false,"min_memory_size":384,"allowed_hot_migrate":true,"locked":false,"backup_size":"8","disk_id":78,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"backup_server_id":null,"identifier":"azbygzz6zjui4k","min_disk_size":5,"updated_at":"2013-02-03T22:31:48Z","backup_type":"days-autobackup","built_at":"2013-02-03T22:31:48Z","built":true,"created_at":"2013-02-03T22:31:41Z","template_id":1,"marked_for_delete":false,"id":68}},{"backup":{"allow_resize_without_reboot":false,"min_memory_size":384,"allowed_hot_migrate":true,"locked":false,"backup_size":"8","disk_id":78,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"backup_server_id":null,"identifier":"bms29egtk7x0ka","min_disk_size":5,"updated_at":"2013-02-03T22:31:53Z","backup_type":"weeks-autobackup","built_at":"2013-02-03T22:31:53Z","built":true,"created_at":"2013-02-03T22:31:46Z","template_id":1,"marked_for_delete":false,"id":69}},{"backup":{"allow_resize_without_reboot":false,"min_memory_size":384,"allowed_hot_migrate":true,"locked":false,"backup_size":"8","disk_id":78,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"backup_server_id":null,"identifier":"x4x2qozp8gust2","min_disk_size":5,"updated_at":"2013-02-03T22:31:58Z","backup_type":"months-autobackup","built_at":"2013-02-03T22:31:58Z","built":true,"created_at":"2013-02-03T22:31:51Z","template_id":1,"marked_for_delete":false,"id":70}},{"backup":{"allow_resize_without_reboot":false,"min_memory_size":384,"allowed_hot_migrate":true,"locked":false,"backup_size":"8","disk_id":78,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"backup_server_id":null,"identifier":"c5djejrrxxvj7s","min_disk_size":5,"updated_at":"2013-02-03T22:32:03Z","backup_type":"years-autobackup","built_at":"2013-02-03T22:32:03Z","built":true,"created_at":"2013-02-03T22:31:56Z","template_id":1,"marked_for_delete":false,"id":71}}]'
+    http_version: '1.1'
