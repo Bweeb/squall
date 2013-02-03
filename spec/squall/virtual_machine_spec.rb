@@ -64,8 +64,9 @@ describe Squall::VirtualMachine do
     use_vcr_cassette "virtual_machine/edit"
 
     it "updates the label" do
-      @virtual_machine.edit(1, :label => 'testing')
+      virtual_machine = @virtual_machine.edit(1, :label => 'testing')
       @virtual_machine.success.should be_true
+      virtual_machine['label'].should == 'testing'
     end
   end
 

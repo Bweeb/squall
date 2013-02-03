@@ -87,4 +87,13 @@ describe Squall::Network do
       @network.success.should be_true
     end
   end
+
+  describe "#rebuild" do
+    use_vcr_cassette 'network/rebuild'
+
+    it "rebuilds the network for VM" do
+      rebuild = @network.rebuild(58)
+      @network.success.should be_true
+    end
+  end
 end
