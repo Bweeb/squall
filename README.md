@@ -101,13 +101,13 @@ The following OnApp modules have been added:
 * Transactions
 * Virtual machines
 * Whitelists
+* Disks
 
 The following still need to be added:
 
 * Billing plans
 * Currencies
 * Network interfaces
-* Disks
 * Template groups
 * Software licenses
 * Resolvers
