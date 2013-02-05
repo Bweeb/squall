@@ -1,0 +1,41 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://<USER>:<PASS>@<URL>:80/virtual_machines/58/rebuild_network.json
+    body:
+    headers:
+      authorization:
+      - Basic <REDACTED>
+      content-length:
+      - '0'
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 201
+      message: Created
+    headers:
+      date:
+      - Sun, 03 Feb 2013 18:04:14 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      x-runtime:
+      - '0.072265'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - no-cache
+      set-cookie:
+      - <REDACTED>
+      location:
+      - http://<URL>/virtual_machines/d22pmhpwi0twfo
+      status:
+      - '201'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '{"virtual_machine":{"add_to_marketplace":null,"admin_note":null,"allow_resize_without_reboot":false,"remote_access_password":"password","suspended":false,"allowed_hot_migrate":true,"hostname":"testhostname.com","locked":false,"state":"new","enable_autoscale":null,"hypervisor_id":1,"operating_system":"linux","operating_system_distro":"rhel","allowed_swap":true,"identifier":"ident12","min_disk_size":5,"updated_at":"2013-02-03T16:16:28Z","ip_addresses":[{"ip_address":{"netmask":"255.255.255.192","network_id":2,"address":"192.168.1.98","updated_at":"2012-12-21T10:37:24Z","disallowed_primary":false,"gateway":"192.168.1.65","created_at":"2012-12-21T10:37:24Z","free":false,"broadcast":"192.168.1.127","network_address":"192.168.1.64","id":95}},{"ip_address":{"netmask":"255.255.255.192","network_id":2,"address":"192.168.1.99","updated_at":"2012-12-21T10:37:24Z","disallowed_primary":false,"gateway":"192.168.1.65","created_at":"2012-12-21T10:37:24Z","free":false,"broadcast":"192.168.1.127","network_address":"192.168.1.64","id":96}}],"label":"testlabel","user_id":17,"update_billing_stat":false,"vip":null,"xen_id":22,"monthly_bandwidth_used":0,"total_disk_size":50,"enable_monitis":null,"initial_root_password":"root_pass","strict_virtual_machine_id":null,"built":true,"created_at":"2013-02-03T01:10:51Z","recovery_mode":false,"template_id":1,"booted":true,"cpu_shares":10,"local_remote_access_port":5906,"memory":1024,"note":null,"cpus":1,"id":58,"template_label":"CentOS
+      6.3 x64"}}'
+    http_version: '1.1'
