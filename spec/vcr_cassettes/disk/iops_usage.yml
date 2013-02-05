@@ -1,0 +1,40 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/settings/disks/77/usage.json
+    body: 
+    headers:
+      authorization:
+      - Basic <REDACTED>
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 03 Feb 2013 22:07:47 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      x-runtime:
+      - '0.031756'
+      etag:
+      - ! '"e360508aa8f0b9b7533af5722b8ca972"'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - <REDACTED>
+      status:
+      - '200'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '[{"disk_hourly_stat":{"stat_time":"2013-02-03T02:00:00Z","disk_id":77,"updated_at":"2013-02-03T02:00:06Z","data_written":4,"user_id":17,"writes_completed":1,"data_read":4,"created_at":"2013-02-03T02:00:06Z","virtual_machine_id":58,"id":2496,"reads_completed":1}},{"disk_hourly_stat":{"stat_time":"2013-02-03T14:00:00Z","disk_id":77,"updated_at":"2013-02-03T14:00:05Z","data_written":3644,"user_id":17,"writes_completed":884,"data_read":210976,"created_at":"2013-02-03T14:00:05Z","virtual_machine_id":58,"id":2605,"reads_completed":25374}},{"disk_hourly_stat":{"stat_time":"2013-02-03T15:00:00Z","disk_id":77,"updated_at":"2013-02-03T15:00:06Z","data_written":1540,"user_id":17,"writes_completed":380,"data_read":52241,"created_at":"2013-02-03T15:00:06Z","virtual_machine_id":58,"id":2615,"reads_completed":6313}},{"disk_hourly_stat":{"stat_time":"2013-02-03T16:00:00Z","disk_id":77,"updated_at":"2013-02-03T16:00:05Z","data_written":1180,"user_id":17,"writes_completed":295,"data_read":748,"created_at":"2013-02-03T16:00:05Z","virtual_machine_id":58,"id":2625,"reads_completed":119}},{"disk_hourly_stat":{"stat_time":"2013-02-03T17:00:00Z","disk_id":77,"updated_at":"2013-02-03T17:00:06Z","data_written":2272,"user_id":17,"writes_completed":558,"data_read":104474,"created_at":"2013-02-03T17:00:06Z","virtual_machine_id":58,"id":2635,"reads_completed":12617}},{"disk_hourly_stat":{"stat_time":"2013-02-03T18:00:00Z","disk_id":77,"updated_at":"2013-02-03T18:00:05Z","data_written":1028,"user_id":17,"writes_completed":257,"data_read":332,"created_at":"2013-02-03T18:00:05Z","virtual_machine_id":58,"id":2645,"reads_completed":39}},{"disk_hourly_stat":{"stat_time":"2013-02-03T19:00:00Z","disk_id":77,"updated_at":"2013-02-03T19:00:05Z","data_written":2944,"user_id":17,"writes_completed":720,"data_read":1065574,"created_at":"2013-02-03T19:00:05Z","virtual_machine_id":58,"id":2655,"reads_completed":174350}},{"disk_hourly_stat":{"stat_time":"2013-02-03T20:00:00Z","disk_id":77,"updated_at":"2013-02-03T20:00:06Z","data_written":1112,"user_id":17,"writes_completed":278,"data_read":424,"created_at":"2013-02-03T20:00:06Z","virtual_machine_id":58,"id":2666,"reads_completed":89}},{"disk_hourly_stat":{"stat_time":"2013-02-03T21:00:00Z","disk_id":77,"updated_at":"2013-02-03T21:00:05Z","data_written":1144,"user_id":17,"writes_completed":286,"data_read":100,"created_at":"2013-02-03T21:00:05Z","virtual_machine_id":58,"id":2676,"reads_completed":23}},{"disk_hourly_stat":{"stat_time":"2013-02-03T22:00:00Z","disk_id":77,"updated_at":"2013-02-03T22:00:06Z","data_written":2092,"user_id":17,"writes_completed":509,"data_read":51877,"created_at":"2013-02-03T22:00:06Z","virtual_machine_id":58,"id":2686,"reads_completed":6281}}]'
+    http_version: '1.1'

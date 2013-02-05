@@ -1,0 +1,40 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://<USER>:<PASS>@<URL>:80/settings/disks.json
+    body:
+    headers:
+      authorization:
+      - Basic <REDACTED>
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 03 Feb 2013 20:46:47 GMT
+      server:
+      - Apache/2.2.3 (CentOS)
+      x-powered-by:
+      - Phusion Passenger (mod_rails/mod_rack) 3.0.1
+      x-runtime:
+      - '0.024210'
+      etag:
+      - ! '"72bf7f9ce408634c3ec472549c91a92d"'
+      x-ua-compatible:
+      - IE=Edge,chrome=1
+      cache-control:
+      - max-age=0, private, must-revalidate
+      set-cookie:
+      - <REDACTED>
+      status:
+      - '200'
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+    body: ! '[{"disk":{"locked":false,"disk_vm_number":1,"has_autobackups":false,"disk_size":50,"is_swap":false,"primary":true,"identifier":"wkod7eou2q6xua","updated_at":"2013-02-03T01:10:54Z","add_to_linux_fstab":null,"mount_point":null,"data_store_id":1,"built":true,"created_at":"2013-02-03T01:10:51Z","virtual_machine_id":58,"id":77}}]'
+    http_version: '1.1'
