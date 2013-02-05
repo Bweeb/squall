@@ -92,7 +92,8 @@ module Squall
     #
     # See #create
     def edit(id, options = {})
-      request(:put, "/virtual_machines/#{id}.json", default_params(options))
+      response = request(:put, "/virtual_machines/#{id}.json", default_params(options))
+      response['virtual_machine']
     end
 
     # Change the owner of a virtual machine
