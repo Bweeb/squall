@@ -1,18 +1,20 @@
 module Squall
   # OnApp Template
   class Template < Base
-    # Return a list of available Templates
+    # Public: Lists available templates.
+    #
+    # Returns an Array.
     def list
       response = request(:get, '/templates.json')
       response.collect { |temp| temp['image_template'] }
     end
 
-    # Make a Template public so that it can be downloaded
-    # via a HTTP url
+    # Public: Make a Template public so that it can be downloaded via a HTTP
+    # URL.
     #
-    # ==== Params
+    # id - ID of template
     #
-    # * +id*+ - ID of template
+    # Returns a Hash.
     def make_public(id)
       response = request(:post, "/templates/#{id}/make_public.json")
       response.first[1]

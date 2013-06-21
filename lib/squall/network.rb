@@ -1,64 +1,60 @@
 module Squall
   # OnApp Network
   class Network < Base
-    # Returns a list of Networks
+    # Public: Lists all networks.
+    #
+    # Returns an Array.
     def list
       response = request(:get, '/settings/networks.json')
       response.collect { |network| network['network'] }
     end
 
-    # Edit a Network
+    # Public: Create a Network.
     #
-    # ==== Params
+    # options - Params for creating the Network:
+    #           :label
+    #           :vlan
+    #           :identifier
     #
-    # * +id*+ - ID of the network
-    # * +options+ - Params for editing the Network
+    # Example
     #
-    # ==== Options
+    #   create(
+    #     label:            'mynetwork',
+    #     network_group_id: 1,
+    #     vlan:             2,
+    #     identifier:       'something'
+    #   )
     #
-    # See #create
-    #
-    # ==== Example
-    #
-    #   edit 1, :label => 'mynetwork', :network_group_id => 1, :vlan => 2, :identifier => 'something'
-    def edit(id, options = {})
-      request(:put, "/settings/networks/#{id}.json", default_params(options))
-    end
-
-    # Create a Network
-    #
-    # ==== Params
-    #
-    # * +options+ - Params for creating the Network
-    #
-    # ==== Options
-    #
-    # * +label*+
-    # * +vlan+
-    # * +identifier+
-    #
-    # ==== Example
-    #
-    #   create :label => 'mynetwork', :network_group_id => 1, :vlan => 2, :identifier => 'something'
+    # Returns a Hash.
     def create(options = {})
       response = request(:post, '/settings/networks.json', default_params(options))
       response.first[1]
     end
 
-    # Delete a network
+    # Public: Edit a Network
     #
-    # ==== Params
+    # id      - ID of the network
+    # options - Params for editing the Network, see `#create`
     #
-    # * +id*+ - ID of the network
+    # Returns a Hash.
+    def edit(id, options = {})
+      request(:put, "/settings/networks/#{id}.json", default_params(options))
+    end
+
+    # Public: Delete a network.
+    #
+    # id - ID of the network
+    #
+    # Returns a Hash.
     def delete(id)
       request(:delete, "/settings/networks/#{id}.json")
     end
 
-    # Rebuild VM network
+    # Public: Rebuild VM network.
     #
-    # ==== Params
+    # id - ID of the virtual machine
     #
-    # * +id*+ - ID of the virtual machine
+    # Returns a Hash.
     def rebuild(id)
       request(:post, "/virtual_machines/#{id}/rebuild_network.json")
     end

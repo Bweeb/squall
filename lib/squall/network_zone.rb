@@ -1,69 +1,69 @@
 module Squall
   # OnApp NetworkZone
   class NetworkZone < Base
-    # Returns a list of network zones
+    # Public: Lists all network zones.
+    #
+    # Returns an Array.
     def list
       response = request(:get, "/network_zones.json")
       response.collect { |i| i['network_group'] }
     end
 
-    # Get the details for a network zone
+    # Public: Get the details for a network zone.
     #
-    # ==== Params
+    # id - ID of the network zone
     #
-    # * +id*+ - ID of the network zone
+    # Returns a Hash.
     def show(id)
       response = request(:get, "/network_zones/#{id}.json")
       response['network_group']
     end
 
-    # Updates an existing network zone
+    # Public: Updates an existing network zone.
     #
-    # ==== Params
+    # id      - ID of the network zone
+    # options - Options to update the network zone, see `#create`
     #
-    # * +id*+ - ID of the network zone
-    #
-    # ==== Options
-    #
-    # See #create
+    # Returns a Hash.
     def edit(id, options = {})
       request(:put, "/network_zones/#{id}.json", query:  { pack: options })
     end
 
-    # Creates a new network zone
+    # Public: Creates a new network zone.
     #
-    # ==== Options
+    # options - Options for creating the new network zone:
+    #           :label - Label for the network zone
     #
-    # * +label*+ - Label for the network zone
+    # Returns a Hash.
     def create(options = {})
       request(:post, "/network_zones.json", query: { pack: options })
     end
 
-    # Deletes an existing network zone
+    # Public: Deletes an existing network zone.
     #
-    # ==== Params
+    # id - ID of the network zone
     #
-    # * +id*+ - ID of the network zone
+    # Returns a Hash.
     def delete(id)
       request(:delete, "/network_zones/#{id}.json")
     end
 
-    # Attach a network to a network zone
+    # Public: Attach a network to a network zone.
     #
-    # ==== Params
+    # id         - ID of the network zone
+    # network_id - ID of the network
     #
-    # * +id*+ - ID of the network zone
-    # * +network_id+ - ID of the network
+    # Returns a Hash.
     def attach(id, network_id)
       request(:post, "/network_zones/#{id}/networks/#{network_id}/attach.json")
     end
 
-    # Detach a network from a network zone
+    # Public: Detach a network from a network zone.
     #
-    # ==== Params
+    # id         - ID of the network zone
+    # network_id - ID of the network
     #
-    # * +id*+ - ID of the network zone
-    # * +network_id+ - ID of the network
+    # Returns a Hash.
     def detach(id, network_id)
       request(:post, "/network_zones/#{id}/networks/#{network_id}/detach.json")
     end

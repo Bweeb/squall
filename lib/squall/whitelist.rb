@@ -1,69 +1,61 @@
 module Squall
   # OnApp Whitelist
   class Whitelist < Base
-
-    # Return a list of all whitelists
+    # Public: Lists all whitelists.
     #
-    # ==== Params
+    # user_id - ID of the user to display whitelists for
     #
-    # * +user_id*+ - ID of the user to display whitelists for
+    # Returns an Array.
     def list(user_id)
       response = request(:get, "/users/#{user_id}/user_white_lists.json")
       response.collect { |user| user['user_white_list'] }
     end
 
-    # Get the details for a whitelist
+    # Public: Get the details for a whitelist.
     #
-    # ==== Params
+    # user_id - ID of the user
+    # id      - ID of the whitelist
     #
-    # * +user_id*+ - ID of the user
-    # * +id*+ - ID of the whitelist
+    # Returns a Hash.
     def show(user_id, id)
       response = request(:get, "/users/#{user_id}/user_white_lists/#{id}.json")
       response['user_white_list']
     end
 
-    # Create a whitelist for a user
+    # Public: Create a whitelist for a user.
     #
-    # ==== Params
+    # user_id - ID of the user
+    # options - Params for creating the whitelist:
+    #           :ip          - IP to be whitelisted
+    #           :description - Description of the whitelist
     #
-    # * +user_id*+ - ID of the user
-    # * +options+ - Params for creating the whitelist
+    # Example
     #
-    # ==== Options
+    #     create ip:          192.168.1.1,
+    #            description: "Computer that someone I trust uses"
     #
-    # * +ip*+ - IP to be whitelisted
-    # * +description+ - Description of the whitelist
-    #
-    # ==== Example
-    #
-    #   create :ip          => 192.168.1.1,
-    #          :description => "Computer that someone I trust uses"
-    def create(user_id, options={})
+    # Returns a Hash.
+    def create(user_id, options = {})
       request(:post, "/users/#{user_id}/user_white_lists.json", query: { user_white_list: options })
     end
 
-    # Edit a whitelist
+    # Public: Edit a whitelist.
     #
-    # ==== Params
+    # user_id - ID of the user
+    # id      - ID of whitelist
+    # options - Params for editing the whitelist, see `#create`
     #
-    # * +user_id*+ - ID of the user
-    # * +id*+ - ID of whitelist
-    # * +options+ - Params for editing the whitelist
-    #
-    # ==== Options
-    #
-    # See #create
-    def edit(user_id, id, options={})
+    # Returns a Hash.
+    def edit(user_id, id, options = {})
       request(:put, "/users/#{user_id}/user_white_lists/#{id}.json", query: { user_white_list: options })
     end
 
-    # Delete a whitelist
+    # Public: Delete a whitelist.
     #
-    # ==== Params
+    # user_id - ID of the user
+    # id      - ID of whitelist
     #
-    # * +user_id*+ - ID of the user
-    # * +id*+ - ID of whitelist
+    # Returns a Hash.
     def delete(user_id, id)
       request(:delete, "/users/#{user_id}/user_white_lists/#{id}.json")
     end
