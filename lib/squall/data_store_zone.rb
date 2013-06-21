@@ -28,7 +28,7 @@ module Squall
     #
     # * +label*+ - Label for the data store zone
     def edit(id, options = {})
-      response = request(:put, "/data_store_zones/#{id}.json", :query => {:pack => options})
+      request(:put, "/data_store_zones/#{id}.json", query: { pack: options })
     end
 
     # Creates a new DataStoreZone
@@ -41,7 +41,7 @@ module Squall
     #
     # * +label*+ - Label for the data store zone
     def create(options = {})
-      response = request(:post, "/data_store_zones.json", :query => {:pack => options})
+      request(:post, "/data_store_zones.json", query: { pack: options })
     end
 
     # Deletes an existing DataStoreZone

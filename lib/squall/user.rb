@@ -7,7 +7,6 @@ module Squall
       response.collect { |user| user['user'] }
     end
 
-
     # Create a new User
     #
     # ==== Params
@@ -124,7 +123,7 @@ module Squall
     #
     # * +id*+ - ID of user
     def monthly_bills(id)
-      response = request(:get, "/users/#{id}/monthly_bills.json")
+      request(:get, "/users/#{id}/monthly_bills.json")
     end
 
     # Return a list of VirtualMachines for a User
