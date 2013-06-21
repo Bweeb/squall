@@ -31,7 +31,7 @@ module Squall
     #   create :command              => "DROP",
     #          :protocol             => "TCP",
     #          :network_interface_id => 1
-    def create(vm_id, options={})
+    def create(vm_id, options = {})
       request(:post, "/virtual_machines/#{vm_id}/firewall_rules.json", default_params(options))
     end
 
@@ -46,7 +46,7 @@ module Squall
     # ==== Options
     #
     # See #create
-    def edit(vm_id, id, options={})
+    def edit(vm_id, id, options = {})
       request(:put, "/virtual_machines/#{vm_id}/firewall_rules/#{id}.json", default_params(options))
     end
 

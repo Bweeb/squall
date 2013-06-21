@@ -52,7 +52,7 @@ module Squall
     # ==== Example
     #
     #   edit 1, :label => 'myhv', :ip_address => '127.0.0.1'
-    def edit(id, options ={})
+    def edit(id, options = {})
       request(:put, "/settings/hypervisors/#{id}.json", default_params(options))
     end
 
@@ -86,7 +86,7 @@ module Squall
     end
 
     def add_data_store_join(id, data_store_id)
-      request(:post, "/settings/hypervisors/#{id}/data_store_joins.json", :query => {:data_store_id => data_store_id})
+      request(:post, "/settings/hypervisors/#{id}/data_store_joins.json", query: { data_store_id:  data_store_id })
     end
 
     def remove_data_store_join(id, data_store_join_id)
@@ -99,7 +99,7 @@ module Squall
     end
 
     def add_network_join(id, options)
-      request(:post, "/settings/hypervisors/#{id}/network_joins.json", :query => {:network_join => options})
+      request(:post, "/settings/hypervisors/#{id}/network_joins.json", query: { network_join: options })
     end
 
     def remove_network_join(id, network_join_id)

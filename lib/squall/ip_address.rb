@@ -23,7 +23,7 @@ module Squall
     #
     # See #create
     def edit(network_id, id, options = {})
-      response = request(:put, "/settings/networks/#{network_id}/ip_addresses/#{id}.json", default_params(options))
+      request(:put, "/settings/networks/#{network_id}/ip_addresses/#{id}.json", default_params(options))
     end
 
     # Creates a new IpAddress
@@ -42,7 +42,7 @@ module Squall
     # * +gateway*+ - Gateway address
     # * +disallowed_primary+ - Set to '1' to prevent this address being used as primary
     def create(network_id, options = {})
-      response = request(:post, "/settings/networks/#{network_id}/ip_addresses.json", default_params(options))
+      request(:post, "/settings/networks/#{network_id}/ip_addresses.json", default_params(options))
     end
 
     # Deletes an existing ip address
