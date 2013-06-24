@@ -183,6 +183,5 @@ module Squall
     def delete(id)
       request(:delete, "/settings/disks/#{id}.json")
     end
-
   end
 end

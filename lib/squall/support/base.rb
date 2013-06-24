@@ -18,7 +18,7 @@ module Squall
     #
     #   default_params(:something => 1)
     def default_params(*options)
-      options.empty? ? {} : {:query => { key_for_class => options.first}}
+      options.empty? ? {} : { query: { key_for_class => options.first } }
     end
 
     # Peforms an HTTP Request
@@ -35,7 +35,7 @@ module Squall
     def request(request_method, path, options = {})
       check_config
 
-      conn = Faraday.new(:url => Squall.config[:base_uri]) do |c|
+      conn = Faraday.new(url: Squall.config[:base_uri]) do |c|
         c.basic_auth Squall.config[:username], Squall.config[:password]
         c.params = (options[:query] || {})
         c.request :url_encoded

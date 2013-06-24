@@ -27,7 +27,7 @@ module Squall
     #
     # See #create
     def edit(id, options = {})
-      response = request(:put, "/network_zones/#{id}.json", :query => {:pack => options})
+      request(:put, "/network_zones/#{id}.json", query:  { pack: options })
     end
 
     # Creates a new network zone
@@ -36,7 +36,7 @@ module Squall
     #
     # * +label*+ - Label for the network zone
     def create(options = {})
-      response = request(:post, "/network_zones.json", :query => {:pack => options})
+      request(:post, "/network_zones.json", query: { pack: options })
     end
 
     # Deletes an existing network zone

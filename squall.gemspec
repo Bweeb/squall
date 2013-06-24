@@ -3,6 +3,8 @@ $:.push File.expand_path("../lib", __FILE__)
 require "squall/support/version"
 
 Gem::Specification.new do |s|
+  s.required_ruby_version = Gem::Requirement.new(">= 1.9.2")
+
   s.name        = "squall"
   s.version     = Squall::VERSION
   s.platform    = Gem::Platform::RUBY

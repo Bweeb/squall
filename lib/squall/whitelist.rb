@@ -40,7 +40,7 @@ module Squall
     #   create :ip          => 192.168.1.1,
     #          :description => "Computer that someone I trust uses"
     def create(user_id, options={})
-      request(:post, "/users/#{user_id}/user_white_lists.json", :query => {:user_white_list => options})
+      request(:post, "/users/#{user_id}/user_white_lists.json", query: { user_white_list: options })
     end
 
     # Edit a whitelist
@@ -55,7 +55,7 @@ module Squall
     #
     # See #create
     def edit(user_id, id, options={})
-      request(:put, "/users/#{user_id}/user_white_lists/#{id}.json", :query => {:user_white_list => options})
+      request(:put, "/users/#{user_id}/user_white_lists/#{id}.json", query: { user_white_list: options })
     end
 
     # Delete a whitelist

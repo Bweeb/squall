@@ -28,7 +28,7 @@ module Squall
     #
     # See #create
     def edit(id, options = {})
-      response = request(:put, "/settings/hypervisor_zones/#{id}.json", :query => {:pack => options})
+      request(:put, "/settings/hypervisor_zones/#{id}.json", query:  { pack: options })
     end
 
     # Creates a new hypervisor zone
@@ -41,7 +41,7 @@ module Squall
     #
     # * +label*+ - Label for the hypervisor zone
     def create(options = {})
-      response = request(:post, "/settings/hypervisor_zones.json", :query => {:pack => options})
+      request(:post, "/settings/hypervisor_zones.json", query: { pack: options })
     end
 
     # Deletes an existing hypervisor zone
@@ -80,7 +80,7 @@ module Squall
     # * +id*+ - ID of the hypervisor zone
     # * +data_store_id*+ - ID of the data store
     def add_data_store_join(id, data_store_id)
-      request(:post, "/settings/hypervisor_zones/#{id}/data_store_joins.json", :query => {:data_store_id => data_store_id})
+      request(:post, "/settings/hypervisor_zones/#{id}/data_store_joins.json", query: { data_store_id: data_store_id })
     end
 
     # Remove a data store from a hypervisor zone
@@ -115,7 +115,7 @@ module Squall
     # * +network_id*+ - The ID of the network to add to the hypervisor zone
     # * +interface*+ - The name of the appropriate network interface
     def add_network_join(id, options={})
-      request(:post, "/settings/hypervisor_zones/#{id}/network_joins.json", :query => {:network_join => options})
+      request(:post, "/settings/hypervisor_zones/#{id}/network_joins.json", query: { network_join:  options })
     end
 
     # Remove a network from a hypervisor zone

@@ -103,7 +103,7 @@ module Squall
     # * +id*+ - ID of the virtual machine
     # * +user_id*+ - ID of the target User
     def change_owner(id, user_id)
-      response = request(:post, "/virtual_machines/#{id}/change_owner.json", :query => { :user_id => user_id })
+      response = request(:post, "/virtual_machines/#{id}/change_owner.json", query: { user_id: user_id })
       response['virtual_machine']
     end
 
@@ -114,7 +114,7 @@ module Squall
     # * +id*+ - ID of the virtual machine
     # * +password*+ - New password
     def change_password(id, password)
-      response = request(:post, "/virtual_machines/#{id}/reset_password.json", :query => { :new_password => password })
+      response = request(:post, "/virtual_machines/#{id}/reset_password.json", query: { new_password: password })
       response['virtual_machine']
     end
 
@@ -140,7 +140,7 @@ module Squall
     # * +destination*+ - ID of a hypervisor to which to migrate the virtual machine
     # * +cold_migrate_on_rollback+ - Set to '1' to switch to cold migration if migration fails
     def migrate(id, options = {})
-      response = request(:post, "/virtual_machines/#{id}/migrate.json", :query => {:virtual_machine => options} )
+      request(:post, "/virtual_machines/#{id}/migrate.json", query: { virtual_machine: options } )
     end
 
     # Toggle the VIP status of the virtual machine
@@ -237,7 +237,7 @@ module Squall
     # * +id*+ - ID of the virtual machine
     # * +recovery+ - Set to true to reboot in recovery, defaults to false
     def reboot(id, recovery=false)
-      response = request(:post, "/virtual_machines/#{id}/reboot.json", {:query => recovery ? {:mode => :recovery} : nil})
+      response = request(:post, "/virtual_machines/#{id}/reboot.json", { query: recovery ? { mode: :recovery } : nil })
       response['virtual_machine']
     end
 
@@ -248,7 +248,7 @@ module Squall
     # * +id*+ - ID of the virtual machine
     # * +target_vm_id+* - ID of another virtual machine from which it should be segregated
     def segregate(id, target_vm_id)
-      response = request(:post, "/virtual_machines/#{id}/strict_vm.json", default_params(:strict_virtual_machine_id => target_vm_id))
+      response = request(:post, "/virtual_machines/#{id}/strict_vm.json", default_params(strict_virtual_machine_id: target_vm_id))
       response['virtual_machine']
     end
 
