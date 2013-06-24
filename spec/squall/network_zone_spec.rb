@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Squall::NetworkZone do
   before(:each) do
     @network_zone = Squall::NetworkZone.new
-    @valid = {:label => "My zone"}
+    @valid = {label: "My zone"}
   end
 
   describe "#list" do
@@ -50,7 +50,7 @@ describe Squall::NetworkZone do
     end
 
     it "edits a network zone" do
-      @network_zone.edit(1, :label => "Updated zone")
+      @network_zone.edit(1, label: "Updated zone")
       @network_zone.success.should be_true
     end
   end

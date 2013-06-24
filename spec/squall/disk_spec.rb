@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Squall::Disk do
   before(:each) do
     @disk = Squall::Disk.new
-    @valid = { :data_store_id => 1, :disk_size => 2, :is_swap => 0,
-               :mount_point => '/disk2', :add_to_linux_fstab => 0,
-               :require_format_disk => 1 }
+    @valid = { data_store_id: 1, disk_size: 2, is_swap: 0,
+               mount_point: '/disk2', add_to_linux_fstab: 0,
+               require_format_disk: 1 }
   end
 
   describe "#list" do
@@ -59,7 +59,7 @@ describe Squall::Disk do
     use_vcr_cassette "disk/edit"
 
     it "accepts valid params" do
-      @disk.edit(78, :disk_size => 3)
+      @disk.edit(78, disk_size: 3)
       @disk.success.should be_true
     end
   end
@@ -69,7 +69,7 @@ describe Squall::Disk do
     use_vcr_cassette "disk/migrate"
 
     it "should return association error" do
-      migrate = @disk.migrate(58, 78, :data_store_id => 2)
+      migrate = @disk.migrate(58, 78, data_store_id: 2)
       @disk.success.should be_false
       migrate['errors'].should include("Data store cannot be associated with this virtual machine.")
     end
@@ -160,7 +160,7 @@ describe Squall::Disk do
     use_vcr_cassette "disk/add_schedule"
 
     it "adds schedule for a disk" do
-      disk = @disk.add_schedule(78, :action => 'autobackup', :duration => 1, :period => 'days')
+      disk = @disk.add_schedule(78, action: 'autobackup', duration: 1, period: 'days')
       @disk.success.should be_true
       disk.should be_a(Array)
     end

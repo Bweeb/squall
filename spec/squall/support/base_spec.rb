@@ -15,7 +15,7 @@ describe Squall::Base do
   describe "#request" do
     it "200-207 returns success" do
       (200..207).each do |i|
-        mock_request(:get, "/#{i}", :status => [i, "OK"], :body => "{\"something\":[\"OK\"]}")
+        mock_request(:get, "/#{i}", status: [i, "OK"], body: "{\"something\":[\"OK\"]}")
         base = Squall::Base.new
         base.request(:get, "/#{i}")
         base.success.should be_true
@@ -23,7 +23,7 @@ describe Squall::Base do
     end
 
     it "raises NotFound for 404s" do
-      mock_request(:get, '/404', :status => [404, "NotFound"], :body => "{\"errors\":[\"Resource not found\"]}")
+      mock_request(:get, '/404', status: [404, "NotFound"], body: "{\"errors\":[\"Resource not found\"]}")
       @base.request(:get, '/404')
 
       @base.success.should be_false
@@ -31,7 +31,7 @@ describe Squall::Base do
     end
 
     it "raises ServerError on errors" do
-      mock_request(:get, '/500', :status => [500, "Internal Server Error"], :body => "{\"errors\":[\"Internal Server Error\"]}")
+      mock_request(:get, '/500', status: [500, "Internal Server Error"], body: "{\"errors\":[\"Internal Server Error\"]}")
       @base.request(:get, '/500')
 
       @base.success.should be_false
@@ -39,7 +39,7 @@ describe Squall::Base do
     end
 
     it "raises RequestError on errors" do
-      mock_request(:get, '/422', :status => [422, "Unprocessable"], :body => "{\"errors\":[\"Unprocessable\"]}")
+      mock_request(:get, '/422', status: [422, "Unprocessable"], body: "{\"errors\":[\"Unprocessable\"]}")
       @base.request(:get, '/422')
 
       @base.success.should be_false
@@ -59,22 +59,22 @@ describe Squall::Base do
 
     it "merges the query in" do
       expected = {
-        :query => {
-          :base => {:one => 1, :two => 2}
+        query: {
+          base: {one: 1, two: 2}
         }
       }
-      @base.default_params(:one => 1, :two => 2).should include(expected)
+      @base.default_params(one: 1, two: 2).should include(expected)
     end
 
     it "uses the subclass name as the key" do
       base_test = CamelTest.new
       base_test.default_params.should == {}
       expected = {
-        :query => {
-          :camel_test => {:one => 1, :two => 2}
+        query: {
+          camel_test: {one: 1, two: 2}
         }
       }
-      base_test.default_params(:one => 1, :two => 2).should include(expected)
+      base_test.default_params(one: 1, two: 2).should include(expected)
     end
   end
 

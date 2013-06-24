@@ -57,7 +57,7 @@ describe Squall do
       config = {'username' => 'test', 'password' => 'pass', 'base_uri' => 'http://example.com'}
       YAML.should_receive(:load_file).with('/tmp/exists.yml').and_return(config)
       Squall.config_file '/tmp/exists.yml'
-      Squall.config.should include(:username => config['username'], :password => config['password'], :base_uri => config['base_uri'])
+      Squall.config.should include(username: config['username'], password: config['password'], base_uri: config['base_uri'])
     end
   end
 end

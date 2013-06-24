@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Squall::Whitelist do
   before(:each) do
     @whitelist = Squall::Whitelist.new
-    @valid = {:ip => "192.168.1.1"}
+    @valid = {ip: "192.168.1.1"}
   end
 
   describe "#list" do
@@ -42,7 +42,7 @@ describe Squall::Whitelist do
     use_vcr_cassette "whitelist/edit"
 
     it "edits a whitelist" do
-      @whitelist.edit(1, 1, :description => "This is actually a different computer.")
+      @whitelist.edit(1, 1, description: "This is actually a different computer.")
       @whitelist.success.should be_true
     end
   end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Squall::HypervisorZone do
   before(:each) do
     @hypervisor_zone = Squall::HypervisorZone.new
-    @valid = {:label => "My zone"}
+    @valid = {label: "My zone"}
   end
 
   describe "#list" do
@@ -50,7 +50,7 @@ describe Squall::HypervisorZone do
     end
 
     it "edits a hypervisor zone" do
-      @hypervisor_zone.edit(1, :label => "Updated zone")
+      @hypervisor_zone.edit(1, label: "Updated zone")
       @hypervisor_zone.success.should be_true
     end
   end
@@ -136,7 +136,7 @@ describe Squall::HypervisorZone do
     use_vcr_cassette "hypervisor_zones/add_network_join"
 
     it "adds the network to the hypervisor zone" do
-      @hypervisor_zone.add_network_join(1, :network_id => 1, :interface => "interface")
+      @hypervisor_zone.add_network_join(1, network_id: 1, interface: "interface")
       @hypervisor_zone.success.should be_true
     end
 

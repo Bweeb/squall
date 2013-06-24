@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Squall::Hypervisor do
   before(:each) do
     @hv = Squall::Hypervisor.new
-    @valid = {:label => 'A new hypervisor', :ip_address => '127.126.126.126', :hypervisor_type => 'xen'}
+    @valid = {label: 'A new hypervisor', ip_address: '127.126.126.126', hypervisor_type: 'xen'}
   end
 
   describe "#list" do
@@ -43,7 +43,7 @@ describe Squall::Hypervisor do
     use_vcr_cassette 'hypervisor/edit'
 
     it "edits the hypervisor" do
-      edit = @hv.edit(1, :label => 'A new label')
+      edit = @hv.edit(1, label: 'A new label')
       @hv.success.should be_true
     end
   end
@@ -120,7 +120,7 @@ describe Squall::Hypervisor do
     use_vcr_cassette "hypervisor/add_network_join"
 
     it "adds the network to the hypervisor zone" do
-      @hv.add_network_join(1, :network_id => 1, :interface => "interface")
+      @hv.add_network_join(1, network_id: 1, interface: "interface")
       @hv.success.should be_true
     end
 

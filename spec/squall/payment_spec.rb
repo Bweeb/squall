@@ -4,7 +4,7 @@ describe Squall::Payment do
   before(:each) do
     @keys = ["amount", "invoice_number"]
     @payment = Squall::Payment.new
-    @valid = {:amount => 500}
+    @valid = {amount: 500}
   end
 
   describe "#list" do
@@ -50,7 +50,7 @@ describe Squall::Payment do
     end
 
     it "edits a payment" do
-      user = @payment.edit(1, 1, :amount => 100)
+      user = @payment.edit(1, 1, amount: 100)
       @payment.success.should be_true
     end
   end
