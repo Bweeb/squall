@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Squall::FirewallRule do
   before(:each) do
     @firewall_rule = Squall::FirewallRule.new
-    @valid = {:command => "DROP", :protocol => "TCP", :network_interface_id => 1}
+    @valid = {command: "DROP", protocol: "TCP", network_interface_id: 1}
   end
 
   describe "#list" do
@@ -49,7 +49,7 @@ describe Squall::FirewallRule do
     end
 
     it "edits a firewall rule" do
-      @firewall_rule.edit(1, 1, :port => 1000)
+      @firewall_rule.edit(1, 1, port: 1000)
       @firewall_rule.success.should be_true
     end
   end

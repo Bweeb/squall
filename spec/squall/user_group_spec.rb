@@ -4,7 +4,7 @@ describe Squall::UserGroup do
   before(:each) do
     @keys = ["amount"]
     @user_group = Squall::UserGroup.new
-    @valid = {:label => "My new group"}
+    @valid = {label: "My new group"}
   end
 
   describe "#list" do

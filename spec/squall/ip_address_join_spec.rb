@@ -23,7 +23,7 @@ describe Squall::IpAddressJoin do
     use_vcr_cassette "ipaddress_join/assign"
 
     it "assigns the IP join" do
-      join = @join.assign(1, {:ip_address_id => 1, :network_interface_id => 1})
+      join = @join.assign(1, {ip_address_id: 1, network_interface_id: 1})
       @join.success.should be_true
     end
   end

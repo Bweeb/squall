@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Squall::VirtualMachine do
   before(:each) do
     @virtual_machine = Squall::VirtualMachine.new
-    @valid = {:label => 'testmachine', :hostname => 'testmachine', :memory => 512, :cpus => 1,
-              :cpu_shares => 10, :primary_disk_size => 10, :template_id => 1}
+    @valid = {label: 'testmachine', hostname: 'testmachine', memory: 512, cpus: 1,
+              cpu_shares: 10, primary_disk_size: 10, template_id: 1}
     @keys = ["monthly_bandwidth_used", "cpus", "label", "created_at", "operating_system_distro",
       "cpu_shares", "operating_system", "template_id", "allowed_swap", "local_remote_access_port",
       "memory", "updated_at", "allow_resize_without_reboot", "recovery_mode", "hypervisor_id", "id",
@@ -54,7 +54,7 @@ describe Squall::VirtualMachine do
     use_vcr_cassette "virtual_machine/build"
 
     it "builds the VM" do
-      build = @virtual_machine.build(72, :template_id => 1)
+      build = @virtual_machine.build(72, template_id: 1)
 
       @virtual_machine.success.should be_true
     end
@@ -64,7 +64,7 @@ describe Squall::VirtualMachine do
     use_vcr_cassette "virtual_machine/edit"
 
     it "updates the label" do
-      virtual_machine = @virtual_machine.edit(1, :label => 'testing')
+      virtual_machine = @virtual_machine.edit(1, label: 'testing')
       @virtual_machine.success.should be_true
       virtual_machine['label'].should == 'testing'
     end
@@ -111,7 +111,7 @@ describe Squall::VirtualMachine do
 
     it "changes the hypervisor" do
       pending "Broken in OnApp" do
-        result = @virtual_machine.migrate(1, :destination => 2)
+        result = @virtual_machine.migrate(1, destination: 2)
         @virtual_machine.success.should be_true
         result['virtual_machine']['hypervisor_id'].should == 2
       end
@@ -148,7 +148,7 @@ describe Squall::VirtualMachine do
     use_vcr_cassette "virtual_machine/resize"
 
     it "resizes a virtual_machine" do
-      virtual_machine = @virtual_machine.resize(1, :memory => 1000)
+      virtual_machine = @virtual_machine.resize(1, memory: 1000)
       @virtual_machine.success.should be_true
 
       virtual_machine['memory'].should == 1000
@@ -209,7 +209,7 @@ describe Squall::VirtualMachine do
     end
 
     it "reboots in recovery" do
-      hash = [:post, "/virtual_machines/1/reboot.json", {:query => {:mode => :recovery}}]
+      hash = [:post, "/virtual_machines/1/reboot.json", {query: {mode: :recovery}}]
       @virtual_machine.should_receive(:request).with(*hash).once.and_return({'virtual_machine'=>{}})
       @virtual_machine.reboot 1, true
     end
