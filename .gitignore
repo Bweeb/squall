@@ -11,3 +11,4 @@ doc/
 TODO
 Gemfile.lock
 .rvmrc
+.yardoc

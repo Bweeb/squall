@@ -1,37 +1,42 @@
 module Squall
-  # All OnApp API classes subclass Base to get access to
-  # HTTParty methods and other convenience methods
+  # All OnApp API classes subclass Base to get access to HTTP methods and
+  # other convenience methods.
   class Base
-    # Returns true/false for successful/unsuccessful requests
+    # Public: Returns true/false for successful/unsuccessful requests
     attr_reader :success
 
-    # HTTPart request result
+    # Public: Faraday response body
     attr_reader :result
 
-    # Sets the default URL params for requests and merges +options+
+    # Public: Sets the default URL params for requests and merges `options`
     #
-    # ==== Options
+    # *options - One or more options
     #
-    # * +options+
+    # Example
     #
-    # ==== Example
+    #     default_params(something: 1)
     #
-    #   default_params(:something => 1)
+    # Returns a Hash.
     def default_params(*options)
       options.empty? ? {} : { query: { key_for_class => options.first } }
     end
 
-    # Peforms an HTTP Request
+    # Public: Performs an HTTP Request
     #
-    # ==== Options
-    # * +request_method+ - The HTTP verb for the #request. (:get/:post/:delete etc)
-    # * +path+ - URL path
-    # * +options+ - HTTP query params
+    # request_method - The HTTP verb for the request, one of
+    #                  :get/:post/:delete/:put, etc
+    # path           - URL path
+    # options        - HTTP query params
     #
-    # ==== Example
+    # Example
     #
-    #   request :get, '/something.json' # GET /seomthing.json
-    #   request :put, '/something.json', :something => 1 # PUT /something.json?something=1
+    #   # GET /something.json
+    #   request :get, '/something.json'
+    #
+    #   # PUT /something.json?something=1
+    #   request :put, '/something.json', something: 1
+    #
+    # Returns the JSON response.
     def request(request_method, path, options = {})
       check_config
 
@@ -52,14 +57,21 @@ module Squall
       @result  = response.body
     end
 
-    # Raises an error if a request is made without first calling Squall.config
+    # Public: Ensures `Squall.config` is set.
+    #
+    # Raises Squall::NoConfig if a request is made without first calling
+    # Squall.config.
+    #
+    # Returns nothing.
     def check_config
       raise NoConfig, "Squall.config must be specified" if Squall.config.empty?
     end
 
-    # Sets the default param container for request. It is derived from the
-    # class name. Given the class name *Sandwich* and a param *bread* the
-    # resulting params would be 'bob[bread]=wheat'
+    # Public: Sets the default param container for request. It is derived from
+    # the class name. Given the class name `Sandwich` and a param `bread` the
+    # resulting params would be `bob[bread]=wheat`.
+    #
+    # Returns a String
     def key_for_class
       word = self.class.name.split("::").last.to_s.dup
       word.gsub!(/::/, '/')
