@@ -6,18 +6,28 @@ A Ruby library for working with the [OnApp REST API][].
 Squall has been tested on MRI 1.9.2, MRI 1.9.3, MRI 2.0.0,
 Rubinius 2.0.0pre, and JRuby 1.6.2.
 
-Documentation is available in [RDoc][] format.
+Documentation is available in [TomDoc][] format.
 
 [Build Status]: http://travis-ci.org/site5/squall
 [Build Icon]: https://secure.travis-ci.org/site5/squall.png?branch=master
 [OnApp REST API]: https://help.onapp.com/manual.php?m=2
-[RDoc]: http://rdoc.info/github/site5/squall/master/frames
+[TomDoc]: http://rdoc.info/github/site5/squall/master/frames
 
 Install
 -------
 
-    gem install squall
-    bundle install
+To install Squall using [Bundler](http://gembundler.com):
+
+```
+echo "gem 'squall'" >> Gemfile
+bundle install
+```
+
+To install Squall globally using RubyGems:
+
+```
+gem install squall
+```
 
 Configuration
 -------------
@@ -26,30 +36,38 @@ You have two main options for configuring Squall.
 
 Directly in a config block:
 
-    require 'squall'
+```ruby
+require 'squall'
 
-    Squall.config do |c|
-      c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
-      c.username 'username' # OnApp username
-      c.password 'topsecret' # OnApp password
-      c.debug true # Toggle HTTParty debugging (prints to $stderr)
-    end
+Squall.config do |c|
+  c.base_uri 'https://onappurl.com' # Root level URI for OnApp instance
+  c.username 'username'             # OnApp username
+  c.password 'topsecret'            # OnApp password
+  c.debug     true                  # Toggle HTTP/Faraday debugging (prints to $stderr)
+end
+```
 
 Squall can load configuration from a yaml file:
 
-    # .squall.yml
-    base_uri: 'https://onappurl.com'
-    username: 'username'
-    password: 'topsecret'
-    debug: false
+```yaml
+# .squall.yml
+base_uri: 'https://onappurl.com'
+username: 'username'
+password: 'topsecret'
+debug: false
+```
 
 To load it (by default it assumes ~/.squall.yml):
 
-    Squall.config_file(/[path]/[to]/.squall.yml)
+```ruby
+Squall.config_file("/path/to/.squall.yml")
+```
 
 It is also possible to change individual configuration settings on the fly.
 
-    Squall.configuration.debug(true)
+```ruby
+Squall.configuration.debug(true)
+```
 
 Note: you will need to re-instantiate all modules after changing Squall's configuration.
 
@@ -58,25 +76,29 @@ Usage
 
 Show the info for a VM:
 
-    vm = Squall::VirtualMachine.new
-    vm.show 1
+```ruby
+vm = Squall::VirtualMachine.new
+vm.show 1
+```
 
 Create a new VM:
 
-    vm = Squall::VirtualMachine.new
+```ruby
+vm = Squall::VirtualMachine.new
 
-    params = {
-      :label             => 'testmachine',
-      :hypervisor_id     => 5,
-      :hostname          => 'testmachine',
-      :memory            => 512,
-      :cpus              => 1,
-      :cpu_shares        => 10,
-      :primary_disk_size => 10,
-      :template_id       => 1
-    }
+params = {
+  label:             'testmachine',
+  hypervisor_id:     5,
+  hostname:          'testmachine',
+  memory:            512,
+  cpus:              1,
+  cpu_shares:        10,
+  primary_disk_size: 10,
+  template_id:       1
+}
 
-    vm.create params
+vm.create params
+```
 
 Supported Methods
 -----------------
@@ -129,8 +151,10 @@ Tests
 
 Squall uses rspec for tests. To run:
 
-    bundle exec rake # Runs all tests
-    bundle exec rspec spec/squall/[module]_spec.rb # Runs tests for a specific module
+```
+bundle exec rake # Runs all tests
+bundle exec rspec spec/squall/[module]_spec.rb # Runs tests for a specific module
+```
 
 Squall uses [VCR](https://github.com/myronmarston/vcr) to cache server
 responses to test against. To test via live http connections, pass RERECORD=1
