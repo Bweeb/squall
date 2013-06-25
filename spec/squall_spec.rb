@@ -42,10 +42,10 @@ describe Squall do
 
   describe "#config_file" do
     it "defaults to ~/.squall" do
-      File.should_receive(:join).with(ENV['HOME'], '.squall.yml').and_return("/path/to/file")
       File.stub(:exists?).and_return(true)
       YAML.stub(:load_file).and_return({})
       Squall.config_file
+      Squall.configuration_file.should == "#{ENV['HOME']}/.squall.yml"
     end
 
     it "returns an error if the file doesn't exist" do
