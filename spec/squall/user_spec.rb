@@ -7,8 +7,8 @@ describe Squall::User do
             "used_cpus", "group_id", "id", "used_memory", "payment_amount", "last_name", "remember_token",
             "disk_space_available", "time_zone", "outstanding_amount", "login", "roles", "email", "first_name"]
     @user = Squall::User.new
-    @valid = {:login => 'johndoe', :email => 'johndoe@example.com', :password => 'CD2480A3413F',
-              :password_confirmation => 'CD2480A3413F', :first_name => 'John', :last_name => 'Doe' }
+    @valid = {login: 'johndoe', email: 'johndoe@example.com', password: 'CD2480A3413F',
+              password_confirmation: 'CD2480A3413F', first_name: 'John', last_name: 'Doe' }
   end
 
   describe "#create" do
@@ -24,7 +24,7 @@ describe Squall::User do
     use_vcr_cassette "user/edit"
 
     it "edits a user" do
-      user = @user.edit(1, :first_name => "Test")
+      user = @user.edit(1, first_name: "Test")
       @user.success.should be_true
     end
   end

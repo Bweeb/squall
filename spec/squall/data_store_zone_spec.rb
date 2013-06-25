@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Squall::DataStoreZone do
   before(:each) do
     @data_store_zone = Squall::DataStoreZone.new
-    @valid = {:label => "My zone"}
+    @valid = {label: "My zone"}
   end
 
   describe "#list" do
@@ -50,7 +50,7 @@ describe Squall::DataStoreZone do
     end
 
     it "edits a data store zone" do
-      @data_store_zone.edit(1, :label => "Updated zone")
+      @data_store_zone.edit(1, label: "Updated zone")
       @data_store_zone.success.should be_true
     end
   end

@@ -25,11 +25,11 @@ describe Squall::IpAddress do
     use_vcr_cassette 'ipaddress/edit'
 
     ip_params = {
-      :address         => '109.123.91.67',
-      :netmask         => '255.255.255.193',
-      :broadcast       => '109.123.91.128',
-      :network_address => '109.123.91.65',
-      :gateway         => '109.123.91.66'
+      address:         '109.123.91.67',
+      netmask:         '255.255.255.193',
+      broadcast:       '109.123.91.128',
+      network_address: '109.123.91.65',
+      gateway:         '109.123.91.66'
     }
 
     it "edits the IpAddress" do
@@ -43,11 +43,11 @@ describe Squall::IpAddress do
 
     it "creates a new IP" do
       new_ip = @ip.create(1,
-        :address         => '109.123.91.24',
-        :netmask         => '255.255.255.194',
-        :broadcast       => '109.123.91.129',
-        :network_address => '109.123.91.66',
-        :gateway         => '109.123.91.67'
+        address:         '109.123.91.24',
+        netmask:         '255.255.255.194',
+        broadcast:       '109.123.91.129',
+        network_address: '109.123.91.66',
+        gateway:         '109.123.91.67'
       )
 
       @ip.success.should be_true

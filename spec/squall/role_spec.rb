@@ -37,7 +37,7 @@ describe Squall::Role do
 
     it "updates the role" do
       pending "OnApp is returning an empty response" do
-        role = @role.edit(1, :label => 'New')
+        role = @role.edit(1, label: 'New')
         role['label'].should == 'New'
       end
     end
@@ -72,11 +72,11 @@ describe Squall::Role do
 
     it "allows permission_ids" do
       @role.should_receive(:request).once.and_return Hash.new('role' => [])
-      @role.create(:label => "test", :permission_ids => 1)
+      @role.create(label: "test", permission_ids: 1)
     end
 
     it "creates a role" do
-      response = @role.create({:label => 'Test Create', :permission_ids => 1})
+      response = @role.create({label: 'Test Create', permission_ids: 1})
       response["role"]['label'].should  == 'Test Create'
       response["role"]['permissions'].should_not be_empty
     end
