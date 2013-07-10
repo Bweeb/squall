@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Squall
+  
+    &mdash; Documentation by YARD 0.8.6.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (S)</a> &raquo;
+    
+    
+    <span class="title">Squall</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Squall
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1"><span class='object_link'><a href="" title="Squall (module)">Squall</a></span></dd>
+      
+    
+  
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="" title="Squall (module)">Squall</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/squall.rb<span class="defines">,<br />
+  lib/squall/disk.rb,<br /> lib/squall/user.rb,<br /> lib/squall/role.rb,<br /> lib/squall/payment.rb,<br /> lib/squall/network.rb,<br /> lib/squall/template.rb,<br /> lib/squall/whitelist.rb,<br /> lib/squall/statistic.rb,<br /> lib/squall/user_group.rb,<br /> lib/squall/hypervisor.rb,<br /> lib/squall/ip_address.rb,<br /> lib/squall/transaction.rb,<br /> lib/squall/support/base.rb,<br /> lib/squall/network_zone.rb,<br /> lib/squall/firewall_rule.rb,<br /> lib/squall/support/config.rb,<br /> lib/squall/hypervisor_zone.rb,<br /> lib/squall/support/version.rb,<br /> lib/squall/data_store_zone.rb,<br /> lib/squall/ip_address_join.rb,<br /> lib/squall/virtual_machine.rb,<br /> lib/squall/support/exception.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Squall/Base.html" title="Squall::Base (class)">Base</a></span>, <span class='object_link'><a href="Squall/Config.html" title="Squall::Config (class)">Config</a></span>, <span class='object_link'><a href="Squall/DataStoreZone.html" title="Squall::DataStoreZone (class)">DataStoreZone</a></span>, <span class='object_link'><a href="Squall/Disk.html" title="Squall::Disk (class)">Disk</a></span>, <span class='object_link'><a href="Squall/FirewallRule.html" title="Squall::FirewallRule (class)">FirewallRule</a></span>, <span class='object_link'><a href="Squall/Hypervisor.html" title="Squall::Hypervisor (class)">Hypervisor</a></span>, <span class='object_link'><a href="Squall/HypervisorZone.html" title="Squall::HypervisorZone (class)">HypervisorZone</a></span>, <span class='object_link'><a href="Squall/IpAddress.html" title="Squall::IpAddress (class)">IpAddress</a></span>, <span class='object_link'><a href="Squall/IpAddressJoin.html" title="Squall::IpAddressJoin (class)">IpAddressJoin</a></span>, <span class='object_link'><a href="Squall/Network.html" title="Squall::Network (class)">Network</a></span>, <span class='object_link'><a href="Squall/NetworkZone.html" title="Squall::NetworkZone (class)">NetworkZone</a></span>, <span class='object_link'><a href="Squall/NoConfig.html" title="Squall::NoConfig (class)">NoConfig</a></span>, <span class='object_link'><a href="Squall/Payment.html" title="Squall::Payment (class)">Payment</a></span>, <span class='object_link'><a href="Squall/Role.html" title="Squall::Role (class)">Role</a></span>, <span class='object_link'><a href="Squall/Statistic.html" title="Squall::Statistic (class)">Statistic</a></span>, <span class='object_link'><a href="Squall/Template.html" title="Squall::Template (class)">Template</a></span>, <span class='object_link'><a href="Squall/Transaction.html" title="Squall::Transaction (class)">Transaction</a></span>, <span class='object_link'><a href="Squall/User.html" title="Squall::User (class)">User</a></span>, <span class='object_link'><a href="Squall/UserGroup.html" title="Squall::UserGroup (class)">UserGroup</a></span>, <span class='object_link'><a href="Squall/VirtualMachine.html" title="Squall::VirtualMachine (class)">VirtualMachine</a></span>, <span class='object_link'><a href="Squall/Whitelist.html" title="Squall::Whitelist (class)">Whitelist</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.3.0</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#configuration-instance_method" title="#configuration (instance method)">- (Object) <strong>configuration</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Config.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#configuration_file-instance_method" title="#configuration_file (instance method)">- (Object) <strong>configuration_file</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Config.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#config-instance_method" title="#config (instance method)">- (Object) <strong>config</strong> {|self.configuration| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Public: Configures Squall.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#config_file-instance_method" title="#config_file (instance method)">- (Object) <strong>config_file</strong>(file = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Public: Load the config from a YAML file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset_config-instance_method" title="#reset_config (instance method)">- (Object) <strong>reset_config</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Reset the config (aka, clear it).</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="configuration=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="configuration-instance_method">
+  
+    - (<tt>Object</tt>) <strong>configuration</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Config</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/squall.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_configuration'>configuration</span>
+  <span class='ivar'>@configuration</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="configuration_file=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="configuration_file-instance_method">
+  
+    - (<tt>Object</tt>) <strong>configuration_file</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Config</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/squall.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_configuration_file'>configuration_file</span>
+  <span class='ivar'>@configuration_file</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="config-instance_method">
+  
+    - (<tt>Object</tt>) <strong>config</strong> {|self.configuration| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Public: Configures Squall.</p>
+
+<p>Yields Squall.configuration if a block is given.</p>
+
+<p>Example</p>
+
+<pre class="ruby"><span class="ruby-constant">Squall</span>.<span class="ruby-identifier">config</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">base_uri</span> <span class="ruby-string">&#39;http://onapp.myserver.com&#39;</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">username</span> <span class="ruby-string">&#39;myuser&#39;</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">password</span> <span class="ruby-string">&#39;mypass&#39;</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">debug</span>    <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Returns a Hash.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self.configuration</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/squall.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_config'>config</span>
+  <span class='kw'>yield</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_configuration'>configuration</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_configuration'>configuration</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="config_file-instance_method">
+  
+    - (<tt>Object</tt>) <strong>config_file</strong>(file = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Public: Load the config from a YAML file.</p>
+
+<p>file - Path to the YAML file, defaults to `~/.squall.yml`</p>
+
+<p>Raises ArgumentError if the config file does not exist.</p>
+
+<p>Example</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Load default config file at `~/.squall.yml`:
+</span><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config_file'>config_file</span>
+
+<span class='comment'># Load custom config file:
+</span><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config_file'>config_file</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/path/to/squall.yml</span><span class='tstring_end'>&#39;</span></span></code></pre>
+
+<p>Returns nothing.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/squall.rb', line 75</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_config_file'>config_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HOME</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.squall.yml</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_configuration_file'>configuration_file</span> <span class='op'>=</span> <span class='id identifier rubyid_file'>file</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Config file doesn&#39;t exist &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_settings'>settings</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='op'>::</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_config'>config</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='id identifier rubyid_settings'>settings</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset_config-instance_method">
+  
+    - (<tt>Object</tt>) <strong>reset_config</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Reset the config (aka, clear it)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/squall.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reset_config'>reset_config</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_configuration'>configuration</span> <span class='op'>=</span> <span class='const'>Squall</span><span class='op'>::</span><span class='const'>Config</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Jul 10 13:15:35 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
