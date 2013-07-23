@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.homepage    = ""
   s.summary     = %q{A Ruby library for working with the OnApp REST API}
   s.description = %q{A Ruby library for working with the OnApp REST API}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "squall"
 
