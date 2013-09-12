@@ -6,7 +6,7 @@
 <title>
   Class: Squall::IpAddress
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -150,7 +150,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Creates a new IpAddress.</p>
+<p>Creates a new IpAddress.</p>
 </div></span>
   
 </li>
@@ -174,7 +174,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Deletes an existing ip address.</p>
+<p>Deletes an existing ip address.</p>
 </div></span>
   
 </li>
@@ -198,7 +198,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Updates an existing ip address.</p>
+<p>Updates an existing ip address.</p>
 </div></span>
   
 </li>
@@ -222,7 +222,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Lists IP addresses for a network.</p>
+<p>Lists IP addresses for a network.</p>
 </div></span>
   
 </li>
@@ -260,28 +260,158 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Creates a new IpAddress</p>
-
-<p>network_id - ID of the network options    - Params for the new ip address</p>
-
-<pre class="code ruby"><code class="ruby">:address            - IP address
-:broadcast          - A logical address at which all devices
-                      connected to a multiple-access
-                      communications network are enabled to
-                      receive datagrams
-:disallowed_primary - Set to &#39;1&#39; to prevent this address
-                      being used as primary
-:gateway            - Gateway address
-:netmask            - Network mask
-:network_address    - IP address of network</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Creates a new IpAddress</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>network_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the network</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for the new ip address</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:address</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>IP address</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:broadcast</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>A logical address at which all devices connected to a multiple-access</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:disallowed_primary</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Set to &#39;1&#39; to prevent this address being used as primary</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:gateway</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Gateway address</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:netmask</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Network mask</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:network_address</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>IP address of network</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -316,17 +446,67 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Deletes an existing ip address.</p>
-
-<p>network_id - ID of the network id         - ID of the ip address</p>
-
-<p>Returns a Hash.</p>
+<p>Deletes an existing ip address.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>network_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the network</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the ip address</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -361,18 +541,85 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Updates an existing ip address.</p>
-
-<p>network_id - ID of the network id         - ID of the ip address options   
-- Params for updating the ip address, see `#create`</p>
-
-<p>Returns a Hash.</p>
+<p>Updates an existing ip address.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>network_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the network</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the ip address</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for updating the ip address, see `#create`</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -407,17 +654,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Lists IP addresses for a network.</p>
-
-<p>network_id - ID of the network</p>
-
-<p>Returns an Array.</p>
+<p>Lists IP addresses for a network.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>network_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the network</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -447,9 +728,9 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:36 2013 by
+  Generated on Thu Sep 12 14:29:17 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

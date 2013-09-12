@@ -6,7 +6,7 @@
 <title>
   Class: Squall::User
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -152,7 +152,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Activate a user.</p>
+<p>Activate a user.</p>
 </div></span>
   
 </li>
@@ -176,7 +176,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Create a new User.</p>
+<p>Create a new User.</p>
 </div></span>
   
 </li>
@@ -200,7 +200,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List data store zones associated with user.</p>
+<p>List data store zones associated with user.</p>
 </div></span>
   
 </li>
@@ -224,7 +224,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Delete a user.</p>
+<p>Delete a user.</p>
 </div></span>
   
 </li>
@@ -248,7 +248,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Edit a user.</p>
+<p>Edit a user.</p>
 </div></span>
   
 </li>
@@ -272,7 +272,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Create a new API Key for a user.</p>
+<p>Create a new API Key for a user.</p>
 </div></span>
   
 </li>
@@ -296,7 +296,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List Hypervisors for a User&#39;s VirtualMachines.</p>
+<p>List Hypervisors for a User&#39;s VirtualMachines.</p>
 </div></span>
   
 </li>
@@ -320,7 +320,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Show resources available to a user for creating a virtual machine.</p>
+<p>Show resources available to a user for creating a virtual machine.</p>
 </div></span>
   
 </li>
@@ -344,7 +344,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Lists all users.</p>
+<p>Lists all users.</p>
 </div></span>
   
 </li>
@@ -368,7 +368,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List a User&#39;s bills.</p>
+<p>List a User&#39;s bills.</p>
 </div></span>
   
 </li>
@@ -392,7 +392,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List network zones associated with user.</p>
+<p>List network zones associated with user.</p>
 </div></span>
   
 </li>
@@ -416,7 +416,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Get info for a user.</p>
+<p>Get info for a user.</p>
 </div></span>
   
 </li>
@@ -440,7 +440,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Get the stats for each of a User&#39;s VirtualMachines.</p>
+<p>Get the stats for each of a User&#39;s VirtualMachines.</p>
 </div></span>
   
 </li>
@@ -464,7 +464,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Suspend a user.</p>
+<p>Suspend a user.</p>
 </div></span>
   
 </li>
@@ -488,7 +488,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List User&#39;s VirtualMachines.</p>
+<p>List User&#39;s VirtualMachines.</p>
 </div></span>
   
 </li>
@@ -530,17 +530,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Activate a user.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>Activate a user.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -577,49 +611,257 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Create a new User</p>
-
-<p>options - Params for creating the User:</p>
-
-<pre class="code ruby"><code class="ruby">:login                - Login name
-:email                - Email address
-:first_name           - First name
-:last_name            - Last name
-:password             - Password
-:passwor_confirmation - Password
-:role                 - Role to be assigned to user
-:time_zone            - Time zone for user. If not provided it
-                        will be set automatically.
-:locale               - Locale for user. If not provided it will
-                        be set automatically.
-:status               - User&#39;s status: `active`, `suspended`,
-                        `deleted`
-:billing_plan_id      - ID of billing plan to be applied to
-                        user&#39;s account
-:role_ids             - Array of IDs of roles to be assigned to
-                        the user
-:suspend_after_hours  - Number of hours after which the account
-                        will be automatically suspended
-:suspend_at           - Time after which the account will
-                        automatically be suspended, formatted
-                        as +YYYYMMDD ThhmmssZ+</code></pre>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby">create login:                 &#39;bob&#39;,
-       email:                 &#39;something@example.com&#39;,
-       password:              &#39;secret&#39;,
-       password_confirmation: &#39;secret&#39;
-       first_name:            &#39;Bob&#39;,
-       last_name:             &#39;Smith&#39;</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Create a new User</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>create login:                 &#39;bob&#39;,
+       email:                 &#39;something@example.com&#39;,
+       password:              &#39;secret&#39;,
+       password_confirmation: &#39;secret&#39;
+       first_name:            &#39;Bob&#39;,
+       last_name:             &#39;Smith&#39;</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for creating the User:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:login</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Login name</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:email</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Email address</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:first_name</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>First name</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:last_name</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Last name</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:password</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Password</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:passwor_confirmation</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Password</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:role</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Role to be assigned to user</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:time_zone</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Time zone for user. If not provided it will be set automatically.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:locale</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Locale for user. If not provided it will be set automatically.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:status</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>User&#39;s status: `active`, `suspended`, `deleted`</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:billing_plan_id</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ID of billing plan to be applied to user&#39;s account</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:role_ids</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Array of IDs of roles to be assigned to the user</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:suspend_after_hours</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Number of hours after which the account will be automatically suspended</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:suspend_at</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Time after which the account will automatically be suspended, formatted</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -654,17 +896,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List data store zones associated with user.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>List data store zones associated with user.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -701,21 +977,61 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Delete a user.</p>
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>this does not delete remove a user from the database.  First, their status
+will be set to “Deleted.”  If you call this method again, the user will be
+completely removed.</p>
+</div>
+  </div>
 
-<p>id - ID of user</p>
 
-<p>Note: this does not delete remove a user from the database.  First, their
-status will be set to “Deleted.”  If you call this method again, the user
-will be completely removed.</p>
-
-<p>Return a Hash.</p>
+<p>Delete a user.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -750,17 +1066,69 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Edit a user</p>
-
-<p>id      - ID of user options - Params for creating the user, see `#create`</p>
-
-<p>Returns a Hash.</p>
+<p>Edit a user</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for creating the user, see `#create`</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -795,17 +1163,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Create a new API Key for a user.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>Create a new API Key for a user.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -842,17 +1244,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List Hypervisors for a User&#39;s VirtualMachines.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>List Hypervisors for a User&#39;s VirtualMachines.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -889,17 +1325,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Show resources available to a user for creating a virtual machine.</p>
-
-<p>id - ID of user</p>
-
-<p>Returns a Hash.</p>
+<p>Show resources available to a user for creating a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -936,15 +1406,31 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Lists all users.</p>
-
-<p>Returns an Array.</p>
+<p>Lists all users.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -981,17 +1467,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List a User&#39;s bills.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>List a User&#39;s bills.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1026,17 +1546,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List network zones associated with user.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>List network zones associated with user.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1073,17 +1627,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Get info for a user.</p>
-
-<p>id - ID of user</p>
-
-<p>Returns a Hash.</p>
+<p>Get info for a user.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1120,17 +1708,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Get the stats for each of a User&#39;s VirtualMachines</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>Get the stats for each of a User&#39;s VirtualMachines</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1165,17 +1787,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Suspend a user.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>Suspend a user.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1212,17 +1868,51 @@ will be completely removed.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List User&#39;s VirtualMachines.</p>
-
-<p>id - ID of user</p>
-
-<p>Return a Hash.</p>
+<p>List User&#39;s VirtualMachines.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Return a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1252,9 +1942,9 @@ will be completely removed.</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:35 2013 by
+  Generated on Thu Sep 12 14:29:16 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

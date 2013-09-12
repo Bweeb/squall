@@ -6,7 +6,7 @@
 <title>
   Class: Squall::Hypervisor
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -198,7 +198,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Create a new Hypervisor.</p>
+<p>Create a new Hypervisor.</p>
 </div></span>
   
 </li>
@@ -246,7 +246,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Delete a hypervisor.</p>
+<p>Delete a hypervisor.</p>
 </div></span>
   
 </li>
@@ -270,7 +270,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Edit a Hypervisor.</p>
+<p>Edit a Hypervisor.</p>
 </div></span>
   
 </li>
@@ -294,7 +294,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Lists all hypervisors.</p>
+<p>Lists all hypervisors.</p>
 </div></span>
   
 </li>
@@ -342,7 +342,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Reboot a hypervisor.</p>
+<p>Reboot a hypervisor.</p>
 </div></span>
   
 </li>
@@ -414,7 +414,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Retrieves hypervisor info.</p>
+<p>Retrieves hypervisor info.</p>
 </div></span>
   
 </li>
@@ -558,29 +558,113 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Create a new Hypervisor.</p>
-
-<p>options - Options for creating the hypervisor:</p>
-
-<pre class="code ruby"><code class="ruby">:label           - Label for the hypervisor
-:ip_address      - IP for the hypervisor
-:hypervisor_type - Type of the hypervisor</code></pre>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
-  <span class='label'>label:</span>           <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>myhv</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>ip_address:</span>      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>hypervisor_type:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xen</span><span class='tstring_end'>&#39;</span></span>
-<span class='rparen'>)</span></code></pre>
-
-<p>Returns a Hash.</p>
+<p>Create a new Hypervisor.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
+  <span class='label'>label:</span>           <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>myhv</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>ip_address:</span>      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>hypervisor_type:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>xen</span><span class='tstring_end'>&#39;</span></span>
+<span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options for creating the hypervisor:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:label</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Label for the hypervisor</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ip_address</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>IP for the hypervisor</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:hypervisor_type</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Type of the hypervisor</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -660,17 +744,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Delete a hypervisor</p>
-
-<p>id - ID of the hypervisor</p>
-
-<p>Returns a Hash.</p>
+<p>Delete a hypervisor</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the hypervisor</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -705,22 +823,77 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Edit a Hypervisor.</p>
-
-<p>id      - ID of the hypervisor options - Params for editing the Hypervisor,
-see `#create`.</p>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_edit'>edit</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>label:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>myhv</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>ip_address:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span></code></pre>
-
-<p>Returns a Hash.</p>
+<p>Edit a Hypervisor.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_edit'>edit</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>label:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>myhv</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>ip_address:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the hypervisor</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for editing the Hypervisor, see `#create`.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -755,15 +928,31 @@ see `#create`.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Lists all hypervisors.</p>
-
-<p>Returns an Array.</p>
+<p>Lists all hypervisors.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -843,17 +1032,51 @@ see `#create`.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Reboot a hypervisor.</p>
-
-<p>id - ID of the hypervisor</p>
-
-<p>Returns a Hash.</p>
+<p>Reboot a hypervisor.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the hypervisor</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -972,17 +1195,51 @@ see `#create`.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Retrieves hypervisor info.</p>
-
-<p>id - The id of the hypervisor</p>
-
-<p>Returns a Hash.</p>
+<p>Retrieves hypervisor info.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The id of the hypervisor</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1055,9 +1312,9 @@ see `#create`.</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:36 2013 by
+  Generated on Thu Sep 12 14:29:17 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

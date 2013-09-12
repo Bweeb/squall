@@ -6,7 +6,7 @@
 <title>
   Class: Squall::Whitelist
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -150,7 +150,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Create a whitelist for a user.</p>
+<p>Create a whitelist for a user.</p>
 </div></span>
   
 </li>
@@ -174,7 +174,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Delete a whitelist.</p>
+<p>Delete a whitelist.</p>
 </div></span>
   
 </li>
@@ -198,7 +198,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Edit a whitelist.</p>
+<p>Edit a whitelist.</p>
 </div></span>
   
 </li>
@@ -222,7 +222,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Lists all whitelists.</p>
+<p>Lists all whitelists.</p>
 </div></span>
   
 </li>
@@ -246,7 +246,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Get the details for a whitelist.</p>
+<p>Get the details for a whitelist.</p>
 </div></span>
   
 </li>
@@ -284,25 +284,115 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Create a whitelist for a user.</p>
-
-<p>user_id - ID of the user options - Params for creating the whitelist:</p>
-
-<pre class="code ruby"><code class="ruby">:ip          - IP to be whitelisted
-:description - Description of the whitelist</code></pre>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby">create ip:          192.168.1.1,
-       description: &quot;Computer that someone I trust uses&quot;</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Create a whitelist for a user.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>create ip:          192.168.1.1,
+       description: &quot;Computer that someone I trust uses&quot;</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for creating the whitelist:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:ip</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>IP to be whitelisted</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:description</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Description of the whitelist</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -337,17 +427,67 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Delete a whitelist.</p>
-
-<p>user_id - ID of the user id      - ID of whitelist</p>
-
-<p>Returns a Hash.</p>
+<p>Delete a whitelist.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of whitelist</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -382,18 +522,85 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Edit a whitelist.</p>
-
-<p>user_id - ID of the user id      - ID of whitelist options - Params for
-editing the whitelist, see `#create`</p>
-
-<p>Returns a Hash.</p>
+<p>Edit a whitelist.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of whitelist</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for editing the whitelist, see `#create`</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -428,17 +635,51 @@ editing the whitelist, see `#create`</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Lists all whitelists.</p>
-
-<p>user_id - ID of the user to display whitelists for</p>
-
-<p>Returns an Array.</p>
+<p>Lists all whitelists.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the user to display whitelists for</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -475,17 +716,67 @@ editing the whitelist, see `#create`</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Get the details for a whitelist.</p>
-
-<p>user_id - ID of the user id      - ID of the whitelist</p>
-
-<p>Returns a Hash.</p>
+<p>Get the details for a whitelist.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the whitelist</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -515,9 +806,9 @@ editing the whitelist, see `#create`</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:35 2013 by
+  Generated on Thu Sep 12 14:29:16 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

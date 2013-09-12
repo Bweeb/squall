@@ -6,7 +6,7 @@
 <title>
   Class: Squall::IpAddressJoin
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -150,7 +150,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Assigns an IP address to a VM.</p>
+<p>Assigns an IP address to a VM.</p>
 </div></span>
   
 </li>
@@ -174,7 +174,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Deletes an IP address assignment from a VM.</p>
+<p>Deletes an IP address assignment from a VM.</p>
 </div></span>
   
 </li>
@@ -198,7 +198,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List IP address assignments for a virtual machine.</p>
+<p>List IP address assignments for a virtual machine.</p>
 </div></span>
   
 </li>
@@ -236,21 +236,106 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Assigns an IP address to a VM.</p>
-
-<p>virtual_machine_id - Virtual machine ID to assign IP to options           
-- Params for IP assignment:</p>
-
-<pre class="code ruby"><code class="ruby">:ip_address_id        - ID of the IP address
-:network_interface_id - ID of the network interface</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Assigns an IP address to a VM.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>virtual_machine_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Virtual machine ID to assign IP to</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for IP assignment:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:ip_address_id</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ID of the IP address</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:network_interface_id</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ID of the network interface</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -287,18 +372,67 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Deletes an IP address assignment from a VM</p>
-
-<p>virtual_machine_id - Virtual machine ID to remove IP join from
-ip_address_id      - IP Address ID to remove, see `#assign`.</p>
-
-<p>Returns a Hash.</p>
+<p>Deletes an IP address assignment from a VM</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>virtual_machine_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Virtual machine ID to remove IP join from</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ip_address_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>IP Address ID to remove, see `#assign`.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -333,17 +467,51 @@ ip_address_id      - IP Address ID to remove, see `#assign`.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List IP address assignments for a virtual machine.</p>
-
-<p>virtual_machine_id - Virtual machine ID to lookup</p>
-
-<p>Returns an Array.</p>
+<p>List IP address assignments for a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>virtual_machine_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Virtual machine ID to lookup</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -373,9 +541,9 @@ ip_address_id      - IP Address ID to remove, see `#assign`.</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:36 2013 by
+  Generated on Thu Sep 12 14:29:17 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

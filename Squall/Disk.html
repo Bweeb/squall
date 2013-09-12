@@ -6,7 +6,7 @@
 <title>
   Class: Squall::Disk
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -150,7 +150,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Add autobackup schedule to a disk.</p>
+<p>Add autobackup schedule to a disk.</p>
 </div></span>
   
 </li>
@@ -174,7 +174,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Disable autobackups for a disk.</p>
+<p>Disable autobackups for a disk.</p>
 </div></span>
   
 </li>
@@ -198,7 +198,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Enable autobackups for a disk.</p>
+<p>Enable autobackups for a disk.</p>
 </div></span>
   
 </li>
@@ -222,7 +222,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List backups available for a disk.</p>
+<p>List backups available for a disk.</p>
 </div></span>
   
 </li>
@@ -246,7 +246,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Builds a disk.</p>
+<p>Builds a disk.</p>
 </div></span>
   
 </li>
@@ -270,7 +270,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Creates a new Disk.</p>
+<p>Creates a new Disk.</p>
 </div></span>
   
 </li>
@@ -294,7 +294,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Delete a disk.</p>
+<p>Delete a disk.</p>
 </div></span>
   
 </li>
@@ -318,7 +318,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Updates an existing disk.</p>
+<p>Updates an existing disk.</p>
 </div></span>
   
 </li>
@@ -342,7 +342,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: View Input/Output statistics for a disk.</p>
+<p>View Input/Output statistics for a disk.</p>
 </div></span>
   
 </li>
@@ -366,7 +366,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List all disks.</p>
+<p>List all disks.</p>
 </div></span>
   
 </li>
@@ -390,7 +390,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Migrates a VM disk to another data store.</p>
+<p>Migrates a VM disk to another data store.</p>
 </div></span>
   
 </li>
@@ -414,7 +414,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Get the list of schedules for a disk.</p>
+<p>Get the list of schedules for a disk.</p>
 </div></span>
   
 </li>
@@ -438,7 +438,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Unlock a disk.</p>
+<p>Unlock a disk.</p>
 </div></span>
   
 </li>
@@ -462,7 +462,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List all disks available for a particular VM.</p>
+<p>List all disks available for a particular VM.</p>
 </div></span>
   
 </li>
@@ -500,29 +500,131 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Add autobackup schedule to a disk</p>
-
-<p>id      - ID of the disk options - Params for the disk</p>
-
-<pre class="code ruby"><code class="ruby">:action   - set Autobackup to add a backup schedule
-:duration - specify duration
-:period   - set the period (days|weeks|months|years)</code></pre>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-  <span class='label'>action:</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>autobackup</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>duration:</span> <span class='int'>10</span><span class='comma'>,</span>
-  <span class='label'>period:</span>   <span class='id identifier rubyid_days'>days</span>
-<span class='rbrace'>}</span></code></pre>
-
-<p>Returns an Array.</p>
+<p>Add autobackup schedule to a disk</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+  <span class='label'>action:</span>   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>autobackup</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>duration:</span> <span class='int'>10</span><span class='comma'>,</span>
+  <span class='label'>period:</span>   <span class='id identifier rubyid_days'>days</span>
+<span class='rbrace'>}</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:action</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>set Autobackup to add a backup schedule</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:duration</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>specify duration</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:period</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>set the period (days|weeks|months|years)</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -557,17 +659,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Disable autobackups for a disk</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns a Hash.</p>
+<p>Disable autobackups for a disk</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -604,17 +740,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Enable autobackups for a disk.</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns a Hash.</p>
+<p>Enable autobackups for a disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -651,17 +821,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List backups available for a disk.</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns an Array.</p>
+<p>List backups available for a disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -698,17 +902,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Builds a disk.</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns a Hash.</p>
+<p>Builds a disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -745,22 +983,18 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Creates a new Disk.</p>
+<p>Creates a new Disk.</p>
 
-<p>id      - ID of the virtual machine options - Params for the disk:</p>
 
-<pre class="code ruby"><code class="ruby">:add_to_linux_fstab  - Set true to add
-:data_store_id       - The ID of a data store where this disk is
-                       located
-:disk_size           - The disk space in GB
-:is_swap             - Set true if this is a swap disk
-:mount_point         - a physical location in the partition used
-                       as a root filesystem
-:require_format_disk – set true to format disk</code></pre>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
   <span class='label'>add_to_linux_fstab:</span>  <span class='int'>1</span><span class='comma'>,</span>
   <span class='label'>data_store_id:</span>       <span class='int'>1</span><span class='comma'>,</span>
   <span class='label'>disk_size:</span>           <span class='int'>10</span><span class='comma'>,</span>
@@ -768,14 +1002,141 @@
   <span class='label'>mount_point:</span>         <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/disk2</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
   <span class='label'>require_format_disk:</span> <span class='int'>1</span>
 <span class='rparen'>)</span></code></pre>
-
-<p>Returns a Hash.</p>
-
-
+    
   </div>
-</div>
-<div class="tags">
+<p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for the disk:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:add_to_linux_fstab</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Set true to add</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:data_store_id</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The ID of a data store where this disk is located</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:disk_size</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The disk space in GB</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:is_swap</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Set true if this is a swap disk</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:mount_point</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>a physical location in the partition used as a root filesystem</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -810,17 +1171,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Delete a disk.</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns a Hash.</p>
+<p>Delete a disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -855,19 +1250,93 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Updates an existing disk.</p>
-
-<p>id      - ID of the disk options - Params for the disk</p>
-
-<pre class="code ruby"><code class="ruby">:disk_size - The disk space in GB</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Updates an existing disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:disk_size</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The disk space in GB</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -902,17 +1371,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: View Input/Output statistics for a disk.</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns an Array</p>
+<p>View Input/Output statistics for a disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -949,15 +1452,31 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List all disks.</p>
-
-<p>Returns an Array.</p>
+<p>List all disks.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -994,20 +1513,111 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Migrates a VM disk to another data store.</p>
-
-<p>vm_id   - ID of the virtual machine id      - ID of the disk options -
-Params for the disk</p>
-
-<pre class="code ruby"><code class="ruby">:data_store_id - The disk space in GB</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Migrates a VM disk to another data store.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>vm_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:data_store_id</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>The disk space in GB</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1042,17 +1652,51 @@ Params for the disk</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Get the list of schedules for a disk.</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns an Array.</p>
+<p>Get the list of schedules for a disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1089,17 +1733,51 @@ Params for the disk</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Unlock a disk.</p>
-
-<p>id - ID of the disk</p>
-
-<p>Returns a Hash.</p>
+<p>Unlock a disk.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the disk</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1136,17 +1814,51 @@ Params for the disk</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List all disks available for a particular VM.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns an Array.</p>
+<p>List all disks available for a particular VM.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1176,9 +1888,9 @@ Params for the disk</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:35 2013 by
+  Generated on Thu Sep 12 14:29:16 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

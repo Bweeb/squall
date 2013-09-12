@@ -6,7 +6,7 @@
 <title>
   Class: Squall::VirtualMachine
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -150,7 +150,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Build a virtual machine.</p>
+<p>Build a virtual machine.</p>
 </div></span>
   
 </li>
@@ -174,7 +174,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Change the owner of a virtual machine.</p>
+<p>Change the owner of a virtual machine.</p>
 </div></span>
   
 </li>
@@ -198,7 +198,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Change the password.</p>
+<p>Change the password.</p>
 </div></span>
   
 </li>
@@ -222,7 +222,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Open a console for a virtual machine.</p>
+<p>Open a console for a virtual machine.</p>
 </div></span>
   
 </li>
@@ -246,7 +246,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Create a new virtual machine.</p>
+<p>Create a new virtual machine.</p>
 </div></span>
   
 </li>
@@ -270,7 +270,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Delete a virtual machine.</p>
+<p>Delete a virtual machine.</p>
 </div></span>
   
 </li>
@@ -294,7 +294,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Edit a virtual machine.</p>
+<p>Edit a virtual machine.</p>
 </div></span>
   
 </li>
@@ -318,7 +318,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: List all virtual machines.</p>
+<p>List all virtual machines.</p>
 </div></span>
   
 </li>
@@ -342,7 +342,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Migrate a virtual machine to a new hypervisor.</p>
+<p>Migrate a virtual machine to a new hypervisor.</p>
 </div></span>
   
 </li>
@@ -366,7 +366,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Reboot a virtual machine.</p>
+<p>Reboot a virtual machine.</p>
 </div></span>
   
 </li>
@@ -390,7 +390,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Resize a virtual machine&#39;s memory.</p>
+<p>Resize a virtual machine&#39;s memory.</p>
 </div></span>
   
 </li>
@@ -414,7 +414,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Segregate a virtual machine from another virtual machine.</p>
+<p>Segregate a virtual machine from another virtual machine.</p>
 </div></span>
   
 </li>
@@ -438,8 +438,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Assigns SSH keys of all administrators and a owner to a virtual
-machine.</p>
+<p>Assigns SSH keys of all administrators and a owner to a virtual machine.</p>
 </div></span>
   
 </li>
@@ -463,7 +462,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Toggle the VIP status of the virtual machine.</p>
+<p>Toggle the VIP status of the virtual machine.</p>
 </div></span>
   
 </li>
@@ -487,7 +486,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Get info for a virtual machine.</p>
+<p>Get info for a virtual machine.</p>
 </div></span>
   
 </li>
@@ -511,7 +510,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Shutdown a virtual machine.</p>
+<p>Shutdown a virtual machine.</p>
 </div></span>
   
 </li>
@@ -535,7 +534,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Boot a virtual machine.</p>
+<p>Boot a virtual machine.</p>
 </div></span>
   
 </li>
@@ -559,7 +558,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Get billing statistics for a virtual machine.</p>
+<p>Get billing statistics for a virtual machine.</p>
 </div></span>
   
 </li>
@@ -583,7 +582,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Stop a virtual machine.</p>
+<p>Stop a virtual machine.</p>
 </div></span>
   
 </li>
@@ -607,7 +606,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Suspend/Unsuspend a virtual machine.</p>
+<p>Suspend/Unsuspend a virtual machine.</p>
 </div></span>
   
 </li>
@@ -631,7 +630,7 @@ machine.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Unlock a virtual machine.</p>
+<p>Unlock a virtual machine.</p>
 </div></span>
   
 </li>
@@ -669,23 +668,106 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Build a virtual machine.</p>
-
-<p>id      - ID of the virtual machine options - Params for creating the
-virtual machine</p>
-
-<pre class="code ruby"><code class="ruby">:required_startup - Set to &#39;1&#39; to startup virtual machine after
-                    building
-:template_id      - ID of the template to be used to build the
-                    virtual machine</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Build a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for creating the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:required_startup</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Set to &#39;1&#39; to startup virtual machine after building</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:template_id</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ID of the template to be used to build the virtual machine</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -722,17 +804,67 @@ virtual machine</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Change the owner of a virtual machine.</p>
-
-<p>id      - ID of the virtual machine user_id - ID of the target User</p>
-
-<p>Returns a Hash.</p>
+<p>Change the owner of a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the target User</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -769,17 +901,67 @@ virtual machine</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Change the password.</p>
-
-<p>id       - ID of the virtual machine password - New password</p>
-
-<p>Returns a Hash.</p>
+<p>Change the password.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>New password</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -816,17 +998,51 @@ virtual machine</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Open a console for a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Open a console for a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -863,58 +1079,18 @@ virtual machine</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Create a new virtual machine.</p>
+<p>Create a new virtual machine.</p>
 
-<p>options - Params for creating the virtual machine:</p>
 
-<pre class="code ruby"><code class="ruby">admin_note                     - Comment that can only be set by
-                                 admin of virtual machine
-allowed_hot_migrate            - Set to &#39;1&#39; to allow hot
-                                 migration
-cpu_shares                     - CPU priority for this virtual
-                                 machine
-cpus                           - Number of CPUs assigned to the
-                                 virtual machine
-hostname                       - Hostname for the virtual machine
-hypervisor_group_id            - the ID of the hypervisor zone in
-                                 which the VM will be created.
-                                 Optional: if no hypervisor zone
-                                 is set, the VM will be built in
-                                 any available hypervisor zone.
-hypervisor_id                  - ID for a hypervisor where
-                                 virtual machine will be built.
-                                 If not provided the virtual
-                                 machine will be assigned to the
-                                 first available hypervisor
-initial_root_password          - Root password for the virtual
-                                 machine. 6-31 characters
-                                 consisting of letters, numbers,
-                                 &#39;-&#39; and &#39;_&#39;
-label                          - Label for the virtual machine
-memory                         - Amount of RAM assigned to this
-                                 virtual machine
-note                           - Comment that can be set by the
-                                 user of the virtual machine
-primary_disk_size              - Disk space for this virtual
-                                 machine
-primary_network_id             - ID of the primary network
-rate_limit                     - Max port speed
-required_automatic_backup      - Set to &#39;1&#39; if automatic backups
-                                 are required
-required_ip_address_assignment - Set to &#39;1&#39; if you wish to
-                                 assign an IP address
-                                 automatically
-required_virtual_machine_build - Set to &#39;1&#39; to build virtual
-                                 machine automatically
-swap_disk_size                 - Swap space (does not apply to
-                                 Windows virtual machines)
-template_id                    - ID for a template from which
-                                 the virtual machine will be
-                                 built</code></pre>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span>
   <span class='label'>label:</span>             <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>testmachine</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
   <span class='label'>hypervisor_id:</span>     <span class='int'>5</span><span class='comma'>,</span>
   <span class='label'>hostname:</span>          <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>testmachine</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
@@ -924,14 +1100,69 @@ template_id                    - ID for a template from which
   <span class='label'>primary_disk_size:</span> <span class='int'>10</span><span class='comma'>,</span>
   <span class='label'>template_id:</span>       <span class='int'>1</span>
 <span class='rparen'>)</span></code></pre>
-
-<p>Returns a Hash.</p>
-
-
+    
   </div>
-</div>
-<div class="tags">
+<p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for creating the virtual machine: admin_note - Comment that can only
+be set by admin of virtual machine allowed_hot_migrate - Set to &#39;1&#39;
+to allow hot migration cpu_shares - CPU priority for this virtual machine
+cpus - Number of CPUs assigned to the virtual machine hostname - Hostname
+for the virtual machine hypervisor_group_id - the ID of the hypervisor zone
+in which the VM will be created. Optional: if no hypervisor zone is set,
+the VM will be built in any available hypervisor zone. hypervisor_id - ID
+for a hypervisor where virtual machine will be built. If not provided the
+virtual machine will be assigned to the first available hypervisor
+initial_root_password - Root password for the virtual machine. 6-31
+characters consisting of letters, numbers, &#39;-&#39; and &#39;_&#39;
+label - Label for the virtual machine memory - Amount of RAM assigned to
+this virtual machine note - Comment that can be set by the user of the
+virtual machine primary_disk_size - Disk space for this virtual machine
+primary_network_id - ID of the primary network rate_limit - Max port speed
+required_automatic_backup - Set to &#39;1&#39; if automatic backups are
+required required_ip_address_assignment - Set to &#39;1&#39; if you wish to
+assign an IP address automatically required_virtual_machine_build - Set to
+&#39;1&#39; to build virtual machine automatically swap_disk_size - Swap
+space (does not apply to Windows virtual machines) template_id - ID for a
+template from which the virtual machine will be built</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -968,17 +1199,51 @@ template_id                    - ID for a template from which
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Delete a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Delete a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1013,18 +1278,69 @@ template_id                    - ID for a template from which
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Edit a virtual machine.</p>
-
-<p>id      - ID of the virtual machine options - Params for creating the
-virtual machine, see `#create`</p>
-
-<p>Returns a Hash.</p>
+<p>Edit a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Params for creating the virtual machine, see `#create`</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1061,15 +1377,31 @@ virtual machine, see `#create`</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: List all virtual machines.</p>
-
-<p>Returns an Array.</p>
+<p>List all virtual machines.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1106,22 +1438,106 @@ virtual machine, see `#create`</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Migrate a virtual machine to a new hypervisor.</p>
-
-<p>id      - ID of the virtual machine options - A Hash of options:</p>
-
-<pre class="code ruby"><code class="ruby">:destination              - ID of a hypervisor to which to
-                            migrate the virtual machine
-:cold_migrate_on_rollback - Set to &#39;1&#39; to switch to cold
-                            migration if migration fails</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Migrate a virtual machine to a new hypervisor.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A Hash of options:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:destination</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ID of a hypervisor to which to migrate the virtual machine</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cold_migrate_on_rollback</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Set to &#39;1&#39; to switch to cold migration if migration fails</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1156,18 +1572,69 @@ virtual machine, see `#create`</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Reboot a virtual machine</p>
-
-<p>id       - ID of the virtual machine recovery - Set to true to reboot in
-recovery, defaults to false</p>
-
-<p>Returns a Hash.</p>
+<p>Reboot a virtual machine</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>recovery</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Set to true to reboot in recovery, defaults to false</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1204,24 +1671,132 @@ recovery, defaults to false</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Resize a virtual machine&#39;s memory.</p>
-
-<p>id      - ID of the virtual machine options - Options for resizing:</p>
-
-<pre class="code ruby"><code class="ruby">:memory            - Amount of RAM assigned to this virtual
-                     machine
-:cpus              - Number of CPUs assigned to the virtual
-                     machine
-:cpu_shares        - CPU priority for this virtual machine
-:allow_cold_resize - Set to &#39;1&#39; to allow cold resize</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Resize a virtual machine&#39;s memory.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options for resizing:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:memory</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Amount of RAM assigned to this virtual machine</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cpus</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Number of CPUs assigned to the virtual machine</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cpu_shares</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>CPU priority for this virtual machine</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:allow_cold_resize</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Set to &#39;1&#39; to allow cold resize</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1258,20 +1833,67 @@ recovery, defaults to false</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Segregate a virtual machine from another virtual machine.</p>
-
-<p>id           - ID of the virtual machine target_vm_id - ID of another
-virtual machine from which it should be</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_segregated'>segregated</span></code></pre>
-
-<p>Returns a Hash.</p>
+<p>Segregate a virtual machine from another virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>target_vm_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of another virtual machine from which it should be segregated</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1308,18 +1930,51 @@ virtual machine from which it should be</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Assigns SSH keys of all administrators and a owner to a virtual
-machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Assigns SSH keys of all administrators and a owner to a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1356,17 +2011,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Toggle the VIP status of the virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Toggle the VIP status of the virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1403,17 +2092,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Get info for a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Get info for a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1450,17 +2173,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Shutdown a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Shutdown a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1497,17 +2254,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Boot a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Boot a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1544,17 +2335,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Get billing statistics for a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Get billing statistics for a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1591,17 +2416,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Stop a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Stop a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1638,17 +2497,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Suspend/Unsuspend a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Suspend/Unsuspend a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1685,17 +2578,51 @@ machine.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Unlock a virtual machine.</p>
-
-<p>id - ID of the virtual machine</p>
-
-<p>Returns a Hash.</p>
+<p>Unlock a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1725,9 +2652,9 @@ machine.</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:36 2013 by
+  Generated on Thu Sep 12 14:29:17 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

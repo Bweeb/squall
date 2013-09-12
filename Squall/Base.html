@@ -6,7 +6,7 @@
 <title>
   Class: Squall::Base
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -145,7 +145,7 @@ convenience methods.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Faraday response body.</p>
+<p>Faraday response body.</p>
 </div></span>
   
 </li>
@@ -174,7 +174,7 @@ convenience methods.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Returns true/false for successful/unsuccessful requests.</p>
+<p>Returns true/false for successful/unsuccessful requests.</p>
 </div></span>
   
 </li>
@@ -196,7 +196,7 @@ convenience methods.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_config-instance_method" title="#check_config (instance method)">- (Object) <strong>check_config</strong> </a>
+      <a href="#check_config-instance_method" title="#check_config (instance method)">- (void) <strong>check_config</strong> </a>
     
 
     
@@ -211,7 +211,7 @@ convenience methods.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Ensures `Squall.config` is set.</p>
+<p>Ensures `Squall.config` is set.</p>
 </div></span>
   
 </li>
@@ -235,7 +235,7 @@ convenience methods.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Sets the default URL params for requests and merges `options`.</p>
+<p>Sets the default URL params for requests and merges `options`.</p>
 </div></span>
   
 </li>
@@ -259,7 +259,7 @@ convenience methods.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Sets the default param container for request.</p>
+<p>Sets the default param container for request.</p>
 </div></span>
   
 </li>
@@ -283,7 +283,7 @@ convenience methods.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Performs an HTTP Request.</p>
+<p>Performs an HTTP Request.</p>
 </div></span>
   
 </li>
@@ -310,7 +310,7 @@ convenience methods.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Faraday response body</p>
+<p>Faraday response body</p>
 
 
   </div>
@@ -353,7 +353,7 @@ convenience methods.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Returns true/false for successful/unsuccessful requests</p>
+<p>Returns true/false for successful/unsuccessful requests</p>
 
 
   </div>
@@ -392,7 +392,7 @@ convenience methods.</p>
       <div class="method_details first">
   <h3 class="signature first" id="check_config-instance_method">
   
-    - (<tt>Object</tt>) <strong>check_config</strong> 
+    - (<tt>void</tt>) <strong>check_config</strong> 
   
 
   
@@ -400,13 +400,8 @@ convenience methods.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Public: Ensures `Squall.config` is set.</p>
-
-<p>Raises Squall::NoConfig if a request is made without first calling
-Squall.config.</p>
-
-<p>Returns nothing.</p>
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Ensures `Squall.config` is set.</p>
 
 
   </div>
@@ -419,9 +414,14 @@ Squall.config.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="NoConfig.html" title="Squall::NoConfig (class)">NoConfig</a></span></tt>)</span>
+        <span class='type'></span>
       
       
+      
+        
+        <div class='inline'>
+<p>Squall::NoConfig if a request is made without first calling Squall.config.</p>
+</div>
       
     </li>
   
@@ -460,21 +460,41 @@ Squall.config.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Sets the default URL params for requests and merges `options`</p>
+<p>Sets the default URL params for requests and merges `options`</p>
 
 <p>*options - One or more options</p>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_default_params'>default_params</span><span class='lparen'>(</span><span class='label'>something:</span> <span class='int'>1</span><span class='rparen'>)</span></code></pre>
-
-<p>Returns a Hash.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_default_params'>default_params</span><span class='lparen'>(</span><span class='label'>something:</span> <span class='int'>1</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -509,17 +529,33 @@ Squall.config.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Sets the default param container for request. It is derived from
-the class name. Given the class name `Sandwich` and a param `bread` the
-resulting params would be `<a href="http://bread">bob</a>=wheat`.</p>
-
-<p>Returns a String</p>
+<p>Sets the default param container for request. It is derived from the class
+name. Given the class name `Sandwich` and a param `bread` the resulting
+params would be `<a href="http://bread">bob</a>=wheat`.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a String</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -566,29 +602,97 @@ resulting params would be `<a href="http://bread">bob</a>=wheat`.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Performs an HTTP Request</p>
-
-<p>request_method - The HTTP verb for the request, one of</p>
-
-<pre class="code ruby"><code class="ruby">:get/:post/:delete/:put, etc</code></pre>
-
-<p>path           - URL path options        - HTTP query params</p>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># GET /something.json
-</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:get</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/something.json</span><span class='tstring_end'>&#39;</span></span>
-
-<span class='comment'># PUT /something.json?something=1
-</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:put</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/something.json</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>something:</span> <span class='int'>1</span></code></pre>
-
-<p>Returns the JSON response.</p>
+<p>Performs an HTTP Request</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='comment'># GET /something.json
+</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:get</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/something.json</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='comment'># PUT /something.json?something=1
+</span><span class='id identifier rubyid_request'>request</span> <span class='symbol'>:put</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/something.json</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>something:</span> <span class='int'>1</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>request_method</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The HTTP verb for the request, one of :get/:post/:delete/:put, etc</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>URL path</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>HTTP query params</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>the JSON response.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -648,9 +752,9 @@ resulting params would be `<a href="http://bread">bob</a>=wheat`.</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:36 2013 by
+  Generated on Thu Sep 12 14:29:17 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

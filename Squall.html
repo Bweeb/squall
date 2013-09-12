@@ -6,7 +6,7 @@
 <title>
   Module: Squall
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -193,7 +193,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#config-instance_method" title="#config (instance method)">- (Object) <strong>config</strong> {|self.configuration| ... }</a>
+      <a href="#config-instance_method" title="#config (instance method)">- (Object) <strong>config</strong> { ... }</a>
     
 
     
@@ -208,7 +208,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Configures Squall.</p>
+<p>Configures Squall.</p>
 </div></span>
   
 </li>
@@ -217,7 +217,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#config_file-instance_method" title="#config_file (instance method)">- (Object) <strong>config_file</strong>(file = nil) </a>
+      <a href="#config_file-instance_method" title="#config_file (instance method)">- (void) <strong>config_file</strong>(file = nil) </a>
     
 
     
@@ -232,7 +232,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Load the config from a YAML file.</p>
+<p>Load the config from a YAML file.</p>
 </div></span>
   
 </li>
@@ -365,7 +365,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="config-instance_method">
   
-    - (<tt>Object</tt>) <strong>config</strong> {|self.configuration| ... }
+    - (<tt>Object</tt>) <strong>config</strong> { ... }
   
 
   
@@ -374,36 +374,58 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Configures Squall.</p>
-
-<p>Yields Squall.configuration if a block is given.</p>
-
-<p>Example</p>
-
-<pre class="ruby"><span class="ruby-constant">Squall</span>.<span class="ruby-identifier">config</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
-  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">base_uri</span> <span class="ruby-string">&#39;http://onapp.myserver.com&#39;</span>
-  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">username</span> <span class="ruby-string">&#39;myuser&#39;</span>
-  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">password</span> <span class="ruby-string">&#39;mypass&#39;</span>
-  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">debug</span>    <span class="ruby-keyword">true</span>
-<span class="ruby-keyword">end</span>
-</pre>
-
-<p>Returns a Hash.</p>
+<p>Configures Squall.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_base_uri'>base_uri</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://onapp.myserver.com</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_username'>username</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>myuser</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mypass</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span>    <span class='kw'>true</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
 <p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
       
       
-        <span class='type'>(<tt>self.configuration</tt>)</span>
+        <span class='type'></span>
       
       
+      
+        
+        <div class='inline'>
+<p>Yields Squall.configuration if a block is given.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
       
     </li>
   
@@ -435,7 +457,7 @@
       <div class="method_details ">
   <h3 class="signature " id="config_file-instance_method">
   
-    - (<tt>Object</tt>) <strong>config_file</strong>(file = nil) 
+    - (<tt>void</tt>) <strong>config_file</strong>(file = nil) 
   
 
   
@@ -443,28 +465,66 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Public: Load the config from a YAML file.</p>
-
-<p>file - Path to the YAML file, defaults to `~/.squall.yml`</p>
-
-<p>Raises ArgumentError if the config file does not exist.</p>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby"><span class='comment'># Load default config file at `~/.squall.yml`:
-</span><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config_file'>config_file</span>
-
-<span class='comment'># Load custom config file:
-</span><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config_file'>config_file</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/path/to/squall.yml</span><span class='tstring_end'>&#39;</span></span></code></pre>
-
-<p>Returns nothing.</p>
+    <p class="note returns_void">This method returns an undefined value.</p>
+<p>Load the config from a YAML file.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='comment'># Load default config file at `~/.squall.yml`:
+</span><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config_file'>config_file</span>
+
+<span class='comment'># Load custom config file:
+</span><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config_file'>config_file</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/path/to/squall.yml</span><span class='tstring_end'>&#39;</span></span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>file</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Path to the YAML file, defaults to `~/.squall.yml`</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>ArgumentError if the config file does not exist.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -551,9 +611,9 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:35 2013 by
+  Generated on Thu Sep 12 14:29:16 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>

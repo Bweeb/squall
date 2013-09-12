@@ -6,7 +6,7 @@
 <title>
   Class: Squall::FirewallRule
   
-    &mdash; Documentation by YARD 0.8.6.2
+    &mdash; Documentation by YARD 0.8.7.1
   
 </title>
 
@@ -150,7 +150,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Create a firewall rule for a virtual machine.</p>
+<p>Create a firewall rule for a virtual machine.</p>
 </div></span>
   
 </li>
@@ -174,7 +174,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Delete a firewall rule.</p>
+<p>Delete a firewall rule.</p>
 </div></span>
   
 </li>
@@ -198,7 +198,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Edit a firewall rule.</p>
+<p>Edit a firewall rule.</p>
 </div></span>
   
 </li>
@@ -222,7 +222,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public: Lists all firewall rules for a virtual machine.</p>
+<p>Lists all firewall rules for a virtual machine.</p>
 </div></span>
   
 </li>
@@ -260,33 +260,157 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Create a firewall rule for a virtual machine.</p>
-
-<p>vm_id   - ID of the virtual machine options - A Hash of options for the
-firewall rule:</p>
-
-<pre class="code ruby"><code class="ruby">:address              - IP address or range scope for rule.
-                        Leave blank to apply to all.
-:command              - DROP or ACCEPT
-:network_interface_id - ID of the network interface
-:port                 - Port address for rule
-:protocol             - TCP or UDP</code></pre>
-
-<p>Example</p>
-
-<pre class="code ruby"><code class="ruby">create(
-  command:              &quot;DROP&quot;,
-  protocol              &quot;TCP&quot;,
-  network_interface_id: 1
-)</code></pre>
-
-<p>Returns a Hash.</p>
+<p>Create a firewall rule for a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>create(
+  command:              &quot;DROP&quot;,
+  protocol              &quot;TCP&quot;,
+  network_interface_id: 1
+)</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vm_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A Hash of options for the firewall rule:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:address</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>IP address or range scope for rule. Leave blank to apply to all.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:command</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>DROP or ACCEPT</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:network_interface_id</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ID of the network interface</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:port</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Port address for rule</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:protocol</span>
+          <span class="type">(<tt>Object</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>TCP or UDP</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -321,17 +445,67 @@ firewall rule:</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Delete a firewall rule.</p>
-
-<p>vm_id - ID of the virtual machine id    - ID of the firewall rule</p>
-
-<p>Returns a Hash.</p>
+<p>Delete a firewall rule.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>vm_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the firewall rule</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -366,18 +540,85 @@ firewall rule:</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Edit a firewall rule.</p>
-
-<p>vm_id   - ID of the virtual machine id      - ID of the firewall rule
-options - A Hash of options for the firewall rule, see `#create`.</p>
-
-<p>Returns a Hash.</p>
+<p>Edit a firewall rule.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>vm_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the firewall rule</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'></span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A Hash of options for the firewall rule, see `#create`.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -412,17 +653,51 @@ options - A Hash of options for the firewall rule, see `#create`.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public: Lists all firewall rules for a virtual machine.</p>
-
-<p>vm_id - ID of the virtual machine</p>
-
-<p>Returns an Array.</p>
+<p>Lists all firewall rules for a virtual machine.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>vm_id</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the virtual machine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>an Array.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -452,9 +727,9 @@ options - A Hash of options for the firewall rule, see `#create`.</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 10 13:15:36 2013 by
+  Generated on Thu Sep 12 14:29:17 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.2 (ruby-2.0.0).
+  0.8.7.1 (ruby-2.0.0).
 </div>
 
   </body>
