@@ -72,20 +72,21 @@ module Squall
   #     Squall.config_file '/path/to/squall.yml'
   #
   # Returns nothing.
-  def config_file(file = nil)
-    file = File.expand_path(File.expand_path(File.join(ENV['HOME'], '.squall.yml'))) if file.nil?
+  def config_file(file = File.expand_path("~/.squall.yml"))
     if File.exists?(file)
       self.configuration_file = file
     else
       raise ArgumentError, "Config file doesn't exist '#{file}'"
     end
-    settings = YAML::load_file(file)
+
     config do |c|
-      settings.each { |k, v| c.send(k, v) }
+      YAML::load_file(file).each { |k, v| c.send(k, v) }
     end
   end
 
-  # Reset the config (aka, clear it)
+  # Public: Reset the config (aka, clear it)
+  #
+  # Returns an instance of Squall::Config.
   def reset_config
     self.configuration = Squall::Config.new
   end

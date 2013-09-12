@@ -1,19 +1,12 @@
-require 'bundler'
-require 'uri'
-require 'rake-tomdoc'
 begin
+  require 'bundler/gem_tasks'
   require 'rspec/core/rake_task'
+  require 'rake-tomdoc'
 rescue LoadError
-  puts "Please install rspec (bundle install)"
-  exit
+  abort "Please install rspec (bundle install)"
 end
 
 RSpec::Core::RakeTask.new :spec
 Bundler::GemHelper.install_tasks
-
-desc "Open an irb session preloaded with this library"
-task :console do
-  sh "irb -rubygems -r ./lib/squall.rb -I ./lib"
-end
 
 task :default => [:spec]
