@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'vcr', '~> 1.8'
   s.add_development_dependency 'awesome_print', '~> 1.0.2'
   s.add_development_dependency 'rake', '~> 0.9.2.2'
+  s.add_development_dependency 'rake-tomdoc', '~> 0.0.1'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

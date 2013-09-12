@@ -11,7 +11,7 @@ Documentation is available in [TomDoc][] format.
 [Build Status]: http://travis-ci.org/site5/squall
 [Build Icon]: https://secure.travis-ci.org/site5/squall.png?branch=master
 [OnApp REST API]: https://help.onapp.com/manual.php?m=2
-[TomDoc]: http://rdoc.info/github/site5/squall/master/frames
+[TomDoc]: http://site5.github.io/squall/
 
 Install
 -------

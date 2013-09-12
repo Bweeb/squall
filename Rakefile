@@ -1,5 +1,6 @@
 require 'bundler'
 require 'uri'
+require 'rake-tomdoc'
 begin
   require 'rspec/core/rake_task'
 rescue LoadError
