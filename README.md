@@ -3,8 +3,8 @@ Squall [![Squall Build Status][Build Icon]][Build Status]
 
 A Ruby library for working with the [OnApp REST API][].
 
-Squall has been tested on MRI 1.9.2, MRI 1.9.3, MRI 2.0.0,
-Rubinius 2.0.0pre, and JRuby 1.6.2.
+Squall has been tested on MRI versions 1.9.2, 1.9.3, 2.0.0 and 1.9-compatible
+JRuby.
 
 Documentation is available in [TomDoc][] format.
 
@@ -185,4 +185,4 @@ Note on Patches/Pull Requests
 Copyright
 ---------
 
-Copyright (c) 2012 Site5.com. See LICENSE for details.
+Copyright (c) 2010-2014 Site5.com. See LICENSE for details.
