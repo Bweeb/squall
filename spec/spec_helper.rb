@@ -1,4 +1,3 @@
-require 'yaml'
 require 'rspec'
 require 'vcr'
 require 'squall'
