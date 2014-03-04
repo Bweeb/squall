@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.8.7.1
+    &mdash; Documentation by YARD 0.8.7.3
   
 </title>
 
@@ -61,186 +61,229 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><div id='filecontents'><h1>Squall <a href="http://travis-ci.org/site5/squall"><img src="https://secure.travis-ci.org/site5/squall.png?branch=master" alt="Squall Build Status"></a></h1>
+    <div id="content"><div id='filecontents'>
+<h1 id="label-Squall+%7BSquall+Build+Status%7D%5Bhttp%3A%2F%2Ftravis-ci.org%2Fsite5%2Fsquall%5D">Squall <a href="https://secure.travis-ci.org/site5/squall.png?branch=master">{Squall Build Status</a>]</h1>
 
-<p>A Ruby library for working with the <a href="https://help.onapp.com/manual.php?m=2">OnApp REST API</a>.</p>
+<p>A Ruby library for working with the <a
+href="http://onapp.com/cloud/technology/api/">OnApp REST API</a>.</p>
 
-<p>Squall has been tested on MRI 1.9.2, MRI 1.9.3, MRI 2.0.0,
-Rubinius 2.0.0pre, and JRuby 1.6.2.</p>
+<p>Squall has been tested on MRI versions 1.9.2, 1.9.3, 2.0.0 and
+1.9-compatible
+JRuby.</p>
 
-<p>Documentation is available in <a href="http://site5.github.io/squall/">TomDoc</a> format.</p>
+<p>Documentation is available in <a
+href="http://site5.github.io/squall/">TomDoc</a> format.</p>
 
-<h2>Install</h2>
+<h2 id="label-Install">Install</h2>
 
-<p>To install Squall using <a href="http://gembundler.com">Bundler</a>:</p>
+<p>To install Squall using <a href="http://bundler.io">Bundler</a>:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_echo'>echo</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gem &#39;squall&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>&gt;&gt;</span> <span class='const'>Gemfile</span>
-<span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_install'>install</span>
-</code></pre>
+<span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_install'>install</span></code></pre>
 
 <p>To install Squall globally using RubyGems:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_squall'>squall</span>
-</code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_squall'>squall</span></code></pre>
 
-<h2>Configuration</h2>
+<h2 id="label-Configuration">Configuration</h2>
 
 <p>You have two main options for configuring Squall.</p>
 
 <p>Directly in a config block:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>squall</span><span class='tstring_end'>&#39;</span></span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;squall&#39;</span>
 
-<span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
-  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_base_uri'>base_uri</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://onappurl.com</span><span class='tstring_end'>&#39;</span></span> <span class='comment'># Root level URI for OnApp instance
-</span>  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_username'>username</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>username</span><span class='tstring_end'>&#39;</span></span>             <span class='comment'># OnApp username
-</span>  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>topsecret</span><span class='tstring_end'>&#39;</span></span>            <span class='comment'># OnApp password
-</span>  <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span>     <span class='kw'>true</span>                  <span class='comment'># Toggle HTTP/Faraday debugging (prints to $stderr)
-</span><span class='kw'>end</span>
-</code></pre>
+<span class="ruby-constant">Squall</span>.<span class="ruby-identifier">config</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">base_uri</span> <span class="ruby-string">&#39;https://onappurl.com&#39;</span> <span class="ruby-comment"># Root level URI for OnApp instance</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">username</span> <span class="ruby-string">&#39;username&#39;</span>             <span class="ruby-comment"># OnApp username</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">password</span> <span class="ruby-string">&#39;topsecret&#39;</span>            <span class="ruby-comment"># OnApp password</span>
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">debug</span>     <span class="ruby-keyword">true</span>                  <span class="ruby-comment"># Toggle HTTP/Faraday debugging (prints to $stderr)</span>
+<span class="ruby-keyword">end</span>
+</pre>
 
 <p>Squall can load configuration from a yaml file:</p>
 
-<pre class="code yaml"><code class="yaml"># .squall.yml
+<pre class="code ruby"><code class="ruby"># .squall.yml
 base_uri: &#39;https://onappurl.com&#39;
 username: &#39;username&#39;
 password: &#39;topsecret&#39;
-debug: false
-</code></pre>
+debug: false</code></pre>
 
 <p>To load it (by default it assumes ~/.squall.yml):</p>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_config_file'>config_file</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path/to/.squall.yml</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-</code></pre>
+<pre class="ruby"><span class="ruby-constant">Squall</span>.<span class="ruby-identifier">config_file</span>(<span class="ruby-string">&quot;/path/to/.squall.yml&quot;</span>)
+</pre>
 
 <p>It is also possible to change individual configuration settings on the fly.</p>
 
-<pre class="code ruby"><code class="ruby"><span class='const'>Squall</span><span class='period'>.</span><span class='id identifier rubyid_configuration'>configuration</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span>
-</code></pre>
+<pre class="ruby"><span class="ruby-constant">Squall</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-keyword">true</span>)
+</pre>
 
-<p>Note: you will need to re-instantiate all modules after changing Squall&#39;s configuration.</p>
+<p>Note: you will need to re-instantiate all modules after changing
+Squall&#39;s configuration.</p>
 
-<h2>Usage</h2>
+<h2 id="label-Usage">Usage</h2>
 
 <p>Show the info for a VM:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_vm'>vm</span> <span class='op'>=</span> <span class='const'>Squall</span><span class='op'>::</span><span class='const'>VirtualMachine</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_vm'>vm</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='int'>1</span>
-</code></pre>
+<pre class="ruby"><span class="ruby-identifier">vm</span> = <span class="ruby-constant">Squall</span><span class="ruby-operator">::</span><span class="ruby-constant">VirtualMachine</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">vm</span>.<span class="ruby-identifier">show</span> <span class="ruby-value">1</span>
+</pre>
 
 <p>Create a new VM:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_vm'>vm</span> <span class='op'>=</span> <span class='const'>Squall</span><span class='op'>::</span><span class='const'>VirtualMachine</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<pre class="ruby"><span class="ruby-identifier">vm</span> = <span class="ruby-constant">Squall</span><span class="ruby-operator">::</span><span class="ruby-constant">VirtualMachine</span>.<span class="ruby-identifier">new</span>
 
-<span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-  <span class='label'>label:</span>             <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>testmachine</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>hypervisor_id:</span>     <span class='int'>5</span><span class='comma'>,</span>
-  <span class='label'>hostname:</span>          <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>testmachine</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='label'>memory:</span>            <span class='int'>512</span><span class='comma'>,</span>
-  <span class='label'>cpus:</span>              <span class='int'>1</span><span class='comma'>,</span>
-  <span class='label'>cpu_shares:</span>        <span class='int'>10</span><span class='comma'>,</span>
-  <span class='label'>primary_disk_size:</span> <span class='int'>10</span><span class='comma'>,</span>
-  <span class='label'>template_id:</span>       <span class='int'>1</span>
-<span class='rbrace'>}</span>
+<span class="ruby-identifier">params</span> = {
+  <span class="ruby-identifier">label</span><span class="ruby-operator">:</span>             <span class="ruby-string">&#39;testmachine&#39;</span>,
+  <span class="ruby-identifier">hypervisor_id</span><span class="ruby-operator">:</span>     <span class="ruby-value">5</span>,
+  <span class="ruby-identifier">hostname</span><span class="ruby-operator">:</span>          <span class="ruby-string">&#39;testmachine&#39;</span>,
+  <span class="ruby-identifier">memory</span><span class="ruby-operator">:</span>            <span class="ruby-value">512</span>,
+  <span class="ruby-identifier">cpus</span><span class="ruby-operator">:</span>              <span class="ruby-value">1</span>,
+  <span class="ruby-identifier">cpu_shares</span><span class="ruby-operator">:</span>        <span class="ruby-value">10</span>,
+  <span class="ruby-identifier">primary_disk_size</span><span class="ruby-operator">:</span> <span class="ruby-value">10</span>,
+  <span class="ruby-identifier">template_id</span><span class="ruby-operator">:</span>       <span class="ruby-value">1</span>
+}
 
-<span class='id identifier rubyid_vm'>vm</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span> <span class='id identifier rubyid_params'>params</span>
-</code></pre>
+<span class="ruby-identifier">vm</span>.<span class="ruby-identifier">create</span> <span class="ruby-identifier">params</span>
+</pre>
 
-<h2>Supported Methods</h2>
+<h2 id="label-Supported+Methods">Supported Methods</h2>
 
 <p>This gem partially implements the OnApp API v2.3.</p>
 
 <p>The following OnApp modules have been added:</p>
-
-<ul>
-<li>Data store zones</li>
-<li>Firewall rules</li>
-<li>Hypervisors</li>
-<li>Hypervisor zones</li>
-<li>IP addresses</li>
-<li>IP address joins</li>
-<li>Networks</li>
-<li>Network zones</li>
-<li>Users</li>
-<li>User groups</li>
-<li>Roles</li>
-<li>Statistics</li>
-<li>Templates</li>
-<li>Transactions</li>
-<li>Virtual machines</li>
-<li>Whitelists</li>
-<li>Disks</li>
-</ul>
+<ul><li>
+<p>Data store zones</p>
+</li><li>
+<p>Firewall rules</p>
+</li><li>
+<p>Hypervisors</p>
+</li><li>
+<p>Hypervisor zones</p>
+</li><li>
+<p>IP addresses</p>
+</li><li>
+<p>IP address joins</p>
+</li><li>
+<p>Networks</p>
+</li><li>
+<p>Network zones</p>
+</li><li>
+<p>Users</p>
+</li><li>
+<p>User groups</p>
+</li><li>
+<p>Roles</p>
+</li><li>
+<p>Statistics</p>
+</li><li>
+<p>Templates</p>
+</li><li>
+<p>Transactions</p>
+</li><li>
+<p>Virtual machines</p>
+</li><li>
+<p>Whitelists</p>
+</li><li>
+<p>Disks</p>
+</li></ul>
 
 <p>The following still need to be added:</p>
+<ul><li>
+<p>Billing plans</p>
+</li><li>
+<p>Currencies</p>
+</li><li>
+<p>Network interfaces</p>
+</li><li>
+<p>Template groups</p>
+</li><li>
+<p>Software licenses</p>
+</li><li>
+<p>Resolvers</p>
+</li><li>
+<p>VM autoscaling</p>
+</li><li>
+<p>Load Balancers</p>
+</li><li>
+<p>CDN edge servers</p>
+</li><li>
+<p>CDN resources</p>
+</li><li>
+<p>CDN edge groups</p>
+</li><li>
+<p>Backups</p>
+</li><li>
+<p>Autobackup Presets</p>
+</li><li>
+<p>Schedules</p>
+</li><li>
+<p>SSH keys</p>
+</li><li>
+<p>Alerts</p>
+</li><li>
+<p>Logs</p>
+</li><li>
+<p>System configuration</p>
+</li></ul>
 
-<ul>
-<li>Billing plans</li>
-<li>Currencies</li>
-<li>Network interfaces</li>
-<li>Template groups</li>
-<li>Software licenses</li>
-<li>Resolvers</li>
-<li>VM autoscaling</li>
-<li>Load Balancers</li>
-<li>CDN edge servers</li>
-<li>CDN resources</li>
-<li>CDN edge groups</li>
-<li>Backups</li>
-<li>Autobackup Presets</li>
-<li>Schedules</li>
-<li>SSH keys</li>
-<li>Alerts</li>
-<li>Logs</li>
-<li>System configuration</li>
-</ul>
-
-<h2>Tests</h2>
+<h2 id="label-Tests">Tests</h2>
 
 <p>Squall uses rspec for tests. To run:</p>
 
 <pre class="code ruby"><code class="ruby">bundle exec rake # Runs all tests
-bundle exec rspec spec/squall/[module]_spec.rb # Runs tests for a specific module
-</code></pre>
+bundle exec rspec spec/squall/[module]_spec.rb # Runs tests for a specific module</code></pre>
 
-<p>Squall uses <a href="https://github.com/myronmarston/vcr">VCR</a> to cache server
-responses to test against. To test via live http connections, pass RERECORD=1
-into test command. NOTE: since OnApp does not currently support a test
-environment this is not recommended unless you know what you&#39;re doing, as it
+<p>Squall uses <a href="https://github.com/myronmarston/vcr">VCR</a> to cache
+server
+responses to test against. To test via live http connections, pass
+RERECORD=1
+into test command. NOTE: since OnApp does not currently support
+a test
+environment this is not recommended unless you know what you&#39;re
+doing, as it
 will destroy live data!</p>
 
 <p>Known issues:</p>
+<ol><li>
+<p>VirtualMachine#change_user currently breaks the parser on an invalid
 
-<ol>
-<li>VirtualMachine#change_user currently breaks the parser on an invalid
-user_id  because OnApp returns html instead of JSON</li>
-<li>VirtualMachine#create is currently broken in certain cases.  See
-<a href="https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&amp;ref=8181-TYFH-8069">https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&amp;ref=8181-TYFH-8069</a></li>
-<li>FirewallRule#edit and #create break the parser by returning invalid JSON</li>
-</ol>
+user_id because OnApp returns html instead of JSON</p>
+</li><li>
+<p>VirtualMachine#create is currently broken in certain cases.</p>
+</li><li>
+<p>FirewallRule#edit and #create break the parser by returning invalid JSON</p>
+</li></ol>
 
-<h2>Note on Patches/Pull Requests</h2>
+<h2 id="label-Note+on+Patches%2FPull+Requests">Note on Patches/Pull Requests</h2>
+<ul><li>
+<p>Fork the project.</p>
+</li><li>
+<p>Make your feature addition or bug fix.</p>
+</li><li>
+<p>Add tests for it. This is important so I don&#39;t break it in a
+ future
+version unintentionally.</p>
+</li><li>
+<p>Commit, do not mess with rakefile, version, or history.
+ (if you want to
+have your own version, that is fine but bump version in a
+ commit by itself
+I can ignore when I pull)</p>
+</li><li>
+<p>Send me a pull request. Bonus points for topic branches.</p>
+</li></ul>
 
-<ul>
-<li>Fork the project.</li>
-<li>Make your feature addition or bug fix.</li>
-<li>Add tests for it. This is important so I don&#39;t break it in a
-future version unintentionally.</li>
-<li>Commit, do not mess with rakefile, version, or history.
-(if you want to have your own version, that is fine but bump version in a
-commit by itself I can ignore when I pull)</li>
-<li>Send me a pull request. Bonus points for topic branches.</li>
-</ul>
+<h2 id="label-Copyright">Copyright</h2>
 
-<h2>Copyright</h2>
-
-<p>Copyright (c) 2012 Site5.com. See LICENSE for details.</p>
+<p>Copyright © 2010-2014 Site5.com. See LICENSE for details.</p>
 </div></div>
 
     <div id="footer">
-  Generated on Thu Sep 12 14:29:16 2013 by
+  Generated on Tue Mar  4 13:54:09 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.1 (ruby-2.0.0).
+  0.8.7.3 (ruby-2.0.0).
 </div>
 
   </body>
