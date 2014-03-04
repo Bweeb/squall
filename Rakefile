@@ -1,9 +1,9 @@
 begin
   require 'bundler/gem_tasks'
   require 'rspec/core/rake_task'
-  require 'rake-tomdoc'
+  require 'rake-tomdoc' unless RUBY_PLATFORM == 'java'
 rescue LoadError
-  abort "Please install rspec (bundle install)"
+  abort "Please run `bundle install` first"
 end
 
 RSpec::Core::RakeTask.new :spec

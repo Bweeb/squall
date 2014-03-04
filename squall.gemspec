@@ -17,17 +17,22 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "squall"
 
-  s.add_runtime_dependency 'faraday', '~> 0.8.1'
+  s.add_runtime_dependency 'faraday',            '~> 0.8.1'
   s.add_runtime_dependency 'faraday_middleware', '~> 0.8.7'
-  s.add_runtime_dependency 'json', '~> 1.7.3'
-  s.add_runtime_dependency('jruby-openssl', '~> 0.7.3') if RUBY_PLATFORM == 'java'
+  s.add_runtime_dependency 'json',               '~> 1.7.3'
 
-  s.add_development_dependency 'rspec', '~> 2.10.0'
-  s.add_development_dependency 'fakeweb', '~> 1.3'
-  s.add_development_dependency 'vcr', '~> 1.8'
+  s.add_development_dependency 'rspec',         '~> 2.10.0'
+  s.add_development_dependency 'fakeweb',       '~> 1.3'
+  s.add_development_dependency 'vcr',           '~> 1.8'
   s.add_development_dependency 'awesome_print', '~> 1.0.2'
-  s.add_development_dependency 'rake', '~> 0.9.2.2'
-  s.add_development_dependency 'rake-tomdoc', '~> 0.0.2'
+  s.add_development_dependency 'rake',          '~> 0.9.2.2'
+
+  # JRuby
+  if RUBY_PLATFORM == 'java'
+    s.add_runtime_dependency 'jruby-openssl', '~> 0.7.3'
+  else
+    s.add_development_dependency 'rake-tomdoc', '~> 0.0.2'
+  end
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
