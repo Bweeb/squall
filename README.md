@@ -10,13 +10,13 @@ Documentation is available in [TomDoc][] format.
 
 [Build Status]: http://travis-ci.org/site5/squall
 [Build Icon]: https://secure.travis-ci.org/site5/squall.png?branch=master
-[OnApp REST API]: https://help.onapp.com/manual.php?m=2
+[OnApp REST API]: http://onapp.com/cloud/technology/api/
 [TomDoc]: http://site5.github.io/squall/
 
 Install
 -------
 
-To install Squall using [Bundler](http://gembundler.com):
+To install Squall using [Bundler](http://bundler.io):
 
 ```
 echo "gem 'squall'" >> Gemfile
@@ -166,8 +166,7 @@ Known issues:
 
 1. VirtualMachine#change_user currently breaks the parser on an invalid
    user_id  because OnApp returns html instead of JSON
-2. VirtualMachine#create is currently broken in certain cases.  See
-   <https://help.onapp.com/kb_article.php?s=0b397f5b851334cea54da9ddd829bf5f&ref=8181-TYFH-8069>
+2. VirtualMachine#create is currently broken in certain cases.
 3. FirewallRule#edit and #create break the parser by returning invalid JSON
 
 Note on Patches/Pull Requests
