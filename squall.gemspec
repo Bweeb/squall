@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
   end
 
   s.files       += %w[Gemfile LICENSE Rakefile README.md]
-  s.files       += Dir['{bin,lib,spec}/**/*']
+  s.files       += Dir['{lib,spec}/**/*']
   s.test_files   = Dir['spec/**/*']
-  s.executables  = "squall"
 end
